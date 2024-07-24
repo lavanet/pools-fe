@@ -1,3 +1,10 @@
+
+export interface IDataCard { 
+  title: string;
+  value: string;
+  message?: string;
+}
+
 export interface INavItem { 
   links: INavItemLink[],
   title: string;

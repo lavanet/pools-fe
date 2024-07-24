@@ -3,10 +3,31 @@
 import { Grid, Stack, styled, Typography } from '@mui/material';
 import { Space_Grotesk } from 'next/font/google';
 
-import { Banner } from '@/components';
+import { Banner, DataCard } from '@/components';
+import { IDataCard } from '@/types';
 
 // TODO: replace with the Sharp Grotesk font
 const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
+
+const dataCards: IDataCard[] = [
+  {
+    title: 'Total requests',
+    value: '49.23M',
+  },
+  {
+    message: 'Updated in real-time',
+    title: 'Total rewards, USD',
+    value: '$490,230',
+  },
+  {
+    title: 'Distributed rewards, USD',
+    value: '$1,889,289.22',
+  },
+  {
+    title: 'Upcoming rewards, USD',
+    value: '$2,500,000',
+  },
+];
 
 export default function Home() {
   return (
@@ -37,7 +58,11 @@ export default function Home() {
       </StyledGrid>
 
       <Grid container spacing={1.5}>
-        <Grid item xs={3}></Grid>
+        {dataCards.map((card) => (
+          <Grid key={card.title} item xs={3}>
+            <DataCard {...card} />
+          </Grid>
+        ))}
       </Grid>
     </>
   );

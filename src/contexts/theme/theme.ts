@@ -53,6 +53,16 @@ const baseTheme = createTheme({
       fontWeight: 500,
       lineHeight: '62px'
     },
+    h2: {
+      fontSize: 30,
+      fontWeight: 500,
+      lineHeight: '36px'
+    },
+    h3: {
+      fontSize: 18,
+      fontWeight: 500,
+      lineHeight: '22px'
+    },
     h5: {
       fontSize: 20,
       lineHeight: '28px'
