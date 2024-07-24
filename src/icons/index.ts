@@ -1,3 +1,4 @@
+export * from './IconAgoric';
 export * from './IconAxelar';
 export * from './IconCelestia';
 export * from './IconDiscord';

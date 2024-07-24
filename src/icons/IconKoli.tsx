@@ -1,6 +1,6 @@
 export const IconKoli = () => (
   <svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g clip-path="url(#clip0_5243_248)">
+    <g clipPath="url(#clip0_5243_248)">
       <path
         d="M16.7166 31.8784C25.5187 31.8784 32.6543 24.7428 32.6543 15.9406C32.6543 7.13844 25.5187 0.00286865 16.7166 0.00286865C7.91438 0.00286865 0.778809 7.13844 0.778809 15.9406C0.778809 24.7428 7.91438 31.8784 16.7166 31.8784Z"
         fill="url(#paint0_linear_5243_248)"
@@ -23,8 +23,8 @@ export const IconKoli = () => (
         y2="15.9406"
         gradientUnits="userSpaceOnUse"
       >
-        <stop stop-color="#030332" />
-        <stop offset="1" stop-color="#171753" />
+        <stop stopColor="#030332" />
+        <stop offset="1" stopColor="#171753" />
       </linearGradient>
       <clipPath id="clip0_5243_248">
         <rect

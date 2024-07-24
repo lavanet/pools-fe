@@ -18,7 +18,7 @@ export const CTA = () => (
       </Typography>
 
       <StyledTypography align="center" variant="h5">
-        Launch, scale and optimize the public RPC for your ecosystem.{' '}
+        Launch, scale and optimize the public RPC for your ecosystem.
       </StyledTypography>
     </Stack>
 

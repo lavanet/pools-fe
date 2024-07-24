@@ -1,8 +1,8 @@
 export const IconAxelar = () => (
   <svg viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M0.666504 16C0.666504 24.8367 7.82977 32 16.6663 32C25.5028 32 32.6665 24.8367 32.6665 16C32.6665 7.16334 25.5028 0 16.6663 0C7.82977 0 0.666504 7.16334 0.666504 16Z"
       fill="white"
     />

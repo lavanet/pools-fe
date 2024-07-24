@@ -1,4 +1,4 @@
-import { CTA, DataCards, Pools, Preview } from '@/modules';
+import { Chains, CTA, DataCards, Pools, Preview } from '@/modules';
 
 export default function Home() {
   return (
@@ -7,6 +7,7 @@ export default function Home() {
       <DataCards />
       <Pools />
       <CTA />
+      <Chains />
     </>
   );
 }

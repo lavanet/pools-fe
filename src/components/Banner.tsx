@@ -9,25 +9,27 @@ import Link from 'next/link';
 // TODO: replace with the Sharp Grotesk font
 const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
 
+const IMAGE_WIDTH = 150;
+
 type BannerProps = {
   button: string;
-  image: 'lavuci' | 'lavuci_bag';
   link: string;
   message: string;
   title: string;
   buttonType?: 'contained' | 'text';
+  image?: 'lavuci' | 'lavuci_bag';
 };
 
 export const Banner = ({
   button,
   buttonType = 'contained',
-  image,
+  image = 'lavuci',
   link,
   message,
   title,
 }: BannerProps) => (
   <StyledBanner>
-    <Stack alignItems="flex-start" spacing={2}>
+    <StyledStack alignItems="flex-start" spacing={2}>
       <div>
         <Typography className={spaceGrotesk.className} variant="h5">
           {title}
@@ -45,7 +47,7 @@ export const Banner = ({
           {button}
         </Button>
       </Link>
-    </Stack>
+    </StyledStack>
 
     <StyledImage
       style={{
@@ -70,6 +72,10 @@ const StyledBanner = styled('div')(({ theme }) => ({
   position: 'relative',
 }));
 
+const StyledStack = styled(Stack)({
+  width: `calc(100% - ${IMAGE_WIDTH}px)`,
+});
+
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
 }));
@@ -77,5 +83,5 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 const StyledImage = styled('div')({
   position: 'absolute',
   right: 0,
-  width: 150,
+  width: IMAGE_WIDTH,
 });

@@ -34,7 +34,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.common.white,
   fontSize: 32,
   padding: 0,
-  transition: 'opacity 0.3s',
+  transition: 'color 0.3s',
 
-  '&:hover': { opacity: 0.75 },
+  '&:hover': { color: theme.palette.primary.main },
 }));

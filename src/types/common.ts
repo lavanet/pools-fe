@@ -1,4 +1,11 @@
 
+export interface IChain { 
+  name: string,
+  requests: number,
+  rpcProviders: number,
+  service: string
+}
+
 export interface IDataCard { 
   title: string;
   value: string;

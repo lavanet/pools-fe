@@ -94,6 +94,10 @@ export const theme = createTheme(baseTheme, {
           textTransform: 'none',
           whiteSpace: 'nowrap',
 
+          '&.MuiButton-sizeSmall': {
+            padding: '4px 16px',
+          },
+
           '&.MuiButton-sizeLarge': {
             borderRadius: 40,
             fontSize: 20,
@@ -130,9 +134,9 @@ export const theme = createTheme(baseTheme, {
             boxShadow: 'none',
             color: baseTheme.palette.common.white,
             padding: 0,
-            transition: 'all 0.3',
+            transition: 'color 0.3',
 
-            '&:hover': { opacity: 0.75 }
+            '&:hover': { color: baseTheme.palette.primary.main }
           }
         }
       ]
@@ -151,6 +155,32 @@ export const theme = createTheme(baseTheme, {
         },
       },
     },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          fontSize: 16,
+          height: 40,
+          lineHeight: '22px',
+
+          '& .MuiOutlinedInput-root ::placeholder': {
+            color: baseTheme.palette.grey[100]
+          },
+
+          '& .MuiOutlinedInput-notchedOutline': {
+            borderColor: '#212630',
+            borderRadius: 24,
+            transition: 'all 0.3s'
+          },
+        }
+      },
+    },
+    MuiInputAdornment: {
+      styleOverrides: {
+        root: {
+          color: baseTheme.palette.grey[100]
+        }
+      }
+    },
     MuiList: {
       styleOverrides: {
         root: {
@@ -167,6 +197,20 @@ export const theme = createTheme(baseTheme, {
           '& .MuiPaper-root': { backgroundColor: 'transparent' },
         },
       }
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          transition: 'color 0.3s',
+          '&:hover': { color: baseTheme.palette.primary.main }
+        }
+      },
+    },
+    MuiTableCell: {
+      styleOverrides: {
+        root: { minHeight: 72, padding: '16px' },
+        head: { minHeight: 40, padding: '4px 16px' }
+      },
     }
-  },
+  }
 });

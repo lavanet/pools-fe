@@ -11,7 +11,7 @@ type FooterCategoryProps = {
 
 export const FooterCategory = ({ links, title }: FooterCategoryProps) => (
   <StyledStack spacing={3}>
-    {title && <StyledTitle>{title}</StyledTitle>}
+    <StyledTitle>{title}</StyledTitle>
 
     <Stack spacing={2}>
       {links.map(({ link, title }) => (
@@ -27,11 +27,12 @@ const StyledStack = styled(Stack)({ flex: 1 });
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[200],
+  minHeight: 22,
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.common.white,
-  transition: 'opacity 0.3s',
+  transition: 'color 0.3s',
 
-  '&:hover': { opacity: 0.75 },
+  '&:hover': { color: theme.palette.primary.main },
 }));
