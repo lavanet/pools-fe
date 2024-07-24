@@ -90,6 +90,7 @@ export const theme = createTheme(baseTheme, {
           lineHeight: '20px',
           padding: '8px 20px',
           textTransform: 'none',
+          transition: 'all 0.3s',
           whiteSpace: 'nowrap',
 
           '&.MuiButton-sizeSmall': {
@@ -106,6 +107,15 @@ export const theme = createTheme(baseTheme, {
       },
       variants: [
         {
+          props: { color: 'primary', variant: 'contained' },
+          style: {
+            '&.Mui-disabled': {
+              color: baseTheme.palette.grey[300],
+              backgroundColor: '#131821', // TODO: move to the palette
+            }
+          }
+        },
+        {
           props: { color: 'secondary', variant: 'contained' },
           style: {
             backgroundColor: baseTheme.palette.background.paper,
@@ -118,12 +128,16 @@ export const theme = createTheme(baseTheme, {
           }
         },
         {
-          props: { color: 'primary', variant: 'contained' },
+          props: { color: 'secondary', variant: 'outlined' },
           style: {
-            '&.Mui-disabled': {
-              color: baseTheme.palette.grey[300],
-              backgroundColor: '#131821', // TODO: move to the palette
-            }
+            backgroundColor: baseTheme.palette.background.default,
+            border: '1px solid #5E6167', // TODO: move to the palette
+            boxShadow: 'none',
+            color: baseTheme.palette.common.white,
+
+            '&:hover': {
+              borderColor: baseTheme.palette.primary.main
+            },
           }
         },
         {

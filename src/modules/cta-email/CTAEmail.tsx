@@ -33,9 +33,6 @@ export const CTAEmail = () => {
   const clientAction = async (formData: FormData) => {
     const { data, error } = await addEmail(formData);
 
-    console.log('data', data);
-    console.log('error', error);
-
     if (error) {
       setHelperText(error);
     } else {

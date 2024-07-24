@@ -30,3 +30,9 @@ export interface IPool {
 }
 
 export type PoolType = 'axelar' | 'celestia' | 'evmos' | 'koli' | 'near' | 'starknet';
+
+export interface IProduct {
+  text: string;
+  title: string;
+  type: 'orange' | 'red';
+}
