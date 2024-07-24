@@ -1,6 +1,9 @@
 'use client';
 
 import { createTheme } from "@mui/material";
+import { Space_Grotesk } from 'next/font/google';
+
+const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] })
 
 const baseTheme = createTheme({
   palette: {
@@ -9,6 +12,7 @@ const baseTheme = createTheme({
       paper: '#EDEDED'
     },
     grey: {
+      100: '#B9B9B9',
       200: '#787A7E',
       300: '#5E6167',
     },
@@ -31,6 +35,28 @@ const baseTheme = createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
+    body1: {
+      fontSize: 16,
+      lineHeight: '22px'
+    },
+    body2: {
+      fontSize: 14,
+      lineHeight: '18px'
+    },
+    caption: {
+      fontSize: 14,
+      fontWeight: 500,
+      lineHeight: '18px'
+    },
+    h1: {
+      fontSize: 56,
+      fontWeight: 500,
+      lineHeight: '62px'
+    },
+    h5: {
+      fontSize: 20,
+      lineHeight: '28px'
+    }
   },
 });
 
@@ -71,6 +97,11 @@ export const theme = createTheme(baseTheme, {
         }
       ]
     },
+    MuiCssBaseline: {
+      styleOverrides: {
+        '& a': { textDecoration: 'none' }
+      },
+    },
     MuiContainer: {
       styleOverrides: {
         root: {
@@ -93,7 +124,7 @@ export const theme = createTheme(baseTheme, {
       styleOverrides: {
         root: {
           '&.nav-menu': { marginLeft: '20px' },
-          '& .MuiPaper-root': { backgroundColor: 'transparent' }
+          '& .MuiPaper-root': { backgroundColor: 'transparent' },
         },
       }
     }

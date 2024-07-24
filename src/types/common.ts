@@ -1,6 +1,6 @@
 export interface INavItem { 
+  links: INavItemLink[],
   title: string;
-  links?: INavItemLink[],
 }
 
 export interface INavItemLink { 
