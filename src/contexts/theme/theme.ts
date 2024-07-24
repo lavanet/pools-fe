@@ -94,6 +94,17 @@ export const theme = createTheme(baseTheme, {
               backgroundColor: baseTheme.palette.common.white,
             }
           }
+        },
+        {
+          props: { variant: 'text' },
+          style: {
+            boxShadow: 'none',
+            color: baseTheme.palette.common.white,
+            padding: 0,
+            transition: 'all 0.3',
+
+            '&:hover': { opacity: 0.75 }
+          }
         }
       ]
     },
