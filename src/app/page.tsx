@@ -5,6 +5,7 @@ import { Space_Grotesk } from 'next/font/google';
 
 import { Banner, DataCard } from '@/components';
 import { IDataCard } from '@/types';
+import { Pools } from '@/modules';
 
 // TODO: replace with the Sharp Grotesk font
 const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
@@ -32,7 +33,7 @@ const dataCards: IDataCard[] = [
 export default function Home() {
   return (
     <>
-      <StyledGrid alignItems="center" container>
+      <StyledDataCards alignItems="center" container>
         <Grid item xs={8}>
           <Stack spacing={1}>
             <Typography className={spaceGrotesk.className} variant="h1">
@@ -55,7 +56,7 @@ export default function Home() {
             title="Meet Lavuci"
           />
         </Grid>
-      </StyledGrid>
+      </StyledDataCards>
 
       <Grid container spacing={1.5}>
         {dataCards.map((card) => (
@@ -64,6 +65,8 @@ export default function Home() {
           </Grid>
         ))}
       </Grid>
+
+      <Pools />
     </>
   );
 }
@@ -72,7 +75,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
 }));
 
-const StyledGrid = styled(Grid)(({ theme }) => ({
+const StyledDataCards = styled(Grid)(({ theme }) => ({
   paddingBottom: theme.spacing(4),
-  paddingTop: theme.spacing(8),
+  paddingTop: theme.spacing(6),
 }));

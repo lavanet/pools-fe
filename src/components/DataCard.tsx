@@ -11,7 +11,7 @@ const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
 export const DataCard = ({ message, title, value }: IDataCard) => (
   <StyledDataCard spacing={2}>
     <StyledStack spacing={0.5}>
-      <Typography variant="h3">{title}</Typography>
+      <Typography variant="h6">{title}</Typography>
       {message && (
         <StyledTypography variant="body2">{message}</StyledTypography>
       )}

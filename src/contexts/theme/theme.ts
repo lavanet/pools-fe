@@ -59,14 +59,24 @@ const baseTheme = createTheme({
       lineHeight: '36px'
     },
     h3: {
-      fontSize: 18,
+      fontSize: 24,
       fontWeight: 500,
-      lineHeight: '22px'
+      lineHeight: '28px'
+    },
+    h4: {
+      fontSize: 22,
+      fontWeight: 500,
+      lineHeight: '28px'
     },
     h5: {
       fontSize: 20,
       lineHeight: '28px'
-    }
+    },
+    h6: {
+      fontSize: 18,
+      fontWeight: 500,
+      lineHeight: '22px'
+    },
   },
 });
 
@@ -102,6 +112,15 @@ export const theme = createTheme(baseTheme, {
 
             '&:hover': {
               backgroundColor: baseTheme.palette.common.white,
+            },
+          }
+        },
+        {
+          props: { color: 'primary', variant: 'contained' },
+          style: {
+            '&.Mui-disabled': {
+              color: baseTheme.palette.grey[300],
+              backgroundColor: '#131821', // TODO: move to the palette
             }
           }
         },
