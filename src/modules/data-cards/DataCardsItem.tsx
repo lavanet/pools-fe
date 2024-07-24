@@ -8,7 +8,7 @@ import { IDataCard } from '@/types';
 // TODO: replace with the Sharp Grotesk font
 const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
 
-export const DataCard = ({ message, title, value }: IDataCard) => (
+export const DataCardItem = ({ message, title, value }: IDataCard) => (
   <StyledDataCard spacing={2}>
     <StyledStack spacing={0.5}>
       <Typography variant="h6">{title}</Typography>
