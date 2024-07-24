@@ -90,7 +90,6 @@ export const ChainsTable = ({ filter }: ChainsTableProps) => {
       if (a[property] > b[property]) return ascending ? 1 : -1;
       return 0;
     });
-
     setChains(sortedChains);
   };
 

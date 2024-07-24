@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 const IMAGE_WIDTH = 150;
 

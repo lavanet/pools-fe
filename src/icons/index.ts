@@ -7,4 +7,5 @@ export * from './IconGithub';
 export * from './IconKoli';
 export * from './IconNear';
 export * from './IconStarknet';
+export * from './IconTelegram';
 export * from './IconUXWing';

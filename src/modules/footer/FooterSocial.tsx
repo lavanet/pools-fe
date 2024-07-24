@@ -14,21 +14,19 @@ type FooterSocialProps = {
   link: string;
 };
 
-export const FooterSocial = ({ icon, link }: FooterSocialProps) => {
-  const icons: Record<Icon, ReactNode> = {
-    discord: <IconDiscord />,
-    github: <IconGithub />,
-    uxwing: <IconUXWing />,
-  };
-
-  return (
-    <Link href={link}>
-      <StyledIconButton>
-        <IconSvg>{icons[icon]}</IconSvg>
-      </StyledIconButton>
-    </Link>
-  );
+const icons: Record<Icon, ReactNode> = {
+  discord: <IconDiscord />,
+  github: <IconGithub />,
+  uxwing: <IconUXWing />,
 };
+
+export const FooterSocial = ({ icon, link }: FooterSocialProps) => (
+  <Link href={link}>
+    <StyledIconButton>
+      <IconSvg>{icons[icon]}</IconSvg>
+    </StyledIconButton>
+  </Link>
+);
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   color: theme.palette.common.white,

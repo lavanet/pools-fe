@@ -4,7 +4,7 @@ import { Button, Stack, styled, Typography } from '@mui/material';
 import { Space_Grotesk } from 'next/font/google';
 
 // TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const CTA = () => (
   <Stack alignItems="center" spacing={4}>

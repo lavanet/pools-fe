@@ -1,9 +1,6 @@
 'use client';
 
 import { createTheme } from "@mui/material";
-import { Space_Grotesk } from 'next/font/google';
-
-const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] })
 
 const baseTheme = createTheme({
   palette: {
@@ -15,6 +12,7 @@ const baseTheme = createTheme({
       100: '#B9B9B9',
       200: '#787A7E',
       300: '#5E6167',
+      600: '#05090F'
     },
     primary: {
       main: '#FF3900'
@@ -205,6 +203,18 @@ export const theme = createTheme(baseTheme, {
           '&:hover': { color: baseTheme.palette.primary.main }
         }
       },
+    },
+    MuiSnackbar: {
+      styleOverrides: {
+        root: {
+          '& .MuiPaper-root': {
+            backgroundColor: baseTheme.palette.background.default,
+            border: `1px solid ${baseTheme.palette.primary.main}`,
+            borderRadius: 20,
+            color: baseTheme.palette.common.white
+          }
+        }
+      }
     },
     MuiTableCell: {
       styleOverrides: {

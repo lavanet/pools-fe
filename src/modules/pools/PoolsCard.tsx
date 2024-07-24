@@ -17,7 +17,7 @@ import {
 import { PoolsCardData } from '@/modules';
 
 // TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 const bg_colors = [
   'linear-gradient(180deg, rgba(0, 236, 151, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',

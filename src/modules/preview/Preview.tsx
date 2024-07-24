@@ -6,7 +6,7 @@ import { Space_Grotesk } from 'next/font/google';
 import { Banner } from '@/components';
 
 // TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '500', subsets: ['latin'] });
+const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const Preview = () => (
   <StyledGrid alignItems="center" container>
