@@ -142,7 +142,7 @@ export const ChainsTable = ({ filter }: ChainsTableProps) => {
                     </Stack>
                   </TableCell>
 
-                  <ChainsTableCellText text={chain.rpcProviders} />
+                  <ChainsTableCellText text={`${chain.rpcProviders}`} />
 
                   <ChainsTableCellText text={`${chain.requests}m`} />
 
