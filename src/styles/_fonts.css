@@ -1,0 +1,7 @@
+@font-face {
+    font-family: 'sharpGrotesk';
+    src: url('/fonts/sharpgrotesk-medium25-webfont.woff2') format('woff2'),
+         url('/fonts/sharpgrotesk-medium25-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

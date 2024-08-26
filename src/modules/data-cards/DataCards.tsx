@@ -1,4 +1,6 @@
-import { Grid } from '@mui/material';
+'use client';
+
+import { Grid, styled } from '@mui/material';
 
 import { IDataCard } from '@/types';
 import { DataCardItem } from '@/modules';
@@ -24,11 +26,19 @@ const dataCards: IDataCard[] = [
 ];
 
 export const DataCards = () => (
-  <Grid container spacing={1.5}>
+  <StyledGrid>
     {dataCards.map((card) => (
-      <Grid key={card.title} item xs={3}>
-        <DataCardItem {...card} />
-      </Grid>
+      <DataCardItem {...card} key={card.title}/>
     ))}
-  </Grid>
+  </StyledGrid>
 );
+
+const StyledGrid = styled('section')(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  gap: '12px',
+
+  [theme.breakpoints.down('lg')]: {
+    gridTemplateColumns: 'repeat(auto-fit, minmax(331px,1fr))',
+  }
+}));

@@ -12,6 +12,7 @@ const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 const IMAGE_WIDTH = 150;
 
 type BannerProps = {
+  extraClassName?: string;
   button: string;
   link: string;
   message: string;
@@ -21,6 +22,7 @@ type BannerProps = {
 };
 
 export const Banner = ({
+  extraClassName,
   button,
   buttonType = 'contained',
   image = 'lavuci',
@@ -28,10 +30,13 @@ export const Banner = ({
   message,
   title,
 }: BannerProps) => (
-  <StyledBanner>
+  <StyledBanner className={extraClassName && extraClassName}>
     <StyledStack alignItems="flex-start" spacing={2}>
       <div>
-        <Typography className={spaceGrotesk.className} variant="h5">
+        <Typography
+          // className={spaceGrotesk.className}
+          variant="h5"
+        >
           {title}
         </Typography>
 
@@ -78,6 +83,7 @@ const StyledStack = styled(Stack)({
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
+  letterSpacing: '0.01em'
 }));
 
 const StyledImage = styled('div')({

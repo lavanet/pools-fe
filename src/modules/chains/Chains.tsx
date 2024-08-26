@@ -24,61 +24,87 @@ export const Chains = () => {
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
   return (
-    <StyledChains spacing={4}>
-      <div>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
-            <Stack spacing={4}>
-              <Stack spacing={1}>
-                <Typography className={spaceGrotesk.className} variant="h2">
-                  Other chains
-                </Typography>
+    <StyledChains>
 
-                <StyledTypography variant="h5">
-                  Chains that do not yet have incentivized pools.
-                </StyledTypography>
-              </Stack>
+      <StyledGrid>
 
-              <StyledTextField
-                placeholder="Search chain name"
-                value={searchValue}
-                onChange={(e) => {
-                  setSeachValue(e.currentTarget.value);
-                }}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">
-                      <Search />
-                    </InputAdornment>
-                  ),
-                }}
-              />
-            </Stack>
-          </Grid>
+        <Stack>
+          <Typography className={spaceGrotesk.className} variant="h2">
+            Other chains
+          </Typography>
 
-          <Grid item xs={6}>
-            <Banner
-              button="Learn more"
-              link="/"
-              message="Add it yourself as a specification and earn LAVA for every request served"
-              title="Don't see your favourite chain?"
-            />
-          </Grid>
-        </Grid>
-      </div>
+          <StyledTypography variant="h5">
+            Chains that do not yet have incentivized pools.
+          </StyledTypography>
+        </Stack>
 
-      <ChainsTable filter={debouncedSearchValue} />
+        <Banner
+          extraClassName='chains-banner'
+          button="Learn more"
+          link="/"
+          message="Add it yourself as a specification and earn LAVA for every request served"
+          title="Don't see your favourite chain?"
+        />
+
+        <StyledTextField
+          placeholder="Search chain name"
+          value={searchValue}
+          onChange={(e) => {
+            setSeachValue(e.currentTarget.value);
+          }}
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position="start">
+                <Search />
+              </InputAdornment>
+            ),
+          }}
+        />
+
+      </StyledGrid>
+
+      <ChainsTable
+        filter={debouncedSearchValue}
+      />
+
     </StyledChains>
   );
 };
 
-const StyledChains = styled(Stack)(({ theme }) => ({
+const StyledChains = styled('section')(({ theme }) => ({
   paddingBottom: theme.spacing(14),
   paddingTop: theme.spacing(10),
+}));
+
+const StyledGrid = styled('div')(({ theme }) => ({
+  display: 'grid',
+  gridTemplateRows: 'auto',
+  alignItems: 'center',
+  gap: '32px 20px',
+  gridTemplateColumns: '1fr 674px',
+
+  '& .chains-banner': {
+    backgroundColor: 'blue',
+
+    [theme.breakpoints.up('md')]: {
+      gridRow: 'span 3'
+    },
+  },
+
+  [theme.breakpoints.down('lg')]: {
+    gridTemplateColumns: 'repeat(2, 1fr)',
+  },
+
+  [theme.breakpoints.down('md')]: {
+    gridTemplateColumns: '1fr',
+  },
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
 }));
 
-const StyledTextField = styled(TextField)({ maxWidth: 445 });
+const StyledTextField = styled(TextField)({
+  maxWidth: 445,
+  marginBottom: '0',
+});

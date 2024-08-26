@@ -67,4 +67,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontWeight: 500,
   lineHeight: '20px',
   padding: '14px 20px',
+  [theme.breakpoints.down('lg')]: {
+    padding: '14px 5px',
+  },
 }));

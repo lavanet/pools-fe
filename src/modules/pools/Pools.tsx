@@ -15,16 +15,17 @@ const pools: IPool[] = [
 ];
 
 export const Pools = () => (
-  <StyledGrid container spacing={1.5}>
+  <StyledGrid>
     {pools.map((pool, index) => (
-      <Grid key={pool.title} item xs={4}>
-        <PoolsCard index={index} {...pool} />
-      </Grid>
+      <PoolsCard index={index} {...pool}  key={pool.title}/>
     ))}
   </StyledGrid>
 );
 
-const StyledGrid = styled(Grid)(({ theme }) => ({
+const StyledGrid = styled('section')(({ theme }) => ({
+  display: 'grid',
+   gridTemplateColumns: 'repeat(auto-fit, minmax(380px,1fr))',
+  gap: '12px',
   paddingBottom: theme.spacing(8),
   paddingTop: theme.spacing(8),
 }));

@@ -9,8 +9,8 @@ import { Banner } from '@/components';
 const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const Preview = () => (
-  <StyledGrid alignItems="center" container>
-    <Grid item xs={8}>
+  <StyledGrid>
+    <StyledGridItem className="text">
       <Stack spacing={1}>
         <Typography className={spaceGrotesk.className} variant="h1">
           Lava Incentive Pools
@@ -20,9 +20,9 @@ export const Preview = () => (
           Boost infrastructure for your favourite chain, earn rewards.
         </StyledTypography>
       </Stack>
-    </Grid>
+    </StyledGridItem>
 
-    <Grid item xs={4}>
+    <StyledGridItem className="banner">
       <Banner
         button="Become an RPC Provider"
         buttonType="text"
@@ -31,7 +31,7 @@ export const Preview = () => (
         message="He loves dealing with node runners. "
         title="Meet Lavuci"
       />
-    </Grid>
+    </StyledGridItem>
   </StyledGrid>
 );
 
@@ -39,7 +39,31 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
 }));
 
-const StyledGrid = styled(Grid)(({ theme }) => ({
+const StyledGrid = styled('section')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  flexWrap: 'nowrap',
+  gap: '24px 20px',
   paddingBottom: theme.spacing(4),
   paddingTop: theme.spacing(6),
+
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'unset',
+  },
+}));
+
+const StyledGridItem = styled('div')(({ theme }) => ({
+  '&.banner': {
+    flex: '0 0 446px',
+    width: '100%',
+    maxWidth: '446px',
+
+    [theme.breakpoints.down('md')]: {
+      flex: '0 0 100%',
+      maxWidth: '100%',
+    },
+  },
 }));

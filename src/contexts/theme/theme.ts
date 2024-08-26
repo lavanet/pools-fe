@@ -6,7 +6,7 @@ const baseTheme = createTheme({
   palette: {
     background: {
       default: '#05090F',
-      paper: '#EDEDED'
+      paper: '#EDEDED',
     },
     grey: {
       100: '#B9B9B9',
@@ -16,6 +16,10 @@ const baseTheme = createTheme({
     },
     primary: {
       main: '#FF3900'
+    },
+    secondary: {
+      main: "#0C121A",
+      light: "#212630",
     },
     text: {
       primary: '#FFF',
@@ -49,31 +53,31 @@ const baseTheme = createTheme({
     h1: {
       fontSize: 56,
       fontWeight: 500,
-      lineHeight: '62px'
+      lineHeight: '62px',
     },
     h2: {
       fontSize: 30,
       fontWeight: 500,
-      lineHeight: '36px'
+      lineHeight: '36px',
     },
     h3: {
       fontSize: 24,
       fontWeight: 500,
-      lineHeight: '28px'
+      lineHeight: '28px',
     },
     h4: {
       fontSize: 22,
       fontWeight: 500,
-      lineHeight: '28px'
+      lineHeight: '28px',
     },
     h5: {
       fontSize: 20,
-      lineHeight: '28px'
+      lineHeight: '28px',
     },
     h6: {
       fontSize: 18,
       fontWeight: 500,
-      lineHeight: '22px'
+      lineHeight: '22px',
     },
   },
 });
