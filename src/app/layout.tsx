@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import "@/styles/index.css";
 import CssBaseline from '@mui/material/CssBaseline';
 import { Container } from '@mui/material';
-
 import { ThemeProvider } from '@/contexts';
-import { Footer, Header } from '@/modules';
+import { Footer } from '@/components/common/Footer';
+import { Header } from '@/components/common/Header';
 
 export const metadata: Metadata = {
   title: 'LAVA Incentive Pools',

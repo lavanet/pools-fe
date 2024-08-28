@@ -24,12 +24,12 @@ export interface INavItemLink {
 }
 
 export interface IPool { 
-  id: string;
   title: string;
   service: string;
   node_runner?: number;
   requests?: number;
   value: string;
+  currency?: string;
   monthly_rewards?: number;
   future_rewards?: number;
   past_rewards?: number;

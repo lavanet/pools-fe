@@ -1,23 +1,24 @@
 import {
-  Chains,
-  CTA,
-  CTAEmail,
-  DataCards,
-  Pools,
-  Preview,
-  Products,
-} from '@/modules';
+  HomeSectionPreview,
+  HomeSectionDataCards,
+  HomeSectionPools,
+  HomeSectionCTA,
+  HomeSectionChains,
+  HomeSectionCTAEmail,
+  HomeSectionProducts,
+} from '@/components';
+
 
 export default function Home() {
   return (
     <>
-      <Preview />
-      <DataCards />
-      <Pools />
-      <CTA />
-      <Chains />
-      <CTAEmail />
-      <Products />
+      <HomeSectionPreview />
+      <HomeSectionDataCards />
+      <HomeSectionPools />
+      <HomeSectionCTA />
+      <HomeSectionChains />
+      <HomeSectionCTAEmail />
+      <HomeSectionProducts/>
     </>
   );
 }

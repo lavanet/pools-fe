@@ -1,8 +1,9 @@
 import localFont from 'next/font/local'
 
+
 export const sharpGroteskBook = localFont({
   src: [
-    { path: '../../public/fonts/sharpgrotesk-book25.woff', },
+    { path: '../../public/fonts/sharpgrotesk-book25.woff'},
     { path: '../../public/fonts/sharpgrotesk-book25.woff2', }
   ],
   weight: 'normal',
@@ -20,4 +21,15 @@ export const sharpGroteskMedium = localFont({
   style: 'normal',
   display: 'swap',
   variable: '--sharpGroteskMedium'
+})
+
+export const retroComputer = localFont({
+  src: [
+    { path: '../../public/fonts/retro_computer.woff', },
+    { path: '../../public/fonts/retro_computer.woff2', }
+  ],
+  weight: 'normal',
+  style: 'normal',
+  display: 'swap',
+  variable: '--retroComputer'
 })

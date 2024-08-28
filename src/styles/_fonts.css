@@ -1,15 +1,87 @@
 @font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../../public/fonts/helveticaneue_roman.woff2') format('woff2'),
+         url('../../public/fonts/helveticaneue_roman.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../../public/fonts/helveticaneue_medium.woff2') format('woff2'),
+         url('../../public/fonts/helveticaneue_medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Helvetica Neue';
+    src: url('../../public/fonts/helveticaneue_bold.woff2') format('woff2'),
+         url('../../public/fonts/helveticaneue_bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*@font-face {*/
+/*    font-family: 'Helvetica Neue';*/
+/*    src: url('../../public/fonts/helveticaneue_heavy.woff2') format('woff2'),*/
+/*         url('../../public/fonts/helveticaneue_heavy.woff') format('woff');*/
+/*    font-weight: 800;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Helvetica Neue';*/
+/*    src: url('../../public/fonts/helveticaneue_black.woff2') format('woff2'),*/
+/*         url('../../public/fonts/helveticaneue_black.woff') format('woff');*/
+/*    font-weight: 900;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Helvetica Neue';*/
+/*    src: url('../../public/fonts/helveticaneue_ultralight.woff2') format('woff2'),*/
+/*         url('../../public/fonts/helveticaneue_ultralight.woff') format('woff');*/
+/*    font-weight: 100;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Helvetica Neue';*/
+/*    src: url('../../public/fonts/helveticaneue_thin.woff2') format('woff2'),*/
+/*         url('../../public/fonts/helveticaneue_thin.woff') format('woff');*/
+/*    font-weight: 200;*/
+/*    font-style: normal;*/
+/*}*/
+
+/*@font-face {*/
+/*    font-family: 'Helvetica Neue';*/
+/*    src: url('../../public/fonts/helveticaneue_light.woff2') format('woff2'),*/
+/*         url('../../public/fonts/helveticaneue_light.woff') format('woff');*/
+/*    font-weight: 300;*/
+/*    font-style: normal;*/
+/*}*/
+
+@font-face {
     font-family: 'sharp_groteskbook_25';
-    src: url('/fonts/sharpgrotesk-book25.woff2') format('woff2'),
-         url('/fonts/sharpgrotesk-book25.woff') format('woff');
+    src: url('../../public/fonts/sharpgrotesk-book25.woff2') format('woff2'),
+         url('../../public/fonts/sharpgrotesk-book25.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'sharp_groteskmedium_25';
-    src: url('/fonts/sharpgrotesk-medium25.woff2') format('woff2'),
-         url('/fonts/sharpgrotesk-medium25.woff') format('woff');
+    src: url('../../public/fonts/sharpgrotesk-medium25.woff2') format('woff2'),
+         url('../../public/fonts/sharpgrotesk-medium25.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'retro_computer';
+    src: url('../../public/fonts/retro_computer.woff2') format('woff2'),
+         url('../../public/fonts/retro_computer.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

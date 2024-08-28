@@ -1,8 +1,19 @@
 'use client';
 
 import { createTheme } from "@mui/material";
+import { yellow } from '@mui/material/colors';
 
 const baseTheme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 992,
+      lg: 1200,
+      xl: 1536,
+    },
+  },
+
   palette: {
     background: {
       default: '#05090F',
@@ -28,14 +39,8 @@ const baseTheme = createTheme({
   },
   typography: {
     fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
       '"Helvetica Neue"',
-      'Arial',
       'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
     ].join(','),
     body1: {
       fontSize: 16,
@@ -50,7 +55,6 @@ const baseTheme = createTheme({
       fontWeight: 400,
       lineHeight: '18px',
     },
-
     h1: {
       fontSize: 56,
       lineHeight: '62px',
@@ -60,8 +64,8 @@ const baseTheme = createTheme({
       lineHeight: '36px',
     },
     h3: {
-      fontSize: 24,
-      lineHeight: '28px',
+      fontSize: 26,
+      lineHeight: '36.4px',
     },
     h4: {
       fontSize: 22,
@@ -83,22 +87,33 @@ export const theme = createTheme(baseTheme, {
     MuiCustomFont: {
       styleOverrides: {
         root: {
-          fontFamily: 'sharpgrotesk-medium, sharpgrotesk-medium, sans-serif',
+          // fontFamily: 'sharpgrotesk-medium, sharpgrotesk-medium, sans-serif',
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
+          display: 'inline-flex',
+          alignItems: 'center',
+          columnGap: '4px',
+          padding: '8px 20px',
           borderRadius: 18,
           boxShadow: '0px 1px 12px 0px #F938008F',
           fontSize: 14,
           fontWeight: 500,
           lineHeight: '20px',
-          padding: '8px 20px',
           textTransform: 'none',
           transition: 'all 0.3s',
           whiteSpace: 'nowrap',
+
+          '& .MuiButton-startIcon, & .MuiButton-endIcon': {
+            margin: 0,
+
+            '& > *:first-of-type': {
+              fontSize: '1em',
+            },
+          },
 
           '&.MuiButton-sizeSmall': {
             padding: '4px 16px',
@@ -116,9 +131,14 @@ export const theme = createTheme(baseTheme, {
         {
           props: { color: 'primary', variant: 'contained' },
           style: {
+            boxShadow: '0px 1px 12px 0px #F938008F',
+            outline: '1px solid #FF6839',
+            outlineOffset: '-1px',
+
             '&.Mui-disabled': {
-              color: baseTheme.palette.grey[300],
               backgroundColor: '#131821', // TODO: move to the palette
+              color: baseTheme.palette.grey[300],
+              outlineColor: '#131821',
             }
           }
         },
@@ -165,7 +185,7 @@ export const theme = createTheme(baseTheme, {
     },
     MuiCssBaseline: {
       styleOverrides: {
-        '& a': { textDecoration: 'none' }
+        '& a': { textDecoration: 'none' },
       },
     },
     MuiContainer: {
@@ -181,18 +201,42 @@ export const theme = createTheme(baseTheme, {
     MuiInputBase: {
       styleOverrides: {
         root: {
+          padding: '6px 14px',
           fontSize: 16,
           height: 40,
-          lineHeight: '22px',
+          lineHeight: 'normal',
+
+          '&:hover': {
+            borderColor: "blue"
+          },
+
+           '& .MuiInputBase-input': {
+            padding: '0',
+            fontSize: 16,
+            height: '100%',
+            lineHeight: 'normal',
+            backgroundColor: 'transparent',
+            color: '#FFFFFF',
+
+            '&::placeholder': {
+              color: baseTheme.palette.grey[100],
+              opacity: 1,
+            },
+          },
 
           '& .MuiOutlinedInput-root ::placeholder': {
-            color: baseTheme.palette.grey[100]
+            color: 'yellow',
+            opacity: 1,
           },
 
           '& .MuiOutlinedInput-notchedOutline': {
-            borderColor: '#212630',
+            borderColor: '#212630 !important',
             borderRadius: 24,
-            transition: 'all 0.3s'
+            transition: 'all 0.3s',
+
+               '&:hover': {
+            borderColor: "blue !important"
+          },
           },
         }
       },
@@ -200,7 +244,8 @@ export const theme = createTheme(baseTheme, {
     MuiInputAdornment: {
       styleOverrides: {
         root: {
-          color: baseTheme.palette.grey[100]
+          color: baseTheme.palette.grey[100],
+          backgroundColor: "red",
         }
       }
     },
