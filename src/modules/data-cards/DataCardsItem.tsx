@@ -1,12 +1,8 @@
 'use client';
 
 import { Stack, styled, Typography } from '@mui/material';
-import { Space_Grotesk } from 'next/font/google';
-
+import { sharpGroteskBook } from '@/types/fonts';
 import { IDataCard } from '@/types';
-
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const DataCardItem = ({ message, title, value }: IDataCard) => (
   <StyledDataCard spacing={2}>
@@ -17,7 +13,13 @@ export const DataCardItem = ({ message, title, value }: IDataCard) => (
       )}
     </StyledStack>
 
-    <Typography className={spaceGrotesk.className} variant="h2">
+    <Typography
+      className={sharpGroteskBook.className}
+      variant="h2"
+      sx={{
+        letterSpacing: '-0.004em',
+      }}
+    >
       {value}
     </Typography>
   </StyledDataCard>

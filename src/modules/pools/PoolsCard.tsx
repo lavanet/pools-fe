@@ -1,179 +1,254 @@
 'use client';
 
-import { Button, Grid, Stack, styled, Typography } from '@mui/material';
-import { ReactNode } from 'react';
-import { Space_Grotesk } from 'next/font/google';
-
-import { IPool, PoolType } from '@/types';
+import { Button, Grid, List, ListItem, Stack, styled, Typography } from '@mui/material';
+import { sharpGroteskMedium } from '@/types/fonts';
+import { IPool } from '@/types';
 import { IconSvg } from '@/components';
-import {
-  IconAxelar,
-  IconCelestia,
-  IconEvmos,
-  IconKoli,
-  IconNear,
-  IconStarknet,
-} from '@/icons';
 import { PoolsCardData } from '@/modules';
 
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
+type PoolsCardProps = IPool;
 
-const bg_colors = [
-  'linear-gradient(180deg, rgba(0, 236, 151, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',
-  'linear-gradient(180deg, rgba(236, 78, 50, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',
-  'linear-gradient(180deg, rgba(237, 240, 244, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',
-  'linear-gradient(180deg, rgba(236, 121, 107, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',
-  'linear-gradient(180deg, rgba(105, 105, 231, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',
-  'linear-gradient(180deg, rgba(123, 43, 249, 0.5) 0%, rgba(23, 28, 38, 0) 20.11%, rgba(23, 28, 38, 0) 92%, rgba(23, 28, 38, 0.01) 100%)',
-];
+export const PoolsCard = (
+  {
+    id,
+    title,
+    service,
+    node_runner,
+    requests,
+    value,
+    monthly_rewards,
+    future_rewards,
+    past_rewards,
+    icon,
+    accentColor,
+  }: PoolsCardProps) => {
 
-const border_colors = [
-  '#00EC97',
-  '#EC4E33',
-  '#FFFFFF',
-  '#EC796B',
-  '#6969E7',
-  '#7B2BF9',
-];
+  const calculateRewardPercentages = (
+    monthly_rewards?: number,
+    future_rewards?: number,
+    past_rewards?: number
+  ) => {
+    // Ensure all values are numbers and default to 0 if undefined
+    const rewards = [monthly_rewards ?? 0, future_rewards ?? 0, past_rewards ?? 0];
 
-const icons: Record<PoolType, ReactNode> = {
-  axelar: <IconAxelar />,
-  celestia: <IconCelestia />,
-  evmos: <IconEvmos />,
-  koli: <IconKoli />,
-  near: <IconNear />,
-  starknet: <IconStarknet />,
-};
+    // Calculate total rewards, explicitly initializing sum to 0
+    const total = rewards.reduce((sum: number, reward: number) => sum + reward, 0);
 
-type PoolsCardProps = IPool & { index: number };
+    if (total === 0) {
+      return {
+        monthlyPercentage: 0,
+        futurePercentage: 0,
+        pastPercentage: 0,
+      };
+    }
 
-export const PoolsCard = ({
-  index,
-  service,
-  title,
-  type,
-  value,
-}: PoolsCardProps) => (
-  <StyledPoolsCard style={{ border: `1px solid ${border_colors[index]}` }}>
-    <StyledStack style={{ backgroundImage: `${bg_colors[index]}` }} spacing={3}>
-      <div>
-        <Grid alignItems="center" container spacing={1}>
-          <Grid item xs={6}>
-            <Stack alignItems="center" direction="row" spacing={1}>
-              <StyledIcon>
-                <IconSvg>{icons[type]}</IconSvg>
-              </StyledIcon>
+    const [monthlyPercentage, futurePercentage, pastPercentage] = rewards.map(
+      (reward) => (reward / total) * 100
+    );
+
+    return {
+      monthlyPercentage,
+      futurePercentage,
+      pastPercentage,
+    };
+  };
+
+  const { monthlyPercentage, futurePercentage, pastPercentage } = calculateRewardPercentages(
+    monthly_rewards,
+    future_rewards,
+    past_rewards
+  );
+
+  return (
+    <StyledPoolsCard accentColor={accentColor}>
+
+      <StyledCard accentColor={accentColor}>
+
+        <StyledCardHeader>
+
+          <StyledCardHeaderText>
+            <StyledIcon>
+              <IconSvg>{icon}</IconSvg>
+            </StyledIcon>
+
+            <div>
               <Typography variant="h3">{title}</Typography>
-            </Stack>
-          </Grid>
+              <Typography variant="caption">{service}</Typography>
+            </div>
 
-          <Grid item xs={6}>
-            <StyledTypography variant="caption">Service</StyledTypography>
-            <br />
-            <Typography variant="caption">{service}</Typography>
-          </Grid>
-        </Grid>
-      </div>
+          </StyledCardHeaderText>
 
-      <Stack spacing={2}>
-        <div>
-          <Stack direction="row" spacing={0.5}>
-            <StyledTypography variant="caption">Total rewards</StyledTypography>
+          <StyledCardHeaderList>
+            <li>
+              <StyledTypography variant="caption">RPC node runners:&nbsp;</StyledTypography>
+              <Typography>{node_runner}</Typography>
+            </li>
 
-            <StyledTypography variant="body2">
-              (Updated in real-time)
-            </StyledTypography>
-          </Stack>
+            <li>
+              <StyledTypography variant="caption">Total requests:&nbsp;</StyledTypography>
+              <Typography>{requests}</Typography>
+            </li>
 
-          <Typography className={spaceGrotesk.className} variant="h4">
-            {value}
-          </Typography>
-        </div>
+          </StyledCardHeaderList>
 
-        {/* TODO: is it a real progress bar?  */}
-        <Stack direction="row" spacing={0.25}>
-          <StyledBar style={{ backgroundColor: '#5E6167', width: '35%' }} />
-          <StyledBar style={{ backgroundColor: '#FFF', width: '15%' }} />
-          <StyledBar style={{ backgroundColor: '#7679FF', width: '50%' }} />
+        </StyledCardHeader>
+
+        <StyledCardBody>
+
+          <StyledCardBodyRewards>
+
+            <StyledCardBodyRewardsHeader>
+              <span>
+                <StyledTypography variant="caption">Total rewards</StyledTypography>
+                <Typography variant="body2">(Updated in real-time)</Typography>
+              </span>
+
+              <Typography className={sharpGroteskMedium.className} variant="h6">
+                {value}
+              </Typography>
+
+            </StyledCardBodyRewardsHeader>
+
+            <StyledCardBodyRewardsProgressbar>
+              <StyledBar style={{ backgroundColor: '#FFFFFF', width: `${monthlyPercentage}%` }} />
+              <StyledBar style={{ backgroundColor: '#7679FF', width: `${futurePercentage}%` }} />
+              <StyledBar style={{ backgroundColor: '#5E6167', width: `${pastPercentage}%` }} />
+            </StyledCardBodyRewardsProgressbar>
+
+          </StyledCardBodyRewards>
+
+          <div>
+            <PoolsCardData
+              chartPointType="white"
+              hasCaption
+              title="Rewards in this month"
+              value={`${monthly_rewards}`}
+            />
+
+            <PoolsCardData
+              chartPointType="white"
+              hasCaption
+              title="Rewards in this month"
+              value={`${future_rewards}`}
+            />
+
+            <PoolsCardData
+              chartPointType="white"
+              hasCaption
+              title="Rewards in this month"
+              value={`${past_rewards}`}
+            />
+          </div>
+
+        </StyledCardBody>
+
+        <Stack direction="row" spacing={2}>
+          <Button variant="contained">Run RPC node</Button>
+          <Button disabled variant="contained">Restake to RPC provider</Button>
         </Stack>
 
-        <div>
-          <Grid container spacing={2}>
-            <Grid item xs={6}>
-              <Stack spacing={2}>
-                <PoolsCardData
-                  chartPointType="white"
-                  hasCaption
-                  title="Rewards/month"
-                  value="27k"
-                  type={type}
-                />
+      </StyledCard>
 
-                <PoolsCardData
-                  chartPointType="blue"
-                  hasCaption
-                  title="Future rewards"
-                  value="220k"
-                  type={type}
-                />
+    </StyledPoolsCard>
+  );
+};
 
-                <PoolsCardData
-                  title="RPC node runners"
-                  value="17"
-                  type={type}
-                />
-              </Stack>
-            </Grid>
-
-            <Grid item xs={6}>
-              <Stack spacing={2}>
-                <PoolsCardData title="Months remaining" value="8" type={type} />
-
-                <PoolsCardData
-                  chartPointType="grey"
-                  hasCaption
-                  title="Past rewards"
-                  value="291k"
-                  type={type}
-                />
-
-                <PoolsCardData
-                  title="Total requests"
-                  value="590m"
-                  type={type}
-                />
-              </Stack>
-            </Grid>
-          </Grid>
-        </div>
-      </Stack>
-
-      <Stack direction="row" spacing={2}>
-        <Button variant="contained">Run RPC node</Button>
-
-        <Button disabled variant="contained">
-          Restake to RPC provider
-        </Button>
-      </Stack>
-    </StyledStack>
-  </StyledPoolsCard>
-);
-
-const StyledPoolsCard = styled('div')({
-  backgroundImage: `url("/images/blur_bg_2.png")`,
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  borderRadius: 20,
+const StyledPoolsCard = styled('article')<{ accentColor: string }>(({ theme, accentColor }) => ({
+  position: 'relative',
+  display: 'flex',
+  flexDirection: 'column',
+  padding: '1px',
   overflow: 'hidden',
-});
 
-const StyledStack = styled(Stack)(({ theme }) => ({
-  padding: theme.spacing(3),
+  '&:before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    zIndex: -1,
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    margin: 'auto',
+    borderRadius: '20px',
+    border: '1px solid transparent',
+    background: `linear-gradient(180deg, #171C26 0%, hsl(from ${accentColor} h s l / 0.5) 100%) border-box`,
+    mask: 'linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%)',
+    webkitMaskComposite: 'xor',
+    maskComposite: 'exclude',
+  },
 }));
 
-const StyledIcon = styled('div')({ fontSize: 32 });
+const StyledCard = styled('div')<{ accentColor: string }>(({ theme, accentColor }) => ({
+  flexGrow: '1',
+  position: 'relative',
+  zIndex: 1,
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '24px',
+  padding: theme.spacing(3),
+  borderRadius: '20px',
+  background: `
+    linear-gradient(
+      to bottom,
+      hsl(from ${accentColor} h s l / 0.5) 0%,
+      rgba(23, 28, 38, 0) 20.11%,
+      rgba(23, 28, 38, 0) 92%,
+      rgba(23, 28, 38, 0.01) 100%
+    ), 
+    url("/images/blur_bg_2.png") no-repeat center / cover
+    `,
+  overflow: 'hidden',
+}));
+
+const StyledCardHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  gap: '16px',
+}));
+
+const StyledCardHeaderText = styled('div')(({ theme }) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  gap: '12px',
+}));
+
+const StyledCardHeaderList = styled('ul')(({ theme }) => ({
+  display: 'inline-flex',
+  flexDirection: 'column',
+  margin: 0,
+  padding: 0,
+  listStyle: 'none',
+  '& li': {
+    display: 'inline-flex',
+    alignItems: 'center',
+  }
+}));
+
+const StyledCardBody = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+}));
+
+const StyledCardBodyRewards = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: '8px',
+}));
+
+const StyledCardBodyRewardsHeader = styled('div')(({ theme }) => ({
+  // display: 'flex',
+  // flexDirection: 'column',
+  // rowGap: '8px',
+}));
+
+const StyledCardBodyRewardsProgressbar = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'stretch',
+  columnGap: '2px',
+}));
+
+const StyledIcon = styled('div')({ fontSize: 48 });
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],

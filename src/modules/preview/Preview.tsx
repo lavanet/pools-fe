@@ -1,25 +1,24 @@
 'use client';
-
-import { Grid, Stack, styled, Typography } from '@mui/material';
-import { Space_Grotesk } from 'next/font/google';
+import { Stack, styled, Typography } from '@mui/material';
 
 import { Banner } from '@/components';
-
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
+import { sharpGroteskMedium } from '@/types/fonts';
 
 export const Preview = () => (
   <StyledGrid>
     <StyledGridItem className="text">
-      <Stack spacing={1}>
-        <Typography className={spaceGrotesk.className} variant="h1">
+        <Typography
+          variant="h1"
+          className={sharpGroteskMedium.className}
+          sx={{ letterSpacing: '-0.001em', }}
+        >
           Lava Incentive Pools
         </Typography>
 
         <StyledTypography variant="h5">
           Boost infrastructure for your favourite chain, earn rewards.
         </StyledTypography>
-      </Stack>
+
     </StyledGridItem>
 
     <StyledGridItem className="banner">
@@ -30,6 +29,7 @@ export const Preview = () => (
         link="/"
         message="He loves dealing with node runners. "
         title="Meet Lavuci"
+
       />
     </StyledGridItem>
   </StyledGrid>
@@ -52,17 +52,21 @@ const StyledGrid = styled('section')(({ theme }) => ({
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'unset',
+
+    '& h1': {
+      fontSize: 26,
+      lineHeight: '36.4px'
+    }
   },
 }));
 
 const StyledGridItem = styled('div')(({ theme }) => ({
   '&.banner': {
-    flex: '0 0 446px',
-    width: '100%',
-    maxWidth: '446px',
+    flex: '0 0 auto',
 
     [theme.breakpoints.down('md')]: {
       flex: '0 0 100%',
+      width: '100%',
       maxWidth: '100%',
     },
   },

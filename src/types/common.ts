@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 
 export interface IChain { 
   name: string,
@@ -23,13 +24,18 @@ export interface INavItemLink {
 }
 
 export interface IPool { 
-  service: string;
+  id: string;
   title: string;
-  type: PoolType;
+  service: string;
+  node_runner?: number;
+  requests?: number;
   value: string;
+  monthly_rewards?: number;
+  future_rewards?: number;
+  past_rewards?: number;
+  accentColor: string,
+  icon: ReactNode,
 }
-
-export type PoolType = 'axelar' | 'celestia' | 'evmos' | 'koli' | 'near' | 'starknet';
 
 export interface IProduct {
   text: string;

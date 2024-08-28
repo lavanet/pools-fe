@@ -1,7 +1,15 @@
 @font-face {
-    font-family: 'sharpGrotesk';
-    src: url('/fonts/sharpgrotesk-medium25-webfont.woff2') format('woff2'),
-         url('/fonts/sharpgrotesk-medium25-webfont.woff') format('woff');
+    font-family: 'sharp_groteskbook_25';
+    src: url('/fonts/sharpgrotesk-book25.woff2') format('woff2'),
+         url('/fonts/sharpgrotesk-book25.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'sharp_groteskmedium_25';
+    src: url('/fonts/sharpgrotesk-medium25.woff2') format('woff2'),
+         url('/fonts/sharpgrotesk-medium25.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

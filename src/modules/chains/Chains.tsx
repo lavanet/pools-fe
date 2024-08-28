@@ -9,15 +9,12 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { Space_Grotesk } from 'next/font/google';
+import { sharpGroteskMedium } from '@/types/fonts';
 
 import { Banner } from '@/components';
 import { useState } from 'react';
 import { ChainsTable } from '@/modules';
 import useDebounce from '@/hooks/useDebounce';
-
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
 
 export const Chains = () => {
   const [searchValue, setSeachValue] = useState<string>('');
@@ -29,7 +26,7 @@ export const Chains = () => {
       <StyledGrid>
 
         <Stack>
-          <Typography className={spaceGrotesk.className} variant="h2">
+          <Typography className={sharpGroteskMedium.className} variant="h2">
             Other chains
           </Typography>
 

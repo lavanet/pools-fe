@@ -20,12 +20,14 @@ export default function RootLayout({
     <html lang="en">
       <ThemeProvider>
         <body>
-          <Container maxWidth="xl">
+          <Container maxWidth={false}>
+             <Container maxWidth="xl">
             <CssBaseline />
 
             <Header />
             <main>{children}</main>
             <Footer />
+             </Container>
           </Container>
         </body>
       </ThemeProvider>

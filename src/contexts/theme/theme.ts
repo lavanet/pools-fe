@@ -47,27 +47,24 @@ const baseTheme = createTheme({
     },
     caption: {
       fontSize: 14,
-      fontWeight: 500,
+      fontWeight: 400,
       lineHeight: '18px'
     },
+
     h1: {
       fontSize: 56,
-      fontWeight: 500,
       lineHeight: '62px',
     },
     h2: {
       fontSize: 30,
-      fontWeight: 500,
       lineHeight: '36px',
     },
     h3: {
       fontSize: 24,
-      fontWeight: 500,
       lineHeight: '28px',
     },
     h4: {
       fontSize: 22,
-      fontWeight: 500,
       lineHeight: '28px',
     },
     h5: {
@@ -76,7 +73,6 @@ const baseTheme = createTheme({
     },
     h6: {
       fontSize: 18,
-      fontWeight: 500,
       lineHeight: '22px',
     },
   },
@@ -84,6 +80,13 @@ const baseTheme = createTheme({
 
 export const theme = createTheme(baseTheme, {
   components: {
+    MuiCustomFont: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'sharpgrotesk-medium, sharpgrotesk-medium, sans-serif',
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {
@@ -147,9 +150,12 @@ export const theme = createTheme(baseTheme, {
         {
           props: { variant: 'text' },
           style: {
-            boxShadow: 'none',
-            color: baseTheme.palette.common.white,
+            minWidth: 'unset',
+            justifyContent: 'unset',
             padding: 0,
+            color: baseTheme.palette.common.white,
+            textAlign: 'left',
+            boxShadow: 'none',
             transition: 'color 0.3',
 
             '&:hover': { color: baseTheme.palette.primary.main }
@@ -166,7 +172,8 @@ export const theme = createTheme(baseTheme, {
       styleOverrides: {
         root: {
           '&.MuiContainer-maxWidthXl': {
-            maxWidth: 1360
+            maxWidth: 1360,
+            padding: 0
           }
         },
       },

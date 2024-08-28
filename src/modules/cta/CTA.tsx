@@ -2,6 +2,7 @@
 
 import { Button, Stack, styled, Typography } from '@mui/material';
 import { Space_Grotesk } from 'next/font/google';
+import { sharpGroteskMedium } from '@/types/fonts';
 
 // TODO: replace with the Sharp Grotesk font
 const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
@@ -11,7 +12,7 @@ export const CTA = () => (
     <Stack spacing={1}>
       <Typography
         align="center"
-        className={spaceGrotesk.className}
+        className={sharpGroteskMedium.className}
         variant="h2"
       >
         Create an incentive pool

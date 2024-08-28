@@ -2,18 +2,7 @@
 
 import { Stack, styled, Typography } from '@mui/material';
 
-import { PoolType } from '@/types';
-
 type ChartPointType = 'blue' | 'grey' | 'white';
-
-const captions: Record<PoolType, string> = {
-  axelar: 'AXL',
-  celestia: 'LAVA',
-  evmos: 'EVMOS',
-  koli: 'LAVA',
-  near: 'NEAR',
-  starknet: 'STRK',
-};
 
 const chartPointsColors: Record<ChartPointType, string> = {
   blue: '#7679FF',
@@ -23,17 +12,17 @@ const chartPointsColors: Record<ChartPointType, string> = {
 
 type PoolsCardDataProps = {
   title: string;
-  type: PoolType;
   value: string;
   chartPointType?: ChartPointType;
   hasCaption?: boolean;
+  caption?: string;
 };
 
 export const PoolsCardData = ({
   chartPointType,
   hasCaption,
   title,
-  type,
+  caption,
   value,
 }: PoolsCardDataProps) => {
   return (
@@ -49,7 +38,7 @@ export const PoolsCardData = ({
 
       <Stack direction="row" spacing={1}>
         <Typography variant="h6">{value}</Typography>
-        {hasCaption && <Typography variant="h6">{captions[type]}</Typography>}
+        {hasCaption && <Typography variant="h6">{caption}</Typography>}
       </Stack>
     </Stack>
   );

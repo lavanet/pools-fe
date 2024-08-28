@@ -1,15 +1,10 @@
 'use client';
 
+import { sharpGroteskMedium } from '@/types/fonts';
 import NorthEastIcon from '@mui/icons-material/NorthEast';
 import { Button, Stack, styled, Typography } from '@mui/material';
-import { Space_Grotesk } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
-
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
-
-const IMAGE_WIDTH = 150;
 
 type BannerProps = {
   extraClassName?: string;
@@ -21,73 +16,102 @@ type BannerProps = {
   image?: 'lavuci' | 'lavuci_bag';
 };
 
-export const Banner = ({
-  extraClassName,
-  button,
-  buttonType = 'contained',
-  image = 'lavuci',
-  link,
-  message,
-  title,
-}: BannerProps) => (
+export const Banner = (
+  {
+    extraClassName,
+    button,
+    buttonType = 'contained',
+    image = 'lavuci',
+    link,
+    message,
+    title,
+  }: BannerProps) => (
   <StyledBanner className={extraClassName && extraClassName}>
-    <StyledStack alignItems="flex-start" spacing={2}>
-      <div>
+
+    <StyledGrid>
+
+      <StyledGridItemText className={image}>
         <Typography
-          // className={spaceGrotesk.className}
           variant="h5"
+          className={sharpGroteskMedium.className}
+          sx={{ letterSpacing: '-0.01em' }}
         >
           {title}
         </Typography>
 
-        <StyledTypography>{message}</StyledTypography>
-      </div>
+        <StyledTypography>
+          {message}
+        </StyledTypography>
 
-      <Link href={link}>
-        <Button
-          color="secondary"
-          endIcon={buttonType === 'text' ? <NorthEastIcon /> : undefined}
-          variant={buttonType}
-        >
-          {button}
-        </Button>
-      </Link>
-    </StyledStack>
+        <Link href={link}>
+          <Button
+            color="secondary"
+            endIcon={buttonType === 'text' ? <NorthEastIcon /> : undefined}
+            variant={buttonType}
+          >
+            {button}
+          </Button>
+        </Link>
+      </StyledGridItemText>
 
-    <StyledImage
-      style={{
-        bottom: image === 'lavuci' ? 0 : 8 + 'px',
-        top: image === 'lavuci' ? 0 : -24 + 'px',
-      }}
-    >
-      <Image alt="Lavici" fill src={`/images/${image}.png`} />
-    </StyledImage>
+      <StyledGridItemImage className={image}>
+        <Image alt="Lavici" src={`/images/${image}.png`} width={146} height={146} />
+      </StyledGridItemImage>
+
+    </StyledGrid>
+
   </StyledBanner>
 );
 
 const StyledBanner = styled('div')(({ theme }) => ({
-  background: 'linear-gradient(0deg, #1A232F 0%, #0C121A 46.5%)',
-  backgroundImage: 'url("/images/grid_bg.png")',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
+  background: 'linear-gradient(to top, #212630 0%, rgba(33, 38, 48, 0) 22.05%) center/ cover, url("/images/grid_bg.png") no-repeat top left/100% auto, linear-gradient(0deg, #1A232F 0%, #0C121A 46.5%) center/ cover',
   border: '1px solid #212630',
   borderRadius: 20,
-  padding: theme.spacing(3),
-  position: 'relative',
 }));
 
-const StyledStack = styled(Stack)({
-  width: `calc(100% - ${IMAGE_WIDTH}px)`,
+const StyledGrid = styled('div')({
+  display: 'grid',
+  gridTemplateColumns: '1fr auto',
+  alignItems: 'stretch',
+  columnGap: '8px',
+  padding: '8px',
 });
+
+const StyledGridItemText = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+
+   '&.lavuci_bag': {
+     padding: '16px 0 16px 16px',
+   }
+}));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[100],
-  letterSpacing: '0.01em'
+  marginBottom: '16px',
 }));
 
-const StyledImage = styled('div')({
-  position: 'absolute',
-  right: 0,
-  width: IMAGE_WIDTH,
+const StyledGridItemImage = styled('div')({
+  position: 'relative',
+
+  '&.lavuci_bag': {
+    width: '146px',
+    height: "100%",
+
+    '& img': {
+      position: 'absolute',
+      bottom: '0',
+      right: '0',
+      zIndex: '1',
+      width: '146px',
+      height: '146px',
+    }
+  },
+
+  // '& img': {
+  //   display: 'block',
+  //   width: '100%',
+  //   maxWidth: '100%',
+  //   height: 'auto',
+  // }
 });
