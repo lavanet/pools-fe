@@ -48,7 +48,7 @@ const baseTheme = createTheme({
     caption: {
       fontSize: 14,
       fontWeight: 400,
-      lineHeight: '18px'
+      lineHeight: '18px',
     },
 
     h1: {

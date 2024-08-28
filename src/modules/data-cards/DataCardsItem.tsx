@@ -6,6 +6,7 @@ import { IDataCard } from '@/types';
 
 export const DataCardItem = ({ message, title, value }: IDataCard) => (
   <StyledDataCard spacing={2}>
+
     <StyledStack spacing={0.5}>
       <Typography variant="h6">{title}</Typography>
       {message && (

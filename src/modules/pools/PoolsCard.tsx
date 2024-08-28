@@ -1,10 +1,11 @@
 'use client';
 
-import { Button, Grid, List, ListItem, Stack, styled, Typography } from '@mui/material';
+import { Button, Stack, styled, Typography, TypographyProps } from '@mui/material';
 import { sharpGroteskMedium } from '@/types/fonts';
 import { IPool } from '@/types';
 import { IconSvg } from '@/components';
 import { PoolsCardData } from '@/modules';
+import { theme } from '@/contexts';
 
 type PoolsCardProps = IPool;
 
@@ -98,14 +99,19 @@ export const PoolsCard = (
           <StyledCardBodyRewards>
 
             <StyledCardBodyRewardsHeader>
-              <span>
-                <StyledTypography variant="caption">Total rewards</StyledTypography>
-                <Typography variant="body2">(Updated in real-time)</Typography>
-              </span>
+              <div>
+                <StyledTypography variant="caption" component="span">Total rewards</StyledTypography>&nbsp;
+                <Typography variant="body2" component="span" color={theme.palette.grey[200]}>(Updated in real-time)</Typography>
 
-              <Typography className={sharpGroteskMedium.className} variant="h6">
-                {value}
-              </Typography>
+                <Typography className={sharpGroteskMedium.className} variant="h6">
+                  {value}
+                </Typography>
+              </div>
+
+              <div>
+                <StyledTypography variant="caption" component="span">66 days</StyledTypography>&nbsp;
+                <Typography variant="caption"  component="span">Sep 28,2024</Typography>
+              </div>
 
             </StyledCardBodyRewardsHeader>
 
@@ -237,9 +243,10 @@ const StyledCardBodyRewards = styled('div')(({ theme }) => ({
 }));
 
 const StyledCardBodyRewardsHeader = styled('div')(({ theme }) => ({
-  // display: 'flex',
-  // flexDirection: 'column',
-  // rowGap: '8px',
+  display: 'flex',
+  alignItems: 'flex-end',
+  justifyContent: 'space-between',
+  columnGap: '8px',
 }));
 
 const StyledCardBodyRewardsProgressbar = styled('div')(({ theme }) => ({
@@ -250,7 +257,7 @@ const StyledCardBodyRewardsProgressbar = styled('div')(({ theme }) => ({
 
 const StyledIcon = styled('div')({ fontSize: 48 });
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
+const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
   color: theme.palette.grey[100],
 }));
 
