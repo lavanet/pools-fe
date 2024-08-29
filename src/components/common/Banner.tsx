@@ -1,11 +1,12 @@
 'use client';
 
 import NorthEastIcon from '@mui/icons-material/NorthEast';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from '@/contexts';
-import { Button, Stack, styled, Typography, TypographyProps } from '@mui/material';
+import { Button, styled, Typography, TypographyProps } from '@mui/material';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 type BannerProps = {
   extraClassName?: string;
@@ -14,7 +15,7 @@ type BannerProps = {
   message: string;
   title: string;
   buttonType?: 'contained' | 'text';
-  image?: 'lavuci' | 'lavuci_bag';
+  image?: 'lavuci' | 'lavuci-bag';
 };
 
 export const Banner = (
@@ -61,7 +62,7 @@ export const Banner = (
         </StyledGridItemText>
 
         <StyledGridItemImage className={image}>
-          <Image alt="Lavici" src={`/images/${image}.png`} width={146} height={146} />
+          <Image alt="Lavuci" src={`/images/${image}-x2.webp`} width={146} height={146} />
         </StyledGridItemImage>
 
         {isMobile && (
@@ -107,9 +108,9 @@ const StyledGridItemText = styled('div')(({ theme }) => ({
   flexDirection: 'column',
   justifyContent: 'center',
 
-    '&.lavuci': {
+  '&.lavuci': {
     paddingTop: '8px',
-      paddingBottom: '8px'
+    paddingBottom: '8px'
   }
 }));
 

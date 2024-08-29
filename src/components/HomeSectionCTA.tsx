@@ -1,24 +1,15 @@
 'use client';
 
-import { Button, Stack, styled, Typography } from '@mui/material';
-import { Space_Grotesk } from 'next/font/google';
-import { sharpGroteskMedium } from '@/types/fonts';
-
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
+import { Button, Stack, styled, Typography, TypographyProps } from '@mui/material';
 
 export const HomeSectionCTA = () => (
-  <Stack alignItems="center" spacing={4}>
+  <Stack alignItems="center" spacing={4} justifyContent="center">
     <Stack spacing={1}>
-      <Typography
-        align="center"
-        className={sharpGroteskMedium.className}
-        variant="h2"
-      >
+      <StyledH2>
         Create an incentive pool
-      </Typography>
+      </StyledH2>
 
-      <StyledTypography align="center" variant="h5">
+      <StyledTypography align="center" variant="h5" component="p">
         Launch, scale and optimize the public RPC for your ecosystem.
       </StyledTypography>
     </Stack>
@@ -27,6 +18,21 @@ export const HomeSectionCTA = () => (
   </Stack>
 );
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
+const StyledH2 = styled('h2')(({ theme }) => ({
+  textAlign: 'center',
+  fontFamily: 'sharp_groteskmedium_25',
+  fontSize: 32,
+  lineHeight: '44.8px',
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: 20,
+    lineHeight: '28px',
+    letterSpacing: '-0.01em'
+  },
+
+}));
+
+const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
+  margin: 0,
   color: theme.palette.grey[100],
 }));

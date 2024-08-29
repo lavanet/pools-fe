@@ -1,61 +1,73 @@
 'use client';
 
-import { Stack, styled, Typography } from '@mui/material';
+import { Stack, styled, Typography, TypographyProps } from '@mui/material';
+import { NumericFormat } from 'react-number-format';
 
 type ChartPointType = 'blue' | 'grey' | 'white';
 
 const chartPointsColors: Record<ChartPointType, string> = {
+  white: '#FFF',
   blue: '#7679FF',
   grey: '#5E6167',
-  white: '#FFF',
 };
 
 type PoolsCardDataProps = {
   title: string;
   value: string;
   chartPointType?: ChartPointType;
-  hasCaption?: boolean;
   caption?: string;
 };
 
 export const HomeSectionPoolsCardData = (
   {
     chartPointType,
-    hasCaption,
     title,
     caption,
     value,
   }: PoolsCardDataProps) => {
   return (
-    <Stack alignItems="center" direction="row" useFlexGap spacing={2}>
+    <StyledCard>
 
-      <Stack alignItems="center" direction="row" spacing={0.5}>
-
+      <StyledTypography variant="caption" component="span">
         {chartPointType && (
           <StyledChartPoint style={{ backgroundColor: chartPointsColors[chartPointType] }} />
         )}
-
-        <StyledTypography variant="caption">
-          {title}
-        </StyledTypography>
-
-      </Stack>
+        {title}
+      </StyledTypography>
 
       <Typography variant="caption">
-        {value}&nbsp;{hasCaption && caption}
+        <NumericFormat
+          displayType="text"
+          thousandSeparator=","
+          decimalSeparator="."
+          value={value}
+          renderText={(value) => <>{value}&nbsp;{caption && caption}</>}
+        />
       </Typography>
 
-    </Stack>
+    </StyledCard>
   );
 };
 
-const StyledChartPoint = styled('div')({
+const StyledCard = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+}));
+
+const StyledChartPoint = styled('i')({
+  flexShrink: 0,
+  display: 'inline-block',
   border: '1px solid #212630',
   borderRadius: '50%',
   height: 8,
   width: 8,
 });
 
-const StyledTypography = styled(Typography)(({ theme }) => ({
+const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  columnGap: '4px',
   color: theme.palette.grey[100],
 }));

@@ -4,26 +4,16 @@ import { IconButton, styled } from '@mui/material';
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import { IconSvg } from '@/components/index';
-import { IconDiscord, IconGithub, IconTelegram, IconUXWing } from '@/icons';
-
-type Icon = 'discord' | 'github' | 'telegram' | 'uxwing';
-
 type CTAEmailSocialProps = {
-  icon: Icon;
+  link: string;
+  title: string;
+  icon: ReactNode;
 };
 
-const icons: Record<Icon, ReactNode> = {
-  discord: <IconDiscord />,
-  github: <IconGithub />,
-  telegram: <IconTelegram />,
-  uxwing: <IconUXWing />,
-};
-
-export const HomeSectionCTAEmailSocial = ({ icon }: CTAEmailSocialProps) => (
-  <Link href="/">
+export const HomeSectionCTAEmailSocial = ({ link, title, icon }: CTAEmailSocialProps) => (
+  <Link href={link} title={title} target="_blank" rel="noreferrer noopener">
     <StyledIconButton>
-      <IconSvg>{icons[icon]}</IconSvg>
+      {icon}
     </StyledIconButton>
   </Link>
 );

@@ -21,6 +21,7 @@ export interface INavItem {
 export interface INavItemLink { 
   link: string,
   title: string;
+  icon?: ReactNode;
 }
 
 export interface IPool { 

@@ -1,29 +1,26 @@
 'use client';
 
+import { ReactNode } from 'react';
 import Link from 'next/link';
 
 import { IconSvg } from '@/components/common/IconSvg';
 import { IconButton, styled } from '@mui/material';
-import { ReactNode } from 'react';
-import { IconDiscord, IconGithub, IconUXWing } from '@/icons';
-
-type Icon = 'discord' | 'github' | 'uxwing';
 
 type FooterSocialProps = {
-  icon: Icon;
   link: string;
+  title: string;
+  icon: ReactNode;
 };
 
-const icons: Record<Icon, ReactNode> = {
-  discord: <IconDiscord />,
-  github: <IconGithub />,
-  uxwing: <IconUXWing />,
-};
-
-export const FooterSocial = ({ icon, link }: FooterSocialProps) => (
-  <Link href={link}>
-    <StyledIconButton>
-      <IconSvg>{icons[icon]}</IconSvg>
+export const FooterSocial = (
+  {
+    link,
+    title,
+    icon,
+  }: FooterSocialProps) => (
+  <Link href={link} target="_blank" rel="noopener noreferrer">
+    <StyledIconButton title={title}>
+      <IconSvg>{icon}</IconSvg>
     </StyledIconButton>
   </Link>
 );
@@ -34,5 +31,7 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   padding: 0,
   transition: 'color 0.3s',
 
-  '&:hover': { color: theme.palette.primary.main },
+  '&:hover, &:focus': {
+    color: theme.palette.primary.main
+  },
 }));

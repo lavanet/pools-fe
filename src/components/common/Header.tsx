@@ -1,20 +1,21 @@
 'use client';
 
-import Image from 'next/image';
 import { Button, Stack, styled } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import { navItems } from '@/utils/variables';
+// import { navItems } from '@/utils/variables';
 import { theme } from '@/contexts';
 
 import { HeaderDropdown } from '@/components/common/HeaderDropdown';
 import { MobileMenu } from '@/components/common/MobileMenu';
+import { Logo } from '@/components';
+import { navItems } from '@/utils/variables';
 
 export const Header = () => {
   const islaptop = useMediaQuery(theme.breakpoints.down('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <StyledHeader>
-      <Image alt="Logo" height={34} src="/images/logo.svg" width={108} />
+        <Logo/>
 
       {isMobile?(
         <MobileMenu/>

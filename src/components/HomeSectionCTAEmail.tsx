@@ -1,18 +1,20 @@
 'use client';
 
 import {
-  Button,
+  Button, InputAdornment,
   Snackbar,
   Stack,
   styled,
-  TextField,
-  Typography,
+  TextField, TextFieldProps,
+  Typography, TypographyProps,
 } from '@mui/material';
 import { Space_Grotesk, DotGothic16 } from 'next/font/google';
 import { SyntheticEvent, useRef, useState } from 'react';
 
 import { HomeSectionCTAEmailSocial } from '@/components';
 import { addEmail } from '@/actions';
+import { SocialNavItems } from '@/utils/variables';
+import { Search } from '@mui/icons-material';
 
 // TODO: replace with the Sharp Grotesk font
 const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
@@ -44,13 +46,13 @@ export const HomeSectionCTAEmail = () => {
   return (
     <>
       <StyledCTAEmail alignItems="center" spacing={4}>
-        <StyledTypography
-          align="center"
-          className={spaceGrotesk.className}
+
+        <StyledH2
+          component="h2"
           variant="h1"
         >
           Stay updated on volcanic activity
-        </StyledTypography>
+        </StyledH2>
 
         <StyledForm action={clientAction} ref={formRef}>
           <StyledTextField
@@ -59,34 +61,53 @@ export const HomeSectionCTAEmail = () => {
             name="email"
             placeholder="Enter your email"
             value={email}
+            variant="filled"
             onChange={(e) => {
               setEmail(e.currentTarget.value);
             }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <StyledButton size="large" type="submit" variant="contained">
+                    Get notified
+                  </StyledButton>
+                </InputAdornment>
+              ),
+            }}
           />
 
-          <StyledButton size="large" type="submit" variant="contained">
-            Get notified
-          </StyledButton>
+          {/*<StyledButton size="large" type="submit" variant="contained">*/}
+          {/*  Get notified*/}
+          {/*</StyledButton>*/}
+
         </StyledForm>
 
         <Stack spacing={3}>
-          <Typography
+
+          <StyledH3
+            component='h3'
             align="center"
-            className={dotGothic16.className}
             color="primary"
             variant="h6"
           >
             Join Our Community
-          </Typography>
+          </StyledH3>
 
           <Stack direction="row" spacing={3}>
-            <HomeSectionCTAEmailSocial icon={'discord'}/>
-            <HomeSectionCTAEmailSocial icon="discord" />
-            <HomeSectionCTAEmailSocial icon="uxwing" />
-            <HomeSectionCTAEmailSocial icon="telegram" />
-            <HomeSectionCTAEmailSocial icon="github" />
+
+            {SocialNavItems.map((link, linkIdx) => (
+              <HomeSectionCTAEmailSocial
+                key={linkIdx}
+                icon={link.icon}
+                link={link.link}
+                title={link.title}
+              />
+            ))}
+
           </Stack>
+
         </Stack>
+
       </StyledCTAEmail>
 
       <Snackbar
@@ -101,7 +122,7 @@ export const HomeSectionCTAEmail = () => {
 };
 
 const StyledCTAEmail = styled(Stack)(({ theme }) => ({
-  backgroundImage: 'url("/images/cta_email_bg.png")',
+  backgroundImage: 'url("/images/lava-cta-bg-x2.webp")',
   backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
@@ -110,39 +131,31 @@ const StyledCTAEmail = styled(Stack)(({ theme }) => ({
   padding: theme.spacing(14),
 }));
 
-const StyledTypography = styled(Typography)({ maxWidth: 692 });
+const StyledH2 = styled(Typography)<TypographyProps>({
+  maxWidth: 692,
+  fontFamily: 'sharp_groteskmedium_25',
+  textAlign: 'center',
+});
 
 const StyledForm = styled('form')({ position: 'relative' });
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
-    backgroundColor: theme.palette.common.white,
-    borderRadius: 40,
-    color: theme.palette.text.secondary,
-    height: 62,
-    paddingRight: 160, // Get notified button width
-    paddingLeft: theme.spacing(1),
-    width: 402,
+      padding: '12px 8px 12px 24px',
 
-    '& .MuiOutlinedInput-notchedOutline': {
-      borderRadius: 40,
-      transition: 'all 0.3s',
+    '& .MuiInputBase-input ::placeholder': {
+      color: 'red',
     },
-
-    '& .MuiOutlinedInput-root ::placeholder': {
-      color: theme.palette.grey[300],
-    },
-  },
-
-  '& .MuiFormHelperText-root': {
-    color: theme.palette.primary.main,
-    position: 'absolute',
-    bottom: -24,
   },
 }));
 
 const StyledButton = styled(Button)({
-  position: 'absolute',
-  right: 8,
-  top: 7,
+  // position: 'absolute',
+  // right: 8,
+  // top: 7,
+});
+
+const StyledH3 = styled(Typography)<TypographyProps>({
+  fontFamily: 'retro_computer',
+  textAlign: 'center',
 });

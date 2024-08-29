@@ -1,7 +1,41 @@
-import { INavItem } from "@/types";
+import { INavItem, INavItemLink } from '@/types';
+import {IcnDiscord, IcnX, IcnTelegram, IcnGithub} from '@assets/icons';
+
+export const SocialNavItems: INavItemLink[] = [
+  {
+    link: "https://discord.gg/Tbk5NxTCdA",
+    title: "Discord",
+    icon: <IcnDiscord/>
+  },
+  {
+    link: "https://twitter.com/lavanetxyz",
+    title: "X",
+    icon: <IcnX/>
+  },
+  // {
+  //   link: "https://discord.gg/Tbk5NxTCdA",
+  //   title: "Telegram",
+  //   icon: <IcnTelegram/>
+  // },
+  {
+    link: "https://github.com/lavanet",
+    title: "Github",
+    icon: <IcnGithub/>
+  },
+]
+
+export const LegalNavItems: INavItemLink[] = [
+  {
+    link: "/",
+    title: "Privacy Policy",
+  },
+  {
+    link: "/",
+    title: "Terms of Service",
+  },
+]
 
 export const navItems: INavItem[] = [
-  // { title: 'Rollup Developers' },
   {
     title: 'Products',
     links: [

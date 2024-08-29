@@ -23,7 +23,7 @@ export const HomeSectionPreview = () => (
       <Banner
         button="Become an RPC Provider"
         buttonType="text"
-        image="lavuci_bag"
+        image="lavuci-bag"
         link="/"
         message="He loves dealing with node runners. "
         title="Meet Lavuci"

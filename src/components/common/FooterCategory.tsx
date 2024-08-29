@@ -13,7 +13,7 @@ export const FooterCategory = ({ links, title }: FooterCategoryProps) => (
   <StyledStack spacing={3}>
     <StyledTitle>{title}</StyledTitle>
 
-    <Stack spacing={2}>
+    <Stack spacing={2} useFlexGap>
       {links.map(({ link, title }) => (
         <Link href={link} key={title}>
           <StyledTypography>{title}</StyledTypography>
@@ -27,12 +27,14 @@ const StyledStack = styled(Stack)({ flex: 1 });
 
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.grey[200],
+  fontWeight: 500,
   minHeight: 22,
 }));
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.common.white,
+  color: theme.palette.grey[100],
+  fontWeight: 500,
   transition: 'color 0.3s',
 
-  '&:hover': { color: theme.palette.primary.main },
+  '&:hover': { color: theme.palette.common.white },
 }));

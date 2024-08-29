@@ -1,11 +1,12 @@
 'use client';
 
 import { Button, Stack, styled, Typography, TypographyProps } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
 import { sharpGroteskMedium } from '@/types/fonts';
+import { theme } from '@/contexts';
 import { IPool } from '@/types';
 import { HomeSectionPoolsCardData, IconSvg } from '@/components';
-import { theme } from '@/contexts';
-import useMediaQuery from '@mui/material/useMediaQuery';
 
 type PoolsCardProps = IPool;
 
@@ -131,26 +132,23 @@ export const HomeSectionPoolsCard = (
           <div>
             <HomeSectionPoolsCardData
               chartPointType="white"
-              hasCaption
               title="Rewards in this month"
               value={`${monthly_rewards}`}
               caption={currency}
             />
 
             <HomeSectionPoolsCardData
-              chartPointType="white"
-              hasCaption
-              title="Rewards in this month"
+              chartPointType="blue"
+              title="Future rewards"
               value={`${future_rewards}`}
-                caption={currency}
+              caption={currency}
             />
 
             <HomeSectionPoolsCardData
-              chartPointType="white"
-              hasCaption
-              title="Rewards in this month"
+              chartPointType="grey"
+              title="Past rewards"
               value={`${past_rewards}`}
-                caption={currency}
+              caption={currency}
             />
           </div>
 
@@ -263,6 +261,7 @@ const StyledCardBodyRewardsHeader = styled(Stack)(({ theme }) => ({
 const StyledCardBodyRewardsProgressbar = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'stretch',
+  flexWrap: 'nowrap',
   columnGap: '2px',
 }));
 
@@ -270,7 +269,7 @@ const StyledCardFooter = styled(Stack)(({ theme }) => ({
   flexWrap: 'wrap',
 
   '> *': {
-    flex: '1',
+    flexGrow: '1',
   },
 }));
 
