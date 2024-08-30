@@ -3,7 +3,6 @@
 import { IconButton, styled } from '@mui/material';
 import { ReactNode } from 'react';
 import Link from 'next/link';
-import { theme } from '@/contexts';
 
 type CTAEmailSocialProps = {
   link: string;
@@ -12,21 +11,41 @@ type CTAEmailSocialProps = {
 };
 
 export const HomeSectionCTAEmailSocial = ({ link, title, icon }: CTAEmailSocialProps) => (
-  <Link href={link} title={title} target="_blank" rel="noreferrer noopener">
-    <StyledIconButton>
-      {icon}
-    </StyledIconButton>
-  </Link>
+  <StyledIconButton
+    href={link}
+    target="_blank"
+    rel="noreferrer noopener"
+    title={title}
+  >
+    <i>{icon}</i>
+  </StyledIconButton>
 );
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  backgroundColor: theme.palette.common.white,
-  borderRadius: '50%',
+const StyledIconButton = styled(Link)(({ theme }) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   height: 72,
   width: 72,
+  backgroundColor: theme.palette.common.white,
+  borderRadius: '50%',
   color: theme.palette.grey[600],
-  fontSize: 32,
   transition: 'color 0.3s',
+
+  '& i': {
+    flexShrink: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 32,
+    height: 32,
+  },
+
+  '& svg': {
+    width: '100%',
+    maxWidth: '100%',
+    height: 'auto',
+  },
 
   '&:hover': {
     backgroundColor: theme.palette.common.white,
@@ -34,8 +53,12 @@ const StyledIconButton = styled(IconButton)(({ theme }) => ({
   },
 
   [theme.breakpoints.down('md')]: {
-    fontSize: 24,
     height: 48,
     width: 48,
+
+    '& i': {
+      width: 24,
+      height: 24,
+    },
   }
 }));

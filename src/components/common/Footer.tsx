@@ -28,7 +28,7 @@ export const Footer = () => {
             felt so easy.
           </StyledTypography>
 
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" useFlexGap spacing={2}>
             {SocialNavItems.map((link, linkIdx) => (
               <FooterSocial
                 key={linkIdx}

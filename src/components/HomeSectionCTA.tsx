@@ -1,6 +1,7 @@
 'use client';
 
 import { Button, Stack, styled, Typography, TypographyProps } from '@mui/material';
+import Link from 'next/link';
 
 export const HomeSectionCTA = () => (
   <Stack alignItems="center" spacing={4} justifyContent="center">
@@ -14,7 +15,14 @@ export const HomeSectionCTA = () => (
       </StyledTypography>
     </Stack>
 
-    <Button variant="contained">Learn more</Button>
+    <Button
+      variant="contained"
+      component={Link}
+      href="/"
+    >
+      Learn more
+    </Button>
+
   </Stack>
 );
 

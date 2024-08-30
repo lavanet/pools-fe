@@ -382,7 +382,6 @@ export const theme = createTheme(baseTheme, {
     MuiMenu: {
       styleOverrides: {
         root: {
-          '&.nav-menu': { marginLeft: '20px' },
           '& .MuiPaper-root': { backgroundColor: 'transparent' },
         },
       }

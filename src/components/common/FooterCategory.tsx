@@ -15,7 +15,7 @@ export const FooterCategory = ({ links, title }: FooterCategoryProps) => (
 
     <Stack spacing={2} useFlexGap>
       {links.map(({ link, title }) => (
-        <Link href={link} key={title}>
+        <Link href={link} key={title} title={title}>
           <StyledTypography>{title}</StyledTypography>
         </Link>
       ))}

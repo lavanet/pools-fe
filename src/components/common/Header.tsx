@@ -58,5 +58,6 @@ const StyledHeader = styled('header')(({ theme }) => ({
     width: '100%',
     height: '60px',
     padding: '0px 20px',
+    borderBottom: `1px solid ${theme.palette.grey[400]}`,
   },
 }));

@@ -40,13 +40,15 @@ const StyledGrid = styled('section')(({ theme }) => ({
   justifyContent: 'space-between',
   flexWrap: 'nowrap',
   gap: '24px 20px',
-  paddingBottom: theme.spacing(4),
   paddingTop: theme.spacing(6),
+  paddingBottom: theme.spacing(4),
 
   [theme.breakpoints.down('md')]: {
     flexDirection: 'column',
     alignItems: 'flex-start',
     justifyContent: 'unset',
+    paddingTop: 84,
+    paddingBottom: theme.spacing(4),
   },
 }));
 
@@ -57,7 +59,8 @@ const StyledH1 = styled(Typography)(({ theme }) => ({
   lineHeight: '1.1em',
 
   [theme.breakpoints.down('md')]: {
-    fontSize: '26px',
+    marginBottom: 8,
+    fontSize: 26,
     lineHeight: '1.4em',
   },
 }));

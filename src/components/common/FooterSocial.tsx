@@ -3,8 +3,7 @@
 import { ReactNode } from 'react';
 import Link from 'next/link';
 
-import { IconSvg } from '@/components/common/IconSvg';
-import { IconButton, styled } from '@mui/material';
+import { styled } from '@mui/material';
 
 type FooterSocialProps = {
   link: string;
@@ -18,18 +17,40 @@ export const FooterSocial = (
     title,
     icon,
   }: FooterSocialProps) => (
-  <Link href={link} target="_blank" rel="noopener noreferrer">
-    <StyledIconButton title={title}>
-      <IconSvg>{icon}</IconSvg>
-    </StyledIconButton>
-  </Link>
+  <StyledLink
+    href={link}
+    target="_blank"
+    rel="noreferrer noopener"
+    title={title}
+  >
+    <i>{icon}</i>
+  </StyledLink>
 );
 
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
+const StyledLink = styled(Link)(({ theme }) => ({
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: 32,
+  width: 32,
   color: theme.palette.common.white,
-  fontSize: 32,
   padding: 0,
-  transition: 'color 0.3s',
+  transition: 'color 0.3s ease',
+
+  '& i': {
+    flexShrink: 0,
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 24,
+    height: 24,
+  },
+
+  '& svg': {
+    width: '100%',
+    maxWidth: '100%',
+    height: 'auto',
+  },
 
   '&:hover, &:focus': {
     color: theme.palette.primary.main

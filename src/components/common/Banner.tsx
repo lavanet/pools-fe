@@ -49,15 +49,15 @@ export const Banner = (
           </StyledTypography>
 
           {!isMobile && (
-            <Link href={link}>
-              <Button
-                color="secondary"
-                endIcon={buttonType === 'text' ? <NorthEastIcon /> : undefined}
-                variant={buttonType}
-              >
-                {button}
-              </Button>
-            </Link>
+            <Button
+              href={link}
+              component={Link}
+              color="secondary"
+              endIcon={buttonType === 'text' ? <NorthEastIcon /> : undefined}
+              variant={buttonType}
+            >
+              {button}
+            </Button>
           )}
         </StyledGridItemText>
 
@@ -66,15 +66,15 @@ export const Banner = (
         </StyledGridItemImage>
 
         {isMobile && (
-          <Link href={link}>
-            <Button
-              color="secondary"
-              endIcon={buttonType === 'text' ? <NorthEastIcon fontSize="small" /> : undefined}
-              variant={buttonType}
-            >
-              {button}
-            </Button>
-          </Link>
+          <Button
+            href={link}
+            component={Link}
+            color="secondary"
+            endIcon={buttonType === 'text' ? <NorthEastIcon fontSize="small" /> : undefined}
+            variant={buttonType}
+          >
+            {button}
+          </Button>
         )}
 
       </StyledGrid>

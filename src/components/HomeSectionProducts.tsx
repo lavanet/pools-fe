@@ -24,7 +24,7 @@ const homeSectionProducts: IProduct[] = [
 ];
 
 export const HomeSectionProducts = () => (
-  <StyledGrid spacing={1.5} useFlexGap>
+  <StyledGrid>
     {homeSectionProducts.map((product) => (
       <HomeSectionProductsItem
         key={product.title}
@@ -34,10 +34,11 @@ export const HomeSectionProducts = () => (
   </StyledGrid>
 );
 
-const StyledGrid = styled(Stack)(({ theme }) => ({
-  flexDirection: 'unset',
+const StyledGrid = styled('section')(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
   alignItems: 'stretch',
-  flexWrap: 'wrap',
+  gap: 12,
   paddingBottom: theme.spacing(13),
   paddingTop: theme.spacing(3),
 }));
