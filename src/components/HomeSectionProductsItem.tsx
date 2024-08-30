@@ -1,7 +1,7 @@
 'use client';
 
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Button, Stack, styled, Typography } from '@mui/material';
+import { Button, ButtonProps, Stack, styled, Typography } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from '@/contexts';
 
@@ -36,7 +36,7 @@ export const HomeSectionProductsItem = ({ text, title, type }: IProduct) => {
               <i><IcnArrowMobile/></i>
             </StyledLink>
           ):(
-            <Button
+            <StyledButton
               href="/"
               title={`Try ${title}`}
               component={Link}
@@ -46,7 +46,7 @@ export const HomeSectionProductsItem = ({ text, title, type }: IProduct) => {
               variant="outlined"
             >
               Try {title}
-            </Button>
+            </StyledButton>
           )}
 
         </StyledStack>
@@ -177,6 +177,10 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
     fontSize: 16,
     lineHeight: '22.4px'
   },
+}));
+
+const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
+    fontSize: 'clamp(18px, 1.042vw, 20px) !important'
 }));
 
 const StyledLink = styled(Link)(({ theme }) => ({

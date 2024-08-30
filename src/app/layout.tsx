@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import "@/styles/index.css";
+import "@/styles/index.scss";
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@/contexts';
 import { Container } from '@mui/material';
