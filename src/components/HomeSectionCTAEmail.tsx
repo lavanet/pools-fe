@@ -42,74 +42,78 @@ export const HomeSectionCTAEmail = () => {
 
   return (
     <>
-      <StyledCTAEmail alignItems="center" spacing={4}>
+      <StyledCTAEmail>
 
-        <StyledH2
-          component="h2"
-          variant="h1"
-        >
-          Stay updated on volcanic activity
-        </StyledH2>
+        <StyledWrapper alignItems="center" spacing={4}>
 
-        <StyledForm action={clientAction} ref={formRef}>
-          <StyledTextField
-            id="email"
-            helperText={helperText}
-            name="email"
-            placeholder="Enter your email"
-            value={email}
-            variant="filled"
-            onChange={(e) => {
-              setEmail(e.currentTarget.value);
-            }}
-            InputProps={{
-              endAdornment: (
-                <>
-                  {!isMobile && (
-                    <InputAdornment position="end">
-                      <StyledButton size="large" type="submit" variant="contained">
-                        Get notified
-                      </StyledButton>
-                    </InputAdornment>
-                  )}
-                </>
-              ),
-            }}
-          />
-
-          {isMobile && (
-            <StyledButton size="large" type="submit" variant="contained">
-              Get notified
-            </StyledButton>
-          )}
-
-        </StyledForm>
-
-        <Stack spacing={3}>
-
-          <StyledH3
-            component='h3'
-            align="center"
-            color="primary"
-            variant="h6"
+          <StyledH2
+            component="h2"
+            variant="h1"
           >
-            Join Our Community
-          </StyledH3>
+            Stay updated on volcanic activity
+          </StyledH2>
 
-          <Stack direction="row" spacing={3}>
+          <StyledForm action={clientAction} ref={formRef}>
+            <StyledTextField
+              id="email"
+              helperText={helperText}
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              variant="filled"
+              onChange={(e) => {
+                setEmail(e.currentTarget.value);
+              }}
+              InputProps={{
+                endAdornment: (
+                  <>
+                    {!isMobile && (
+                      <InputAdornment position="end">
+                        <StyledButton size="large" type="submit" variant="contained">
+                          Get notified
+                        </StyledButton>
+                      </InputAdornment>
+                    )}
+                  </>
+                ),
+              }}
+            />
 
-            {SocialNavItems.map((link, linkIdx) => (
-              <HomeSectionCTAEmailSocial
-                key={linkIdx}
-                icon={link.icon}
-                link={link.link}
-                title={link.title}
-              />
-            ))}
+            {isMobile && (
+              <StyledButton size="large" type="submit" variant="contained">
+                Get notified
+              </StyledButton>
+            )}
+
+          </StyledForm>
+
+          <Stack spacing={3}>
+
+            <StyledH3
+              component='h3'
+              align="center"
+              color="primary"
+              variant="h6"
+            >
+              Join Our Community
+            </StyledH3>
+
+            <Stack direction="row" spacing={3}>
+
+              {SocialNavItems.map((link, linkIdx) => (
+                <HomeSectionCTAEmailSocial
+                  key={linkIdx}
+                  icon={link.icon}
+                  link={link.link}
+                  title={link.title}
+                />
+              ))}
+
+            </Stack>
 
           </Stack>
 
-        </Stack>
+        </StyledWrapper>
 
       </StyledCTAEmail>
 
@@ -124,22 +128,64 @@ export const HomeSectionCTAEmail = () => {
   );
 };
 
-const StyledCTAEmail = styled(Stack)(({ theme }) => ({
-  backgroundImage: 'url("/images/lava-cta-bg-x2.webp")',
-  backgroundPosition: 'center',
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  border: '1px solid #FF3900',
+const StyledCTAEmail = styled('section')(({ theme }) => ({
+  position: 'relative',
+  padding: '1px',
   borderRadius: 32,
-  padding: theme.spacing(14),
+  overflow: 'hidden',
+
+  '&:before': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    zIndex: -1,
+    display: 'block',
+    width: '100%',
+    maxWidth: '100%',
+    height: '100%',
+    margin: 'auto',
+    borderRadius: 32,
+    border: '1px solid transparent',
+    background: 'linear-gradient(132.03deg, #FF3900 0%, rgba(255, 57, 0, 0.27) 42.88%) border-box',
+    mask: 'linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%)',
+    webkitMaskComposite: 'xor',
+    maskComposite: 'exclude',
+  },
+
+  [theme.breakpoints.down('md')]: {
+    borderRadius: 16,
+
+    '&:before': {
+      borderRadius: 16,
+    },
+  },
+}));
+
+const StyledWrapper = styled(Stack)(({ theme }) => ({
+  padding: theme.spacing(14, 3),
+  background: 'url("/images/lava-cta-bg-x2.webp") no-repeat center /cover',
+  borderRadius: 32,
+  overflow: 'hidden',
+
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(5, 2),
+    borderRadius: 16,
+  },
+
+  [theme.breakpoints.down('sm')]: {
+    background: 'url("/images/lava-cta-bg-mobile-x2.webp") no-repeat center /cover',
+  },
 }));
 
 const StyledH2 = styled(Typography)<TypographyProps>({
+  width: '100%',
   maxWidth: 692,
+  margin: '0 auto',
   fontFamily: 'sharp_groteskmedium_25',
   textAlign: 'center',
 
   [theme.breakpoints.down('md')]: {
+    maxWidth: 256,
     fontSize: 20,
     lineHeight: '28px',
     letterSpacing: '-0.01em',
@@ -150,6 +196,12 @@ const StyledForm = styled('form')({
   display: 'flex',
   flexDirection: 'column',
   gap: '8px',
+  width: '100%',
+  maxWidth: '406px',
+
+  [theme.breakpoints.down('md')]: {
+    paddingBottom: 72,
+  }
 });
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
@@ -171,10 +223,16 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
 }));
 
 const StyledButton = styled(Button)(({ theme }) => ({
-    fontSize: 16,
+  fontSize: '16px !important',
 }));
 
 const StyledH3 = styled(Typography)<TypographyProps>({
   fontFamily: 'retro_computer',
   textAlign: 'center',
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: 12,
+    lineHeight: 1,
+    letterSpacing: '0.08em'
+  }
 });

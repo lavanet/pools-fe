@@ -28,14 +28,14 @@ export const HomeSectionPoolsCardData = (
   return (
     <StyledCard>
 
-      <StyledTypography variant="caption" component="span">
+      <StyledTypographyTitle variant="caption" component="span">
         {chartPointType && (
           <StyledChartPoint style={{ backgroundColor: chartPointsColors[chartPointType] }} />
         )}
         {title}
-      </StyledTypography>
+      </StyledTypographyTitle>
 
-      <Typography variant="caption">
+      <StyledTypographyValue variant="caption" component='em'>
         <NumericFormat
           displayType="text"
           thousandSeparator=","
@@ -43,7 +43,7 @@ export const HomeSectionPoolsCardData = (
           value={value}
           renderText={(value) => <>{value}&nbsp;{caption && caption}</>}
         />
-      </Typography>
+      </StyledTypographyValue>
 
     </StyledCard>
   );
@@ -54,20 +54,41 @@ const StyledCard = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   flexWrap: 'wrap',
+
+  [theme.breakpoints.down('md')]: {
+    flexDirection: 'column',
+    alignItems: 'unset',
+    justifyContent: 'unset',
+    flexWrap: 'unset',
+    rowGap: 2,
+  },
 }));
 
-const StyledChartPoint = styled('i')({
+const StyledChartPoint = styled('i')(({ theme }) => ({
   flexShrink: 0,
   display: 'inline-block',
-  border: '1px solid #212630',
+  border: `1px solid ${theme.palette.grey[400]}`,
   borderRadius: '50%',
   height: 8,
   width: 8,
-});
+}));
 
-const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
+const StyledTypographyTitle = styled(Typography)<TypographyProps>(({ theme }) => ({
   display: 'inline-flex',
   alignItems: 'center',
-  columnGap: '4px',
+  columnGap: 4,
   color: theme.palette.grey[100],
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: 16,
+    lineHeight: '22.4px'
+  },
+}));
+
+const StyledTypographyValue = styled(Typography)<TypographyProps>(({ theme }) => ({
+  [theme.breakpoints.down('md')]: {
+    fontSize: 16,
+    fontStyle: 'normal',
+    lineHeight: '22.4px'
+  },
 }));

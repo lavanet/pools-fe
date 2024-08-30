@@ -3,6 +3,7 @@
 import { IconButton, styled } from '@mui/material';
 import { ReactNode } from 'react';
 import Link from 'next/link';
+import { theme } from '@/contexts';
 
 type CTAEmailSocialProps = {
   link: string;
@@ -21,14 +22,20 @@ export const HomeSectionCTAEmailSocial = ({ link, title, icon }: CTAEmailSocialP
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.common.white,
   borderRadius: '50%',
+  height: 72,
+  width: 72,
   color: theme.palette.grey[600],
   fontSize: 32,
-  height: 72,
   transition: 'color 0.3s',
-  width: 72,
 
   '&:hover': {
     backgroundColor: theme.palette.common.white,
     color: theme.palette.primary.main,
   },
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: 24,
+    height: 48,
+    width: 48,
+  }
 }));

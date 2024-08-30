@@ -129,7 +129,7 @@ export const HomeSectionPoolsCard = (
 
           </Stack>
 
-          <div>
+          <Stack useFlexGap spacing={2}>
             <HomeSectionPoolsCardData
               chartPointType="white"
               title="Rewards in this month"
@@ -150,7 +150,7 @@ export const HomeSectionPoolsCard = (
               value={`${past_rewards}`}
               caption={currency}
             />
-          </div>
+          </Stack>
 
         </Stack>
 
