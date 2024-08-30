@@ -21,7 +21,8 @@
     "paths": {
       "@assets/*": ["public/*"],
       "@/*": ["./src/*"]
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "./types"]  // Add this line to add button variant to theme
   },
   "include": [
     "svgr.d.ts",

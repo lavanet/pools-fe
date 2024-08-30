@@ -122,9 +122,9 @@ export const HomeSectionPoolsCard = (
             </StyledCardBodyRewardsHeader>
 
             <StyledCardBodyRewardsProgressbar>
-              <StyledBar style={{ backgroundColor: '#FFFFFF', width: `${monthlyPercentage}%` }} />
-              <StyledBar style={{ backgroundColor: '#7679FF', width: `${futurePercentage}%` }} />
-              <StyledBar style={{ backgroundColor: '#5E6167', width: `${pastPercentage}%` }} />
+              <StyledBar style={{ backgroundColor: '#FFFFFF', maxWidth: `${monthlyPercentage}%` }} />
+              <StyledBar style={{ backgroundColor: '#7679FF', maxWidth: `${futurePercentage}%` }} />
+              <StyledBar style={{ backgroundColor: '#5E6167', maxWidth: `${pastPercentage}%` }} />
             </StyledCardBodyRewardsProgressbar>
 
           </Stack>
@@ -155,8 +155,15 @@ export const HomeSectionPoolsCard = (
         </Stack>
 
         <StyledCardFooter useFlexGap direction="row" spacing={1}>
-          <Button variant="contained">Run RPC node</Button>
-          <Button disabled variant="contained">Restake to RPC provider</Button>
+
+          <Button variant="contained">
+            Run RPC node
+          </Button>
+
+          <Button disabled variant="contained" color="secondary">
+            Restake to RPC provider
+          </Button>
+
         </StyledCardFooter>
 
       </StyledCard>
@@ -169,6 +176,8 @@ const StyledPoolsCard = styled('article')<{ accentColor: string }>(({ theme, acc
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',
+  width: '100%',
+  maxWidth: '100%',
   padding: '1px',
   borderRadius: '20px',
   overflow: 'hidden',
@@ -180,6 +189,7 @@ const StyledPoolsCard = styled('article')<{ accentColor: string }>(({ theme, acc
     zIndex: -1,
     display: 'block',
     width: '100%',
+    maxWidth: '100%',
     height: '100%',
     margin: 'auto',
     borderRadius: '20px',
@@ -198,6 +208,8 @@ const StyledCard = styled('div')<{ accentColor: string }>(({ theme, accentColor 
   display: 'flex',
   flexDirection: 'column',
   rowGap: theme.spacing(3),
+  width: '100%',
+  maxWidth: '100%',
   padding: theme.spacing(3),
   borderRadius: '20px',
   background: `
@@ -278,6 +290,7 @@ const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
 }));
 
 const StyledBar = styled('div')({
+  width: '100%',
   borderRadius: 8,
   height: 8,
 });

@@ -84,7 +84,7 @@ export const Banner = (
 }
 
 const StyledBanner = styled('aside')(({ theme }) => ({
-  background: 'linear-gradient(to top, #212630 0%, rgba(33, 38, 48, 0) 22.05%) center/ cover, url("/images/grid_bg.png") no-repeat top left/100% auto, linear-gradient(0deg, #1A232F 0%, #0C121A 46.5%) center/ cover',
+  background: 'linear-gradient(to top, #212630 0%, rgba(33, 38, 48, 0) 22.05%) center/ cover, url("/images/lava-grid-bg-x2.webp") repeat top 1% left 1%/890px auto, linear-gradient(0deg, #1A232F 0%, #0C121A 46.5%) center/ cover',
   border: '1px solid #212630',
   borderRadius: 20,
 }));

@@ -2,7 +2,7 @@
 
 import { INavItemLink } from '@/types';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Button, Menu, MenuItem, styled } from '@mui/material';
+import { Button, ButtonProps, Menu, MenuItem, styled } from '@mui/material';
 import { MouseEvent, useState } from 'react';
 
 type HeaderDropdownProps = {
@@ -26,6 +26,8 @@ export const HeaderDropdown = ({ links, title }: HeaderDropdownProps) => {
   return (
     <div>
       <StyledButton
+        variant='contained'
+        color='ghost'
         aria-controls={open ? 'nav-dropdown-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
@@ -59,15 +61,12 @@ export const HeaderDropdown = ({ links, title }: HeaderDropdownProps) => {
   );
 };
 
-const StyledButton = styled(Button)(({ theme }) => ({
-  border: 'none',
-  boxShadow: 'none',
-  color: theme.palette.grey[200],
-  fontSize: 16,
-  fontWeight: 500,
-  lineHeight: '20px',
+const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
   padding: '14px 20px',
+  borderRadius: '40px',
+  gap: '8px',
+
   [theme.breakpoints.down('lg')]: {
-    padding: '14px 5px',
+    padding: '14px',
   },
 }));

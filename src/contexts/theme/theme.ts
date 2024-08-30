@@ -1,7 +1,6 @@
 'use client';
 
 import { createTheme } from "@mui/material";
-import { yellow } from '@mui/material/colors';
 
 const baseTheme = createTheme({
   breakpoints: {
@@ -23,19 +22,27 @@ const baseTheme = createTheme({
       100: '#B9B9B9',
       200: '#787A7E',
       300: '#5E6167',
-      600: '#05090F'
+      400: '#212630', //400
+      500: '#1B212A', //500
+      600: '#05090F', // 600
     },
     primary: {
-      main: '#FF3900'
+      main: '#FF3900',
+      light: '#FF6839',
+      dark: '#410E00',
+      contrastText: '#841D00',
     },
     secondary: {
       main: "#0C121A",
-      light: "#212630",
     },
     text: {
       primary: '#FFF',
       secondary: '#05090F',
-    }
+    },
+    ghost: {
+      main: '#05090F',
+      light: '#1B212A',
+    },
   },
   typography: {
     fontFamily: [
@@ -97,12 +104,13 @@ export const theme = createTheme(baseTheme, {
           display: 'inline-flex',
           alignItems: 'center',
           columnGap: '4px',
+          minWidth: 'unset',
+          minHeight: '36px',
           padding: '8px 20px',
           borderRadius: 18,
-          boxShadow: '0px 1px 12px 0px #F938008F',
           fontSize: 14,
           fontWeight: 500,
-          lineHeight: '20px',
+          lineHeight: '1.1em',
           textTransform: 'none',
           transition: 'all 0.3s',
           whiteSpace: 'nowrap',
@@ -116,59 +124,114 @@ export const theme = createTheme(baseTheme, {
           },
 
           '&.MuiButton-sizeSmall': {
+            minHeight: '28px',
             padding: '4px 16px',
           },
 
           '&.MuiButton-sizeLarge': {
+            minHeight: '48px',
+            padding: '12px 24px',
             borderRadius: 40,
             fontSize: 20,
-            lineHeight: '24px',
-            padding: '12px 24px',
           }
         },
       },
       variants: [
         {
-          props: { color: 'primary', variant: 'contained' },
+          props: {
+            color: 'primary',
+            variant: 'contained'
+          },
           style: {
-            boxShadow: '0px 1px 12px 0px #F938008F',
-            outline: '1px solid #FF6839',
+            color: baseTheme.palette.common.white,
+            outline: `1px solid ${baseTheme.palette.primary.light}`,
             outlineOffset: '-1px',
+            boxShadow: '0px 1px 12px 0px #F938008F',
+
+            '&:hover': {
+              backgroundColor: baseTheme.palette.primary.main,
+              boxShadow: '0px 1px 20px 0px #F93800E0',
+            },
 
             '&.Mui-disabled': {
-              backgroundColor: '#131821', // TODO: move to the palette
-              color: baseTheme.palette.grey[300],
-              outlineColor: '#131821',
+              backgroundColor: baseTheme.palette.primary.dark,
+              color: baseTheme.palette.primary.contrastText,
+              outlineColor: baseTheme.palette.primary.dark,
             }
           }
         },
         {
-          props: { color: 'secondary', variant: 'contained' },
+          props: {
+            color: 'secondary',
+            variant: 'contained'
+          },
           style: {
-            backgroundColor: baseTheme.palette.background.paper,
-            boxShadow: '0px 1px 12px 0px #FFFFFF52',
+            backgroundColor: baseTheme.palette.common.white,
             color: baseTheme.palette.text.secondary,
+            outline: `1px solid ${baseTheme.palette.background.paper}`,
+            outlineOffset: '-1px',
+            boxShadow: '0px 1px 12px 0px #FFFFFF52',
 
             '&:hover': {
               backgroundColor: baseTheme.palette.common.white,
+              boxShadow: '0px 1px 12px 0px #FFFFFFB8',
             },
+
+            '&.Mui-disabled': {
+              backgroundColor: baseTheme.palette.grey[500],
+              color: baseTheme.palette.grey[300],
+              outlineColor: baseTheme.palette.grey[500],
+            }
           }
         },
         {
-          props: { color: 'secondary', variant: 'outlined' },
+          props: {
+            color: 'ghost',
+            variant: 'contained',
+          },
           style: {
-            backgroundColor: baseTheme.palette.background.default,
-            border: '1px solid #5E6167', // TODO: move to the palette
+            backgroundColor: baseTheme.palette.ghost.main,
+            color: baseTheme.palette.grey[200],
             boxShadow: 'none',
-            color: baseTheme.palette.common.white,
 
             '&:hover': {
-              borderColor: baseTheme.palette.primary.main
+              backgroundColor: baseTheme.palette.ghost.light,
+              color: baseTheme.palette.common.white,
             },
+
+            '&.Mui-disabled': {
+              backgroundColor: baseTheme.palette.background.default,
+              color: baseTheme.palette.grey[300],
+            }
           }
         },
         {
-          props: { variant: 'text' },
+          props: {
+            color: 'secondary',
+            variant: 'outlined'
+          },
+          style: {
+            backgroundColor: baseTheme.palette.background.default,
+            color: baseTheme.palette.common.white,
+            outline: `1px solid ${baseTheme.palette.grey[300]}`,
+            outlineOffset: '-1px',
+            boxShadow: 'none',
+
+            '&:hover': {
+              outlineColor: baseTheme.palette.grey[200],
+            },
+
+            '&.Mui-disabled': {
+              backgroundColor: baseTheme.palette.background.default,
+              color: baseTheme.palette.grey[300],
+              outlineColor: baseTheme.palette.grey[400],
+            }
+          }
+        },
+        {
+          props: {
+            variant: 'text'
+          },
           style: {
             minWidth: 'unset',
             justifyContent: 'unset',
@@ -178,7 +241,9 @@ export const theme = createTheme(baseTheme, {
             boxShadow: 'none',
             transition: 'color 0.3',
 
-            '&:hover': { color: baseTheme.palette.primary.main }
+            '&:hover': {
+              color: baseTheme.palette.primary.main
+            }
           }
         }
       ]
@@ -271,7 +336,7 @@ export const theme = createTheme(baseTheme, {
           minHeight: '40px',
           border: '1px solid white',
           backgroundColor: 'white',
-          color: '#000000',
+          color: baseTheme.palette.text.secondary,
           transition: 'background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
 
           '&:hover': {
@@ -283,10 +348,10 @@ export const theme = createTheme(baseTheme, {
           },
 
           '& .MuiInputBase-input': {
-            color: '#000000',
+            color: baseTheme.palette.text.secondary,
 
             '&::placeholder': {
-              color: baseTheme.palette.common.black,
+              color: baseTheme.palette.grey[300],
               opacity: 1,
             },
           },

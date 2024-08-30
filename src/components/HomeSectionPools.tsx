@@ -100,8 +100,16 @@ export const HomeSectionPools = () => (
 
 const StyledGrid = styled('section')(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(380px,1fr))',
+  gridTemplateColumns: '1fr',
   gap: 12,
-  paddingBottom: theme.spacing(8),
-  paddingTop: theme.spacing(8),
+  width: '100%',
+  maxWidth: '100%',
+  paddingBottom: theme.spacing(6),
+  paddingTop: theme.spacing(6),
+
+  [theme.breakpoints.up('sm')]: {
+    gridTemplateColumns: 'repeat(auto-fit, minmax(380px,1fr))',
+    paddingBottom: theme.spacing(8),
+    paddingTop: theme.spacing(8),
+  }
 }));

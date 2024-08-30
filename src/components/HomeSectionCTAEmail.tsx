@@ -5,22 +5,19 @@ import {
   Snackbar,
   Stack,
   styled,
-  TextField, TextFieldProps,
+  TextField,
   Typography, TypographyProps,
 } from '@mui/material';
-import { Space_Grotesk, DotGothic16 } from 'next/font/google';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { theme } from '@/contexts';
 import { SyntheticEvent, useRef, useState } from 'react';
 
 import { HomeSectionCTAEmailSocial } from '@/components';
 import { addEmail } from '@/actions';
 import { SocialNavItems } from '@/utils/variables';
-import { Search } from '@mui/icons-material';
-
-// TODO: replace with the Sharp Grotesk font
-const spaceGrotesk = Space_Grotesk({ weight: '700', subsets: ['latin'] });
-const dotGothic16 = DotGothic16({ weight: '400', subsets: ['latin'] });
 
 export const HomeSectionCTAEmail = () => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const formRef = useRef<HTMLFormElement>(null);
 
   const [email, setEmail] = useState<string>('');
@@ -67,18 +64,24 @@ export const HomeSectionCTAEmail = () => {
             }}
             InputProps={{
               endAdornment: (
-                <InputAdornment position="end">
-                  <StyledButton size="large" type="submit" variant="contained">
-                    Get notified
-                  </StyledButton>
-                </InputAdornment>
+                <>
+                  {!isMobile && (
+                    <InputAdornment position="end">
+                      <StyledButton size="large" type="submit" variant="contained">
+                        Get notified
+                      </StyledButton>
+                    </InputAdornment>
+                  )}
+                </>
               ),
             }}
           />
 
-          {/*<StyledButton size="large" type="submit" variant="contained">*/}
-          {/*  Get notified*/}
-          {/*</StyledButton>*/}
+          {isMobile && (
+            <StyledButton size="large" type="submit" variant="contained">
+              Get notified
+            </StyledButton>
+          )}
 
         </StyledForm>
 
@@ -135,25 +138,41 @@ const StyledH2 = styled(Typography)<TypographyProps>({
   maxWidth: 692,
   fontFamily: 'sharp_groteskmedium_25',
   textAlign: 'center',
+
+  [theme.breakpoints.down('md')]: {
+    fontSize: 20,
+    lineHeight: '28px',
+    letterSpacing: '-0.01em',
+  }
 });
 
-const StyledForm = styled('form')({ position: 'relative' });
+const StyledForm = styled('form')({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '8px',
+});
 
 const StyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiInputBase-root': {
-      padding: '12px 8px 12px 24px',
+    padding: '6px 24px',
+    minHeight: '48px',
 
     '& .MuiInputBase-input ::placeholder': {
       color: 'red',
     },
   },
+
+  [theme.breakpoints.up('md')]: {
+    '& .MuiInputBase-root': {
+      minHeight: '62px',
+      padding: '12px 8px 12px 24px',
+    },
+  }
 }));
 
-const StyledButton = styled(Button)({
-  // position: 'absolute',
-  // right: 8,
-  // top: 7,
-});
+const StyledButton = styled(Button)(({ theme }) => ({
+    fontSize: 16,
+}));
 
 const StyledH3 = styled(Typography)<TypographyProps>({
   fontFamily: 'retro_computer',
