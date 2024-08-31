@@ -252,6 +252,21 @@ export const theme = createTheme(baseTheme, {
     MuiCssBaseline: {
       styleOverrides: {
         '& a': { textDecoration: 'none' },
+
+        '& i': {
+          flexShrink: 0,
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: 'inherit',
+          fontStyle: 'normal',
+
+          '& > svg, & > img': {
+            width: '100%',
+            maxWidth: '100%',
+            height: 'auto'
+          }
+        }
       },
     },
     MuiContainer: {
@@ -407,11 +422,104 @@ export const theme = createTheme(baseTheme, {
         }
       }
     },
+    MuiTable: {
+      styleOverrides: {
+        root: {
+          '&.is-responsive': {
+            [baseTheme.breakpoints.down('md')]: {
+              display: 'block',
+
+              '& thead, & thead tr, & th, & tfoot, & tfoot tr, & tfoot tr td': {
+                display: 'block',
+              },
+
+              '& thead tr th': {
+                position: 'absolute',
+                top: '-9999px',
+                left: '-9999px',
+              },
+
+              '& tbody': {
+                display: 'flex',
+                flexDirection: 'column',
+                rowGap: 12,
+
+                '& tr': {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  backgroundColor: baseTheme.palette.secondary.main,
+                  border: `1px solid ${baseTheme.palette.grey[400]}`,
+                  borderRadius: 16,
+
+                  '& th': {
+                    padding: baseTheme.spacing(2),
+                  },
+
+                  '&:last-child td': {
+                    borderBottom: `1px solid ${baseTheme.palette.grey[400]}`,
+                  },
+
+                  '& td': {
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto',
+                    alignItems: 'center',
+                    padding: baseTheme.spacing(1, 2),
+
+                    '&:last-child': {
+                      borderBottom: '0 !important',
+                    },
+                  },
+                },
+              },
+
+              '& tfoot tr': {
+                backgroundColor: baseTheme.palette.secondary.main,
+                border: `1px solid ${baseTheme.palette.grey[400]}`,
+                borderRadius: 16,
+              },
+            },
+          },
+        }
+      }
+    },
     MuiTableCell: {
       styleOverrides: {
-        root: { minHeight: 72, padding: '16px' },
-        head: { minHeight: 40, padding: '4px 16px' }
+        root: {
+          padding: '20px 16px',
+          borderBottom: `1px solid ${baseTheme.palette.grey[400]}`,
+          color: 'inherit'
+        },
+        head: {
+          padding: '4px 16px',
+          color: baseTheme.palette.grey[100],
+          borderBottom: `1px solid ${baseTheme.palette.grey[400]}`,
+        }
       },
-    }
+    },
+    MuiTableFooter: {
+      styleOverrides: {
+        root: {
+          '& tr:first-child td': {
+            padding: '40px 16px',
+            borderBottom: 0,
+            textAlign: 'center',
+
+            '& > div': {
+              display: 'flex',
+              flexDirection: 'column',
+              rowGap: 8,
+            },
+
+            '& h3': {
+              fontWeight: 500,
+            },
+
+            '& p': {
+              color: baseTheme.palette.grey[200],
+            },
+          },
+        }
+      }
+    },
   }
 });

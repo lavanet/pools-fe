@@ -1,9 +1,39 @@
-import { TableCell, Typography } from '@mui/material';
+'use client'
 
-type ChainsTableCellTextProps = { text: string };
+import { styled, TableCell, Typography, TypographyProps } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { theme } from '@/contexts';
 
-export const HomeSectionChainsTableCellText = ({ text }: ChainsTableCellTextProps) => (
-  <TableCell>
-    <Typography variant="h6">{text}</Typography>
-  </TableCell>
-);
+import { CustomTableMobileText } from '@/components/CustomTableMobileText';
+
+type ChainsTableCellTextProps = {
+  text: string;
+  textVariant?: any;
+  mobileTitle?: string;
+};
+
+export const HomeSectionChainsTableCellText = (
+  {
+    text,
+    textVariant,
+    mobileTitle
+  }: ChainsTableCellTextProps) => {
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+
+  return (
+    <TableCell>
+
+      {isMobile && mobileTitle && (
+        <CustomTableMobileText title={mobileTitle} />
+      )}
+
+      <Typography
+        variant={textVariant ? textVariant : undefined}
+        component="span"
+      >
+        {text}
+      </Typography>
+
+    </TableCell>
+  );
+};

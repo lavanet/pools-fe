@@ -24,6 +24,7 @@ export const HomeSectionChains = () => {
       <StyledGrid>
 
         <StyledStack useFlexGap spacing={1}>
+
           <StyledH2>
             Other chains
           </StyledH2>
@@ -31,10 +32,10 @@ export const HomeSectionChains = () => {
           <StyledTypography variant="h5">
             Chains that do not yet have incentivized pools.
           </StyledTypography>
+
         </StyledStack>
 
         <Banner
-          extraClassName='chains-banner'
           button="Learn more"
           link="/"
           message="Add it yourself as a specification and earn LAVA for every request served"
@@ -81,9 +82,7 @@ const StyledGrid = styled('div')(({ theme }) => ({
   alignItems: 'flex-start',
   gap: '32px 16px',
 
-  '& .chains-banner': {
-    backgroundColor: 'blue',
-
+  '& .lavuci': {
     [theme.breakpoints.up('md')]: {
       gridRow: 'span 3'
     },
