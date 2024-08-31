@@ -35,14 +35,18 @@ export const HomeSectionDataCards = () => (
 
 const StyledGrid = styled('section')(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
+  gridTemplateColumns: '1fr',
   gap: theme.spacing(1.5),
 
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.up('sm')]: {
+    gridTemplateColumns: 'repeat(auto-fit, minmax(331px,1fr))',
+  },
+
+  [theme.breakpoints.up('md')]: {
     gridTemplateColumns: 'repeat(2, 1fr)',
   },
 
-  [theme.breakpoints.down('md')]: {
-    gridTemplateColumns: 'repeat(auto-fit, minmax(331px,1fr))',
+  [theme.breakpoints.up('lg')]: {
+    gridTemplateColumns: 'repeat(4, 1fr)',
   }
 }));

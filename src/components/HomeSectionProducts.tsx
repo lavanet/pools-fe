@@ -1,6 +1,6 @@
 'use client';
 
-import { Stack, styled } from '@mui/material';
+import { styled } from '@mui/material';
 
 import { IProduct } from '@/types';
 import { HomeSectionProductsItem } from '@/components';
@@ -36,9 +36,17 @@ export const HomeSectionProducts = () => (
 
 const StyledGrid = styled('section')(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  alignItems: 'stretch',
+  gridTemplateColumns: '1fr',
+  alignItems: 'unset',
   gap: 12,
   paddingBottom: theme.spacing(13),
   paddingTop: theme.spacing(3),
+
+  [theme.breakpoints.up('md')]: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    alignItems: 'stretch',
+    paddingBottom: theme.spacing(13),
+    paddingTop: theme.spacing(3),
+  }
 }));

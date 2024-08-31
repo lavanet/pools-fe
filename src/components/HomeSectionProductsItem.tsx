@@ -94,12 +94,37 @@ const StyledProductsItem = styled('article')(({ theme }) => ({
 
 const StyledWrapper= styled('div')(({ theme }) => ({
   flex: 1,
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   padding: theme.spacing(5, 3),
   background: 'url("/images/lava-grain-bg-x2.webp") no-repeat center/cover',
   borderRadius: 20,
   overflow: 'hidden',
+  isolation: 'isolate',
+
+  '&:before, &:after': {
+    content: '""',
+    position: 'absolute',
+    inset: 0,
+    display: 'block',
+    width: '100%',
+    height: '100%',
+    margin: 'auto',
+    borderRadius: 20,
+  },
+
+  '&:before': {
+    zIndex: -1,
+    background: 'linear-gradient(180deg, #0C121A 0%, transparent 100%)',
+  },
+
+
+  '&:after': {
+    zIndex: -2,
+    background: 'url("/images/lava-dot-grid-bg-x2.webp") repeat top 0.5% left 0.5%/742px auto',
+    opacity: '0.38',
+  },
 
   [theme.breakpoints.down('md')]: {
     padding: theme.spacing(2),
@@ -123,6 +148,11 @@ const StyledStack= styled(Stack)(({ theme }) => ({
     gridTemplateColumns: '1fr auto',
     alignItems: 'flex-end',
     gap: 8,
+    maxWidth: '100%',
+
+    '& a': {
+      marginTop: 'unset',
+    },
   },
 }));
 
@@ -180,7 +210,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
 }));
 
 const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
-    fontSize: 'clamp(18px, 1.042vw, 20px) !important'
+  fontSize: 'clamp(18px, 1.042vw, 20px) !important'
 }));
 
 const StyledLink = styled(Link)(({ theme }) => ({

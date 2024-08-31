@@ -234,6 +234,7 @@ export const theme = createTheme(baseTheme, {
           },
           style: {
             minWidth: 'unset',
+            minHeight: 'unset',
             justifyContent: 'unset',
             padding: 0,
             color: baseTheme.palette.common.white,
