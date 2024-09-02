@@ -398,7 +398,9 @@ export const theme = createTheme(baseTheme, {
     MuiMenu: {
       styleOverrides: {
         root: {
-          '& .MuiPaper-root': { backgroundColor: 'transparent' },
+          '& .MuiPaper-root': {
+            backgroundColor: 'transparent'
+          },
         },
       }
     },

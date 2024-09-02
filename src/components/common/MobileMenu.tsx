@@ -72,7 +72,7 @@ export const MobileMenu = () => {
                   aria-controls={`panel${accordionIdx}-content`}
                   id={`panel${accordionIdx}-header`}
                 >
-                  <Typography>    {accordion.title}</Typography>
+                  <Typography>{accordion.title}</Typography>
 
                 </StyledAccordionSummary>
 

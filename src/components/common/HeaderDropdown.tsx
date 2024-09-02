@@ -4,6 +4,7 @@ import { INavItemLink } from '@/types';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, ButtonProps, Menu, MenuItem, styled } from '@mui/material';
 import { MouseEvent, useState } from 'react';
+import Link from 'next/link';
 
 type HeaderDropdownProps = {
   title: string;
@@ -26,13 +27,13 @@ export const HeaderDropdown = ({ links, title }: HeaderDropdownProps) => {
   return (
     <div>
       <StyledButton
+        id="nav-dropdown"
         variant='contained'
         color='ghost'
         aria-controls={open ? 'nav-dropdown-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
         aria-haspopup="true"
         endIcon={links ? <KeyboardArrowDownIcon /> : undefined}
-        id="nav-dropdown"
         onClick={handleClick}
       >
         {title}
@@ -40,18 +41,19 @@ export const HeaderDropdown = ({ links, title }: HeaderDropdownProps) => {
 
       {links && (
         <Menu
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          aria-labelledby="nav-dropdown"
           className='nav-menu'
+          aria-labelledby="nav-dropdown"
+          anchorEl={anchorEl}
+          // anchorOrigin={{
+          //   vertical: 'bottom',
+          //   horizontal: 'auto',
+          // }}
+          component="div"
           open={open}
           onClose={handleClose}
         >
           {links.map((link) => (
-            <MenuItem key={link.title} onClick={handleClose}>
+            <MenuItem key={link.title} onClick={handleClose} component={Link} href={link.link}>
               {link.title}
             </MenuItem>
           ))}
