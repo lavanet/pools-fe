@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Stack, styled } from '@mui/material';
+import { Button, ButtonProps, Stack, styled } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 // import { navItems } from '@/utils/variables';
 import { theme } from '@/contexts';
@@ -9,26 +9,38 @@ import { HeaderDropdown } from '@/components/common/HeaderDropdown';
 import { MobileMenu } from '@/components/common/MobileMenu';
 import { Logo } from '@/components';
 import { navItems } from '@/utils/variables';
+import Link, { LinkProps } from 'next/link';
 
 export const Header = () => {
   const islaptop = useMediaQuery(theme.breakpoints.down('lg'));
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <StyledHeader>
-        <Logo/>
+      <Logo/>
 
       {isMobile?(
         <MobileMenu/>
       ):(
         <>
-          <Stack direction="row">
-            <HeaderDropdown title="Rollup Developers" />
+          <Stack direction="row" component="nav">
+            <StyledButton
+              href="#"
+              variant='contained'
+              color='ghost'
+              component={Link}
+              title="Rollup Developers"
+            >
+              Rollup Developers
+            </StyledButton>
+
             {navItems.map((item) => (
               <HeaderDropdown key={item.title} {...item} />
             ))}
           </Stack>
 
           <Button
+            component={Link}
+            href="#"
             color="secondary"
             size={islaptop? "medium" : 'large'}
             variant="contained"
@@ -60,4 +72,8 @@ const StyledHeader = styled('header')(({ theme }) => ({
     padding: '0px 20px',
     borderBottom: `1px solid ${theme.palette.grey[400]}`,
   },
+}));
+
+const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
+  fontSize: 16
 }));

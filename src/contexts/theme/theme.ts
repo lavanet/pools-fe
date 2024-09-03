@@ -389,9 +389,9 @@ export const theme = createTheme(baseTheme, {
     MuiList: {
       styleOverrides: {
         root: {
-          backgroundColor: baseTheme.palette.background.default,
-          border: `1px solid ${baseTheme.palette.grey[300]}`,
-          borderRadius: 8
+          backgroundColor: baseTheme.palette.secondary.main,
+          border: `1px solid ${baseTheme.palette.grey[400]}`,
+          borderRadius: 12,
         }
       }
     },
@@ -399,9 +399,19 @@ export const theme = createTheme(baseTheme, {
       styleOverrides: {
         root: {
           '& .MuiPaper-root': {
-            backgroundColor: 'transparent'
+                      backgroundColor: 'transparent',
+            boxShadow: 'none',
           },
         },
+      }
+    },
+    MuiMenuList: {
+      styleOverrides: {
+        root: {
+            backgroundColor: 'red !important',
+            border: `1px solid red`,
+            borderRadius: 16,
+        }
       }
     },
     MuiMenuItem: {
