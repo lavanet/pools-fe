@@ -21,22 +21,22 @@ export default function RootLayout(
   return (
     <html lang="en">
     <ThemeProvider>
+
       <body>
-      <Container maxWidth={false}>
 
-        <Container maxWidth="xl">
+      <CssBaseline />
 
-          <CssBaseline />
+      <Header />
 
-          <Header />
-
-          <main>{children}</main>
-
-          <Footer />
-
+      <main>
+        <Container maxWidth={false}>
+          <Container maxWidth="xl">
+            {children}
+          </Container>
         </Container>
+      </main>
 
-      </Container>
+      <Footer />
 
       </body>
 

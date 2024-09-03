@@ -1,74 +1,117 @@
 'use client';
 
-import { INavItemLink } from '@/types';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import { Button, ButtonProps, Menu, MenuItem, styled } from '@mui/material';
-import { MouseEvent, useState } from 'react';
+import {
+  Button,
+  ButtonProps,
+  Drawer,
+  List,
+  ListItem,
+  ListItemProps,
+  ListItemText,
+  ListProps,
+  styled,
+} from '@mui/material';
+
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { left } from '@popperjs/core';
+import { INavItemLink } from '@/types';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 type HeaderDropdownProps = {
+  id?: string,
   title: string;
   links?: INavItemLink[];
 };
 
-export const HeaderDropdown = ({ links, title }: HeaderDropdownProps) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const drawerRef = useRef<HTMLDivElement>(null);
 
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleToggleDrawer = () => {
+    setIsDrawerOpen(!isDrawerOpen);
   };
 
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseDrawer = () => {
+    setIsDrawerOpen(false);
   };
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (drawerRef.current && !drawerRef.current.contains(event.target as Node)) {
+      handleCloseDrawer();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
       <StyledButton
-        id="nav-dropdown"
+        id="nav-drawer-toggle"
         variant='contained'
         color='ghost'
-        className={clsx(open && 'is-open')}
-        aria-controls={open ? 'nav-dropdown-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}
+        className={clsx(isDrawerOpen && 'is-open')}
+        aria-controls={isDrawerOpen ? 'nav-drawer' : undefined}
+        aria-expanded={isDrawerOpen ? 'true' : undefined}
         aria-haspopup="true"
-        endIcon={links ? <KeyboardArrowDownIcon /> : undefined}
-        onClick={handleClick}
+        endIcon={<KeyboardArrowDownIcon />}
+        onClick={handleToggleDrawer}
       >
         {title}
       </StyledButton>
 
-      {links && (
-        <StyledMenu
-          className='nav-menu'
-          aria-labelledby="nav-dropdown"
-          anchorEl={anchorEl}
-          variant="menu"
-          transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-          anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-          MenuListProps={{
-            component: 'div'
-          }}
-          open={open}
-          onClose={handleClose}
-        >
+      <StyledDrawer
+        anchor="top"
+        open={isDrawerOpen}
+        id={`nav-drawer-toggle-${title}`}
+        onClose={handleCloseDrawer}
+        variant="persistent"
+        ModalProps={{
+          keepMounted: true,
+          disablePortal: true,
+          hideBackdrop: true,
+        }}
+        PaperProps={{
+          ref: drawerRef,
+        }}
+      >
+        <div className={clsx("styled-drawer-grid",id)}>
 
-          {links.map((link) => (
-            <MenuItem
-              key={link.title}
-              component={Link}
-              href={link.link}
-              title={link.title}
-            >
-              {link.title}
-            </MenuItem>
-          ))}
-        </StyledMenu>
-      )}
+          <div className='styled-grid-item menu'>
+
+            {links && (
+              <StyledList component='div'>
+                {links.map((link) => (
+                  <StyledListItem
+                    component={Link}
+                    href={link.link}
+                    key={link.title}
+                    onClick={handleCloseDrawer}
+                  >
+                    {link.icon && (<i>{link.icon}</i>)}
+                    <span>
+                      {link.title}
+                      {link.description && (<small>{link.description}</small>)}
+                    </span>
+                  </StyledListItem>
+                ))}
+              </StyledList>
+            )}
+
+          </div>
+
+          <div className='styled-grid-item banner'>
+            hello
+          </div>
+
+        </div>
+
+      </StyledDrawer>
     </>
   );
 };
@@ -96,21 +139,67 @@ const StyledButton = styled(Button)<ButtonProps>(({ theme }) => ({
   },
 }));
 
-const StyledMenu = styled(Menu)(({ theme }) => ({
-  // width: 'calc(100vw - 48px)',
-  // left: 0,
-  // right: 0,
-  // top: '22px',
-  //
-  // '& .MuiPaper-root': {
-  //   width: '100%',
-  //   maxWidth: '1360px',
-  //   margin: '0 auto',
-  //   borderRadius: '0 0 32px 32px',
-  //   backgroundColor: 'blue',
-  // },
+const StyledDrawer = styled(Drawer)(({ theme }) => ({
+  position: 'fixed',
+  zIndex: '-1',
+  width: '100%',
+  maxWidth: '100%',
+  height: 'fit-content',
+  margin: '0 auto',
+  backgroundColor: 'transparent',
 
-  '& .MuiMenuItem-root': {
-    padding: '12px 24px'
+  '.MuiDrawer-paper': {
+    width: '100%',
+    maxWidth: '1360px',
+    margin: '0 auto',
+    paddingTop: '88px',
+    backgroundColor: theme.palette.secondary.main,
+    borderWidth: '0 1px 1px 1px',
+    borderStyle: 'solid',
+    borderRadius: '0 0 32px 32px',
+    borderColor: theme.palette.grey[400],
+    boxShadow: 'none',
+  },
+
+  '& .styled-drawer-grid': {
+    display: 'grid',
+    gridTemplateColumns: '1fr 335px',
+    alignItems: 'stretch',
+    width: '100%',
+    maxWidth: '100%',
+
+    '& .styled-grid-item': {
+      display: 'flex',
+      flexDirection: 'column',
+      padding: 24,
+
+      '&.banner': {
+        backgroundColor: 'red',
+      },
+    },
+  },
+}));
+
+const StyledList = styled(List)<ListProps>(({ theme }) => ({
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+  gridAutoFlow: 'column',
+  gridTemplateRows: 'auto auto auto',
+  gap: '20px 24px',
+  padding: 0,
+  backgroundColor: 'transparent',
+  border: 0,
+  borderRadius: 0,
+}));
+
+const StyledListItem = styled(Link)<ListItemProps>(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  color: theme.palette.common.white,
+  padding: '16px 24px',
+
+  '& span': {
+    display: 'flex',
+    flexDirection: 'column',
   },
 }));

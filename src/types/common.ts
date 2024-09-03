@@ -1,30 +1,32 @@
 import { ReactNode } from 'react';
 
-export interface IChain { 
+export interface IChain {
   name: string,
   requests: number,
   rpcProviders: number,
   service: string
 }
 
-export interface IDataCard { 
+export interface IDataCard {
   title: string;
   value: string;
   message?: string;
 }
 
-export interface INavItem { 
+export interface INavItem {
+  id?: string,
   links: INavItemLink[],
   title: string;
 }
 
-export interface INavItemLink { 
+export interface INavItemLink {
   link: string,
   title: string;
+  description?: string,
   icon?: ReactNode;
 }
 
-export interface IPool { 
+export interface IPool {
   title: string;
   service: string;
   node_runner?: number;
