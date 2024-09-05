@@ -2,9 +2,6 @@ import type { Metadata } from 'next';
 import 'tippy.js/animations/shift-away.css'
 import 'tippy.js/dist/tippy.css'
 import "@/styles/index.scss";
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@/contexts';
-import { Container } from '@mui/material';
 
 import { Footer } from '@/components/common/Footer';
 import { Header } from '@/components/common/Header';
@@ -22,11 +19,8 @@ export default function RootLayout(
   }>) {
   return (
     <html lang="en">
-    <ThemeProvider>
 
       <body>
-
-      <CssBaseline />
 
       <Header />
 
@@ -37,8 +31,6 @@ export default function RootLayout(
       <Footer />
 
       </body>
-
-    </ThemeProvider>
 
     </html>
   );

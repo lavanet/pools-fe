@@ -9,10 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.0",
-    "@emotion/styled": "^11.13.0",
-    "@mui/icons-material": "^5.16.4",
-    "@mui/material": "^5.16.4",
     "@tanstack/react-table": "^8.20.5",
     "@tippyjs/react": "^4.2.6",
     "clsx": "^2.1.1",
