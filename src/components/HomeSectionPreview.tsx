@@ -2,6 +2,7 @@
 
 import clsx from 'clsx';
 import { HomeBanner } from '@/components';
+import { IcnArrowUp } from '@assets/icons';
 import styles from '@/styles/HomeSectionPreview.module.scss';
 
 export const HomeSectionPreview = () => (
@@ -22,10 +23,12 @@ export const HomeSectionPreview = () => (
     <div className="c-home-section-preview-banner">
 
       <HomeBanner
-        button="Become an RPC Provider"
-        buttonType="text"
+        btnLink="/"
+        btnVariant="link"
+        btnText="Become an RPC Provider"
+        btnIcon={<IcnArrowUp/>}
+        btnIconPlacement="right"
         image="lavuci-bag"
-        link="/"
         message="He loves dealing with node runners. "
         title="Meet Lavuci"
       />

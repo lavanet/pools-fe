@@ -1,6 +1,160 @@
-.cHomeSectionProducts {
+.cHomeBanner {
   &:global {
-    &.c-home-section-products {
+    &.c-home-banner {
+      --home-banner-border-radius: var(--px20);
+
+      background: linear-gradient(to top, #212630 0%, rgba(33, 38, 48, 0) 22.05%) center/ cover, url("../../public/images/lava-grid-bg-x2.webp") repeat top 1% left 1%/890px auto, linear-gradient(0deg, #1A232F 0%, #0C121A 46.5%) center/ cover;
+      border: var(--px1) solid var(--grey-400);
+      border-radius: var(--home-banner-border-radius);
+
+      .c-home-banner-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto;
+        align-items: stretch;
+        column-gap: 1em;
+        padding: 1em 1em 1em var(--px24);
+        border-radius: var(--home-banner-border-radius);
+
+        &-item-text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          row-gap: 1em;
+
+          &-content {
+            display: flex;
+            flex-direction: column;
+          }
+
+          h2 {
+            letter-spacing: -0.01em;
+          }
+
+          p {
+            color: var(--grey-100);
+          }
+        }
+
+        &-item-image {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      &.lavuci-bag {
+        .c-home-banner-grid {
+          min-height: 134px;
+
+          &-item-image {
+            width: 146px;
+            height: 100%;
+
+            img {
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              z-index: 1;
+              width: 146px;
+              height: 146px;
+            }
+          }
+        }
+      }
+
+      &.lavuci {
+        .c-home-banner-grid {
+          padding-top: 13px;
+          padding-right: 0;
+          padding-bottom: 0;
+
+          &-item-text {
+            padding-bottom: 13px;
+          }
+
+          &-item-image {
+            justify-content: flex-end;
+            width: 150px;
+            height: 100%;
+            border-radius: var(--home-banner-border-radius);
+            overflow: hidden;
+
+            img {
+              width: 100%;
+              max-width: 100%;
+              height: auto;
+              object-fit: contain;
+            }
+          }
+        }
+      }
+
+      @media (max-width: 767px) {
+        --home-banner-border-radius: 1em;
+
+        .c-home-banner-grid {
+          row-gap: 1em;
+        }
+
+        &.lavuci-bag {
+          .c-home-banner-grid {
+            min-height: unset;
+            padding: 1em 0 1em 1em;
+
+            &-item-image {
+              order: 2;
+              width: 88px;
+
+              img {
+                width: 88px;
+                height: 88px;
+                top: -32px;
+              }
+            }
+
+            .c-button-container {
+              grid-column: span 2;
+              order: 3;
+            }
+          }
+        }
+
+        &.lavuci {
+          .c-home-banner-grid {
+            padding: 1em 0 0 1em;
+
+            &-item-image {
+              position: relative;
+              justify-content: flex-end;
+              width: 88px;
+              height: 67px;
+              border-radius: 1em;
+              overflow: hidden;
+
+              img {
+                position: absolute;
+                top: 0;
+                width: 88px;
+                height: 88px;
+                object-fit: contain;
+              }
+            }
+
+            &-item-text {
+              grid-column: span 2;
+              padding-bottom: 0;
+              padding-right: 1em;
+            }
+
+            .c-button-container {
+              display: flex;
+              align-items: flex-end;
+              padding-bottom: 1em;
+            }
+          }
+        }
+      }
     }
   }
 }

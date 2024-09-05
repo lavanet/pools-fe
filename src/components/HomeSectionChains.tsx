@@ -29,8 +29,9 @@ export const HomeSectionChains = () => {
         </div>
 
         <HomeBanner
-          button="Learn more"
-          link="/"
+          btnColor="white"
+          btnText="Learn more"
+          btnLink="/"
           message="Add it yourself as a specification and earn LAVA for every request served"
           title="Don't see your favourite chain?"
         />
