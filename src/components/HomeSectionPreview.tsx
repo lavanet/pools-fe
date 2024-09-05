@@ -1,24 +1,25 @@
 'use client';
 
-import { styled, Typography } from '@mui/material';
-
+import clsx from 'clsx';
 import { Banner } from '@/components';
+import styles from '@/styles/HomeSectionPreview.module.scss';
 
 export const HomeSectionPreview = () => (
-  <StyledGrid>
-    <div>
+  <section className={clsx(styles.cHomeSectionPreview, "c-home-section-preview",)}>
 
-      <StyledH1 variant="h1">
+    <div className="c-home-section-preview-text">
+
+      <h1 className="sharp-medium">
         Lava Incentive Pools
-      </StyledH1>
+      </h1>
 
-      <StyledTypography variant="h5">
+      <p className="h5">
         Boost infrastructure for your favourite chain, earn rewards.
-      </StyledTypography>
+      </p>
 
     </div>
 
-    <StyledGridItemBanner>
+    <div className="c-home-section-preview-banner">
 
       <Banner
         button="Become an RPC Provider"
@@ -29,52 +30,7 @@ export const HomeSectionPreview = () => (
         title="Meet Lavuci"
       />
 
-    </StyledGridItemBanner>
+    </div>
 
-  </StyledGrid>
+  </section>
 );
-
-const StyledGrid = styled('section')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  flexWrap: 'nowrap',
-  gap: '24px 20px',
-  paddingTop: theme.spacing(6),
-  paddingBottom: theme.spacing(4),
-
-  [theme.breakpoints.down('md')]: {
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'unset',
-    paddingTop: 84,
-    paddingBottom: theme.spacing(4),
-  },
-}));
-
-const StyledH1 = styled(Typography)(({ theme }) => ({
-  fontSize: 'clamp(32px, 2.917vw, 56px)',
-  fontFamily: 'sharp_groteskMedium_25',
-  letterSpacing: '-0.001em',
-  lineHeight: '1.1em',
-
-  [theme.breakpoints.down('md')]: {
-    marginBottom: 8,
-    fontSize: 26,
-    lineHeight: '1.4em',
-  },
-}));
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[100],
-}));
-
-const StyledGridItemBanner = styled('div')(({ theme }) => ({
-  flex: '0 0 auto',
-
-  [theme.breakpoints.down('md')]: {
-    flex: '0 0 100%',
-    width: '100%',
-    maxWidth: '100%',
-  },
-}));

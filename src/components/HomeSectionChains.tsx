@@ -1,39 +1,34 @@
 'use client';
 
-import { Search } from '@mui/icons-material';
-import {
-  InputAdornment,
-  Stack,
-  styled,
-  TextField,
-  Typography,
-} from '@mui/material';
-
-import { Banner } from '@/components/common/Banner';
 import { useState } from 'react';
-import { HomeSectionChainsTable } from '@/components';
+import clsx from 'clsx';
 import useDebounce from '@/hooks/useDebounce';
+import { Banner } from '@/components/common';
+import { CustomInput } from '@/components/form-elements';
+import { HomeSectionChainsTable } from '@/components';
+import {IcnSearch} from '@assets/icons';
+import styles from '@/styles/HomeSectionChains.module.scss';
 
 export const HomeSectionChains = () => {
   const [searchValue, setSeachValue] = useState<string>('');
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
   return (
-    <StyledChains>
+    <section className={clsx(styles.cHomeSectionChains, "c-home-section-chains")}>
 
-      <StyledGrid>
+      <div className="c-home-section-chains-grid">
 
-        <StyledStack useFlexGap spacing={1}>
+        <div className="c-home-section-chains-grid-item-text">
 
-          <StyledH2>
+          <h2 className="sharp-medium">
             Other chains
-          </StyledH2>
+          </h2>
 
-          <StyledTypography variant="h5">
+          <p className="h5">
             Chains that do not yet have incentivized pools.
-          </StyledTypography>
+          </p>
 
-        </StyledStack>
+        </div>
 
         <Banner
           button="Learn more"
@@ -42,77 +37,26 @@ export const HomeSectionChains = () => {
           title="Don't see your favourite chain?"
         />
 
-        <StyledTextField
+        <CustomInput
+          type="text"
+          name="search_chain_table"
+          labelText="Search chain name"
+          labelIsHidden
           placeholder="Search chain name"
+          inputGroupText={<IcnSearch />}
+          inputGroupPlacement="left"
           value={searchValue}
           onChange={(e) => {
             setSeachValue(e.currentTarget.value);
           }}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            ),
-          }}
         />
 
-      </StyledGrid>
+      </div>
 
       <HomeSectionChainsTable
         filter={debouncedSearchValue}
       />
 
-    </StyledChains>
+    </section>
   );
 };
-
-const StyledChains = styled('section')(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  rowGap: theme.spacing(2),
-  paddingBottom: theme.spacing(14),
-  paddingTop: theme.spacing(10),
-}));
-
-const StyledGrid = styled('div')(({ theme }) => ({
-  display: 'grid',
-  gridTemplateRows: 'auto',
-  gridTemplateColumns: '1fr 674px',
-  alignItems: 'flex-start',
-  gap: '32px 16px',
-
-  '& .lavuci': {
-    [theme.breakpoints.up('md')]: {
-      gridRow: 'span 3'
-    },
-  },
-
-  [theme.breakpoints.down('lg')]: {
-    gridTemplateColumns: 'repeat(2, 1fr)',
-  },
-
-  [theme.breakpoints.down('md')]: {
-    gridTemplateColumns: '1fr',
-  },
-}));
-
-const StyledStack = styled(Stack)(({ theme }) => ({
-
-}));
-
-const StyledH2 = styled('h2')(({ theme }) => ({
-  margin: 0,
-  fontFamily: 'sharp_groteskmedium_25',
-  fontSize: 32,
-  lineHeight: '44.8px',
-}));
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[100],
-}));
-
-const StyledTextField = styled(TextField)({
-  maxWidth: 445,
-  marginBottom: '0',
-});

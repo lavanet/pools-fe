@@ -1,0 +1,51 @@
+.c-button-container {
+  display: flex;
+  align-items: center;
+  column-gap: 1em;
+}
+
+.c-flexbox {
+  display: flex;
+  align-items: center;
+}
+
+.c-inline-flexbox {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .c-desktop {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .c-tablet-sm {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .c-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .c-mobile-sm {
+    display: none !important;
+  }
+}
+
+.c-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

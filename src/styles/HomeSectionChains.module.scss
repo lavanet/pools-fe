@@ -1,0 +1,57 @@
+.cHomeSectionChains {
+  &:global {
+    &.c-home-section-chains {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1em;
+      padding-bottom: 113px;
+    }
+  }
+
+  :global {
+    .c-home-section-chains {
+      &-grid {
+        display: grid;
+        grid-template-rows: auto;
+        grid-template-columns: 1fr 674px;
+        align-items: flex-start;
+        gap: 32px 16px;
+
+        @media (max-width: 1199px){
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media(max-width: 991px) {
+          grid-template-columns: 1fr;
+        }
+
+        .c-home-section-chains-grid-item-text {
+          display: flex;
+          flex-direction: column;
+          row-gap: 1em;
+
+          h2 {
+            margin-bottom: 0;
+            font-size: var(--px32);
+            line-height: 44.8px;
+          }
+
+          p {
+            color: var(--grey-100);
+          }
+        }
+
+        .lavuci {
+          @media(min-width: 992px) {
+            grid-row: span 3
+          }
+        }
+
+        .c-form-group {
+          width: 100%;
+          max-width: 445px;
+        }
+      }
+    }
+  }
+}

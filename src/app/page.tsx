@@ -1,24 +1,27 @@
+import clsx from 'clsx';
 import {
   HomeSectionPreview,
   HomeSectionDataCards,
   HomeSectionPools,
-  HomeSectionCTA,
+  HomeSectionHeroCTA,
   HomeSectionChains,
-  HomeSectionCTAEmail,
+  HomeSectionHeroEmail,
   HomeSectionProducts,
 } from '@/components';
-
+import styles from '@/styles/Home.module.scss'
 
 export default function Home() {
   return (
-    <>
-      <HomeSectionPreview />
-      <HomeSectionDataCards />
-      <HomeSectionPools />
-      <HomeSectionCTA />
-      <HomeSectionChains />
-      <HomeSectionCTAEmail />
-      <HomeSectionProducts/>
-    </>
+    <section className={clsx(styles.cHome, "c-home")}>
+      <div className="c-container">
+        <HomeSectionPreview />
+        <HomeSectionDataCards />
+        <HomeSectionPools />
+        <HomeSectionHeroCTA />
+        <HomeSectionChains />
+        <HomeSectionHeroEmail />
+        <HomeSectionProducts/>
+      </div>
+    </section>
   );
 }

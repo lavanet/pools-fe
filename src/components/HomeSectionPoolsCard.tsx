@@ -1,17 +1,22 @@
 'use client';
 
-import { Button, Stack, styled, Typography, TypographyProps } from '@mui/material';
-import useMediaQuery from '@mui/material/useMediaQuery';
-
-import { sharpGroteskMedium } from '@/types/fonts';
-import { theme } from '@/contexts';
+import clsx from 'clsx';
+import { NumericFormat } from 'react-number-format';
 import { IPool } from '@/types';
-import { HomeSectionPoolsCardData, IconSvg } from '@/components';
+import { CustomButton } from '@/components';
+import styles from '@/styles/HomeSectionPoolsCard.module.scss';
 
 type PoolsCardProps = IPool;
 
+const RewardsList = [
+  {title: "Rewards in this month", color: "#FFFFFF"},
+  {title: "Future rewards", color: "#7679FF"},
+  {title: "Past rewards", color: "#5E6167"},
+]
+
 export const HomeSectionPoolsCard = (
   {
+    id,
     title,
     service,
     node_runner,
@@ -22,19 +27,9 @@ export const HomeSectionPoolsCard = (
     future_rewards,
     past_rewards,
     icon,
-    accentColor,
   }: PoolsCardProps) => {
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-
-  const calculateRewardPercentages = (
-    monthly_rewards?: number,
-    future_rewards?: number,
-    past_rewards?: number
-  ) => {
-    // Ensure all values are numbers and default to 0 if undefined
+  const calculateRewardPercentages = (monthly_rewards?: number, future_rewards?: number, past_rewards?: number) => {
     const rewards = [monthly_rewards ?? 0, future_rewards ?? 0, past_rewards ?? 0];
-
-    // Calculate total rewards, explicitly initializing sum to 0
     const total = rewards.reduce((sum: number, reward: number) => sum + reward, 0);
 
     if (total === 0) {
@@ -62,235 +57,119 @@ export const HomeSectionPoolsCard = (
     past_rewards
   );
 
+  const combinedRewards = RewardsList.map((item, index) => ({
+    ...item,
+    percentage: [monthlyPercentage, futurePercentage, pastPercentage][index],
+    value: [monthly_rewards, future_rewards, past_rewards][index] ?? 0,
+  }));
+
   return (
-    <StyledPoolsCard accentColor={accentColor}>
+    <article className={clsx(styles.cHomeSectionPoolsCards, "c-home-section-pools-card", id)}>
 
-      <StyledCard accentColor={accentColor}>
+      <div className="c-home-section-pools-card-wrapper">
 
-        <StyledCardHeader useFlexGap spacing={2} direction={isMobile? 'column' : 'row'}>
+        <div className="c-home-section-pools-card-header">
 
-          <StyledCardHeaderText>
-            <StyledIcon>
-              <IconSvg>{icon}</IconSvg>
-            </StyledIcon>
+          <div className="c-home-section-pools-card-header-text">
+            <i>
+              {icon}
+            </i>
 
             <div>
-              <Typography variant="h3">{title}</Typography>
-              <Typography variant="caption">{service}</Typography>
+              <h2 className="h3">{title}</h2>
+              <small>{service}</small>
             </div>
 
-          </StyledCardHeaderText>
+          </div>
 
-          <StyledCardHeaderList>
+          <ul>
             <li>
-              <StyledTypography variant="caption">RPC node runners:&nbsp;</StyledTypography>
-              <Typography>{node_runner}</Typography>
+              <em>RPC node runners:&nbsp;</em>
+              <small>{node_runner}</small>
             </li>
 
             <li>
-              <StyledTypography variant="caption">Total requests:&nbsp;</StyledTypography>
-              <Typography>{requests}</Typography>
+              <em>Total requests:&nbsp;</em>
+              <small>{requests}</small>
             </li>
 
-          </StyledCardHeaderList>
+          </ul>
 
-        </StyledCardHeader>
+        </div>
 
-        <Stack useFlexGap spacing={3}>
+        <div className='c-home-section-pools-card-rewards'>
 
-          <Stack useFlexGap spacing={1}>
+          <div className='c-home-section-pools-card-rewards-header'>
 
-            <StyledCardBodyRewardsHeader
-              useFlexGap
-              spacing={0.5}
-              direction={isMobile? 'column' : 'row'}
-            >
+            <span>
+              <em>Total rewards&nbsp;</em>
+              <small>(Updated in real-time)</small>
+            </span>
+
+            <p className="h6 sharp-medium">
+              {value}
+            </p>
+
+            <div>
+              <em>66 days&nbsp;</em>
+              <time>Sep 28,2024</time>
+            </div>
+
+          </div>
+
+          <div className='c-home-section-pools-card-rewards-progressbar'>
+            {combinedRewards.map((bar, barIdx) => (
+                <div
+                  key={barIdx}
+                  style={{
+                    backgroundColor: bar.color,
+                    maxWidth: `${bar.percentage}%`
+                  }}
+                />
+              )
+            )}
+          </div>
+
+        </div>
+
+        <ul className="c-home-section-pools-card-rewards-data">
+
+          {combinedRewards.map(({ title, color, value }, dataIdx) => (
+            <li key={dataIdx}>
               <span>
-                <StyledTypography variant="caption" component="span">Total rewards</StyledTypography>&nbsp;
-                <Typography variant="body2" component="span" color={theme.palette.grey[200]}>(Updated in real-time)</Typography>
+                <i style={{ backgroundColor: `${color}` }}></i>
+                {title}
               </span>
 
-              <Typography className={sharpGroteskMedium.className} variant="h6">
-                {value}
-              </Typography>
+              <NumericFormat
+                displayType="text"
+                thousandSeparator=","
+                decimalSeparator="."
+                value={value}
+                renderText={(value) => <span>{value} {currency}</span>}
+              />
 
-              <div>
-                <StyledTypography variant="caption" component="span">66 days</StyledTypography>&nbsp;
-                <Typography variant="caption"  component="span">Sep 28,2024</Typography>
-              </div>
+            </li>
+          ))}
 
-            </StyledCardBodyRewardsHeader>
+        </ul>
 
-            <StyledCardBodyRewardsProgressbar>
-              <StyledBar style={{ backgroundColor: '#FFFFFF', maxWidth: `${monthlyPercentage}%` }} />
-              <StyledBar style={{ backgroundColor: '#7679FF', maxWidth: `${futurePercentage}%` }} />
-              <StyledBar style={{ backgroundColor: '#5E6167', maxWidth: `${pastPercentage}%` }} />
-            </StyledCardBodyRewardsProgressbar>
+        <div className="c-home-section-pools-card-footer">
 
-          </Stack>
+          <CustomButton
+            text='Run RPC node'
+          />
 
-          <Stack useFlexGap spacing={2}>
-            <HomeSectionPoolsCardData
-              chartPointType="white"
-              title="Rewards in this month"
-              value={`${monthly_rewards}`}
-              caption={currency}
-            />
+          <CustomButton
+            btnColor="white"
+            text="Restake to RPC provider"
+            disabled
+          />
 
-            <HomeSectionPoolsCardData
-              chartPointType="blue"
-              title="Future rewards"
-              value={`${future_rewards}`}
-              caption={currency}
-            />
+        </div>
 
-            <HomeSectionPoolsCardData
-              chartPointType="grey"
-              title="Past rewards"
-              value={`${past_rewards}`}
-              caption={currency}
-            />
-          </Stack>
+      </div>
 
-        </Stack>
-
-        <StyledCardFooter useFlexGap direction="row" spacing={1}>
-
-          <Button variant="contained">
-            Run RPC node
-          </Button>
-
-          <Button disabled variant="contained" color="secondary">
-            Restake to RPC provider
-          </Button>
-
-        </StyledCardFooter>
-
-      </StyledCard>
-
-    </StyledPoolsCard>
+    </article>
   );
 };
-
-const StyledPoolsCard = styled('article')<{ accentColor: string }>(({ theme, accentColor }) => ({
-  position: 'relative',
-  display: 'flex',
-  flexDirection: 'column',
-  width: '100%',
-  maxWidth: '100%',
-  padding: '1px',
-  borderRadius: '20px',
-  overflow: 'hidden',
-
-  '&:before': {
-    content: '""',
-    position: 'absolute',
-    inset: 0,
-    zIndex: -1,
-    display: 'block',
-    width: '100%',
-    maxWidth: '100%',
-    height: '100%',
-    margin: 'auto',
-    borderRadius: '20px',
-    border: '1px solid transparent',
-    background: `linear-gradient(180deg, #171C26 0%, hsl(from ${accentColor} h s l / 0.5) 100%) border-box`,
-    mask: 'linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%)',
-    webkitMaskComposite: 'xor',
-    maskComposite: 'exclude',
-  },
-}));
-
-const StyledCard = styled('div')<{ accentColor: string }>(({ theme, accentColor }) => ({
-  flexGrow: '1',
-  position: 'relative',
-  zIndex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  rowGap: theme.spacing(3),
-  width: '100%',
-  maxWidth: '100%',
-  padding: theme.spacing(3),
-  borderRadius: '20px',
-  background: `
-    linear-gradient(
-      180deg,
-      hsl(from ${accentColor} h s l / 0.5) 0%,
-      rgba(23, 28, 38, 0) 15.11%,
-      rgba(23, 28, 38, 0) 92%,
-      rgba(23, 28, 38, 0.01) 100%
-    ), 
-    url("/images/lava-grain-bg-x2.webp") no-repeat center / cover
-    `,
-  overflow: 'hidden',
-}));
-
-const StyledCardHeader = styled(Stack)(({ theme }) => ({
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  flexWrap: 'wrap',
-
-  ' > *': {
-    flex: '1',
-  },
-
-  [theme.breakpoints.down('md')]: {
-    alignItems: 'unset',
-    justifyContent: 'unset',
-  },
-}));
-
-const StyledCardHeaderText = styled('div')(({ theme }) => ({
-  display: 'inline-flex',
-  alignItems: 'center',
-  gap: '12px',
-}));
-
-const StyledIcon = styled('div')({ fontSize: 48 });
-
-const StyledCardHeaderList = styled('ul')(({ theme }) => ({
-  display: 'inline-flex',
-  flexDirection: 'column',
-  margin: 0,
-  padding: 0,
-  listStyle: 'none',
-
-  '& li': {
-    display: 'inline-flex',
-    alignItems: 'center',
-  }
-}));
-
-const StyledCardBodyRewardsHeader = styled(Stack)(({ theme }) => ({
-  flexWrap: 'wrap',
-  justifyContent: 'space-between',
-
-  '& span': {
-    flex: '0 0 100%',
-  }
-}));
-
-const StyledCardBodyRewardsProgressbar = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'stretch',
-  flexWrap: 'nowrap',
-  columnGap: '2px',
-}));
-
-const StyledCardFooter = styled(Stack)(({ theme }) => ({
-  flexWrap: 'wrap',
-
-  '> *': {
-    flexGrow: '1',
-  },
-}));
-
-const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
-  color: theme.palette.grey[100],
-}));
-
-const StyledBar = styled('div')({
-  width: '100%',
-  borderRadius: 8,
-  height: 8,
-});

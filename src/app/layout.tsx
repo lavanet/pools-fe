@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import 'tippy.js/animations/shift-away.css'
+import 'tippy.js/dist/tippy.css'
 import "@/styles/index.scss";
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@/contexts';
@@ -28,12 +30,8 @@ export default function RootLayout(
 
       <Header />
 
-      <main>
-        <Container maxWidth={false}>
-          <Container maxWidth="xl">
-            {children}
-          </Container>
-        </Container>
+      <main className="c-main">
+        {children}
       </main>
 
       <Footer />

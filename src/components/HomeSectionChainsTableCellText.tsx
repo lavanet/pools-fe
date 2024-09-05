@@ -4,7 +4,7 @@ import { styled, TableCell, Typography, TypographyProps } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from '@/contexts';
 
-import { CustomTableMobileText } from '@/components/CustomTableMobileText';
+import { CustomTableMobileText } from '@/components/common/CustomTableMobileText';
 
 type ChainsTableCellTextProps = {
   text: string;

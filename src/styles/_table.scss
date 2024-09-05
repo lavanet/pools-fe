@@ -1,0 +1,17 @@
+.c-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+
+  thead tr th {
+    padding: var(--font-size-14-px10) var(--font-size-14-px16);
+    color: var(--grey-100);
+    font-size: var(--px14);
+  }
+
+  tbody tr td {
+    padding: var(--px20) 1em;
+    border-bottom: var(--px1) solid var(--grey-400);
+    font-size: 1em;
+  }
+}

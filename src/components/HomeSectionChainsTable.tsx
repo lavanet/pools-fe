@@ -1,78 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import {
-  Button,
-  Stack,
-  styled,
-  Table,
-  TableBody,
   TableCell,
-  TableContainer, TableFooter,
-  TableHead,
+  TableFooter,
   TableRow,
   Typography,
 } from '@mui/material';
-
-import { IconSvg } from '@/components/common/IconSvg';
-import { IconAgoric } from '@/icons';
-import { HomeSectionChainsTableCellHead, HomeSectionChainsTableCellText } from '@/components';
-import { IChain } from '@/types';
-import { visuallyHidden } from '@mui/utils';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { theme } from '@/contexts';
-import { CustomTableMobileText } from '@/components/CustomTableMobileText';
 
-const initialChains: IChain[] = [
-  {
-    name: 'Agoric',
-    requests: 105,
-    rpcProviders: 6,
-    service: 'RPC',
-  },
-  {
-    name: 'Aptos',
-    requests: 976,
-    rpcProviders: 13,
-    service: 'Indexers',
-  },
-  {
-    name: 'Arbitrum',
-    requests: 847,
-    rpcProviders: 3,
-    service: 'RPC',
-  },
-  {
-    name: 'Avalanche',
-    requests: 344,
-    rpcProviders: 5,
-    service: 'RPC',
-  },
-  {
-    name: 'Base',
-    requests: 437,
-    rpcProviders: 14,
-    service: 'RPC',
-  },
-  {
-    name: 'Beacon',
-    requests: 234,
-    rpcProviders: 3,
-    service: 'RPC',
-  },
-  {
-    name: 'Berachain',
-    requests: 164,
-    rpcProviders: 9,
-    service: 'RPC',
-  },
-  {
-    name: 'Canto',
-    requests: 543,
-    rpcProviders: 5,
-    service: 'RPC',
-  },
-];
+import { useEffect, useState } from 'react';
+import clsx from 'clsx';
+import { IChain } from '@/types';
+import { initialChains } from '@/utils/dummyData';
+import { CustomButton, HomeSectionChainsTableCellHead, HomeSectionChainsTableCellText } from '@/components';
+import { CustomTableMobileText } from '@/components/common/CustomTableMobileText';
+import { IconAgoric } from '@/icons';
+import styles from '@/styles/HomeSectionChainsTable.module.scss'
 
 type ChainsTableProps = {
   filter: string;
@@ -100,13 +44,13 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
   };
 
   return (
-    <TableContainer>
+    <section className={clsx(styles.cHomeSectionChainsTable, "c-home-section-chains-table")}>
 
-      <StyledTable aria-label="chains table" className="is-responsive">
+        <table  className="c-table is-responsive">
 
-        <TableHead>
+          <thead>
 
-          <TableRow>
+          <tr>
             <HomeSectionChainsTableCellHead title="Chain name" />
 
             <HomeSectionChainsTableCellHead
@@ -127,46 +71,35 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
             />
 
             <TableCell>
-              <Typography
-                variant="caption"
-                component="span"
-                // sx={visuallyHidden}
-              >
+              <span className='c-visually-hidden'>
                 Actions
-              </Typography>
+              </span>
             </TableCell>
 
-          </TableRow>
+          </tr>
 
-        </TableHead>
+          </thead>
 
-        {chains.length ? (
-          <TableBody>
+          {chains.length ? (
+            <tbody>
             {chains.map((chain) => (
-              <TableRow
-                key={chain.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
-                <TableCell
-                  component="th"
-                  scope="row"
-                >
+              <tr key={chain.name}>
+                <TableCell>
                   {isMobile && (
                     <CustomTableMobileText title='Chain name' isHidden />
                   )}
 
-                  <Stack alignItems="center" direction="row" useFlexGap spacing={1.5}>
+                  <div className="c-flexbox">
 
-                    {/* TODO: replace with a brand icon */}
-                    <StyledIcon>
+                    <i>
                       <IconAgoric />
-                    </StyledIcon>
+                    </i>
 
-                    <Typography variant="h6">
+                    <p className="h6">
                       {chain.name}
-                    </Typography>
+                    </p>
 
-                  </Stack>
+                  </div>
 
                 </TableCell>
 
@@ -193,77 +126,44 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
                     <CustomTableMobileText title='Actions' isHidden />
                   )}
 
-                  <Stack
-                    direction="row"
-                    useFlexGap
-                    spacing={1}
-                  >
-                    <Button
-                      size="small"
-                      variant="contained"
-                    >
-                      Run a node
-                    </Button>
+                  <div className="c-button-container">
+                    <CustomButton
+                      btnSize="sm"
+                      text="Run a node"
+                    />
 
-                    <Button
-                      color="secondary"
-                      size="small"
-                      variant="contained"
-                    >
-                      Endpoints
-                    </Button>
+                    <CustomButton
+                      btnSize="sm"
+                      btnColor="white"
+                      text="Endpoints"
+                    />
 
-                  </Stack>
+                  </div>
 
                 </TableCell>
 
-              </TableRow>
+              </tr>
             ))}
-          </TableBody>
-        ):(
-          <TableFooter>
-            <TableRow>
-              <TableCell colSpan={5} component="td">
-                <div>
-                  <Typography variant="h4" component="h3">
-                    No results found
-                  </Typography>
-                  <Typography component="p">
-                    No chains matching your search criteria were found
-                  </Typography>
-                </div>
-              </TableCell>
-            </TableRow>
-          </TableFooter>
-        )}
+            </tbody>
+          ):(
+            <TableFooter>
+              <TableRow>
+                <TableCell colSpan={5} component="td">
+                  <div>
+                    <Typography variant="h4" component="h3">
+                      No results found
+                    </Typography>
+                    <Typography component="p">
+                      No chains matching your search criteria were found
+                    </Typography>
+                  </div>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
+          )}
 
-      </StyledTable>
+        </table>
 
-    </TableContainer>
+    </section>
   );
 };
-
-const StyledIcon = styled('i')({
-  width: 32,
-  height: 32,
-});
-
-const StyledTable = styled(Table)({
-  [theme.breakpoints.up('md')]: {
-    '& thead tr th:last-child, & tbody tr td:last-child': {
-      width: 0,
-    },
-  },
-
-  [theme.breakpoints.down('md')]: {
-    '& tbody tr td:last-child': {
-      '& > div': {
-        flexWrap: 'wrap',
-
-        '& button': {
-          flexGrow: 1,
-        }
-      },
-    },
-  },
-});

@@ -1,0 +1,16 @@
+.cHomeSectionPools {
+  &:global {
+    &.c-home-section-pools {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--px12);
+      width: 100%;
+      max-width: 100%;
+      padding-bottom: var(--px64);
+
+      @media (min-width: 768px) {
+        grid-template-columns: repeat(auto-fit, minmax(380px,1fr));
+      }
+    }
+  }
+}
