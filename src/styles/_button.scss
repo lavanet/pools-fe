@@ -35,7 +35,7 @@
   letter-spacing: normal;
   appearance: none;
   box-shadow: var(--btn-box-shadow);
-  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+  transition: background 0.3s ease, color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
 
   &:hover,

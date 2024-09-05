@@ -70,6 +70,15 @@
               height: 9.125em;
             }
           }
+
+          .c-button-container > .c-button {
+            --btn-color: var(--grey-100);
+
+            &:hover,
+            &:focus {
+              --btn-color: var(--white);
+            }
+          }
         }
       }
 

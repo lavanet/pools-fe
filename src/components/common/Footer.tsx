@@ -9,7 +9,7 @@ import { Logo } from '@/components';
 import styles from '@/styles/Footer.module.scss'
 
 export const Footer = () => {
-   const isMobileSm = useMediaQuerySafe('(max-width: 767px)');
+  const isMobileSm = useMediaQuerySafe('(max-width: 767px)');
 
   return(
     <footer className={clsx(styles.cFooter, "c-footer")}>
@@ -45,7 +45,7 @@ export const Footer = () => {
 
             <div className="c-footer-nav-menu-item">
               {!isMobileSm && (
-                <p className="c-mobile-sm"/>
+                <p className="c-tablet-sm"/>
               )}
 
               <Link href="/" title="Rollup Developers">
@@ -105,7 +105,7 @@ export const Footer = () => {
         <div className="c-footer-tagline">
           {isMobileSm? (
             <Image
-            className="c-mobile-sm"
+              className="c-mobile-sm"
               src="/images/lava-tagline-mobile-x2.webp"
               alt='Lava'
               width={288}

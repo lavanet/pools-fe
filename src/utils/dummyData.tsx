@@ -1,5 +1,5 @@
 import { IChain, IPool } from '@/types';
-import { IconAxelar, IconCelestia, IconEvmos, IconKoli, IconNear, IconStarknet } from '@/icons';
+import { IcnAxelar, IcnCelestia, IcnEvmos, IcnKoii, IcnNear, IcnStarknet } from '@assets/images/rounded-chains';
 
 export const initialChains = [
   {
@@ -64,7 +64,7 @@ export const homeSectionPools: IPool[] = [
     monthly_rewards: 27434.23,
     future_rewards: 220728.83,
     past_rewards: 109348.93,
-    icon: <IconNear/>,
+    icon: <IcnNear/>,
   },
   {
     id: 'evmos',
@@ -77,7 +77,7 @@ export const homeSectionPools: IPool[] = [
     monthly_rewards: 143923.8,
     future_rewards: 100293.2,
     past_rewards: 41726.0,
-    icon: <IconEvmos/>,
+    icon: <IcnEvmos/>,
   },
   {
     id: "axelar",
@@ -90,7 +90,7 @@ export const homeSectionPools: IPool[] = [
     monthly_rewards: 39238.58,
     future_rewards: 110342.89,
     past_rewards: 85673.38,
-    icon: <IconAxelar/>,
+    icon: <IcnAxelar/>,
   },
   {
     id: 'starknet',
@@ -103,7 +103,7 @@ export const homeSectionPools: IPool[] = [
     monthly_rewards: 27434.23,
     future_rewards: 220728.83,
     past_rewards: 109348.93,
-    icon: <IconStarknet/>,
+    icon: <IcnStarknet/>,
   },
   {
     id: 'koii',
@@ -116,7 +116,7 @@ export const homeSectionPools: IPool[] = [
     monthly_rewards: 27434.23,
     future_rewards: 220728.83,
     past_rewards: 109348.93,
-    icon: <IconKoli/>,
+    icon: <IcnKoii/>,
   },
   {
     id: 'celestia',
@@ -129,6 +129,6 @@ export const homeSectionPools: IPool[] = [
     monthly_rewards: 27434.23,
     future_rewards: 220728.83,
     past_rewards: 109348.93,
-    icon: <IconCelestia/>,
+    icon: <IcnCelestia/>,
   },
 ];
