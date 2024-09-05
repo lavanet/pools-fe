@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { useMediaQuery, useOnClickOutside } from 'usehooks-ts';
+import { useOnClickOutside } from 'usehooks-ts';
 import clsx from 'clsx';
+import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
 import { CustomButton, CustomAccordion } from '@/components/common';
 import styles from '@/styles/MobileMenu.module.scss'
@@ -25,9 +26,7 @@ const NavItemsList = () => {
 };
 
 export const MobileMenu = () => {
-  const isMobile /* boolean | undefined */ = useMediaQuery('(max-width: 991px)', {
-    initializeWithValue: false,
-  })
+   const isMobile = useMediaQuerySafe('(max-width: 991px)');
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
@@ -52,7 +51,10 @@ export const MobileMenu = () => {
   useOnClickOutside(mobileMenuRef, handleClose)
 
   return (
-    <div className={clsx(styles.cMobileMenu, "c-mobile-menu")} ref={mobileMenuRef}>
+    <div
+      className={clsx(styles.cMobileMenu, "c-mobile-menu", "c-mobile")}
+      ref={mobileMenuRef}
+    >
 
       <CustomButton
         btnColor="white-outline"

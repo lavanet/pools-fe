@@ -1,15 +1,13 @@
 'use client'
 
 import React, { useRef, useState } from 'react';
-import { useMediaQuery } from 'usehooks-ts';
-import { CustomInput, CustomButton } from '@/components';
-import { addEmail } from '@/actions';
 import { toast, ToastContainer } from 'react-toastify';
+import { useMediaQuerySafe } from '@/hooks';
+import { addEmail } from '@/actions';
+import { CustomInput, CustomButton } from '@/components';
 
 export const HomeSectionHeroEmailForm = () => {
-  const isMobile /* boolean | undefined */ = useMediaQuery('(max-width: 991px)', {
-    initializeWithValue: false,
-  })
+ const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
   const formRef = useRef<HTMLFormElement>(null);
 

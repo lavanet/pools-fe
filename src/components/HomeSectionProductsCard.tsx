@@ -1,16 +1,14 @@
 'use client';
 
 import clsx from 'clsx';
-import { useMediaQuery } from 'usehooks-ts';
+import { useMediaQuerySafe } from '@/hooks';
 import { IProduct } from '@/types';
 import { CustomButtonLink } from '@/components/common';
 import {IcnArrowUpRetro, IcnArrowRightRetro} from '@assets/icons'
 import styles from '@/styles/HomeSectionProductsCard.module.scss';
 
 export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
-  const isMobile /* boolean | undefined */ = useMediaQuery('(max-width: 991px)', {
-    initializeWithValue: false,
-  })
+  const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
   return (
     <article className={clsx(styles.cHomeSectionProductsCard, "c-home-section-products-card")}>

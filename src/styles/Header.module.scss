@@ -57,6 +57,10 @@
           --btn-padding-x: var(--font-size-14-px16);
           --btn-font-size: var(--px14);
         }
+
+        .c-header-desktop-docs-btn {
+          --btn-font-size: clamp(1em, 1.042vw, var(--px20));
+        }
       }
     }
   }

@@ -10,7 +10,7 @@
   --btn-border-radius: var(--font-size-14-px18);
   --btn-box-shadow: 0 1px 12px 0 hsl(from var(--orange-600) h s l/0.56);
   --btn-hover-box-shadow: 0 1px 20px 0 hsl(from var(--orange-600) h s l/0.88);
-  --btn-focus-outline-color: var(--orange-400);
+  --btn-focus-outline-color: var(--grey-300);
   --btn-color: var(--white);
   --btn-font-size: var(--px14);
   --btn-size: var(--font-size-14-px36);
@@ -45,8 +45,8 @@
   }
 
   &:focus-visible {
-    outline: var(--btn-border-width) solid var(--btn-focus-outline-color);
-    outline-offset: calc(var(--btn-border-width) * 2);
+    outline: calc(var(--btn-border-width) * 2) solid var(--btn-focus-outline-color);
+    outline-offset: var(--btn-border-width);
   }
 
   &:disabled,
@@ -121,7 +121,6 @@
     --btn-color: var(--grey-700);
     --btn-box-shadow: 0px 1px 12px 0px #FFFFFF52;
     --btn-hover-box-shadow: 0px 1px 12px 0px #FFFFFFB8;
-    --btn-focus-outline-color: var(--border-grey);
 
     &:disabled,
     &.is-disabled {
@@ -139,7 +138,6 @@
     --btn-color: var(--white);
     --btn-box-shadow: none;
     --btn-hover-box-shadow: none;
-    --btn-focus-outline-color: var(--grey-300);
 
     &:hover,
     &:focus:not(:focus-visible),
@@ -161,7 +159,6 @@
     --btn-color: var(--grey-200);
     --btn-box-shadow: none;
     --btn-hover-box-shadow: none;
-    --btn-focus-outline-color: var(--grey-300);
 
     &:hover,
     &:focus:not(:focus-visible),

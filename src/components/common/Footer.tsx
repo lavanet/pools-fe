@@ -1,15 +1,15 @@
 'use client';
 
-import { useMediaQuery } from 'usehooks-ts';
-import clsx from 'clsx';
 import Link from 'next/link';
 import Image from 'next/image';
+import clsx from 'clsx';
+import { useMediaQuerySafe } from '@/hooks';
 import { LegalNavItems, navItems, SocialNavItems } from '@/utils/variables';
 import { Logo } from '@/components';
 import styles from '@/styles/Footer.module.scss'
 
 export const Footer = () => {
-  const isMobileSm = useMediaQuery('(max-width: 767px)');
+   const isMobileSm = useMediaQuerySafe('(max-width: 767px)');
 
   return(
     <footer className={clsx(styles.cFooter, "c-footer")}>

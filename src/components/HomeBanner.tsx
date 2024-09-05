@@ -3,7 +3,7 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
-import { useMediaQuery } from 'usehooks-ts';
+import { useMediaQuerySafe } from '@/hooks';
 import { CustomButtonLink } from '@/components/common';
 import styles from '@/styles/HomeBanner.module.scss';
 
@@ -31,9 +31,7 @@ export const HomeBanner = (
     btnIcon,
     btnIconPlacement,
   }: BannerProps) => {
-  const isMobileSm /* boolean | undefined */ = useMediaQuery('(max-width: 767px)', {
-    initializeWithValue: false,
-  })
+  const isMobileSm /* boolean | undefined */ = useMediaQuerySafe('(max-width: 767px)');
 
   return (
     <aside className={clsx(styles.cHomeBanner, "c-home-banner", image)}>

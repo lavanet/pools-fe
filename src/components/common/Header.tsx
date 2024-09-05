@@ -1,15 +1,13 @@
 'use client';
 
 import clsx from 'clsx';
-import {useMediaQuery} from 'usehooks-ts';
+import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
 import { HeaderDropdown, MobileMenu, CustomButtonLink, Logo } from '@/components/common';
 import styles from '@/styles/Header.module.scss';
 
 export const Header = () => {
-  const isMobile /* boolean | undefined */ = useMediaQuery('(max-width: 991px)', {
-    initializeWithValue: false,
-  })
+  const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
   return (
     <header className={clsx(styles.cHeader, "c-header")}>
@@ -18,11 +16,11 @@ export const Header = () => {
 
         <Logo/>
 
-        {isMobile ?(
+        {isMobile ? (
           <MobileMenu/>
         ):(
           <>
-            <div className="c-button-container">
+            <div className="c-button-container c-desktop">
 
               <CustomButtonLink
                 extraClassName='c-header-nav-link'
@@ -39,6 +37,7 @@ export const Header = () => {
             </div>
 
             <CustomButtonLink
+              extraClassName="c-header-desktop-docs-btn c-desktop"
               btnColor="white"
               btnSize="lg"
               text="Read Docs"

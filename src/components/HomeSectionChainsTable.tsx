@@ -3,12 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
 import { ColumnDef } from '@tanstack/react-table';
+import { useMediaQuerySafe } from '@/hooks';
 import { IChain } from '@/types';
 import { initialChains } from '@/utils/dummyData';
 import { CustomTable, CustomButton, CustomTableMobileText } from '@/components';
 import {IcnCaretDown, IcnCaretUp} from '@assets/icons';
 import styles from '@/styles/HomeSectionChainsTable.module.scss'
-import { useMediaQuery } from 'usehooks-ts';
 
 type ChainsTableProps = {
   filter: string;
@@ -161,9 +161,7 @@ const generatedColumns = (
 }
 
 export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
-  const isMobile /* boolean | undefined */ = useMediaQuery('(max-width: 991px)', {
-    initializeWithValue: false,
-  })
+  const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
   const [filteredChains, setFilteredChains] = useState<IChain[]>(initialChains);
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
