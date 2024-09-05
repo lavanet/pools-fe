@@ -1,16 +1,16 @@
 'use client';
 
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { theme } from '@/contexts';
-
 import clsx from 'clsx';
+import { useMediaQuery } from 'usehooks-ts';
 import { IProduct } from '@/types';
 import { CustomButtonLink } from '@/components/common';
 import {IcnArrowUpRetro, IcnArrowRightRetro} from '@assets/icons'
 import styles from '@/styles/HomeSectionProductsCard.module.scss';
 
 export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile /* boolean | undefined */ = useMediaQuery('(max-width: 991px)', {
+    initializeWithValue: false,
+  })
 
   return (
     <article className={clsx(styles.cHomeSectionProductsCard, "c-home-section-products-card")}>

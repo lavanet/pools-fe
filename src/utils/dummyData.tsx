@@ -1,7 +1,7 @@
 import { IChain, IPool } from '@/types';
 import { IconAxelar, IconCelestia, IconEvmos, IconKoli, IconNear, IconStarknet } from '@/icons';
 
-export const initialChains: IChain[] = [
+export const initialChains = [
   {
     name: 'Agoric',
     requests: 105,

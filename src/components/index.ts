@@ -2,11 +2,9 @@ export * from './common';
 export * from './form-elements';
 export * from './forms';
 
+export * from './HomeBanner';
 export * from './HomeSectionChains';
 export * from './HomeSectionChainsTable';
-export * from './HomeSectionChainsTableCellHead';
-export * from './HomeSectionChainsTableCellText';
-
 export * from './HomeSectionHeroCTA';
 export * from './HomeSectionHeroEmail';
 export * from './HomeSectionDataCards';

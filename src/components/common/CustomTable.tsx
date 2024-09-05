@@ -1,3 +1,5 @@
+'use client'
+
 import {ReactNode} from "react"
 import clsx from "clsx"
 import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table'
@@ -9,16 +11,20 @@ interface CustomTableProps<T extends object> {
   columns: ColumnDef<T>[];
   onRowClick?: (rowData: T) => void;
   defaultEmptyContent?: ReactNode;
+  defaultEmptyTitle?: string;
+  defaultEmptyParagraph?: string;
 }
 
-function CustomTable<T extends object>(
+export const CustomTable = <T extends object> (
   {
     extraClassName,
     data,
     columns,
     onRowClick,
     defaultEmptyContent,
-  }: CustomTableProps<T>) {
+    defaultEmptyTitle,
+    defaultEmptyParagraph,
+  }: CustomTableProps<T>) => {
   const table = useReactTable({
     data,
     columns,
@@ -76,11 +82,11 @@ function CustomTable<T extends object>(
               ):(
                 <>
                   <h2 className="h5">
-                    No data found
+                    {defaultEmptyTitle? defaultEmptyTitle : "No data found"}
                   </h2>
 
                   <p>
-                    There is no data available at this moment
+                    {defaultEmptyParagraph? defaultEmptyParagraph : "There is no data available at this moment"}
                   </p>
                 </>
               )}
@@ -111,5 +117,3 @@ function CustomTable<T extends object>(
     </table>
   )
 }
-
-export default CustomTable

@@ -3,9 +3,7 @@
 import { useState } from 'react';
 import clsx from 'clsx';
 import useDebounce from '@/hooks/useDebounce';
-import { Banner } from '@/components/common';
-import { CustomInput } from '@/components/form-elements';
-import { HomeSectionChainsTable } from '@/components';
+import { CustomInput, HomeBanner, HomeSectionChainsTable } from '@/components';
 import {IcnSearch} from '@assets/icons';
 import styles from '@/styles/HomeSectionChains.module.scss';
 
@@ -30,7 +28,7 @@ export const HomeSectionChains = () => {
 
         </div>
 
-        <Banner
+        <HomeBanner
           button="Learn more"
           link="/"
           message="Add it yourself as a specification and earn LAVA for every request served"

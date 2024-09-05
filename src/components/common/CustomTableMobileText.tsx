@@ -1,7 +1,6 @@
 'use client'
 
-import { styled, Typography, TypographyProps } from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+import clsx from 'clsx';
 
 type CustomTableMobileTextProps = {
   title?: string;
@@ -13,16 +12,9 @@ export const CustomTableMobileText = (
     isHidden,
   }: CustomTableMobileTextProps) => {
   return (
-    <StyledTypography
-      className='c-custom-table-mobile-text'
-      component="span"
-      sx={isHidden? visuallyHidden : undefined}
-    >
+    <span className={clsx("c-custom-table-mobile-text", isHidden && "c-visually-hidden")}>
       {title}
-    </StyledTypography>
+    </span>
   );
 };
 
-const StyledTypography = styled(Typography)<TypographyProps>(({ theme }) => ({
-  color: theme.palette.grey[100],
-}));

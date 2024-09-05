@@ -1,7 +1,7 @@
 'use client';
 
 import clsx from 'clsx';
-import { Banner } from '@/components';
+import { HomeBanner } from '@/components';
 import styles from '@/styles/HomeSectionPreview.module.scss';
 
 export const HomeSectionPreview = () => (
@@ -21,7 +21,7 @@ export const HomeSectionPreview = () => (
 
     <div className="c-home-section-preview-banner">
 
-      <Banner
+      <HomeBanner
         button="Become an RPC Provider"
         buttonType="text"
         image="lavuci-bag"

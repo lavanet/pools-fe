@@ -1,32 +1,40 @@
 'use client';
 
 import NorthEastIcon from '@mui/icons-material/NorthEast';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { theme } from '@/contexts';
 import { Button, styled, Typography } from '@mui/material';
 
+import { ReactNode } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { useMediaQuery } from 'usehooks-ts';
+import { CustomButtonLink } from '@/components/common';
 
 type BannerProps = {
+  image?: 'lavuci' | 'lavuci-bag';
   title: string;
   message: string;
-  image?: 'lavuci' | 'lavuci-bag';
-  button: string;
-  buttonType?: 'contained' | 'text';
-  link: string;
+  btnLink: string;
+  btnText: string;
+  btnColor?: "white" | "white-outline" | "ghost";
+  btnVariant?: "icon" | "link";
+  btnIcon?: ReactNode;
+  btnIconPlacement?: "right";
 };
 
-export const Banner = (
+export const HomeBanner = (
   {
-    button,
-    buttonType = 'contained',
     image = 'lavuci',
-    link,
-    message,
     title,
+    message,
+    btnLink,
+    btnText,
+    btnColor,
+    btnVariant,
+    btnIcon,
+    btnIconPlacement,
   }: BannerProps) => {
-  const isMobileSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMobileSm /* boolean | undefined */ = useMediaQuery('(max-width: 767px)', {
+    initializeWithValue: false,
+  })
 
   return (
     <StyledBanner className={image}>
@@ -49,17 +57,14 @@ export const Banner = (
           {!isMobileSm && (
             <div className="c-button-container">
 
-              <Button
-                href={link}
-                component={Link}
-                color="secondary"
-                title={button}
-                endIcon={buttonType === 'text' ? <NorthEastIcon /> : undefined}
-                variant={buttonType}
-              >
-                {button}
-
-              </Button>
+              <CustomButtonLink
+                href={btnLink}
+                btnVariant={btnVariant && btnVariant}
+                btnColor={btnColor && btnColor}
+                text={btnText}
+                icon={btnIcon && btnIcon}
+                iconPlacement={btnIconPlacement && btnIconPlacement}
+              />
 
             </div>
           )}
@@ -67,16 +72,16 @@ export const Banner = (
 
         {isMobileSm && (
           <div className="c-button-container">
-            <Button
-              href={link}
-              component={Link}
-              color="secondary"
-              title={button}
-              endIcon={buttonType === 'text' ? <NorthEastIcon fontSize="small" /> : undefined}
-              variant={buttonType}
-            >
-              {button}
-            </Button>
+
+            <CustomButtonLink
+              href={btnLink}
+              btnVariant={btnVariant && btnVariant}
+              btnColor={btnColor && btnColor}
+              text={btnText}
+              icon={btnIcon && btnIcon}
+              iconPlacement={btnIconPlacement && btnIconPlacement}
+            />
+
           </div>
         )}
 

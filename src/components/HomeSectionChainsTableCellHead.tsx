@@ -1,15 +1,5 @@
 'use client';
 
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {
-  IconButton,
-  Stack,
-  styled,
-  TableCell,
-  Typography,
-} from '@mui/material';
-
 type ChainsTableCellHeadProps = {
   title: string;
   handleAbsSorting?: () => void;
@@ -21,40 +11,25 @@ export const HomeSectionChainsTableCellHead = ({
   handleAbsSorting,
   handleDescSorting,
 }: ChainsTableCellHeadProps) => (
-  <TableCell>
-    <Stack alignItems="center" direction="row" spacing={2}>
+  <th>
+    <div>
       {(handleAbsSorting || handleDescSorting) && (
-        <Stack>
+        <div>
           {handleAbsSorting && (
-            <StyledIconButton onClick={handleAbsSorting}>
-              <ArrowDropUpIcon />
-            </StyledIconButton>
+            <button onClick={handleAbsSorting}>
+              asc
+            </button>
           )}
 
           {handleDescSorting && (
-            <StyledIconButton onClick={handleDescSorting}>
-              <ArrowDropDownIcon />
-            </StyledIconButton>
+            <button onClick={handleDescSorting}>
+             desc
+            </button>
           )}
-        </Stack>
+        </div>
       )}
 
-      <StyledTypography variant="caption">{title}</StyledTypography>
-    </Stack>
-  </TableCell>
+      <span>{title}</span>
+    </div>
+  </th>
 );
-
-const StyledTypography = styled(Typography)(({ theme }) => ({
-  color: theme.palette.grey[100],
-}));
-
-const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  backgroundColor: '#0C121A', // TODO: move to the palette
-  borderRadius: 4,
-  color: theme.palette.grey[300],
-  height: 16,
-  transition: 'color 0.3s',
-  width: 24,
-
-  '&:hover': { color: theme.palette.common.white },
-}));
