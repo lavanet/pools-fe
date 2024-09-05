@@ -7,7 +7,7 @@
       justify-content: center;
       row-gap: var(--px32);
       text-align: center;
-      padding-bottom: 123px;
+      padding-bottom: 7.6875em; //123px
 
       > div {
         display: flex;
@@ -22,7 +22,7 @@
 
       h2 {
         font-size: var(--px32);
-        line-height: 44.8px;
+        line-height: 1.4em; //44.8px @32px
       }
 
       @media (max-width: 991px) {
@@ -30,7 +30,7 @@
 
         h2 {
           font-size: var(--px20);
-          line-height: 28px;
+          line-height: 1.4em; //28px @20px
           letter-spacing: -0.01em;
         }
       }

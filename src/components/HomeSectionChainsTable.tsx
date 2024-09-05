@@ -203,6 +203,8 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
         extraClassName="is-responsive"
         columns={columns}
         data={sortedAndFilteredChains}
+        defaultEmptyTitle="No results found"
+        defaultEmptyParagraph="No chains matching your search criteria were found"
       />
     </section>
   );

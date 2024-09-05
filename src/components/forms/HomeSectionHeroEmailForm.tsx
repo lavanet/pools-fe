@@ -7,7 +7,7 @@ import { addEmail } from '@/actions';
 import { CustomInput, CustomButton } from '@/components';
 
 export const HomeSectionHeroEmailForm = () => {
- const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
+  const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -45,11 +45,14 @@ export const HomeSectionHeroEmailForm = () => {
           labelIsHidden
           placeholder="Enter your email"
           inputGroupText={
-            <>
-              {!isMobile && (
-                <CustomButton type="submit" btnSize="lg" text="Get notified"/>
-              )}
-            </>
+            isMobile ? undefined :(
+              <CustomButton
+                extraClassName="c-desktop"
+                type="submit"
+                btnSize="lg"
+                text="Get notified"
+              />
+            )
           }
           onChange={(e) => {
             setEmail(e.currentTarget.value);
@@ -57,7 +60,11 @@ export const HomeSectionHeroEmailForm = () => {
         />
 
         {isMobile && (
-          <CustomButton type="submit" text="Get notified"/>
+          <CustomButton
+            extraClassName="c-mobile"
+            type="submit"
+            text="Get notified"
+          />
         )}
 
         <ToastContainer />

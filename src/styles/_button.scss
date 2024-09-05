@@ -24,6 +24,7 @@
   gap: var(--btn-gap);
   height: auto;
   min-height: var(--btn-min-height);
+  min-width: 0;
   padding: var(--btn-padding-y) var(--btn-padding-x);
   background: var(--btn-bg-color);
   border: var(--btn-border);

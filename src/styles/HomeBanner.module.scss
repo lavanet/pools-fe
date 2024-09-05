@@ -10,28 +10,40 @@
       .c-home-banner-grid {
         display: grid;
         grid-template-columns: 1fr auto;
-        grid-template-rows: auto;
-        align-items: stretch;
-        column-gap: 1em;
-        padding: 1em 1em 1em var(--px24);
+        grid-template-rows: repeat(2, min-content);
+        align-items: center;
+        gap: 1em;
+        padding: var(--px8) var(--px8) var(--px8) var(--px24);
         border-radius: var(--home-banner-border-radius);
+
+        @media(min-width: 768px) {
+          grid-template-rows: repeat(4, min-content);
+
+          &-item-text {
+            grid-area: 2 / 1 / 3 / 2;
+          }
+
+          &-item-image {
+            grid-area: 1 / 2 / 5 / 3;
+          }
+
+          .c-button-container {
+            grid-area: 3 / 1 / 4 / 2;
+          }
+        }
 
         &-item-text {
           display: flex;
           flex-direction: column;
           justify-content: center;
-          row-gap: 1em;
-
-          &-content {
-            display: flex;
-            flex-direction: column;
-          }
+          row-gap: var(--px4);
 
           h2 {
             letter-spacing: -0.01em;
           }
 
           p {
+            margin-bottom: 0;
             color: var(--grey-100);
           }
         }
@@ -45,19 +57,17 @@
 
       &.lavuci-bag {
         .c-home-banner-grid {
-          min-height: 134px;
-
           &-item-image {
-            width: 146px;
-            height: 100%;
+            width: 9.125em; // 146px
+            height: 7.375em; // 118px (134px height - 16px padding top/bottom = 118px)
 
             img {
               position: absolute;
               bottom: 0;
               right: 0;
               z-index: 1;
-              width: 146px;
-              height: 146px;
+              width: 9.125em; //146px
+              height: 9.125em;
             }
           }
         }
@@ -65,17 +75,13 @@
 
       &.lavuci {
         .c-home-banner-grid {
-          padding-top: 13px;
+          padding-top: 0;
           padding-right: 0;
           padding-bottom: 0;
 
-          &-item-text {
-            padding-bottom: 13px;
-          }
-
           &-item-image {
             justify-content: flex-end;
-            width: 150px;
+            width: 9.375em; //150px
             height: 100%;
             border-radius: var(--home-banner-border-radius);
             overflow: hidden;
@@ -94,22 +100,28 @@
         --home-banner-border-radius: 1em;
 
         .c-home-banner-grid {
-          row-gap: 1em;
+          row-gap: 0;
+
+          .c-home-banner-grid-item-text p {
+            font-size: var(--px14);
+            line-height: 1.4em; //19.6px
+          }
         }
 
         &.lavuci-bag {
           .c-home-banner-grid {
-            min-height: unset;
-            padding: 1em 0 1em 1em;
+            padding: 0 0 1em 1em;
 
             &-item-image {
               order: 2;
-              width: 88px;
+              width: 5.5em; //88px
+              height: 5.5em;
 
               img {
-                width: 88px;
-                height: 88px;
-                top: -32px;
+                width: 5.5em; //88px
+                height: 5.5em;
+                top: 0;
+                bottom: unset;
               }
             }
 
@@ -127,30 +139,28 @@
             &-item-image {
               position: relative;
               justify-content: flex-end;
-              width: 88px;
-              height: 67px;
+              width: 5.5em; //88px
+              height: 4.1875em; //67px
               border-radius: 1em;
               overflow: hidden;
 
               img {
                 position: absolute;
                 top: 0;
-                width: 88px;
-                height: 88px;
+                width: 5.5em; //88px
+                height: 5.5em;
                 object-fit: contain;
               }
             }
 
             &-item-text {
               grid-column: span 2;
-              padding-bottom: 0;
               padding-right: 1em;
             }
 
             .c-button-container {
               display: flex;
-              align-items: flex-end;
-              padding-bottom: 1em;
+              align-items: center;
             }
           }
         }

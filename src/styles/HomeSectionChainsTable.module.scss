@@ -29,12 +29,25 @@
 
       @media (max-width: 991px) {
         .c-table {
-          tbody tr td:last-child {
-            > .c-button-container {
-              flex-wrap: wrap;
+          tbody tr td {
+            &:first-child {
+              padding: 1em;
+            }
 
-              >.c-button {
-                flex-grow: 1;
+            &:not(:first-child) {
+              padding: var(--px8) 1em;
+            }
+
+            &:last-child {
+              padding: 1em;
+
+              > .c-button-container {
+                gap: var(--px8);
+                flex-wrap: wrap;
+
+                > .c-button {
+                  flex-grow: 1;
+                }
               }
             }
           }

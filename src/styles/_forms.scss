@@ -36,18 +36,16 @@ input[type="tel"] {
   color: var(--input-color);
   font-size: 1em;
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.4;
   background-clip: padding-box;
   appearance: none;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 
-  &:focus {
-    outline: 0;
-  }
-
+  &:focus,
   &:focus-visible {
-    outline: var(--input-focus-visible-outline);
-    outline-offset: var(--input-focus-visible-outline-offset);
+    --input-border-color: var(--grey-100);
+
+    outline: 0;
   }
 }
 
@@ -95,6 +93,13 @@ input[type="checkbox"] {
     --input-bg-color: var(--white);
     --input-border-color: var(--border-grey);
     --input-color: var(--grey-700);
+
+    .c-form-group-input-group.is-input-group {
+      &:focus-visible,
+      &:focus-within {
+        border-color: var(--border-grey);
+      }
+    }
   }
 
   &-input-group {
@@ -107,11 +112,11 @@ input[type="checkbox"] {
       border: var(--input-border);
       border-radius: var(--input-border-radius);
       font-size: 1em;
+      transition: border-color 0.3s ease;
 
       &:focus-visible,
       &:focus-within {
-        outline: var(--input-focus-visible-outline);
-        outline-offset: var(--input-focus-visible-outline);
+        border-color: var(--grey-100);
       }
 
       >input {
@@ -130,7 +135,19 @@ input[type="checkbox"] {
       .c-form-group-input-group-text {
         flex-shrink: 0;
         display: inline-flex;
+        align-items: center;
         color: var(--white);
+
+        &:has(> svg) {
+          justify-content: center;
+          width: 1em;
+          margin-right: var(--px8);
+
+          > svg {
+            max-width: 80%;
+            max-height: 80%;
+          }
+        }
       }
 
       &.left {

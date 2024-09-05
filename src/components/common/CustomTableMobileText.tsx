@@ -12,7 +12,7 @@ export const CustomTableMobileText = (
     isHidden,
   }: CustomTableMobileTextProps) => {
   return (
-    <span className={clsx("c-custom-table-mobile-text", isHidden && "c-visually-hidden")}>
+    <span className={clsx("c-table-mobile-text", isHidden && "c-visually-hidden")}>
       {title}
     </span>
   );

@@ -14,7 +14,7 @@ export const HomeSectionPreview = () => (
         Lava Incentive Pools
       </h1>
 
-      <p className="h5">
+      <p>
         Boost infrastructure for your favourite chain, earn rewards.
       </p>
 

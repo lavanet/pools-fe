@@ -1,5 +1,5 @@
 :root {
-  --header-height: 88px;
+  --header-height: 5.5em; //88px
 
   --input-padding: var(--px8) var(--px12);
   --input-height: var(--px40);
@@ -17,7 +17,7 @@
 
 @media (max-width: 991px) {
   :root {
-    --header-height: 60px;
+    --header-height: 3.75em; //60px
 
     --responsive-24px-to-16px: 1em;
   }

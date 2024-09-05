@@ -81,7 +81,7 @@ export const CustomTable = <T extends object> (
                 <>{defaultEmptyContent}</>
               ):(
                 <>
-                  <h2 className="h5">
+                  <h2 className="h3">
                     {defaultEmptyTitle? defaultEmptyTitle : "No data found"}
                   </h2>
 

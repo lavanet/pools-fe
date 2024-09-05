@@ -40,48 +40,29 @@ export const HomeBanner = (
 
         <div className='c-home-banner-grid-item-text'>
 
-          <div className='c-home-banner-grid-item-text-content'>
+          <h2 className="h5 sharp-medium">
+            {title}
+          </h2>
 
-            <h2 className="h5 sharp-medium">
-              {title}
-            </h2>
+          <p>
+            {message}
+          </p>
 
-            <p>
-              {message}
-            </p>
-
-          </div>
-
-          {!isMobileSm && (
-            <div className="c-button-container c-tablet-sm">
-
-              <CustomButtonLink
-                href={btnLink}
-                btnVariant={btnVariant && btnVariant}
-                btnColor={btnColor && btnColor}
-                text={btnText}
-                icon={btnIcon && btnIcon}
-                iconPlacement={btnIconPlacement && btnIconPlacement}
-              />
-
-            </div>
-          )}
         </div>
 
-        {isMobileSm && (
-          <div className="c-button-container c-mobile-sm">
+        <div className="c-button-container">
 
-            <CustomButtonLink
-              href={btnLink}
-              btnVariant={btnVariant && btnVariant}
-              btnColor={btnColor && btnColor}
-              text={btnText}
-              icon={btnIcon && btnIcon}
-              iconPlacement={btnIconPlacement && btnIconPlacement}
-            />
+          <CustomButtonLink
+            href={btnLink}
+            btnVariant={btnVariant && btnVariant}
+            btnColor={btnColor && btnColor}
+            text={btnText}
+            icon={btnIcon && btnIcon}
+            iconPlacement={btnIconPlacement && btnIconPlacement}
+          />
 
-          </div>
-        )}
+        </div>
+
 
         <div className="c-home-banner-grid-item-image">
           <Image

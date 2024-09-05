@@ -6,26 +6,25 @@
       justify-content: space-between;
       flex-wrap: nowrap;
       gap: var(--px24) var(--px20);
-      padding-top: 46px;
+      padding-top: 2.875em; //46px
       padding-bottom: var(--px32);
 
       .c-home-section-preview-text {
         display: flex;
         flex-direction: column;
         row-gap: var(--px8);
-      }
 
-      h1 {
-        margin-bottom: 0;
-        font-size: clamp(var(--px32), 2.917vw, var(--px56));
-        letter-spacing: -0.001em;
-        line-height: 61.6px;
-      }
+        h1 {
+          font-size: clamp(var(--px32), 2.917vw, var(--px56));
+          letter-spacing: -0.001em;
+        }
 
-      p {
-        margin-bottom: 0;
-        font-weight: 400;
-        color: var(--grey-100);
+        p {
+          margin-bottom: 0;
+          color: var(--grey-100);
+          font-size: clamp(var(--px18), 1.042vw, var(--px20));
+          line-height: 1.4em;
+        }
       }
 
       .c-home-section-preview-banner {
@@ -36,13 +35,19 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: unset;
-        padding-top: 84px;
+        padding-top: var(--px24);
         padding-bottom: var(--px32);
 
-        h1 {
-          margin-bottom: 8px;
-          font-size: 26px;
-          line-height: 1.4em;
+        .c-home-section-preview-text {
+          h1 {
+            font-size: var(--px26);
+            line-height: 1.4em;
+          }
+
+          p {
+            font-size: 1em;
+            line-height: 1.4em;
+          }
         }
 
         .c-home-section-preview-banner {
