@@ -8,8 +8,20 @@ const chainIconMap: { [key: string]: ReactNode } = {
   STRK: <IcnStarknet />,
   KOII: <IcnKoii />,
   CELESTIA: <IcnCelestia />,
+  // Add more mappings as needed
 };
 
-export function getIconForChain(chainId: string): ReactNode {
-  return chainIconMap[chainId.toUpperCase()] || null;
+export function getIconForChain(chainIdentifier: string): ReactNode {
+  // First, try to match by exact key (uppercase)
+  if (chainIconMap[chainIdentifier.toUpperCase()]) {
+    return chainIconMap[chainIdentifier.toUpperCase()];
+  }
+
+  // If no exact match, try to find a partial match
+  const normalizedIdentifier = chainIdentifier.toLowerCase();
+  const matchingKey = Object.keys(chainIconMap).find(key =>
+    normalizedIdentifier.includes(key.toLowerCase())
+  );
+
+  return matchingKey ? chainIconMap[matchingKey] : null;
 }

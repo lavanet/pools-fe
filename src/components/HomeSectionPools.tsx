@@ -7,7 +7,11 @@ import styles from '@/styles/HomeSectionPools.module.scss';
 import { getIconForChain } from '@/utils/chainIcons';
 
 export const HomeSectionPools = () => {
-  const { pools } = useHomeData();
+  const { pools, loading } = useHomeData();
+
+  if (loading) {
+    return <div className={styles.loading}>Loading pools...</div>;
+  }
 
   return (
     <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>

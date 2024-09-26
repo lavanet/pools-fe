@@ -162,9 +162,8 @@ const generatedColumns = (
 
 export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
-  const { chains } = useHomeData();
+  const { chains, loading } = useHomeData();
 
-  const [filteredChains, setFilteredChains] = useState<IChain[]>([]);
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
 
   const handleSort = (field: keyof IChain, direction: 'asc' | 'desc') => {
@@ -172,6 +171,11 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
   };
 
   const columns = useMemo(() => generatedColumns(handleSort, sortConfig, isMobile), [isMobile, sortConfig]);
+
+  const filteredChains = useMemo(() =>
+    chains.filter((chain) => chain.name.toLowerCase().includes(filter.toLowerCase())),
+    [chains, filter]
+  );
 
   const sortedAndFilteredChains = useMemo(() => {
     let result = [...filteredChains];
@@ -191,12 +195,9 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
     return result;
   }, [filteredChains, sortConfig]);
 
-  useEffect(() => {
-    const filtered = chains.filter((chain) =>
-      chain.name.toLowerCase().includes(filter.toLowerCase())
-    );
-    setFilteredChains(filtered);
-  }, [filter, chains]);
+  if (loading) {
+    return <div>Loading chains...</div>;
+  }
 
   return (
     <section className={clsx(styles.cHomeSectionChainsTable, "c-home-section-chains-table")}>

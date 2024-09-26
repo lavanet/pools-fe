@@ -10,10 +10,15 @@ interface HomeData {
   chains: IChain[];
 }
 
-const HomeDataContext = createContext<HomeData>({
+interface HomeDataContextType extends HomeData {
+  loading: boolean;
+}
+
+const HomeDataContext = createContext<HomeDataContextType>({
   dataCards: [],
   pools: [],
   chains: [],
+  loading: true,
 });
 
 export const useHomeData = () => {
@@ -31,14 +36,18 @@ export const HomeDataProvider: React.FC<HomeDataProviderProps> = ({ children }) 
     pools: [],
     chains: [],
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const homeData = await fetchHomeData();
         setData(homeData as HomeData);
       } catch (error) {
         console.error('Error fetching home data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -46,7 +55,7 @@ export const HomeDataProvider: React.FC<HomeDataProviderProps> = ({ children }) 
   }, []);
 
   return (
-    <HomeDataContext.Provider value={data}>
+    <HomeDataContext.Provider value={{ ...data, loading }}>
       {children}
     </HomeDataContext.Provider>
   );

@@ -7,7 +7,11 @@ import styles from '@/styles/HomeSectionDataCards.module.scss';
 
 export function HomeSectionDataCards() {
   // Fetch data on the server
-  const { dataCards } = useHomeData();
+  const { dataCards, loading } = useHomeData();
+
+  if (loading) {
+    return <div className={styles.loading}>Loading data cards...</div>;
+  }
 
   return (
     <section className={clsx(styles.cHomeSectionDataCards, "c-home-section-data-cards")}>

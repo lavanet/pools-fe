@@ -1,6 +1,5 @@
 import { IDataCard, IPool, IChain } from '@/types';
-import { IcnAxelar, IcnCelestia, IcnEvmos, IcnKoii, IcnNear, IcnStarknet } from '@assets/images/rounded-chains';
-import { ReactNode } from 'react';
+import { getIconForChain } from './chainIcons';
 
 const formatLargeNumber = (value: number | string): string => {
   const numValue = typeof value === 'string' ? parseFloat(value) : value;
@@ -18,19 +17,6 @@ const formatLargeNumber = (value: number | string): string => {
   } else {
     return formatNumber(numValue, 2);
   }
-};
-
-const getIconForChain = (chainName: string): ReactNode => {
-  const iconMap: { [key: string]: ReactNode } = {
-    'Near': <IcnNear />,
-    'Evmos': <IcnEvmos />,
-    'Axelar': <IcnAxelar />,
-    'Starknet': <IcnStarknet />,
-    'Koii': <IcnKoii />,
-    'Celestia': <IcnCelestia />,
-  };
-
-  return iconMap[chainName] || null;
 };
 
 export async function fetchHomeData(): Promise<HomeData> {
