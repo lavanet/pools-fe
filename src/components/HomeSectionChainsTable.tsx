@@ -5,10 +5,10 @@ import clsx from 'clsx';
 import { ColumnDef } from '@tanstack/react-table';
 import { useMediaQuerySafe } from '@/hooks';
 import { IChain } from '@/types';
-import { initialChains } from '@/utils/dummyData';
 import { CustomTable, CustomButton, CustomTableMobileText } from '@/components';
 import {IcnCaretDown, IcnCaretUp} from '@assets/icons';
 import styles from '@/styles/HomeSectionChainsTable.module.scss'
+import { useHomeData } from './HomeDataProvider';
 
 type ChainsTableProps = {
   filter: string;
@@ -162,8 +162,9 @@ const generatedColumns = (
 
 export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
+  const { chains } = useHomeData();
 
-  const [filteredChains, setFilteredChains] = useState<IChain[]>(initialChains);
+  const [filteredChains, setFilteredChains] = useState<IChain[]>([]);
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
 
   const handleSort = (field: keyof IChain, direction: 'asc' | 'desc') => {
@@ -191,11 +192,11 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
   }, [filteredChains, sortConfig]);
 
   useEffect(() => {
-    const filtered = initialChains.filter((chain) =>
+    const filtered = chains.filter((chain) =>
       chain.name.toLowerCase().includes(filter.toLowerCase())
     );
     setFilteredChains(filtered);
-  }, [filter]);
+  }, [filter, chains]);
 
   return (
     <section className={clsx(styles.cHomeSectionChainsTable, "c-home-section-chains-table")}>

@@ -74,7 +74,7 @@ export async function fetchHomeData(): Promise<HomeData> {
 
       if (hasRewards) {
         pools.push({
-          id: chain.id,
+          id: chain.id.toLowerCase(),
           title: chain.clean_name,
           service: chain.service,
           node_runner: chain.rpc_node_runners,

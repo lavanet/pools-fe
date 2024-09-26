@@ -15,7 +15,7 @@ export const HomeSectionPools = () => {
         <HomeSectionPoolsCard
           key={pool.id}
           {...pool}
-          icon={getIconForChain(pool.id)}
+          icon={getIconForChain(pool.title)}
         />
       ))}
     </section>
