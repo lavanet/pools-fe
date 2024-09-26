@@ -36,7 +36,7 @@ export const HomeDataProvider: React.FC<HomeDataProviderProps> = ({ children }) 
     const fetchData = async () => {
       try {
         const homeData = await fetchHomeData();
-        setData(homeData);
+        setData(homeData as HomeData);
       } catch (error) {
         console.error('Error fetching home data:', error);
       }

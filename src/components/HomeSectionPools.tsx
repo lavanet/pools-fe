@@ -1,17 +1,23 @@
 'use client';
 
 import clsx from 'clsx';
-import { homeSectionPools } from '@/utils/dummyData';
+import { useHomeData } from './HomeDataProvider';
 import { HomeSectionPoolsCard } from '@/components';
 import styles from '@/styles/HomeSectionPools.module.scss';
+import { getIconForChain } from '@/utils/chainIcons';
 
-export const HomeSectionPools = () => (
-  <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
-    {homeSectionPools.map((pool, poolIdx) => (
-      <HomeSectionPoolsCard
-        key={poolIdx}
-        {...pool}
-      />
-    ))}
-  </section>
-);
+export const HomeSectionPools = () => {
+  const { pools } = useHomeData();
+
+  return (
+    <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
+      {pools.map((pool) => (
+        <HomeSectionPoolsCard
+          key={pool.id}
+          {...pool}
+          icon={getIconForChain(pool.id)}
+        />
+      ))}
+    </section>
+  );
+};
