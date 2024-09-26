@@ -14,3 +14,4 @@ export * from './HomeSectionPoolsCard';
 export * from './HomeSectionPreview';
 export * from './HomeSectionProducts';
 export * from './HomeSectionProductsCard';
+export * from './HomeDataProvider';

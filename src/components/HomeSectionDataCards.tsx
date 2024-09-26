@@ -1,17 +1,22 @@
 'use client';
 
+import { useHomeData } from './HomeDataProvider';
 import clsx from 'clsx';
-import { homeSectionDataCards } from '@/utils/variables';
 import { DataCardItem } from '@/components';
 import styles from '@/styles/HomeSectionDataCards.module.scss';
 
-export const HomeSectionDataCards = () => (
-  <section className={clsx(styles.cHomeSectionDataCards, "c-home-section-data-cards")}>
+export function HomeSectionDataCards() {
+  // Fetch data on the server
+  const { dataCards } = useHomeData();
 
-    {homeSectionDataCards.map((card) => (
-      <DataCardItem {...card} key={card.title}/>
-    ))}
+  return (
+    <section className={clsx(styles.cHomeSectionDataCards, "c-home-section-data-cards")}>
 
-  </section>
-);
+      {dataCards.map((card) => (
+        <DataCardItem {...card} key={card.title} />
+      ))}
+
+    </section>
+  );
+}
 
