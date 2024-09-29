@@ -8,7 +8,7 @@ import { IChain } from '@/types';
 import { CustomTable, CustomButton, CustomTableMobileText } from '@/components';
 import {IcnCaretDown, IcnCaretUp} from '@assets/icons';
 import styles from '@/styles/HomeSectionChainsTable.module.scss'
-import { useHomeData } from './HomeDataProvider';
+import { useHomeData } from '@/contexts/HomeDataContext';
 
 type ChainsTableProps = {
   filter: string;
@@ -162,7 +162,7 @@ const generatedColumns = (
 
 export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
-  const { chains, loading } = useHomeData();
+  const { chains, loading, error } = useHomeData();
 
   const [sortConfig, setSortConfig] = useState<SortConfig>(null);
 
@@ -195,9 +195,8 @@ export const HomeSectionChainsTable = ({ filter }: ChainsTableProps) => {
     return result;
   }, [filteredChains, sortConfig]);
 
-  if (loading) {
-    return <div>Loading chains...</div>;
-  }
+  if (error) return <div>Error loading chains: {error.message}</div>;
+  if (loading) return <div>Loading chains...</div>;
 
   return (
     <section className={clsx(styles.cHomeSectionChainsTable, "c-home-section-chains-table")}>
