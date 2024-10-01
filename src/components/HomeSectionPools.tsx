@@ -1,16 +1,21 @@
-'use client';
-
 import clsx from 'clsx';
-import { useHomeData } from '@/contexts/HomeDataContext';
 import { HomeSectionPoolsCard } from '@/components';
 import styles from '@/styles/HomeSectionPools.module.scss';
-import { getIconForChain } from '@/utils/chainIcons';
+import { IPool } from '@/types';
+import { getChainInfo } from '@/utils/chainInfo';
 
-export const HomeSectionPools = () => {
-  const { pools, loading, error } = useHomeData();
+interface HomeSectionPoolsProps {
+  pools?: IPool[];
+}
 
-  if (error) return <div>Error loading pool cards: {error.message}</div>;
-  if (loading) return <div className={styles.loading}>Loading pools...</div>;
+export const HomeSectionPools = ({ pools }: HomeSectionPoolsProps) => {
+  if (!pools || pools.length === 0) {
+    return (
+      <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
+        <p>No pools available at the moment.</p>
+      </section>
+    );
+  }
 
   return (
     <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
@@ -18,7 +23,7 @@ export const HomeSectionPools = () => {
         <HomeSectionPoolsCard
           key={pool.id}
           {...pool}
-          icon={getIconForChain(pool.title)}
+          icon={getChainInfo(pool.title, 'icon')}
         />
       ))}
     </section>

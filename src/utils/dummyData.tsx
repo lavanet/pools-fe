@@ -1,5 +1,5 @@
 import { IChain, IPool } from '@/types';
-import { IcnAxelar, IcnCelestia, IcnEvmos, IcnKoii, IcnNear, IcnStarknet } from '@assets/images/rounded-chains';
+import { IcnAxelar, IcnCelestia, IcnEvmos, IcnNear, IcnStarknet } from '@assets/images/rounded-chains';
 
 export const initialChains = [
   {
@@ -104,19 +104,6 @@ export const homeSectionPools: IPool[] = [
     future_rewards: 220728.83,
     past_rewards: 109348.93,
     icon: <IcnStarknet/>,
-  },
-  {
-    id: 'koii',
-    title: 'Koii',
-    service: 'Indexers',
-    node_runner: 12,
-    requests: 1.6,
-    value: '$56,782.29',
-    currency: 'LAVA',
-    monthly_rewards: 27434.23,
-    future_rewards: 220728.83,
-    past_rewards: 109348.93,
-    icon: <IcnKoii/>,
   },
   {
     id: 'celestia',

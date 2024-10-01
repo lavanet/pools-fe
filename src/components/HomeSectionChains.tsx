@@ -6,8 +6,13 @@ import useDebounce from '@/hooks/useDebounce';
 import { CustomInput, HomeBanner, HomeSectionChainsTable } from '@/components';
 import {IcnSearch} from '@assets/icons';
 import styles from '@/styles/HomeSectionChains.module.scss';
+import { IChain } from '@/types';
 
-export const HomeSectionChains = () => {
+interface HomeSectionChainsProps {
+  chains: IChain[];
+}
+
+export const HomeSectionChains = ({ chains }: HomeSectionChainsProps) => {
   const [searchValue, setSeachValue] = useState<string>('');
   const debouncedSearchValue = useDebounce(searchValue, 300);
 
@@ -53,6 +58,7 @@ export const HomeSectionChains = () => {
       </div>
 
       <HomeSectionChainsTable
+        chains={chains}
         filter={debouncedSearchValue}
       />
 
