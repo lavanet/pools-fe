@@ -1,0 +1,39 @@
+.cHomeSectionHeroCTA {
+  &:global {
+    &.c-home-section-hero-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      row-gap: var(--px32);
+      text-align: center;
+      padding-bottom: 7.6875em; //123px
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px8);
+      }
+
+      p {
+        margin-bottom: 0;
+        color: var(--grey-100);
+      }
+
+      h2 {
+        font-size: var(--px32);
+        line-height: 1.4em; //44.8px @32px
+      }
+
+      @media (max-width: 991px) {
+        padding-bottom: var(--px48);
+
+        h2 {
+          font-size: var(--px20);
+          line-height: 1.4em; //28px @20px
+          letter-spacing: -0.01em;
+        }
+      }
+    }
+  }
+}

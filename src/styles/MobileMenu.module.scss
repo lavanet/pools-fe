@@ -1,0 +1,130 @@
+.cMobileMenu {
+  &:global {
+    &.c-mobile-menu {
+      .c-mobile-menu-toggle-btn {
+        --btn-gap: 0;
+        --btn-min-height: var(--px36);
+        --btn-padding-y: var(--px5);
+        --btn-padding-x: var(--px20);
+        --btn-border-width: var(--px1);
+        --btn-border-radius: var(--px18);
+        --btn-color: var(--white);
+        --btn-font-size: 1em;
+
+        &-icon {
+          flex-shrink: 0;
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--px10);
+          height: var(--px2);
+          background-color: currentColor;
+
+          &:before,
+          &:after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: var(--px2);
+            background-color: currentColor;
+            transition: transform 0.3s ease
+          }
+
+          &:before {
+            top: calc(var(--px4) * -1);
+          }
+
+          &:after {
+            top: var(--px4);
+          }
+        }
+
+        &.is-open {
+          --btn-border-color: var(--grey-200);
+
+          .c-mobile-menu-toggle-btn-icon {
+            background-color: transparent;
+
+            &:before,
+            &:after {
+              inset: 0;
+              margin: auto;
+            }
+
+            &:before {
+              transform: rotate(-45deg)
+            }
+
+            &:after {
+              transform: rotate(45deg)
+            }
+          }
+        }
+      }
+
+      .c-mobile-menu-content {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        padding-top: var(--header-height);
+        background-color: var(--grey-700);
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        transform: translateY(-50px);
+        transition: transform 0.3s ease, opacity 0.2s ease;
+
+        &.is-open {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+
+        &-wrapper {
+          flex: 1;
+          overflow-y: auto;
+        }
+
+        .c-accordion {
+          padding-bottom: 6em;
+
+          .c-accordion-item {
+            &-content {
+              &-wrapper {
+                padding: 0;
+              }
+
+              ul {
+                display: flex;
+                flex-direction: column;
+                margin: 0;
+                padding: 0;
+                list-style: none;
+
+                li a {
+                  display: flex;
+                  align-items: center;
+                  padding: var(--px18) 1em var(--px18) var(--px32);
+                  transition: color 0.3s ease;
+
+                  &:hover,
+                  &:focus,
+                  &:active,
+                  &.is-active {
+                    color: var(--lava-brand);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

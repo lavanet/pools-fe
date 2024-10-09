@@ -1,0 +1,160 @@
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+legend {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+label {
+  display: inline-block;
+}
+
+::placeholder {
+  color: var(--grey-100);
+  opacity: 1;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="tel"] {
+  display: block;
+  width: 100%;
+  height: var(--input-height);
+  padding: var(--input-padding);
+  background-color: var(--input-bg-color);
+  border: var(--input-border);
+  border-radius: var(--input-border-radius);
+  color: var(--input-color);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.4;
+  background-clip: padding-box;
+  appearance: none;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+
+  &:focus,
+  &:focus-visible {
+    --input-border-color: var(--grey-100);
+
+    outline: 0;
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  background-color: var(--grey-700);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  border: var(--input-border);
+  vertical-align: center;
+  appearance: none;
+  color-adjust: exact;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+
+  &:focus-visible {
+    outline: var(--input-focus-visible-outline);
+    outline-offset: var(--input-focus-visible-outline-offset);
+  }
+}
+
+input[type="checkbox"] {
+  border-radius: var(--px2);
+
+  &:checked {
+    background-color: var(--lava-brand);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  }
+}
+
+.c-form-group {
+  &:not(.c-form-group-check) {
+    label {
+      margin-bottom: var(--font-size-14-px8);
+      color: var(--grey-200);
+      font-size: var(--px14);
+    }
+  }
+
+  &.filled {
+    --input-bg-color: var(--white);
+    --input-border-color: var(--border-grey);
+    --input-color: var(--grey-700);
+
+    .c-form-group-input-group.is-input-group {
+      &:focus-visible,
+      &:focus-within {
+        border-color: var(--border-grey);
+      }
+    }
+  }
+
+  &-input-group {
+    &.is-input-group {
+      display: flex;
+      align-items: stretch;
+      height: var(--input-height);
+      padding: var(--input-padding);
+      background-color: var(--input-bg-color);
+      border: var(--input-border);
+      border-radius: var(--input-border-radius);
+      font-size: 1em;
+      transition: border-color 0.3s ease;
+
+      &:focus-visible,
+      &:focus-within {
+        border-color: var(--grey-100);
+      }
+
+      >input {
+        height: unset;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background-color: transparent;
+
+        &:focus,
+        &:focus-visible {
+          outline: 0;
+        }
+      }
+
+      .c-form-group-input-group-text {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        color: var(--white);
+
+        &:has(> svg) {
+          justify-content: center;
+          width: 1em;
+          margin-right: var(--px8);
+
+          > svg {
+            max-width: 80%;
+            max-height: 80%;
+          }
+        }
+      }
+
+      &.left {
+        .c-form-group-input-group-text {
+          order: -1;
+        }
+      }
+    }
+  }
+}

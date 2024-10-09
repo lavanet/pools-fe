@@ -1,0 +1,7 @@
+.cHome {
+  &:global {
+    &.c-home {
+      padding: 0 var(--responsive-24px-to-16px);
+    }
+  }
+}

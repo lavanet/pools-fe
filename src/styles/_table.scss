@@ -1,0 +1,127 @@
+.c-table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+
+  thead tr th {
+    padding: var(--font-size-14-px10) var(--font-size-14-px16);
+    color: var(--grey-100);
+    font-size: var(--px14);
+    border-bottom: var(--font-size-14-px1) solid var(--grey-400);
+
+    .c-table-sort-th {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .c-table-sort-btn-container {
+      display: inline-flex;
+      flex-direction: column;
+    }
+
+    .c-table-sort-btn {
+      --btn-bg-color: var(--grey-600);
+      --btn-border-radius: var(--font-size-14-px4);
+      --btn-color: var(--grey-300);
+      --btn-font-size: 1em;
+      --btn-icon-size: 0.5em;
+
+      justify-content: center;
+      width: var(--font-size-14-px24);
+      height: var(--font-size-14-px16);
+
+      &:hover,
+      &:focus,
+      &.is-active {
+        --btn-color: var(--white);
+      }
+    }
+  }
+
+  tbody tr td {
+    padding: var(--px20) 1em;
+    border-bottom: var(--px1) solid var(--grey-400);
+    font-size: 1em;
+  }
+
+  tfoot tr td {
+    .c-table-tfoot-td.default-empty {
+      padding: var(--px80) var(--responsive-24px-to-16px);
+      text-align: center;
+      color: var(--grey-100);
+
+      > p {
+        color: var(--grey-200);
+      }
+    }
+  }
+
+  .c-table-mobile-text {
+    color:  var(--grey-100);
+  }
+
+  @media (max-width: 991px) {
+    &.is-responsive {
+      display: block;
+
+      thead,
+      thead tr,
+      thead tr th,
+      tfoot,
+      tfoot tr,
+      tfoot tr td {
+        display: block;
+      }
+
+      thead tr th {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+      }
+
+      tbody {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px12);
+
+        tr {
+          display: flex;
+          flex-direction: column;
+          background-color: var(--grey-600);
+          border: var(--px1) solid var(--grey-400);
+          border-radius: 1em;
+
+          &:last-child td {
+            border: var(--px1) solid var(--grey-400);
+          }
+
+          th {
+            padding: 1em;
+          }
+
+          td {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: var(--px8) 1em;
+
+            &:last-child {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+
+      tfoot tr td {
+        .c-table-tfoot-td.default-empty {
+          background-color: var(--grey-600);
+          border-radius: 1em;
+          border: var(--px1) solid var(--grey-400);
+        }
+      }
+    }
+  }
+}

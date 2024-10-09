@@ -1,0 +1,24 @@
+:root {
+  --header-height: 5.5em; //88px
+
+  --input-padding: var(--px8) var(--px12);
+  --input-height: var(--px40);
+  --input-bg-color: transparent;
+  --input-border-width: var(--px1);
+  --input-border-color: var(--grey-400);
+  --input-border: var(--input-border-width) solid var(--input-border-color);
+  --input-border-radius: var(--px24);
+  --input-color: var(--body-color);
+  --input-focus-visible-outline: var(--font-size-12-px1) solid var(--medium-teal);
+  --input-focus-visible-outline-offset: var(--font-size-12-px1);
+
+  --responsive-24px-to-16px: var(--px24);
+}
+
+@media (max-width: 991px) {
+  :root {
+    --header-height: 3.75em; //60px
+
+    --responsive-24px-to-16px: 1em;
+  }
+}

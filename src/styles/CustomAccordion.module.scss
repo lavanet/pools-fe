@@ -1,0 +1,49 @@
+.cAccordion {
+  &:global {
+    &.c-accordion {
+      .c-accordion-item {
+        display: flex;
+        flex-direction: column;
+        row-gap: 0;
+
+        > .c-button[data-variant="link"] {
+          --btn-gap: 1em;
+          --btn-padding-x: 1em;
+          --btn-padding-y: var(--px18);
+          --btn-chevron-size: var(--px11);
+
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          max-width: 100%;
+          border-bottom: var(--px1) solid var(--grey-400);
+          font-weight: 500;
+
+          &.is-open {
+            background-color: var(--grey-600);
+          }
+        }
+
+        .c-accordion-item-content {
+          display: block;
+          height: auto;
+          max-height: 0;
+          background-color: var(--grey-600);
+          overflow: hidden;
+          opacity: 0;
+          transition: max-height 0.4s ease, opacity 0.3s ease;
+
+          &.is-open {
+            opacity: 1;
+            max-height: 100vh;
+          }
+
+          &-wrapper {
+            padding: 1em;
+            border-bottom: var(--px1) solid var(--grey-400);
+          }
+        }
+      }
+    }
+  }
+}

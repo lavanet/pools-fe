@@ -1,0 +1,94 @@
+.cHeaderCustomDropdown {
+  &:global {
+    &.c-header-custom-dropdown {
+      width: 100vw;
+      padding: 0 var(--px24);
+      background-color: transparent;
+      border-radius: 0;
+      font-size: 1em;
+
+      .tippy-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: var(--px1360);
+        margin: 0 auto;
+        padding: 22px 0 0;
+        background-color: var(--grey-600);
+        border-radius: 0 0 var(--px32) var(--px32);
+        overflow: hidden;
+      }
+
+      .c-header-custom-dropdown-grid {
+        display: grid;
+        grid-template-columns: 1fr 335px;
+        align-items: stretch;
+        width: 100%;
+        max-width: 100%;
+
+        &-item {
+          display: flex;
+          flex-direction: column;
+          padding: var(--px24);
+
+          &.menu {
+            > div {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+              grid-template-rows: repeat(3, 1fr);
+              grid-auto-flow: column;
+              gap: var(--px20) var(--px24);
+
+              a {
+                display: flex;
+                align-items: flex-start;
+                gap: var(--px8);
+                padding: 1em var(--px24);
+
+                .icon {
+                  background-color: blue;
+
+                  i {
+                    width: var(--px20);
+                    height: var(--px20);
+                  }
+                }
+
+                .text {
+                  display: flex;
+                  flex-direction: column;
+                  row-gap: var(--px8);
+
+                  >* {
+                    display: block;
+                  }
+
+                  >span {
+                    font-weight: 500;
+                  }
+
+                  small {
+                    width: 100%;
+                    max-width: 316px;
+                    color: var(--grey-200);
+                    font-size: var(--px14);
+                    font-weight: normal;
+                    line-height: 19.6px;
+                  }
+                }
+              }
+            }
+          }
+
+          &.banner {
+            background: url("../../public/images/lava-orange-bg-x2.webp") no-repeat center center/cover;
+
+            > .c-button-container {
+              margin-top: auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}

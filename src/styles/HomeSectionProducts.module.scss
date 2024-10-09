@@ -1,0 +1,18 @@
+.cHomeSectionProducts {
+  &:global {
+    &.c-home-section-products {
+      display: grid;
+      grid-template-columns: 1fr;
+      align-Items: unset;
+      gap: var(--px12);
+      padding-bottom: var(--px40);
+
+      @media(min-width: 992px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-items: stretch;
+        padding-bottom: 120px;
+      }
+    }
+  }
+}

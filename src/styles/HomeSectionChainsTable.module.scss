@@ -1,0 +1,58 @@
+.cHomeSectionChainsTable {
+  &:global {
+    &.c-home-section-chains-table {
+      .c-table {
+        @media (min-width: 992px) {
+          thead tr th:last-child,
+          tbody tr td:last-child {
+            width: 0;
+          }
+        }
+
+        tbody tr {
+          td:first-child {
+            .c-flexbox {
+              column-gap: var(--px12);
+
+              i {
+                width: var(--px32);
+                height: var(--px32);
+              }
+
+              p {
+                margin-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+
+      @media (max-width: 991px) {
+        .c-table {
+          tbody tr td {
+            &:first-child {
+              padding: 1em;
+            }
+
+            &:not(:first-child) {
+              padding: var(--px8) 1em;
+            }
+
+            &:last-child {
+              padding: 1em;
+
+              > .c-button-container {
+                gap: var(--px8);
+                flex-wrap: wrap;
+
+                > .c-button {
+                  flex-grow: 1;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+Before running the application, make sure to set up the following environment variable in a .env.local file in the root of the project: NEXT_PUBLIC_LAVAPOOL_BE_URL=https://your-api-endpoint.com/api
+
+Replace https://your-api-endpoint.com/api with the actual URL of your backend API.
+
+For development, you can use: NEXT_PUBLIC_LAVAPOOL_BE_URL=https://i40rljfi9c.execute-api.us-east-1.amazonaws.com/api
+
+Then, run the development server:
 
 ```bash
 npm run dev

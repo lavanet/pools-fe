@@ -1,0 +1,177 @@
+.cHomeSectionProductsCard {
+  &:global {
+    &.c-home-section-products-card {
+      --home-product-card-border-radius: var(--px20);
+
+      flex-grow: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: var(--px1);
+      border-radius: var(--home-product-card-border-radius);
+      overflow: hidden;
+
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        border-radius: var(--home-product-card-border-radius);
+        border: var(--px1) solid transparent;
+        background: linear-gradient(180deg, #3D4658 0%, #212630 79.69%);
+        mask: linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+
+      @media (max-width: 991px){
+        --home-product-card-border-radius: 1em;
+      }
+    }
+  }
+
+  :global {
+    .c-home-section-products-card {
+      &-wrapper {
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: var(--px40) 1em;
+        background: url("../../public/images/lava-grain-bg-x2.webp") no-repeat center/cover;
+        border-radius: var(--home-product-card-border-radius);
+        overflow: hidden;
+        isolation: isolate;
+
+        &:before,
+        &:after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          display: block;
+          width: 100%;
+          height: 100%;
+          margin: auto;
+          border-radius: var(--home-product-card-border-radius);
+        }
+
+        &:before {
+          z-index: -1;
+          background: linear-gradient(180deg, #0C121A 0%, transparent 100%);
+        }
+
+        &:after {
+          z-index: -2;
+          background: url("../../public/images/lava-dot-grid-bg-x2.webp") repeat top left 0.6%/742px auto;
+          opacity: 0.38;
+        }
+      }
+
+      &-body {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px24);
+        align-items: flex-start;
+        width: 100%;
+        max-width: 365px;
+        margin: 0 auto;
+
+        @media (min-width: 992px) {
+          h2 {
+            font-size: clamp(var(--px20), 1.354vw ,var(--px26));
+            font-family: var(--font-family-sharp-medium);
+          }
+
+          .c-button-container {
+            margin-top: auto;
+            padding-top: var(--px28);
+
+            .c-button[data-size="xl"] {
+              --btn-font-size: clamp(1em, 1.042vw, var(--px20));
+            }
+          }
+        }
+      }
+
+      &-badge {
+        > span {
+          display: inline-flex;
+          align-items: center;
+          padding: var(--px4) var(--px6);
+          border-radius: var(--px4) var(--px9) var(--px9) var(--px9);
+          outline-width: var(--px1);
+          outline-style: solid;
+          outline-offset: calc(var(--px1) * -1);
+
+          &.orange {
+            background-color: var(--orange-500);
+            outline-color: var(--orange-300);
+            box-shadow: 0 1px 33px 0 #EF6000B2;
+          }
+
+          &.red {
+            background-color: var(--lava-brand);
+            outline-color: var(--orange-400);
+            box-shadow: 0 1px 33px 0 #F93800B2;
+          }
+
+          > span {
+            font-size: var(--px11);
+            font-weight: 500;
+            text-transform: uppercase;
+            line-height: 1;
+          }
+
+          @media (min-width: 992px) {
+            padding: var(--px4) var(--px8);
+            border-radius: var(--px6) var(--px13) var(--px13) var(--px13);
+
+            > span {
+              font-size: clamp(1em, 0.938vw, var(--px18));
+              font-family: var(--font-family-retro);
+              font-weight: 400;
+            }
+          }
+        }
+      }
+
+      @media (max-width: 991px) {
+        &-wrapper {
+          padding: 1em;
+        }
+
+        &-body {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: flex-end;
+          gap: var(--px8);
+          width: 100%;
+          max-width: 100%;
+
+          h2 {
+            font-size: 1em;
+            line-height: 22.4px;
+          }
+
+          .c-button-container .c-button {
+            --btn-font-size: 1em;
+            --btn-icon-size: var(--px12);
+
+            justify-content: center;
+            width: var(--px24);
+            height: var(--px24);
+          }
+        }
+
+        &-badge {
+          grid-column: span 2;
+        }
+      }
+    }
+  }
+}

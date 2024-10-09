@@ -1,0 +1,158 @@
+.cHomeSectionHeroEmail {
+  &:global {
+    &.c-home-section-hero-email {
+      --hero-email-border-radius: var(--px32);
+
+      position: relative;
+      padding: var(--px1);
+      border-radius: var(--hero-email-border-radius);
+      margin-bottom: var(--px24);
+      overflow: hidden;
+
+      &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        margin: auto;
+        border-radius: var(--hero-email-border-radius);
+        border: var(--px1) solid transparent;
+        background: linear-gradient(132.03deg, #FF3900 0%, rgba(255, 57, 0, 0.27) 42.88%) border-box;
+        mask: linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+      }
+
+      @media (max-width: 991px) {
+        --hero-email-border-radius: 1em;
+
+        margin-bottom: var(--px40);
+      }
+    }
+  }
+
+  :global {
+    .c-home-section-hero-email {
+      &-wrapper {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px32);
+        padding: 7.0625em var(--responsive-24px-to-16px); //113px 24/16px
+        background: url("../../public/images/lava-cta-bg-x2.webp") no-repeat center /cover;
+        border-radius: var(--hero-email-border-radius);
+        overflow: hidden;
+
+        h2 {
+          width: 100%;
+          max-width: 12.357em; //692px @56px
+          margin: 0 auto;
+          text-align: center;
+        }
+
+        .c-form-group {
+          --input-border-radius: var(--px40);
+          --input-height: auto;
+
+          width: 100%;
+          max-width: 25.375em; //406px
+          margin: 0 auto;
+
+          .c-form-group-input-group {
+            &.is-input-group {
+              padding: var(--px8) var(--px8) var(--px8) var(--px24);
+            }
+          }
+        }
+      }
+
+      &-footer {
+        display: flex;
+        flex-direction: column;
+        row-gap: var(--px24);
+        text-align: center;
+        padding-top: var(--px8);
+
+        h3 {
+          color: var(--lava-brand);
+        }
+
+        > div {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          column-gap: var(--px24);
+
+          >.c-button {
+            --btn-size: 4.5em; //72px
+            --btn-icon-size: var(--px24);
+          }
+        }
+      }
+
+      @media(max-width: 991px) {
+        &-wrapper {
+          row-gap: var(--px24);
+          padding: var(--px40) var(--responsive-24px-to-16px);
+          background: url("../../public/images/lava-cta-bg-mobile-x2.webp") no-repeat center /cover;
+
+          h2 {
+            font-size: var(--px20);
+            line-height: 1.4em;
+            letter-spacing: -0.01em;
+            max-width: 12.8em; //256px @20px
+          }
+
+          form {
+            width: 100%;
+            max-width: 25.375em; //406px
+            margin: 0 auto;
+            text-align: center;
+
+            .c-form-group {
+              --input-border-radius: var(--px40);
+              --input-height: var(--px48);
+              --input-padding: var(--px13) var(--px24);
+
+              max-width: 100%;
+              margin: 0 auto var(--px8);
+            }
+
+            .c-button {
+              --btn-min-height: var(--px48);
+              --btn-padding-y: var(--px5);
+              --btn-padding-x: var(--px24);
+              --btn-border-radius: var(--px40);
+              --btn-border-width: var(--px1);
+              --btn-font-size: 1em;
+
+              width: 100%;
+              max-width: 100%;
+            }
+          }
+        }
+        &-footer {
+          padding-top: var(--px48);
+
+          h3 {
+            font-size: var(--px12);
+            line-height: 1em;
+            letter-spacing: 0.08em;
+          }
+
+          > div {
+            column-gap: 1em;
+
+            >.c-button {
+              --btn-size: var(--px48);
+              --btn-icon-size: 1em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

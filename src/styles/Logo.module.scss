@@ -1,0 +1,10 @@
+.cLogo {
+  &:global {
+    &.c-logo {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      width: 6.625em; //106px
+    }
+  }
+}

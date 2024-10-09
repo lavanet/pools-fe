@@ -1,0 +1,23 @@
+.cHomeSectionDataCards {
+  &:global {
+    &.c-home-section-data-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--px12);
+      padding-bottom: var(--px48);
+
+      @media (min-width: 768px){
+        grid-template-columns: repeat(auto-fit, minmax(20.6875em, 1fr)); //331px
+      }
+
+      @media (min-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+        padding-bottom: var(--px64);
+      }
+
+      @media (min-width: 1200px) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
