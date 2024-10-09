@@ -1,6 +1,11 @@
 import type { Metadata } from 'next';
-import 'tippy.js/animations/shift-away.css'
-import 'tippy.js/dist/tippy.css'
+import 'tippy.js/animations/shift-away.css';
+import 'tippy.js/dist/tippy.css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+import 'swiper/css/grid';
+import 'swiper/css';
 import "@/styles/index.scss";
 
 import { Footer } from '@/components/common/Footer';
@@ -19,9 +24,8 @@ export default function RootLayout(
   }>) {
   return (
     <html lang="en">
-
       <body>
-
+      
       <Header />
 
       <main className="c-main">

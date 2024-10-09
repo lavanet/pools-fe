@@ -1,19 +1,34 @@
 .cHomeSectionPools {
   &:global {
     &.c-home-section-pools {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--px12);
-      width: 100%;
-      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1em;
       padding-bottom: var(--px48);
 
-      @media (min-width: 768px) {
-        grid-template-columns: repeat(auto-fit, minmax(380px,1fr));
+      .c-button-container {
+        gap: var(--px12);
+        justify-content: flex-end;
       }
 
-      @media (min-width: 992px) {
-        padding-bottom: var(--px64);
+      .c-home-section-pools-slider {
+        display: block;
+        //grid-template-columns: auto minmax(0,1fr) auto;
+        //align-items: center;
+        //gap: 1em;
+
+        .swiper-grid > .swiper-wrapper {
+          flex-wrap: wrap;
+          align-items: stretch;
+          padding-top: 2px;
+          padding-bottom: 2px;
+        }
+      }
+
+      .c-home-section-pools-footer{
+        display: flex;
+        flex-direction: column;
+        row-gap: 1em;
       }
     }
   }

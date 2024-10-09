@@ -93,6 +93,11 @@ export const HomeSectionPoolsCard = (
               <small>{requests}</small>
             </li>
 
+             <li>
+              <em>Estimated APR:&nbsp;</em>
+              <small>15.8%</small>
+            </li>
+
           </ul>
 
         </div>

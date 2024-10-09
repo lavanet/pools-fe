@@ -1,3 +1,4 @@
+import IcnArrowLeftRetroSvg from './icn-arrow-left-retro-computer.svg';
 import IcnArrowRightRetroSvg from './icn-arrow-right-retro-computer.svg';
 import IcnArrowUpSvg from './icn-arrow-up.svg';
 import IcnArrowUpRetroSvg from './icn-arrow-up-retro-computer.svg';
@@ -10,6 +11,7 @@ import IcnSearchSvg from './icn-search.svg';
 import IcnTelegramSvg from './icn-telegram.svg';
 import IcnXSvg from './icn-x.svg';
 
+export const IcnArrowLeftRetro = IcnArrowLeftRetroSvg;
 export const IcnArrowRightRetro = IcnArrowRightRetroSvg;
 export const IcnArrowUp = IcnArrowUpSvg;
 export const IcnArrowUpRetro = IcnArrowUpRetroSvg;
