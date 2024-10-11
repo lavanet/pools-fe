@@ -1,20 +1,22 @@
 'use client'
 
+import styles from '@/styles/CustomAccordion.module.scss';
+
 import { ReactNode, useState } from 'react';
 import clsx from 'clsx';
-import { CustomButton } from '@/components/common';
-import styles from '@/styles/CustomAccordion.module.scss';
-interface CustomAccordionItemProps {
+
+import { Button } from '@/components/common';
+interface AccordionItemProps {
   title: string;
   content: ReactNode;
 }
 
-interface CustomAccordionProps {
-  accordionItems: CustomAccordionItemProps[];
+interface AccordionProps {
+  accordionItems: AccordionItemProps[];
   name: string;
 }
 
-export const CustomAccordion = ({ accordionItems, name }: CustomAccordionProps) => {
+export const Accordion = ({ accordionItems, name }: AccordionProps) => {
   const [openIndex, setOpenIndex] = useState<string | null>(null);
 
   const toggleOpen = (index: number) => {
@@ -31,7 +33,7 @@ export const CustomAccordion = ({ accordionItems, name }: CustomAccordionProps) 
           key={`${name}-${accordionIdx}`}
         >
 
-          <CustomButton
+          <Button
             extraClassName={clsx("c-accordion-item-toggle", openIndex === `${name}-${accordionIdx}` && 'is-open')}
             text={accordion.title}
             btnVariant="link"

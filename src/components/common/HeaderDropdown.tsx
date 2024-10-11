@@ -1,13 +1,16 @@
 'use client';
 
+import styles from '@/styles/HeaderDropdown.module.scss'
+import { IcnChevronDown, IcnArrowUp } from '@assets/icons';
+
 import { ReactNode, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
+
 import { INavItemLink } from '@/types';
-import { IcnChevronDown, IcnArrowUp } from '@assets/icons';
-import styles from '@/styles/HeaderDropdown.module.scss'
-import { CustomButtonLink } from '@/components';
+
+import { ButtonLink } from '@/components';
 
 type HeaderDropdownProps = {
   id?: string,
@@ -83,7 +86,7 @@ export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
 
             <div className="c-button-container">
 
-                <CustomButtonLink
+                <ButtonLink
                   href="/"
                   btnColor="white-outline"
                   text="Get started"

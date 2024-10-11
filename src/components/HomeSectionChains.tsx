@@ -1,12 +1,15 @@
 'use client';
 
+import styles from '@/styles/HomeSectionChains.module.scss';
+import {IcnSearch} from '@assets/icons';
+
 import { useState } from 'react';
 import clsx from 'clsx';
+
 import useDebounce from '@/hooks/useDebounce';
-import { CustomInput, HomeBanner, HomeSectionChainsTable } from '@/components';
-import {IcnSearch} from '@assets/icons';
-import styles from '@/styles/HomeSectionChains.module.scss';
 import { IChain } from '@/types';
+
+import { CustomInput, HomeBanner, HomeSectionChainsTable } from '@/components';
 
 interface HomeSectionChainsProps {
   chains: IChain[];
@@ -57,10 +60,10 @@ export const HomeSectionChains = ({ chains }: HomeSectionChainsProps) => {
 
       </div>
 
-      <HomeSectionChainsTable
-        chains={chains}
-        filter={debouncedSearchValue}
-      />
+        <HomeSectionChainsTable
+          chains={chains}
+          filter={debouncedSearchValue}
+        />
 
     </section>
   );

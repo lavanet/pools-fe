@@ -4,7 +4,7 @@ export interface IButton {
   title?: string;
   text?: string;
   children?: ReactNode;
-  btnColor?: "white" | "white-outline" | "ghost";
+  btnColor?: "white" | "white-outline" | "grey"|"ghost";
   btnSize?: "xl" | "lg" | "sm"; // xl: 56px | lg: 48px | sm: 28px | default: 36px
   btnVariant?: "link" | "icon";
   icon?: ReactNode;

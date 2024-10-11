@@ -1,9 +1,11 @@
 'use client';
+import styles from '@/styles/HomeSectionPreview.module.scss';
 
 import clsx from 'clsx';
+
 import { HomeBanner } from '@/components';
+
 import { IcnArrowUp } from '@assets/icons';
-import styles from '@/styles/HomeSectionPreview.module.scss';
 
 export const HomeSectionPreview = () => (
   <section className={clsx(styles.cHomeSectionPreview, "c-home-section-preview",)}>

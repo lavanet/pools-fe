@@ -1,11 +1,12 @@
 'use client';
 
+import styles from '@/styles/HomeBanner.module.scss';
+
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import clsx from 'clsx';
-import { useMediaQuerySafe } from '@/hooks';
-import { CustomButtonLink } from '@/components/common';
-import styles from '@/styles/HomeBanner.module.scss';
+
+import { ButtonLink } from '@/components/common';
 
 type BannerProps = {
   image?: 'lavuci' | 'lavuci-bag';
@@ -31,7 +32,6 @@ export const HomeBanner = (
     btnIcon,
     btnIconPlacement,
   }: BannerProps) => {
-  const isMobileSm /* boolean | undefined */ = useMediaQuerySafe('(max-width: 767px)');
 
   return (
     <aside className={clsx(styles.cHomeBanner, "c-home-banner", image)}>
@@ -52,7 +52,7 @@ export const HomeBanner = (
 
         <div className="c-button-container">
 
-          <CustomButtonLink
+          <ButtonLink
             href={btnLink}
             btnVariant={btnVariant && btnVariant}
             btnColor={btnColor && btnColor}

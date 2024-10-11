@@ -125,3 +125,34 @@
     }
   }
 }
+
+.c-table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--px12);
+  padding: var(--px32) 0 0;
+
+  > .c-button-container {
+    gap: var(--px12);
+  }
+
+  .c-table-pagination-btn {
+    &.previous,
+    &.next {
+      &:disabled {
+        opacity: 0.4;
+      }
+    }
+
+    &.index {
+      &.is-active {
+        --btn-color: var(--white);
+      }
+
+      i {
+        font-size: 0.7em;
+      }
+    }
+  }
+}

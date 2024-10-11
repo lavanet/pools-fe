@@ -1,10 +1,13 @@
 'use client';
 
+import styles from '@/styles/Header.module.scss';
+
 import clsx from 'clsx';
+
 import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
-import { HeaderDropdown, MobileMenu, CustomButtonLink, Logo } from '@/components/common';
-import styles from '@/styles/Header.module.scss';
+
+import { HeaderDropdown, MobileMenu, ButtonLink, Logo } from '@/components/common';
 
 export const Header = () => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -22,7 +25,7 @@ export const Header = () => {
           <>
             <div className="c-button-container c-desktop">
 
-              <CustomButtonLink
+              <ButtonLink
                 extraClassName='c-header-nav-link'
                 btnColor='ghost'
                 btnSize="lg"
@@ -36,7 +39,7 @@ export const Header = () => {
 
             </div>
 
-            <CustomButtonLink
+            <ButtonLink
               extraClassName="c-header-desktop-docs-btn c-desktop"
               btnColor="white"
               btnSize="lg"

@@ -1,10 +1,13 @@
 'use client';
 
+import styles from '@/styles/HomeSectionPoolsCard.module.scss';
+
 import clsx from 'clsx';
 import { NumericFormat } from 'react-number-format';
+
 import { IPool } from '@/types';
-import { CustomButton } from '@/components';
-import styles from '@/styles/HomeSectionPoolsCard.module.scss';
+
+import { Button } from '@/components';
 
 type PoolsCardProps = IPool;
 
@@ -161,11 +164,11 @@ export const HomeSectionPoolsCard = (
 
         <div className="c-home-section-pools-card-footer">
 
-          <CustomButton
+          <Button
             text='Run RPC node'
           />
 
-          <CustomButton
+          <Button
             btnColor="white"
             text="Restake to RPC provider"
             disabled

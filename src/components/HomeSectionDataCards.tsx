@@ -1,9 +1,12 @@
 'use client';
 
-import clsx from 'clsx';
-import { DataCardItem } from '@/components';
 import styles from '@/styles/HomeSectionDataCards.module.scss';
+
+import clsx from 'clsx';
+
 import { IDataCard } from '@/types';
+
+import { DataCardItem } from '@/components';
 
 interface HomeSectionDataCardsProps {
   dataCards?: IDataCard[];

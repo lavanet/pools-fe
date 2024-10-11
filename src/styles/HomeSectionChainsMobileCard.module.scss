@@ -1,0 +1,67 @@
+.cHomeSectionChainsMobileCard {
+  &:global {
+    &.c-home-section-chains-mobile-card {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--grey-600);
+      border: var(--px1) solid var(--grey-400);
+      border-radius: 1em;
+    }
+  }
+
+  :global {
+    .c-home-section-chains-mobile-card {
+      &-header {
+        display: flex;
+        align-items: center;
+        gap: var(--px12);
+        padding: 1em;
+        border-bottom: var(--px1) solid var(--grey-400);
+
+        i {
+          width: var(--px32);
+          height: var(--px32);
+        }
+
+        .h6 {
+          font-weight: 500;
+          margin-bottom: 0;
+        }
+      }
+
+      &-list {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: var(--px8) 1em;
+          width: 100%;
+
+          > em {
+            color: var(--grey-100);
+            font-style: normal;
+          }
+        }
+      }
+
+      &-footer {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--px8);
+        padding: 1em;
+        border-top: var(--px1) solid var(--grey-400);
+
+        > .c-button {
+          flex: 1 1 0;
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,12 @@
 'use client';
 
-import clsx from 'clsx';
-import { homeSectionProducts } from '@/utils/variables';
-import { HomeSectionProductsCard } from '@/components';
 import styles from '@/styles/HomeSectionProducts.module.scss';
+
+import clsx from 'clsx';
+
+import { homeSectionProducts } from '@/utils/variables';
+
+import { HomeSectionProductsCard } from '@/components';
 
 export const HomeSectionProducts = () => (
   <section className={clsx(styles.cHomeSectionProducts,"c-home-section-products")}>

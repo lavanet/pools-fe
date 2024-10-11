@@ -1,12 +1,15 @@
 'use client';
 
+import styles from '@/styles/MobileMenu.module.scss'
+
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useOnClickOutside } from 'usehooks-ts';
 import clsx from 'clsx';
+
 import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
-import { CustomButton, CustomAccordion } from '@/components/common';
-import styles from '@/styles/MobileMenu.module.scss'
+
+import { Button, Accordion } from '@/components/common';
 
 const NavItemsList = () => {
   return navItems.map(item => ({
@@ -56,7 +59,7 @@ export const MobileMenu = () => {
       ref={mobileMenuRef}
     >
 
-      <CustomButton
+      <Button
         btnColor="white-outline"
         extraClassName={clsx("c-mobile-menu-toggle-btn", mobileMenuOpen && "is-open")}
         title={mobileMenuOpen? 'Close menu' : "Open menu"}
@@ -64,13 +67,13 @@ export const MobileMenu = () => {
       >
         <span className="c-mobile-menu-toggle-btn-icon"/>
 
-      </CustomButton>
+      </Button>
 
       <aside className={clsx("c-mobile-menu-content", mobileMenuOpen && "is-open")}>
 
         <div className='c-mobile-menu-content-wrapper'>
 
-          <CustomAccordion
+          <Accordion
             accordionItems={NavItemsList()}
             name="mobile-menu"
           />

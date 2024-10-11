@@ -1,9 +1,12 @@
 'use client';
 
-import clsx from 'clsx';
-import { SocialNavItems } from '@/utils/variables';
-import { CustomButtonLink, HomeSectionHeroEmailForm } from '@/components';
 import styles from '@/styles/HomeSectionHeroEmail.module.scss';
+
+import clsx from 'clsx';
+
+import { SocialNavItems } from '@/utils/variables';
+
+import { ButtonLink, HomeSectionHeroEmailForm } from '@/components';
 
 export const HomeSectionHeroEmail = () => {
   return (
@@ -25,7 +28,7 @@ export const HomeSectionHeroEmail = () => {
 
           <div>
             {SocialNavItems.map((link, linkIdx) => (
-              <CustomButtonLink
+              <ButtonLink
                 key={linkIdx}
                 href={link.link}
                 isExternal

@@ -1,34 +1,79 @@
 .cHomeSectionPools {
   &:global {
     &.c-home-section-pools {
-      display: flex;
-      flex-direction: column;
-      gap: 1em;
       padding-bottom: var(--px48);
 
-      .c-button-container {
-        gap: var(--px12);
-        justify-content: flex-end;
-      }
-
       .c-home-section-pools-slider {
-        display: block;
-        //grid-template-columns: auto minmax(0,1fr) auto;
-        //align-items: center;
-        //gap: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: var(--px32);
+        height: auto;
+        min-height: 698px;
 
-        .swiper-grid > .swiper-wrapper {
-          flex-wrap: wrap;
-          align-items: stretch;
-          padding-top: 2px;
-          padding-bottom: 2px;
+        &-wrapper {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: var(--px32);
+          width: 100%;
+          max-width: 100%;
+        }
+
+        &-content {
+          display: flex;
+          flex-direction: column;
+          height: auto;
+          min-height: unset;
+          width: 100%;
+          max-width: 100%;
+          overflow: hidden;
+
+          @media (min-width: 992px) {
+            min-height: 698px;
+          }
+
+          .swiper {
+            flex: 1;
+            width: 100%;
+            max-width: 100%;
+
+            .swiper-wrapper {
+              height: inherit;
+              margin-top: 2px;
+              margin-bottom: 2px;
+
+              @media (min-width: 992px) {
+                display: grid;
+                grid-auto-flow: column;
+                align-items: stretch;
+                grid-template-rows: 1fr;
+                gap: var(--px12);
+
+                .swiper-slide {
+                  margin: 0 !important;
+                  height: auto !important;
+                  width: 100% !important;
+                  max-width: 100% !important;
+                }
+              }
+            }
+          }
         }
       }
 
-      .c-home-section-pools-footer{
+      .c-home-section-pools-footer {
         display: flex;
-        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
         row-gap: 1em;
+
+        @media(min-width: 992px) {
+          justify-content: center;
+        }
+
+        > .c-button {
+          flex-shrink: 0;
+        }
       }
     }
   }

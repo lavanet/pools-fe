@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { useMediaQuerySafe } from '@/hooks';
 import { addEmail } from '@/actions';
-import { CustomInput, CustomButton } from '@/components';
+import { CustomInput, Button } from '@/components';
 
 export const HomeSectionHeroEmailForm = () => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -46,7 +46,7 @@ export const HomeSectionHeroEmailForm = () => {
           placeholder="Enter your email"
           inputGroupText={
             isMobile ? undefined :(
-              <CustomButton
+              <Button
                 extraClassName="c-desktop"
                 type="submit"
                 btnSize="lg"
@@ -60,7 +60,7 @@ export const HomeSectionHeroEmailForm = () => {
         />
 
         {isMobile && (
-          <CustomButton
+          <Button
             extraClassName="c-mobile"
             type="submit"
             text="Get notified"

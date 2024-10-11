@@ -34,6 +34,11 @@
   --swiper-scrollbar-size: 4px;
 }
 
+.swiper {
+  width: 100%;
+  max-width: 100%;
+}
+
 .swiper-scrollbar.swiper-scrollbar-horizontal {
   position: static;
   display: flex;
@@ -50,9 +55,15 @@
   }
 }
 
-.swiper-button-prev,
-.swiper-button-next {
+.c-button.swiper-button-prev,
+.c-button.swiper-button-next {
+  --btn-icon-size: var(--font-size-14-px20);
+
   position: static;
+  inset: unset;
+  width: auto;
+  margin-top: unset;
+  transform: none !important;
 
   &:after {
     display: none;
@@ -60,21 +71,25 @@
 }
 
 .swiper-pagination {
+  flex-shrink: 0;
   position: static;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--px8);
-
-  &.swiper-pagination-horizontal {
-    .swiper-pagination-bullet {
-      margin: 0;
-
-      &.swiper-pagination-bullet-active {
-
-      }
-    }
-  }
+  inset: unset;
+//  display: inline-flex;
+//  align-items: center;
+//  justify-content: center;
+//  gap: var(--px8);
+  transform: translateX(0) !important;
+//
+//  &.swiper-pagination-bullets-dynamic,
+//  &.swiper-pagination-horizontal {
+//    .swiper-pagination-bullet {
+//      //margin: 0;
+//
+//      &.swiper-pagination-bullet-active {
+//
+//      }
+//    }
+//  }
 }
 
 

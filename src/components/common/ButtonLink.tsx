@@ -1,15 +1,16 @@
 import clsx from 'clsx';
 import Link, { LinkProps } from 'next/link';
+
 import { IButton } from '@/types';
 
-interface CustomButtonLinkProps extends IButton, LinkProps {
+interface ButtonLinkProps extends IButton, LinkProps {
   extraClassName?: string;
   href: string;
   isExternal?: boolean;
   isDisabled?: boolean;
 }
 
-export const CustomButtonLink = (
+export const ButtonLink = (
   {
     extraClassName,
     href,
@@ -23,7 +24,7 @@ export const CustomButtonLink = (
     icon,
     iconPlacement,
     isDisabled,
-  }: CustomButtonLinkProps) => {
+  }: ButtonLinkProps) => {
   return (
     <Link
       className={clsx("c-button", extraClassName && extraClassName, isDisabled && "is-disabled")}
