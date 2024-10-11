@@ -8,7 +8,7 @@
       flex-direction: column;
       width: 100%;
       max-width: 100%;
-      padding: var(--px1);
+      padding: 1px;
       border-radius: var(--pool-card-border-radius);
       overflow: hidden;
 
@@ -23,7 +23,7 @@
         height: 100%;
         margin: auto;
         border-radius: var(--pool-card-border-radius);
-        border: var(--px1) solid transparent;
+        border: 1px solid transparent;
         background: linear-gradient(180deg, #171C26 0%, hsl(from var(--token-accent-color) h s l / 0.5) 100%) border-box;
         mask: linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%);
         -webkit-mask-composite: xor;
@@ -222,6 +222,22 @@
 
         > .c-button {
           flex-grow: 1;
+        }
+      }
+
+      @media(max-width: 992px) {
+        &-header {
+          grid-template-columns: 1fr;
+        }
+
+        &-rewards-header {
+          flex-direction: column;
+          align-items: flex-start;
+          row-gap: var(--px4);
+        }
+
+        &-rewards-data li {
+          grid-template-columns: 1fr;
         }
       }
     }
