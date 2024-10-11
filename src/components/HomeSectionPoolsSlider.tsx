@@ -68,7 +68,6 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
           }}
           breakpoints={{
             768: {
-              spaceBetween:0,
               slidesPerView: 2,
               navigation: {
                 enabled: true,
@@ -79,9 +78,8 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
               }
             },
             1200: {
-              spaceBetween:0,
               slidesPerView: 3,
-              slidesPerGroup: 6,
+              // slidesPerGroup: 6,
               navigation: {
                 enabled: true,
               },
@@ -104,117 +102,70 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
             </SwiperSlide>
           ))}
 
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnDiscord/>}
-            />
-          </SwiperSlide>
+          {/*  <SwiperSlide>*/}
+          {/*  <HomeSectionPoolsCard*/}
+          {/*    id="test-1"*/}
+          {/*    title="Title"*/}
+          {/*    service="service"*/}
+          {/*    node_runner={12}*/}
+          {/*    requests={16}*/}
+          {/*    value={"2000"}*/}
+          {/*    currency={"Eth"}*/}
+          {/*    monthly_rewards={12}*/}
+          {/*    future_rewards={45}*/}
+          {/*    past_rewards={24}*/}
+          {/*    icon={<IcnDiscord/>}*/}
+          {/*  />*/}
+          {/*</SwiperSlide>*/}
 
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnX/>}
-            />
-          </SwiperSlide>
+          {/*  <SwiperSlide>*/}
+          {/*  <HomeSectionPoolsCard*/}
+          {/*    id="test-2"*/}
+          {/*    title="Title"*/}
+          {/*    service="service"*/}
+          {/*    node_runner={12}*/}
+          {/*    requests={16}*/}
+          {/*    value={"2000"}*/}
+          {/*    currency={"Eth"}*/}
+          {/*    monthly_rewards={12}*/}
+          {/*    future_rewards={45}*/}
+          {/*    past_rewards={24}*/}
+          {/*    icon={<IcnDiscord/>}*/}
+          {/*  />*/}
+          {/*</SwiperSlide>*/}
 
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnGithub/>}
-            />
-          </SwiperSlide>
+          {/*  <SwiperSlide>*/}
+          {/*  <HomeSectionPoolsCard*/}
+          {/*    id="test-3"*/}
+          {/*    title="Title"*/}
+          {/*    service="service"*/}
+          {/*    node_runner={12}*/}
+          {/*    requests={16}*/}
+          {/*    value={"2000"}*/}
+          {/*    currency={"Eth"}*/}
+          {/*    monthly_rewards={12}*/}
+          {/*    future_rewards={45}*/}
+          {/*    past_rewards={24}*/}
+          {/*    icon={<IcnDiscord/>}*/}
+          {/*  />*/}
+          {/*</SwiperSlide>*/}
 
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnTelegram/>}
-            />
-          </SwiperSlide>
+          {/*  <SwiperSlide>*/}
+          {/*  <HomeSectionPoolsCard*/}
+          {/*    id="test-4"*/}
+          {/*    title="Title"*/}
+          {/*    service="service"*/}
+          {/*    node_runner={12}*/}
+          {/*    requests={16}*/}
+          {/*    value={"2000"}*/}
+          {/*    currency={"Eth"}*/}
+          {/*    monthly_rewards={12}*/}
+          {/*    future_rewards={45}*/}
+          {/*    past_rewards={24}*/}
+          {/*    icon={<IcnDiscord/>}*/}
+          {/*  />*/}
+          {/*</SwiperSlide>*/}
 
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnAgoric/>}
-            />
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnTelegram/>}
-            />
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <HomeSectionPoolsCard
-              id="test-1"
-              title="Title"
-              service="service"
-              node_runner={12}
-              requests={16}
-              value={"2000"}
-              currency={"Eth"}
-              monthly_rewards={12}
-              future_rewards={45}
-              past_rewards={24}
-              icon={<IcnTelegram/>}
-            />
-          </SwiperSlide>
 
         </Swiper>
 
