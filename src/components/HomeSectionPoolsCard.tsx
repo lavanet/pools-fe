@@ -8,6 +8,7 @@ import { NumericFormat } from 'react-number-format';
 import { IPool } from '@/types';
 
 import { Button } from '@/components';
+import { formatNumber } from '@/utils/formatters';
 
 type PoolsCardProps = IPool;
 
@@ -30,6 +31,7 @@ export const HomeSectionPoolsCard = (
     future_rewards,
     past_rewards,
     icon,
+    estimated_apr,
   }: PoolsCardProps) => {
   const calculateRewardPercentages = (monthly_rewards?: number, future_rewards?: number, past_rewards?: number) => {
     const rewards = [monthly_rewards ?? 0, future_rewards ?? 0, past_rewards ?? 0];
@@ -98,7 +100,7 @@ export const HomeSectionPoolsCard = (
 
              <li>
               <em>Estimated APR:&nbsp;</em>
-              <small>15.8%</small>
+              <small>{estimated_apr ? estimated_apr + '%' : 'N/A'}</small>
             </li>
 
           </ul>
@@ -151,10 +153,8 @@ export const HomeSectionPoolsCard = (
 
               <NumericFormat
                 displayType="text"
-                thousandSeparator=","
-                decimalSeparator="."
                 value={value}
-                renderText={(value) => <span>{value} {currency}</span>}
+                renderText={(value) => <span>{formatNumber(value)} {currency}</span>}
               />
 
             </li>

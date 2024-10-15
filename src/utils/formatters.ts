@@ -1,17 +1,37 @@
-export const formatLargeNumber = (value: number | string): string => {
+export const formatNumber = (value: number | string): string => {
   const numValue = typeof value === 'string' ? parseFloat(value) : value;
-  if (isNaN(numValue)) return 'Invalid Number';
+  if (isNaN(numValue) || numValue == null) return 'N/A';
 
-  const formatNumber = (n: number, decimals: number) => {
-    const formatted = n.toFixed(decimals);
-    return formatted.endsWith('.00') ? formatted.slice(0, -3) : formatted;
+  const abs = Math.abs(numValue);
+
+  const removeTrailingZeros = (num: string): string => {
+    return num.replace(/\.?0+$/, '');
   };
 
-  if (numValue >= 1000000) {
-    return `${formatNumber(numValue / 1000000, 2)}M`;
-  } else if (numValue >= 1000) {
-    return `${formatNumber(numValue / 1000, 2)}K`;
+  const addCommas = (num: string): string => {
+    const parts = num.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return parts.join('.');
+  };
+
+  const formatWithSuffix = (num: number, suffix: string) => {
+    const formatted = num.toFixed(2);
+    const trimmed = removeTrailingZeros(formatted);
+    const withCommas = addCommas(trimmed);
+    return `${withCommas}${suffix}`;
+  };
+
+  if (abs >= 1e15) { // Quadrillion or more (1000 trillion+)
+    return formatWithSuffix(numValue / 1e15, 'Q');
+  } else if (abs >= 1e12) { // Trillion
+    return formatWithSuffix(numValue / 1e12, 'T');
+  } else if (abs >= 1e9) { // Billion
+    return formatWithSuffix(numValue / 1e9, 'B');
+  } else if (abs >= 1e6) { // Million
+    return formatWithSuffix(numValue / 1e6, 'M');
   } else {
-    return formatNumber(numValue, 2);
+    const formatted = numValue.toFixed(2);
+    const trimmed = removeTrailingZeros(formatted);
+    return addCommas(trimmed);
   }
 };
