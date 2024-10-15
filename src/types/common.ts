@@ -59,6 +59,7 @@ export interface IPool {
   future_rewards?: number;
   past_rewards?: number;
   icon?: ReactNode,
+  estimated_apr: number;
 }
 
 export interface IProduct {
@@ -69,6 +70,7 @@ export interface IProduct {
 
 export interface HomeData {
   chains: Array<{
+    chain_id: string;
     id: string;
     name: string;
     clean_name: string;
@@ -84,6 +86,7 @@ export interface HomeData {
     months_remaining: number;
     rewards_per_month: number;
     service: string;
+    estimated_apr: number;
   }>;
   total_requests: number;
   total_rewards: number;

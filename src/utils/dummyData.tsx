@@ -65,6 +65,7 @@ export const homeSectionPools: IPool[] = [
     future_rewards: 220728.83,
     past_rewards: 109348.93,
     icon: <IcnNear/>,
+    estimated_apr: 15.8,
   },
   {
     id: 'evmos',
@@ -78,6 +79,7 @@ export const homeSectionPools: IPool[] = [
     future_rewards: 100293.2,
     past_rewards: 41726.0,
     icon: <IcnEvmos/>,
+    estimated_apr: 12.8,
   },
   {
     id: "axelar",
@@ -91,6 +93,7 @@ export const homeSectionPools: IPool[] = [
     future_rewards: 110342.89,
     past_rewards: 85673.38,
     icon: <IcnAxelar/>,
+    estimated_apr: 11.8,
   },
   {
     id: 'starknet',
@@ -104,6 +107,7 @@ export const homeSectionPools: IPool[] = [
     future_rewards: 220728.83,
     past_rewards: 109348.93,
     icon: <IcnStarknet/>,
+    estimated_apr: 16.8,
   },
   {
     id: 'celestia',
@@ -117,5 +121,6 @@ export const homeSectionPools: IPool[] = [
     future_rewards: 220728.83,
     past_rewards: 109348.93,
     icon: <IcnCelestia/>,
+    estimated_apr: 22,
   },
 ];
