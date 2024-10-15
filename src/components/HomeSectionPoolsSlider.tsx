@@ -18,12 +18,14 @@ import { getChainInfo } from '@/utils/chainInfo';
 
 import { Button, HomeSectionPoolsCard } from '@/components';
 import { IcnAgoric } from '@assets/images/rounded-chains';
+import { useMediaQuerySafe } from '@/hooks';
 
 interface HomeSectionPoolsSliderProps {
   pools?: IPool[];
 }
 
 export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) => {
+  const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
   const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -56,7 +58,7 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
             rows: 0,
           }}
           navigation={{
-            enabled: true,
+            enabled: false,
             prevEl: `.c-home-section-pools .c-home-section-pools-footer .swiper-button-prev`,
             nextEl: `.c-home-section-pools .c-home-section-pools-footer .swiper-button-next`,
           }}
@@ -71,6 +73,8 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
               slidesPerView: 2,
               navigation: {
                 enabled: true,
+                prevEl: `.c-home-section-pools .c-home-section-pools-footer .swiper-button-prev`,
+                nextEl: `.c-home-section-pools .c-home-section-pools-footer .swiper-button-next`,
               },
               grid: {
                 rows: 2,
@@ -79,9 +83,10 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
             },
             1200: {
               slidesPerView: 3,
-              // slidesPerGroup: 6,
               navigation: {
                 enabled: true,
+                prevEl: `.c-home-section-pools .c-home-section-pools-footer .swiper-button-prev`,
+                nextEl: `.c-home-section-pools .c-home-section-pools-footer .swiper-button-next`,
               },
               grid: {
                 rows: 2,
@@ -102,53 +107,53 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
             </SwiperSlide>
           ))}
 
-          {/*  <SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-1"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
+          <SwiperSlide>
+            <HomeSectionPoolsCard
+              id="test-1"
+              title="Title"
+              service="service"
+              node_runner={12}
+              requests={16}
+              value={"2000"}
+              currency={"Eth"}
+              monthly_rewards={12}
+              future_rewards={45}
+              past_rewards={24}
+              icon={<IcnDiscord/>}
+            />
+          </SwiperSlide>
 
-          {/*  <SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-2"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
+          <SwiperSlide>
+            <HomeSectionPoolsCard
+              id="test-2"
+              title="Title"
+              service="service"
+              node_runner={12}
+              requests={16}
+              value={"2000"}
+              currency={"Eth"}
+              monthly_rewards={12}
+              future_rewards={45}
+              past_rewards={24}
+              icon={<IcnDiscord/>}
+            />
+          </SwiperSlide>
 
-          {/*  <SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-3"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
+          <SwiperSlide>
+            <HomeSectionPoolsCard
+              id="test-3"
+              title="Title"
+              service="service"
+              node_runner={12}
+              requests={16}
+              value={"2000"}
+              currency={"Eth"}
+              monthly_rewards={12}
+              future_rewards={45}
+              past_rewards={24}
+              icon={<IcnDiscord/>}
+            />
+          </SwiperSlide>
 
           {/*  <SwiperSlide>*/}
           {/*  <HomeSectionPoolsCard*/}
@@ -173,23 +178,23 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
 
       <div className='c-home-section-pools-footer'>
 
-        <Button
-          extraClassName="swiper-button-prev"
-          btnColor="grey"
-          title="Previous"
-          icon={<IcnLongArrowLeft/>}
-        />
+          <Button
+            extraClassName="swiper-button-prev c-desktop"
+            btnColor="grey"
+            title="Previous"
+            icon={<IcnLongArrowLeft/>}
+          />
 
         <div>
           <div className="swiper-pagination" />
         </div>
 
-        <Button
-          extraClassName="swiper-button-next"
-          btnColor="grey"
-          title="Next"
-          icon={<IcnLongArrowRight/>}
-        />
+          <Button
+            extraClassName="swiper-button-next c-desktop"
+            btnColor="grey"
+            title="Next"
+            icon={<IcnLongArrowRight/>}
+          />
 
       </div>
 
