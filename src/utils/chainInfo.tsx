@@ -250,13 +250,13 @@ export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = 
 
   if (!chain) {
     return returnType === 'icon'
-      ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} style={{ width: 'auto', height: 'auto' }} />
+      ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
       : 'N/A';
   }
 
   switch (returnType) {
     case 'icon':
-       return <Image src={chain.icon} alt={chain.fullName} width={32} height={32} style={{ width: 'auto', height: 'auto' }} />;
+       return <Image src={chain.icon} alt={chain.fullName} width={32} height={32}/>;
     case 'fullName':
       return chain.fullName;
     case 'abbreviatedName':

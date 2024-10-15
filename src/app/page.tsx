@@ -1,3 +1,5 @@
+import styles from '@/styles/Home.module.scss'
+
 import { Suspense } from 'react';
 import clsx from 'clsx';
 import {
@@ -9,7 +11,6 @@ import {
   HomeSectionHeroEmail,
   HomeSectionProducts,
 } from '@/components';
-import styles from '@/styles/Home.module.scss'
 import { fetchProcessedHomeData } from '@/utils/homeUtils';
 import { ProcessedHomeData } from '@/types';
 

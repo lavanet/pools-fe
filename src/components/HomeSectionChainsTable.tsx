@@ -1,14 +1,18 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
-import Image from 'next/image';
+
+import styles from '@/styles/HomeSectionChainsTable.module.scss'
+import {IcnCaretDown, IcnCaretUp} from '@assets/icons';
+
+import { useMemo, useState } from 'react';
 import clsx from 'clsx';
 import { ColumnDef } from '@tanstack/react-table';
+
 import { useMediaQuerySafe } from '@/hooks';
-import { IChain } from '@/types';
-import { CustomTable, CustomButton, CustomTableMobileText } from '@/components';
-import {IcnCaretDown, IcnCaretUp} from '@assets/icons';
-import styles from '@/styles/HomeSectionChainsTable.module.scss'
 import { getChainInfo } from '@/utils/chainInfo';
+import { IChain } from '@/types';
+
+import { CustomTable, Button, CustomTableMobileText } from '@/components';
+import { HomeSectionChainsMobileSlider } from '@/components/HomeSectionChainsMobileSlider';
 
 type ChainsTableProps = {
   filter: string;
@@ -27,15 +31,15 @@ const generatedColumns = (
 ): ColumnDef<IChain>[] => {
   const createSortButtons = (field: keyof IChain) => (
     <div className="c-table-sort-btn-container">
-      <CustomButton
-        extraClassName={clsx("c-table-sort-btn", { 'active': sortConfig?.key === field && sortConfig.direction === 'asc' })}
+      <Button
+        extraClassName={clsx("c-table-sort-btn", { 'is-active': sortConfig?.key === field && sortConfig.direction === 'asc' })}
         btnVariant="link"
         title="ASC"
         onClick={() => onSort(field, 'asc')}
         icon={<IcnCaretUp/>}
       />
-      <CustomButton
-        extraClassName={clsx("c-table-sort-btn", { 'active': sortConfig?.key === field && sortConfig.direction === 'desc' })}
+      <Button
+        extraClassName={clsx("c-table-sort-btn", { 'is-active': sortConfig?.key === field && sortConfig.direction === 'desc' })}
         btnVariant="link"
         title="DESC"
         onClick={() => onSort(field, 'desc')}
@@ -139,12 +143,12 @@ const generatedColumns = (
             )}
 
             <div className="c-button-container">
-              <CustomButton
+              <Button
                 btnSize="sm"
                 text="Run a node"
               />
 
-              <CustomButton
+              <Button
                 btnSize="sm"
                 btnColor="white"
                 text="Endpoints"
@@ -169,7 +173,7 @@ export const HomeSectionChainsTable = ({ chains, filter }: ChainsTableProps) => 
   const columns = useMemo(() => generatedColumns(handleSort, sortConfig, isMobile), [isMobile, sortConfig]);
 
   const filteredChains = useMemo(() =>
-    chains.filter((chain) => chain.name.toLowerCase().includes(filter.toLowerCase())),
+      chains.filter((chain) => chain.name.toLowerCase().includes(filter.toLowerCase())),
     [chains, filter]
   );
 
@@ -193,13 +197,23 @@ export const HomeSectionChainsTable = ({ chains, filter }: ChainsTableProps) => 
 
   return (
     <section className={clsx(styles.cHomeSectionChainsTable, "c-home-section-chains-table")}>
-      <CustomTable
-        extraClassName="is-responsive"
-        columns={columns}
-        data={sortedAndFilteredChains}
-        defaultEmptyTitle="No results found"
-        defaultEmptyParagraph="No chains matching your search criteria were found"
-      />
+      {isMobile? (
+        <div className="c-home-section-chains-mobile-slider c-mobile">
+          <HomeSectionChainsMobileSlider
+            data={sortedAndFilteredChains}
+          />
+        </div>
+      ):(
+        <CustomTable
+          extraClassName="is-responsive c-desktop"
+          columns={columns}
+          data={sortedAndFilteredChains}
+          defaultEmptyTitle="No results found"
+          defaultEmptyParagraph="No chains matching your search criteria were found"
+        />
+
+      )}
+
     </section>
   );
 };

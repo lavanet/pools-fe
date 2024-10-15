@@ -1,7 +1,7 @@
 // Common
-export * from './CustomAccordion'
-export * from './CustomButton'
-export * from './CustomButtonLink'
+export * from './Accordion'
+export * from './Button'
+export * from './ButtonLink'
 export * from './CustomTable'
 export * from './CustomTableMobileText'
 export * from './Footer'

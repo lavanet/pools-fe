@@ -1,16 +1,18 @@
-import { ButtonHTMLAttributes } from 'react';
-import clsx from 'clsx';
-import { IButton } from '@/types';
 import { IcnChevronDown } from '@assets/icons';
 
-interface CustomButtonProps extends IButton, ButtonHTMLAttributes<HTMLButtonElement> {
+import { ButtonHTMLAttributes } from 'react';
+import clsx from 'clsx';
+
+import { IButton } from '@/types';
+
+interface ButtonProps extends IButton, ButtonHTMLAttributes<HTMLButtonElement> {
   extraClassName?: string;
   type?: "submit" | "reset";
   hasChevronIcon?: boolean;
   onClick?: () => void;
 }
 
-export const CustomButton = (
+export const Button = (
   {
     extraClassName,
     type,
@@ -25,7 +27,7 @@ export const CustomButton = (
     hasChevronIcon,
     onClick,
     ...props
-  }: CustomButtonProps) => {
+  }: ButtonProps) => {
   return (
     <button
       type={type ? type : "button"}

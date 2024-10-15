@@ -1,31 +1,22 @@
-import clsx from 'clsx';
-import { HomeSectionPoolsCard } from '@/components';
+'use client'
+
 import styles from '@/styles/HomeSectionPools.module.scss';
+import clsx from 'clsx';
 import { IPool } from '@/types';
-import { getChainInfo } from '@/utils/chainInfo';
+
+import { HomeSectionPoolsSlider } from '@/components/HomeSectionPoolsSlider';
 
 interface HomeSectionPoolsProps {
   pools?: IPool[];
 }
 
 export const HomeSectionPools = ({ pools }: HomeSectionPoolsProps) => {
-  if (!pools || pools.length === 0) {
-    return (
-      <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
-        <p>No pools available at the moment.</p>
-      </section>
-    );
-  }
-
   return (
     <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
-      {pools.map((pool) => (
-        <HomeSectionPoolsCard
-          key={pool.id}
-          {...pool}
-          icon={getChainInfo(pool.title, 'icon')}
-        />
-      ))}
+
+      <div className='c-home-section-pools-slider'>
+        <HomeSectionPoolsSlider pools={pools}/>
+      </div>
     </section>
   );
 };

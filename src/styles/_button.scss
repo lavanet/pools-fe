@@ -154,6 +154,27 @@
     }
   }
 
+    &[data-color="grey"] {
+    --btn-bg-color: var(--grey-500);
+    --btn-border-color: var(--grey-500);
+    --btn-color: var(--grey-100);
+    --btn-box-shadow: none;
+    --btn-hover-box-shadow: none;
+
+    &:hover,
+    &:focus:not(:focus-visible),
+    &:active {
+      --btn-bg-color: var(--white);
+      --btn-border-color: var(--white);
+      --btn-color: var(--grey-700);
+    }
+
+    &:disabled,
+    &.is-disabled {
+      opacity: 0.4;
+    }
+  }
+
   &[data-color="ghost"] {
     --btn-bg-color: var(--grey-700);
     --btn-border-color: var(--grey-700);

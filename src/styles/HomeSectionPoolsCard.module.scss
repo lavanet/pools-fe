@@ -1,7 +1,6 @@
 .cHomeSectionPoolsCards {
   &:global {
     &.c-home-section-pools-card {
-      --accent-color: var(--white);
       --pool-card-border-radius: var(--px20);
 
       position: relative;
@@ -9,29 +8,9 @@
       flex-direction: column;
       width: 100%;
       max-width: 100%;
-      padding: var(--px1);
+      padding: 1px;
       border-radius: var(--pool-card-border-radius);
       overflow: hidden;
-
-      &.near {
-        --accent-color: #00EC97;
-      }
-
-      &.evmos {
-        --accent-color: #EC4E32;
-      }
-
-      &.axelar {
-        --accent-color: #FFFFFF;
-      }
-
-      &.starknet {
-        --accent-color: #EC796B;
-      }
-
-      &.celestia {
-        --accent-color: #7B2BF9;
-      }
 
       &:before {
         content: "";
@@ -44,8 +23,8 @@
         height: 100%;
         margin: auto;
         border-radius: var(--pool-card-border-radius);
-        border: var(--px1) solid transparent;
-        background: linear-gradient(180deg, #171C26 0%, hsl(from var(--accent-color) h s l / 0.5) 100%) border-box;
+        border: 1px solid transparent;
+        background: linear-gradient(180deg, #171C26 0%, hsl(from var(--token-accent-color) h s l / 0.5) 100%) border-box;
         mask: linear-gradient(to bottom, black 0, black 100%) content-box, linear-gradient(to bottom, black 0, black 100%);
         -webkit-mask-composite: xor;
         mask-composite: exclude;
@@ -77,7 +56,7 @@
         background:
           linear-gradient(
               180deg,
-              hsl(from var(--accent-color) h s l / 0.5) 0%,
+              hsl(from var(--token-accent-color) h s l / 0.5) 0%,
               rgba(23, 28, 38, 0) 15.11%,
               rgba(23, 28, 38, 0) 92%,
               rgba(23, 28, 38, 0.01) 100%
@@ -87,10 +66,10 @@
       }
 
       &-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        column-gap: 1em;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160.5px, 1fr));
+        align-items: flex-start;
+        gap: 1em;
         flex-wrap: wrap;
 
         > * {
@@ -133,6 +112,10 @@
 
             em {
               color: var(--grey-100);
+
+              @media(min-width: 992px) {
+                white-space: nowrap;
+              }
             }
           }
         }
@@ -239,6 +222,22 @@
 
         > .c-button {
           flex-grow: 1;
+        }
+      }
+
+      @media(max-width: 992px) {
+        &-header {
+          grid-template-columns: 1fr;
+        }
+
+        &-rewards-header {
+          flex-direction: column;
+          align-items: flex-start;
+          row-gap: var(--px4);
+        }
+
+        &-rewards-data li {
+          grid-template-columns: 1fr;
         }
       }
     }

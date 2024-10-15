@@ -1,8 +1,10 @@
 'use client';
 
-import clsx from 'clsx';
-import { CustomButtonLink } from '@/components/common';
 import styles from '@/styles/HomeSectionHeroCTA.module.scss'
+
+import clsx from 'clsx';
+
+import { ButtonLink } from '@/components/common';
 
 export const HomeSectionHeroCTA = () => (
   <section className={clsx(styles.cHomeSectionHeroCTA, "c-home-section-hero-cta")}>
@@ -18,7 +20,7 @@ export const HomeSectionHeroCTA = () => (
 
     </div>
 
-    <CustomButtonLink
+    <ButtonLink
       href="/"
       text="Learn more"
     />

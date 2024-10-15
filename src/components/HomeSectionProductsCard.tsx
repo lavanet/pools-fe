@@ -1,11 +1,14 @@
 'use client';
 
+import styles from '@/styles/HomeSectionProductsCard.module.scss';
+import {IcnArrowUpRetro, IcnArrowRightRetro} from '@assets/icons'
+
 import clsx from 'clsx';
+
 import { useMediaQuerySafe } from '@/hooks';
 import { IProduct } from '@/types';
-import { CustomButtonLink } from '@/components/common';
-import {IcnArrowUpRetro, IcnArrowRightRetro} from '@assets/icons'
-import styles from '@/styles/HomeSectionProductsCard.module.scss';
+
+import { ButtonLink } from '@/components/common';
 
 export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -29,14 +32,14 @@ export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
 
           <div className='c-button-container'>
             {isMobile?(
-              <CustomButtonLink
+              <ButtonLink
                 href='/'
                 title={`Try ${title}`}
                 btnVariant="link"
                 icon={<IcnArrowUpRetro/>}
               />
             ):(
-              <CustomButtonLink
+              <ButtonLink
                 btnColor="white-outline"
                 btnSize="xl"
                 href="/"

@@ -1,12 +1,15 @@
 'use client';
 
+import styles from '@/styles/Footer.module.scss';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import clsx from 'clsx';
+
 import { useMediaQuerySafe } from '@/hooks';
 import { LegalNavItems, navItems, SocialNavItems } from '@/utils/variables';
+
 import { Logo } from '@/components';
-import styles from '@/styles/Footer.module.scss'
 
 export const Footer = () => {
   const isMobileSm = useMediaQuerySafe('(max-width: 767px)');
