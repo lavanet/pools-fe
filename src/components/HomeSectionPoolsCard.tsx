@@ -95,10 +95,10 @@ export const HomeSectionPoolsCard = (
 
             <li>
               <em>Total requests:&nbsp;</em>
-              <small>{requests}</small>
+              <small>{formatNumber(requests ?? 0, true)}</small>
             </li>
 
-             <li>
+            <li>
               <em>Estimated APR:&nbsp;</em>
               <small>{estimated_apr ? estimated_apr + '%' : 'N/A'}</small>
             </li>
@@ -154,7 +154,7 @@ export const HomeSectionPoolsCard = (
               <NumericFormat
                 displayType="text"
                 value={value}
-                renderText={(value) => <span>{formatNumber(value)} {currency}</span>}
+                renderText={(value) => <span>{formatNumber(value, true)} {currency}</span>}
               />
 
             </li>
