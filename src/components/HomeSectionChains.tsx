@@ -9,7 +9,7 @@ import clsx from 'clsx';
 import useDebounce from '@/hooks/useDebounce';
 import { IChain } from '@/types';
 
-import { CustomInput, HomeBanner, HomeSectionChainsTable } from '@/components';
+import { Input, HomeBanner, HomeSectionChainsTable } from '@/components';
 
 interface HomeSectionChainsProps {
   chains: IChain[];
@@ -44,7 +44,7 @@ export const HomeSectionChains = ({ chains }: HomeSectionChainsProps) => {
           title="Don't see your favourite chain?"
         />
 
-        <CustomInput
+        <Input
           type="text"
           name="search_chain_table"
           labelText="Search chain name"

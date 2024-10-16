@@ -1,15 +1,15 @@
 import {HTMLProps} from "react"
 import clsx from "clsx"
 
-import { IFormGroupProps } from '@/types';
+import { IFormGroup } from '@/types';
 
-interface CustomInputProps extends IFormGroupProps, HTMLProps<HTMLInputElement> {
+interface InputProps extends IFormGroup, HTMLProps<HTMLInputElement> {
   type: "text" | "password" | "search" | "email" | "tel";
   name: string;
   placeholder?: string;
 }
 
-export const CustomInput = (
+export const Input = (
   {
     extraClassName,
     type,
@@ -22,7 +22,7 @@ export const CustomInput = (
     inputGroupPlacement,
     helpText,
     ...rest
-  }: CustomInputProps) => {
+  }: InputProps) => {
 
   return (
     <div className={clsx("c-form-group", `c-form-group-${type}`, extraClassName && extraClassName, inputStyle && inputStyle)}>

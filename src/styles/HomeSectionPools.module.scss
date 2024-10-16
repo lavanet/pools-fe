@@ -3,6 +3,26 @@
     &.c-home-section-pools {
       padding-bottom: var(--px48);
 
+      .c-home-section-pools-header {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1em;
+        margin-bottom: var(--px32);
+
+        .c-form-group-search {
+          width: 100%;
+          max-width: 445px;
+        }
+
+        .c-form-group-select {
+          width: 100%;
+          max-width: 269px;
+        }
+      }
+
       .c-home-section-pools-slider {
         display: flex;
         align-items: center;
@@ -35,7 +55,18 @@
           }
 
           .swiper .swiper-wrapper {
+            align-items: stretch;
             margin-bottom: var(--px2);
+
+            .swiper-slide {
+              display: flex;
+              flex-direction: column;
+
+              @media( min-width: 768px) {
+                height: 100%;
+                max-height: calc(50% - 6px);
+              }
+            }
           }
         }
 

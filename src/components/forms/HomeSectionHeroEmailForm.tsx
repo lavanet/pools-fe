@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { toast, ToastContainer } from 'react-toastify';
 import { useMediaQuerySafe } from '@/hooks';
 import { addEmail } from '@/actions';
-import { CustomInput, Button } from '@/components';
+import { Input, Button } from '@/components';
 
 export const HomeSectionHeroEmailForm = () => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -37,8 +37,8 @@ export const HomeSectionHeroEmailForm = () => {
     <>
       <form action={clientAction} ref={formRef}>
 
-        <CustomInput
-          type="text"
+        <Input
+          type="email"
           name="email"
           inputStyle="filled"
           labelText="Enter your email"

@@ -1,2 +1,3 @@
 // Form elements
-export * from './CustomInput'
+export * from './Input'
+export * from './InputSelect'

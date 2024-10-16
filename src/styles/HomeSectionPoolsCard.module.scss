@@ -3,6 +3,7 @@
     &.c-home-section-pools-card {
       --pool-card-border-radius: var(--px20);
 
+      flex: 1;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -71,6 +72,7 @@
         align-items: flex-start;
         gap: 1em;
         flex-wrap: wrap;
+        margin-bottom: auto;
 
         > * {
           flex: 1;
