@@ -85,6 +85,20 @@
           }
         }
       }
+
+      @media(max-width: 991px) {
+        .c-home-section-pools-header {
+          flex-direction: column;
+          align-items: flex-start;
+          row-gap: var(--px24);
+          margin-bottom: var(--px24);
+
+          .c-form-group-search,
+          .c-form-group-select {
+            max-width: 100%;
+          }
+        }
+      }
     }
   }
 }

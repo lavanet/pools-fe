@@ -2,8 +2,9 @@
 
 import { IcnCaretDown } from '@assets/icons';
 
+import { useId } from 'react';
 import clsx from "clsx"
-import Select, {components, ControlProps, GroupBase, MultiValueRemoveProps, OptionProps, Props, SingleValueProps,} from "react-select"
+import Select, {components, ControlProps, GroupBase, OptionProps, Props, SingleValueProps,} from "react-select"
 
 import { IFormGroup, ISelectOption } from '@/types';
 
@@ -26,6 +27,10 @@ export const InputSelect = (
     helpText,
     ...rest
   }: InputProps) => {
+
+  const Input = ({ ...props }: any) => (
+    <components.Input {...props} aria-activedescendant={undefined}/>
+  )
 
   const Control = ({ children, ...props }: ControlProps) => {
     return (
@@ -86,7 +91,9 @@ export const InputSelect = (
           name={name}
           placeholder={placeholder? placeholder : ""}
           options={options}
+          instanceId={useId()}
           components={{
+            Input,
             Control,
             SingleValue,
             DropdownIndicator,
