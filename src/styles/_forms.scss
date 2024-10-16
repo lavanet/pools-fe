@@ -80,7 +80,21 @@ input[type="checkbox"] {
   }
 }
 
+input[type="radio"] {
+  border-radius: 50%;
+
+  &:checked {
+    background-color: var(--lava-brand);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 10 3 3 6-6'/%3e%3c/svg%3e");
+  }
+}
+
 .c-form-group {
+  &.c-form-group-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
   &:not(.c-form-group-check) {
     label {
       margin-bottom: var(--font-size-14-px8);

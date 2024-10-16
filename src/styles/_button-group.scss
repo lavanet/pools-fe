@@ -1,0 +1,26 @@
+.c-button-group {
+  position: relative;
+  display: inline-grid;
+  grid-auto-rows: var(--px40);
+  border: var(--px1) solid var(--grey-400);
+  border-radius: var(--px20);
+  align-items: stretch;
+  isolation: isolate;
+
+  &-toggler {
+    position: absolute;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 100%;
+    inset: 0;
+    z-index: -1;
+    height: 100%;
+    background-color: var(--body-color);
+    border-radius: var(--px20);
+    transition: margin-left 0.3s ease;
+  }
+
+  input:checked + label.c-button {
+    color: var(--grey-700);
+  }
+}

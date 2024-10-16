@@ -33,7 +33,7 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
   }, [])
 
   if (!loaded) {
-    return <div className='loader'/>
+    return <div className='c-loader'/>
   }
 
   if (!pools || pools.length === 0) {
@@ -106,71 +106,6 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
               />
             </SwiperSlide>
           ))}
-
-          {/*<SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-1"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
-
-          {/*<SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-2"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
-
-          {/*<SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-3"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
-
-          {/*  <SwiperSlide>*/}
-          {/*  <HomeSectionPoolsCard*/}
-          {/*    id="test-4"*/}
-          {/*    title="Title"*/}
-          {/*    service="service"*/}
-          {/*    node_runner={12}*/}
-          {/*    requests={16}*/}
-          {/*    value={"2000"}*/}
-          {/*    currency={"Eth"}*/}
-          {/*    monthly_rewards={12}*/}
-          {/*    future_rewards={45}*/}
-          {/*    past_rewards={24}*/}
-          {/*    icon={<IcnDiscord/>}*/}
-          {/*  />*/}
-          {/*</SwiperSlide>*/}
-
 
         </Swiper>
 

@@ -3,6 +3,7 @@
     &.c-home-section-pools-card {
       --pool-card-border-radius: var(--px20);
 
+      flex: 1;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -71,6 +72,7 @@
         align-items: flex-start;
         gap: 1em;
         flex-wrap: wrap;
+        margin-bottom: auto;
 
         > * {
           flex: 1;
@@ -145,13 +147,17 @@
 
           > span {
             flex: 0 0 100%;
-            display: block;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
 
             >em {
               color: var(--grey-100);
+              display: block;
             }
 
             >small {
+              display: block;
               color: var(--grey-200);
             }
           }
@@ -225,7 +231,7 @@
         }
       }
 
-      @media(max-width: 992px) {
+      @media(max-width: 991px) {
         &-header {
           grid-template-columns: 1fr;
         }
@@ -234,6 +240,10 @@
           flex-direction: column;
           align-items: flex-start;
           row-gap: var(--px4);
+
+          > span {
+            flex: unset;
+          }
         }
 
         &-rewards-data li {

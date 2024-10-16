@@ -1,0 +1,154 @@
+.c-select {
+  .c-select__control {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--font-size-14-px40);
+    padding: 0.15em var(--font-size-14-px20);
+    background-color: transparent;
+    border-radius: var(--font-size-14-px24);
+    border: var(--font-size-14-px1) solid var(--input-border-color);
+    font-size: var(--px14);
+    box-shadow: none;
+    outline: 0 !important; //library default
+    cursor: default;
+    transition: none;
+    box-sizing: border-box;
+
+    .filled & {
+      background-color: var(--grey-500);
+      border-color: var(--grey-700);
+    }
+
+    &.c-select__control--menu-is-open {
+      border-color: var(--grey-100);
+
+      .c-select__dropdown-indicator {
+        transform: rotate(180deg);
+      }
+    }
+
+    &.c-select__control--is-disabled {
+      .c-select__control-input-group-text,
+      .c-select__single-value,
+      .c-select__dropdown-indicator {
+        color: var(--grey-300);
+      }
+    }
+  }
+
+  .c-select__control-input-group-text {
+    color: var(--grey-100);
+  }
+
+  .c-select__value-container {
+    padding: 2px 0;
+  }
+
+  .c-select__single-value {
+    grid-area: 1/1/2/3;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-left: var(--font-size-14-px2);
+    margin-right: var(--font-size-14-px2);
+    color: var(--body-color);
+    text-overflow: unset;
+    white-space: normal;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .c-select__single-value-label {
+    display: block;
+    min-width: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .c-select__single-value-icon {
+    flex-shrink: 0;
+    width: 1em;
+    height: 1em;
+    margin-right: var(--font-size-14-px4);
+    border-radius: 50%;
+  }
+
+  .c-select__input-container {
+    color: var(--body-color);
+  }
+
+  .c-select__input {
+    height: auto;
+  }
+
+  .c-select__clear-indicator {
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .c-select__indicator-separator {
+    display: none;
+  }
+
+  .c-select__dropdown-indicator {
+    flex-shrink: 0;
+    padding: 0;
+    color: var(--body-color);
+    opacity: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .c-select__menu {
+    top: 100%;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    margin: var(--font-size-14-px8) 0;
+    background-color: var(--grey-600);
+    border-radius: var(--font-size-14-px20);
+    border: var(--font-size-14-px1) solid var(--grey-400);
+    font-size: var(--px14);
+    box-shadow: none;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    > * {
+      font-size: 1em;
+    }
+  }
+
+  .c-select__menu-list {
+    position: relative;
+    max-height: 180px;
+    padding: var(--font-size-14-px8) var(--font-size-14-px10) 2em;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+  }
+
+  .c-select__option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.5em var(--font-size-14-px12);
+    background-color: transparent;
+    border-radius: 0;
+    color: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    user-select: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    transition: color 0.3s ease;
+
+    &.c-select__option--is-focused {
+      background-color: transparent;
+      color: var(--lava-brand);
+    }
+  }
+}

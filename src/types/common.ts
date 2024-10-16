@@ -11,7 +11,13 @@ export interface IButton {
   iconPlacement?: "right";
 }
 
-export interface IFormGroupProps {
+export interface ISelectOption {
+  label: string;
+  value: any;
+  icon?: ReactNode;
+}
+
+export interface IFormGroup {
   extraClassName?: string;
   labelText: string;
   labelIsHidden?: boolean;
