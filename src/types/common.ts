@@ -68,32 +68,6 @@ export interface IProduct {
   type: 'orange' | 'red';
 }
 
-export interface HomeData {
-  chains: Array<{
-    chain_id: string;
-    id: string;
-    name: string;
-    clean_name: string;
-    denom: string;
-    denom_price: string;
-    logo: string | null;
-    future_rewards: string;
-    total_rewards: number;
-    total_rewards_usd: number;
-    past_rewards: string;
-    rpc_node_runners: number;
-    total_requests: number;
-    months_remaining: number;
-    rewards_per_month: number;
-    service: string;
-    estimated_apr: number;
-  }>;
-  total_requests: number;
-  total_rewards: number;
-  total_past_rewards: number;
-  total_future_rewards: number;
-}
-
 export interface ProcessedHomeData {
   dataCards: IDataCard[];
   pools: IPool[];
