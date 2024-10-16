@@ -32,6 +32,8 @@ export const HomeSectionPoolsCard = (
     past_rewards,
     icon,
     estimated_apr,
+    rewards_end,
+    rewards_days_remaining,
   }: PoolsCardProps) => {
   const calculateRewardPercentages = (monthly_rewards?: number, future_rewards?: number, past_rewards?: number) => {
     const rewards = [monthly_rewards ?? 0, future_rewards ?? 0, past_rewards ?? 0];
@@ -121,8 +123,8 @@ export const HomeSectionPoolsCard = (
             </p>
 
             <div>
-              <em>66 days&nbsp;</em>
-              <time>Sep 28,2024</time>
+              <em>{rewards_days_remaining ? rewards_days_remaining + ' days' : ''}&nbsp;</em>
+              <time>{rewards_end ? rewards_end : 'TBD'}</time>
             </div>
 
           </div>

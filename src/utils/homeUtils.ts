@@ -16,6 +16,9 @@ type RawHomeData = {
     past_rewards?: number;
     months_remaining?: number;
     estimated_apr?: number;
+    current_rewards: number;
+    rewards_end?: string;
+    rewards_days_remaining?: number;
   }>;
   total_requests?: number;
   total_rewards?: number;
@@ -54,12 +57,14 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
       requests: chain.total_requests || 0,
       value: chain.total_rewards ? `$${formatNumber(chain.total_rewards, true)}` : 'N/A',
       currency: chain.denom ? chain.denom.toUpperCase() : 'N/A',
-      monthly_rewards: chain.rewards_per_month || 0,
+      monthly_rewards: chain.current_rewards || 0,
       future_rewards: chain.future_rewards || 0,
       past_rewards: chain.past_rewards || 0,
       icon: getChainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon'),
       months_remaining: chain.months_remaining || 0,
       estimated_apr: chain.estimated_apr || 0,
+      rewards_end: chain.rewards_end || 'TBD',
+      rewards_days_remaining: chain.rewards_days_remaining
     }));
 
   const chains: IChain[] = data.chains

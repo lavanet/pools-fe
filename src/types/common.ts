@@ -60,6 +60,8 @@ export interface IPool {
   past_rewards?: number;
   icon?: ReactNode,
   estimated_apr: number;
+  rewards_end?: string;
+  rewards_days_remaining?: number;
 }
 
 export interface IProduct {
