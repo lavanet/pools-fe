@@ -246,7 +246,23 @@ const chainData: Record<string, { icon: string, fullName: string, abbreviatedNam
 type ReturnType = 'icon' | 'fullName' | 'abbreviatedName';
 
 export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = "fullName", componentName?: string) {
-  const chain = chainIdentifier ? chainData[chainIdentifier.toLowerCase()] : null;
+  if (!chainIdentifier) {
+    return returnType === 'icon'
+      ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
+      : 'N/A';
+  }
+
+  const lowerCaseIdentifier = chainIdentifier.toLowerCase();
+
+  let chain = chainData[lowerCaseIdentifier];
+
+  // If not found, try matching the start of the identifier
+  if (!chain) {
+    const matchingKey = Object.keys(chainData).find(key => lowerCaseIdentifier.startsWith(key));
+    if (matchingKey) {
+      chain = chainData[matchingKey];
+    }
+  }
 
   if (!chain) {
     return returnType === 'icon'

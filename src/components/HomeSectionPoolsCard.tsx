@@ -32,6 +32,8 @@ export const HomeSectionPoolsCard = (
     past_rewards,
     icon,
     estimated_apr,
+    rewards_end,
+    rewards_days_remaining,
   }: PoolsCardProps) => {
   const calculateRewardPercentages = (monthly_rewards?: number, future_rewards?: number, past_rewards?: number) => {
     const rewards = [monthly_rewards ?? 0, future_rewards ?? 0, past_rewards ?? 0];
@@ -95,10 +97,10 @@ export const HomeSectionPoolsCard = (
 
             <li>
               <em>Total requests:&nbsp;</em>
-              <small>{requests}</small>
+              <small>{formatNumber(requests ?? 0, true)}</small>
             </li>
 
-             <li>
+            <li>
               <em>Estimated APR:&nbsp;</em>
               <small>{estimated_apr ? estimated_apr + '%' : 'N/A'}</small>
             </li>
@@ -121,8 +123,8 @@ export const HomeSectionPoolsCard = (
             </p>
 
             <div>
-              <em>66 days&nbsp;</em>
-              <time>Sep 28,2024</time>
+              <em>{rewards_days_remaining ? rewards_days_remaining + ' days' : ''}&nbsp;</em>
+              <time>{rewards_end ? rewards_end : 'TBD'}</time>
             </div>
 
           </div>
@@ -154,7 +156,7 @@ export const HomeSectionPoolsCard = (
               <NumericFormat
                 displayType="text"
                 value={value}
-                renderText={(value) => <span>{formatNumber(value)} {currency}</span>}
+                renderText={(value) => <span>{formatNumber(value, true)} {currency}</span>}
               />
 
             </li>

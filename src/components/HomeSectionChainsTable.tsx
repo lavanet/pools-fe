@@ -13,6 +13,7 @@ import { IChain } from '@/types';
 
 import { CustomTable, Button, CustomTableMobileText } from '@/components';
 import { HomeSectionChainsMobileSlider } from '@/components/HomeSectionChainsMobileSlider';
+import { formatNumber } from '@/utils/formatters';
 
 type ChainsTableProps = {
   filter: string;
@@ -108,7 +109,7 @@ const generatedColumns = (
             {isMobile && (
               <CustomTableMobileText title="Total requests"/>
             )}
-            <span>{row.original.requests}</span>
+            <span>{formatNumber(row.original.requests, true)}</span>
           </>
         )
       }
