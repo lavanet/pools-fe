@@ -7,7 +7,7 @@ import { NumericFormat } from 'react-number-format';
 
 import { IPool } from '@/types';
 
-import { Button } from '@/components';
+import { Button, ButtonLink } from '@/components';
 import { formatNumber } from '@/utils/formatters';
 
 type PoolsCardProps = IPool;
@@ -170,10 +170,11 @@ export const HomeSectionPoolsCard = (
             text='Run RPC node'
           />
 
-          <Button
+          <ButtonLink
+            href="https://www.lavanet.xyz/stakers"
+            isExternal
             btnColor="white"
             text="Restake to RPC provider"
-            disabled
           />
 
         </div>
