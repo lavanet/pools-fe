@@ -7,7 +7,7 @@ import { NumericFormat } from 'react-number-format';
 
 import { IPool } from '@/types';
 
-import { Button, ButtonLink } from '@/components';
+import { ButtonLink } from '@/components';
 import { formatNumber } from '@/utils/formatters';
 
 type PoolsCardProps = IPool;
@@ -166,7 +166,8 @@ export const HomeSectionPoolsCard = (
 
         <div className="c-home-section-pools-card-footer">
 
-          <Button
+          <ButtonLink
+            href="#"
             text='Run RPC node'
           />
 
