@@ -241,11 +241,16 @@ const chainData: Record<string, { icon: string, fullName: string, abbreviatedNam
     fullName: "Starknet",
     abbreviatedName: "STRK"
   },
+  stargaze: {
+    icon: "/images/rounded-chains/icn-rounded-stars.svg",
+    fullName: "Stargaze",
+    abbreviatedName: "STARS"
+  },
 }
 
 type ReturnType = 'icon' | 'fullName' | 'abbreviatedName';
 
-export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = "fullName", componentName?: string) {
+export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = "fullName", logoUrl?: string) {
   if (!chainIdentifier) {
     return returnType === 'icon'
       ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
@@ -266,13 +271,17 @@ export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = 
 
   if (!chain) {
     return returnType === 'icon'
-      ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
-      : 'N/A';
+      ? logoUrl
+        ? <Image src={logoUrl} alt={chainIdentifier} width={32} height={32} />
+        : <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
+      : chainIdentifier;
   }
 
   switch (returnType) {
     case 'icon':
-       return <Image src={chain.icon} alt={chain.fullName} width={32} height={32}/>;
+      return logoUrl
+        ? <Image src={logoUrl} alt={chain.fullName} width={32} height={32} />
+        : <Image src={chain.icon} alt={chain.fullName} width={32} height={32} />;
     case 'fullName':
       return chain.fullName;
     case 'abbreviatedName':

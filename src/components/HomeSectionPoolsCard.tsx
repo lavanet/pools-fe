@@ -31,9 +31,9 @@ export const HomeSectionPoolsCard = (
     future_rewards,
     past_rewards,
     icon,
-    estimated_apr,
     rewards_end,
     rewards_days_remaining,
+    rpc_url,
   }: PoolsCardProps) => {
   const calculateRewardPercentages = (monthly_rewards?: number, future_rewards?: number, past_rewards?: number) => {
     const rewards = [monthly_rewards ?? 0, future_rewards ?? 0, past_rewards ?? 0];
@@ -99,12 +99,6 @@ export const HomeSectionPoolsCard = (
               <em>Total requests:&nbsp;</em>
               <small>{formatNumber(requests ?? 0, true)}</small>
             </li>
-
-            <li>
-              <em>Estimated APR:&nbsp;</em>
-              <small>{estimated_apr ? estimated_apr + '%' : 'N/A'}</small>
-            </li>
-
           </ul>
 
         </div>
@@ -167,7 +161,7 @@ export const HomeSectionPoolsCard = (
         <div className="c-home-section-pools-card-footer">
 
           <ButtonLink
-            href="#"
+            href={rpc_url ?? 'http://docs.lavanet.xyz/provider-setup'}
             text='Run RPC node'
           />
 

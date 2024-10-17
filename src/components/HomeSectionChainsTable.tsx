@@ -11,6 +11,7 @@ import { useMediaQuerySafe } from '@/hooks';
 import { getChainInfo } from '@/utils/chainInfo';
 import { IChain } from '@/types';
 
+import { ButtonLink } from '@/components';
 import { CustomTable, Button, CustomTableMobileText } from '@/components';
 import { HomeSectionChainsMobileSlider } from '@/components/HomeSectionChainsMobileSlider';
 import { formatNumber } from '@/utils/formatters';
@@ -144,7 +145,8 @@ const generatedColumns = (
             )}
 
             <div className="c-button-container">
-              <Button
+              <ButtonLink
+                href={row.original.rpc_url ?? 'http://docs.lavanet.xyz/provider-setup'}
                 btnSize="sm"
                 text="Run a node"
               />
@@ -153,6 +155,7 @@ const generatedColumns = (
                 btnSize="sm"
                 btnColor="white"
                 text="Endpoints"
+                disabled
               />
             </div>
           </>
