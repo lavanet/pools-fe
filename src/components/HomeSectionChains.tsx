@@ -39,7 +39,7 @@ export const HomeSectionChains = ({ chains }: HomeSectionChainsProps) => {
         <HomeBanner
           btnColor="white"
           btnText="Learn more"
-          btnLink="/"
+          btnLink="http://www.lavanet.xyz/specs"
           message="Add it yourself as a specification and earn LAVA for every request served"
           title="Don't see your favourite chain?"
         />

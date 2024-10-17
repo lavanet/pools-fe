@@ -26,11 +26,11 @@ export const SocialNavItems: INavItemLink[] = [
 
 export const LegalNavItems: INavItemLink[] = [
   {
-    link: "/",
+    link: "https://www.lavanet.xyz/privacy-policy",
     title: "Privacy Policy",
   },
   {
-    link: "/",
+    link: "https://www.lavanet.xyz/terms-of-service",
     title: "Terms of Service",
   },
 ]
@@ -41,35 +41,29 @@ export const navItems: INavItem[] = [
     title: 'Products',
     links: [
       {
-        link: '/',
+        link: 'https://accounts.lavanet.xyz/register?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+gateway',
         title: 'Lava Gateway',
         description: 'Get easy-to-use access to RPC and APIs across 15+ networks.',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/access-sdk?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+gateway',
         title: 'Lava SDK',
         description: 'Try it now for free across 25+ networks.',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://info.lavanet.xyz/?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+info',
         title: 'Lava Info',
         description: 'View real-time Lava Network data, analytics, and performance.',
         icon: '️'
       },
       {
-        link: '/',
+        link: 'https://lava.explorers.guru/?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+bd',
         title: 'Block Explorer',
         description: 'Find and filter through transactions, proposals and metrics on the Lava blockchain.',
         icon: ''
       },
-      {
-        link: '/',
-        title: 'Product Feedback',
-        description: 'Share your thoughts on our products',
-        icon: ''
-      }
     ]
   },
   {
@@ -77,49 +71,49 @@ export const navItems: INavItem[] = [
     title: 'Learn',
     links: [
       {
-        link: '/',
+        link: 'http://lavafoundation.notion.site/',
         title: 'What is Lava?',
         description: 'Discover the world of Lava',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/blog',
         title: 'Blog',
         description: 'Stay updated with our latest articles',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/news',
         title: 'News and interviews',
         description: 'Catch up on recent news and interviews',
         icon: ''
       },
       {
-        link: '/',
+        link: 'http://docs.lavanet.xyz/token',
         title: 'Tokenomics',
         description: 'Understand our token economy',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/roadmap',
         title: 'Roadmap',
         description: 'View our future plans and milestones',
         icon: ''
       },
       {
-        link: '/',
+        link: 'http://lavanet.xyz/whitepaper',
         title: 'Whitepaper',
         description: 'Read our comprehensive whitepaper',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/partnerships',
         title: 'Partnerships',
         description: 'Explore our collaborations and partnerships',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/specs',
         title: 'Specs',
         description: 'View technical specifications',
         icon: ''
@@ -131,37 +125,37 @@ export const navItems: INavItem[] = [
     title: 'Community',
     links: [
       {
-        link: '/',
+        link: 'https://twitter.com/lavanetxyz',
         title: 'Twitter',
         description: 'Stay updated on Twitter',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://discord.com/invite/Tbk5NxTCdA',
         title: 'Discord',
         description: 'Join our Discord community',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://community.lavanet.xyz/',
         title: 'Forum',
         description: 'Engage in discussions on our forum',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/partnerships',
         title: 'Run a Node',
         description: 'Become a node operator',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/specs',
         title: 'Build Specs',
         description: 'Access build specifications',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://lavanet.applytojob.com/apply',
         title: 'Join Us',
         description: 'Explore career opportunities',
         icon: ''
@@ -173,61 +167,61 @@ export const navItems: INavItem[] = [
     title: 'Incentive Pools',
     links: [
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/chains',
         title: 'See all chains',
         description: 'View incentive pools across all supported chains',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/get-started/axelar',
         title: 'Axelar',
         description: 'Explore Axelar-specific incentives',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/get-started/evmos',
         title: 'Evmos',
         description: 'Check out Evmos-related incentives',
         icon: ''
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/get-started/starknet',
         title: 'Starknet',
         description: 'Discover Starknet-based incentives',
         icon: '💎'
       },
       {
-        link: '/',
+        link: 'https://www.lavanet.xyz/get-started/near',
         title: 'Near',
         description: 'Learn about Near protocol incentives',
         icon: '🏠'
       },
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
         title: 'Ethereum',
         description: 'Explore Ethereum-based incentives',
         icon: '♦️'
       },
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
         title: 'Solana',
         description: 'Find Solana-specific incentives',
         icon: '☀️'
       },
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
         title: 'Filecoin',
         description: 'Understand Filecoin-related incentives',
         icon: '📁'
       },
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
         title: 'Osmosis',
         description: 'Discover Osmosis-based incentives',
         icon: '🔄'
       },
       {
-        link: '/',
+        link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
         title: 'Arbitrum Nova',
         description: 'Explore Arbitrum Nova incentives',
         icon: '✨'
@@ -261,15 +255,18 @@ export const homeSectionProducts: IProduct[] = [
     text: 'Smooth UI and analytics for your RPC endpoints',
     title: 'Gateway',
     type: 'red',
+    link: 'https://accounts.lavanet.xyz/register?utm_source=homepage&utm_medium=above_footer&utm_campaign=website_to_gateway&utm_content=try_gateway',
   },
   {
     text: 'Get the low-down on the Lava blockchain with Lava Info',
     title: 'Lava Info',
     type: 'orange',
+    link: 'https://info.lavanet.xyz/?utm_source=above-footer&utm_medium=website&utm_campaign=website-to-lavainfo',
   },
   {
     text: 'See how Providers perform with rich Analytics',
     title: 'Provider analytics',
     type: 'orange',
+    link: 'https://info.lavanet.xyz/?utm_source=above-footer&utm_medium=website&utm_campaign=website-to-provider-analytics',
   },
 ];

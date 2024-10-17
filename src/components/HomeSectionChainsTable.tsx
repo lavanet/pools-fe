@@ -69,7 +69,7 @@ const generatedColumns = (
 
             <div className='c-flexbox'>
               <i>
-                {getChainInfo(chain, 'icon')}
+                {getChainInfo(chain ? chain.toLowerCase() : 'N/A', 'icon', row.original.logo)}
               </i>
               <span>{chain}</span>
             </div>
@@ -151,11 +151,11 @@ const generatedColumns = (
                 text="Run a node"
               />
 
-              <Button
+              <ButtonLink
+                href='https://docs.lavanet.xyz/chains'
                 btnSize="sm"
                 btnColor="white"
                 text="Endpoints"
-                disabled
               />
             </div>
           </>

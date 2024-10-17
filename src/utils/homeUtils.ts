@@ -14,6 +14,7 @@ type RawHomeData = {
     denom?: string;
     rewards_per_month?: number;
     future_rewards?: number;
+    future_rewards_usd: number;
     past_rewards?: number;
     months_remaining?: number;
     current_rewards: number;
@@ -51,7 +52,22 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
 
   const pools: IPool[] = data.chains
     .filter(chain => chain.total_rewards && chain.total_rewards > 0)
-    .sort((a, b) => (b.total_rewards_usd || 0) - (a.total_rewards_usd || 0))
+    .sort((a, b) => {
+      // If both have non-TBD rewards_end, sort by past_rewards descending
+      if (a.rewards_end !== 'TBD' && b.rewards_end !== 'TBD') {
+        return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
+      }
+      // If only a has TBD, it should come after b
+      if (a.rewards_end === 'TBD' && b.rewards_end !== 'TBD') {
+        return 1;
+      }
+      // If only b has TBD, it should come after a
+      if (a.rewards_end !== 'TBD' && b.rewards_end === 'TBD') {
+        return -1;
+      }
+      // If both have TBD, still sort by past_rewards descending
+      return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
+    })
     .map(chain => ({
       id: chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A',
       title: chain.clean_name || 'N/A',
@@ -78,6 +94,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
       rpcProviders: chain.rpc_node_runners || 0,
       service: chain.service || 'N/A',
       rpc_url: chain.rpc_url,
+      logo: chain.logo,
     }));
 
   return { dataCards, pools, chains };

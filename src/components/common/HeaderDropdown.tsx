@@ -87,7 +87,7 @@ export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
             <div className="c-button-container">
 
                 <ButtonLink
-                  href="/"
+                  href="http://docs.lavanet.xyz/provider-setup"
                   btnColor="white-outline"
                   text="Get started"
                   icon={<IcnArrowUp/>}
