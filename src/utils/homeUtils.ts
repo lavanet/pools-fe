@@ -10,15 +10,16 @@ type RawHomeData = {
     rpc_node_runners?: number;
     total_requests?: number;
     total_rewards?: number;
+    total_rewards_usd?: number;
     denom?: string;
     rewards_per_month?: number;
     future_rewards?: number;
     past_rewards?: number;
     months_remaining?: number;
-    estimated_apr?: number;
     current_rewards: number;
     rewards_end?: string;
     rewards_days_remaining?: number;
+    rpc_url: string;
   }>;
   total_requests?: number;
   total_rewards?: number;
@@ -55,16 +56,16 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
       service: chain.service || 'N/A',
       node_runner: chain.rpc_node_runners || 0,
       requests: chain.total_requests || 0,
-      value: chain.total_rewards ? `$${formatNumber(chain.total_rewards, true)}` : 'N/A',
+      value: chain.total_rewards_usd ? `$${formatNumber(chain.total_rewards_usd, true)}` : 'N/A',
       currency: chain.denom ? chain.denom.toUpperCase() : 'N/A',
       monthly_rewards: Number(chain.current_rewards) || 0,
       future_rewards: Number(chain.future_rewards) || 0,
       past_rewards: Number(chain.past_rewards) || 0,
       icon: getChainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon'),
       months_remaining: chain.months_remaining || 0,
-      estimated_apr: chain.estimated_apr || 0,
       rewards_end: chain.rewards_end || 'TBD',
-      rewards_days_remaining: chain.rewards_days_remaining
+      rewards_days_remaining: chain.rewards_days_remaining,
+      rpc_url: chain.rpc_url,
     }));
 
   const chains: IChain[] = data.chains
@@ -74,6 +75,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
       requests: chain.total_requests || 0,
       rpcProviders: chain.rpc_node_runners || 0,
       service: chain.service || 'N/A',
+      rpc_url: chain.rpc_url,
     }));
 
   return { dataCards, pools, chains };

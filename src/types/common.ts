@@ -31,7 +31,8 @@ export interface IChain {
   name: string,
   requests: number,
   rpcProviders: number,
-  service: string
+  service: string,
+  rpc_url: string,
 }
 
 export interface IDataCard {
@@ -65,9 +66,9 @@ export interface IPool {
   future_rewards?: number;
   past_rewards?: number;
   icon?: ReactNode,
-  estimated_apr: number;
   rewards_end?: string;
   rewards_days_remaining?: number;
+  rpc_url: string;
 }
 
 export interface IProduct {

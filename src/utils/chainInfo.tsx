@@ -241,6 +241,11 @@ const chainData: Record<string, { icon: string, fullName: string, abbreviatedNam
     fullName: "Starknet",
     abbreviatedName: "STRK"
   },
+  stargaze: {
+    icon: "/images/rounded-chains/icn-rounded-stars.svg",
+    fullName: "Stargaze",
+    abbreviatedName: "STARS"
+  },
 }
 
 type ReturnType = 'icon' | 'fullName' | 'abbreviatedName';
