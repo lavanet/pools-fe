@@ -33,6 +33,7 @@ export interface IChain {
   rpcProviders: number,
   service: string,
   rpc_url: string,
+  logo: string,
 }
 
 export interface IDataCard {
@@ -75,6 +76,7 @@ export interface IProduct {
   text: string;
   title: string;
   type: 'orange' | 'red';
+  link: string;
 }
 
 export interface ProcessedHomeData {

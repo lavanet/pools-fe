@@ -40,6 +40,7 @@ export const HomeSectionPools = ({ pools }: HomeSectionPoolsProps) => {
     <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
 
       <div className='c-home-section-pools-header'>
+        {/*
         <Input
           type="search"
           name="home_pool_search"
@@ -50,6 +51,7 @@ export const HomeSectionPools = ({ pools }: HomeSectionPoolsProps) => {
           inputGroupPlacement="left"
           disabled
         />
+        */}
 
         <InputSelect
           name="home_pool_sort"

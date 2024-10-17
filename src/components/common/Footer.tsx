@@ -51,7 +51,7 @@ export const Footer = () => {
                 <p className="c-tablet-sm"/>
               )}
 
-              <Link href="/" title="Rollup Developers">
+              <Link href="https://www.lavanet.xyz/rollup-developer" title="Rollup Developers">
                 Rollup Developers
               </Link>
             </div>

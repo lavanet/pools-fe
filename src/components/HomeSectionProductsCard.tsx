@@ -10,7 +10,7 @@ import { IProduct } from '@/types';
 
 import { ButtonLink } from '@/components/common';
 
-export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
+export const HomeSectionProductsCard = ({ text, title, type, link }: IProduct) => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
   return (
@@ -33,7 +33,7 @@ export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
           <div className='c-button-container'>
             {isMobile?(
               <ButtonLink
-                href='/'
+                href={link}
                 title={`Try ${title}`}
                 btnVariant="link"
                 icon={<IcnArrowUpRetro/>}
@@ -42,7 +42,7 @@ export const HomeSectionProductsCard = ({ text, title, type }: IProduct) => {
               <ButtonLink
                 btnColor="white-outline"
                 btnSize="xl"
-                href="/"
+                href={link}
                 text={`Try ${title}`}
                 icon={<IcnArrowRightRetro/>}
                 iconPlacement="right"

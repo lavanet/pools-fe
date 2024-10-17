@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { ReactNode } from 'react';
 
 const chainData: Record<string, { icon: string, fullName: string, abbreviatedName: string }> = {
   cardano: {
@@ -250,7 +251,8 @@ const chainData: Record<string, { icon: string, fullName: string, abbreviatedNam
 
 type ReturnType = 'icon' | 'fullName' | 'abbreviatedName';
 
-export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = "fullName", logoUrl?: string) {
+
+export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = "fullName", logoUrl?: string): string | ReactNode {
   if (!chainIdentifier) {
     return returnType === 'icon'
       ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
@@ -258,34 +260,16 @@ export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = 
   }
 
   const lowerCaseIdentifier = chainIdentifier.toLowerCase();
-
-  let chain = chainData[lowerCaseIdentifier];
-
-  // If not found, try matching the start of the identifier
-  if (!chain) {
-    const matchingKey = Object.keys(chainData).find(key => lowerCaseIdentifier.startsWith(key));
-    if (matchingKey) {
-      chain = chainData[matchingKey];
-    }
-  }
-
-  if (!chain) {
-    return returnType === 'icon'
-      ? logoUrl
-        ? <Image src={logoUrl} alt={chainIdentifier} width={32} height={32} />
-        : <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
-      : chainIdentifier;
-  }
+  const chain = chainData[lowerCaseIdentifier] || Object.values(chainData).find(c => lowerCaseIdentifier.startsWith(c.abbreviatedName.toLowerCase()));
 
   switch (returnType) {
     case 'icon':
-      return logoUrl
-        ? <Image src={logoUrl} alt={chain.fullName} width={32} height={32} />
-        : <Image src={chain.icon} alt={chain.fullName} width={32} height={32} />;
+      const iconSrc = logoUrl || (chain?.icon ?? "/images/rounded-chains/icn-rounded-default-image.svg");
+      return <Image src={iconSrc} alt={chain?.fullName || chainIdentifier} width={32} height={32} />;
     case 'fullName':
-      return chain.fullName;
+      return chain?.fullName || chainIdentifier;
     case 'abbreviatedName':
-      return chain.abbreviatedName;
+      return chain?.abbreviatedName || chainIdentifier;
     default:
       return "";
   }

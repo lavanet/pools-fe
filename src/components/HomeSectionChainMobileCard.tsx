@@ -8,14 +8,15 @@ import { getChainInfo } from '@/utils/chainInfo';
 import { IChain } from '@/types';
 
 import { Button } from '@/components/common';
+import { ButtonLink } from '@/components/common';
 
-export const HomeSectionChainsMobileCard = ({ name, requests , rpcProviders, service }: IChain) => (
+export const HomeSectionChainsMobileCard = ({ name, requests , rpcProviders, service, logo }: IChain) => (
   <article className={clsx(styles.cHomeSectionChainsMobileCard, "c-home-section-chains-mobile-card")}>
 
     <div className="c-home-section-chains-mobile-card-header">
 
       <i>
-        {getChainInfo(name, 'icon')}
+        {getChainInfo(name ? name.toLowerCase() : 'N/A', 'icon', logo)}
       </i>
 
       <h3 className="h6">
@@ -47,7 +48,8 @@ export const HomeSectionChainsMobileCard = ({ name, requests , rpcProviders, ser
         text="Run a node"
       />
 
-      <Button
+      <ButtonLink
+        href='https://docs.lavanet.xyz/chains'
         btnSize="sm"
         btnColor="white"
         text="Endpoints"

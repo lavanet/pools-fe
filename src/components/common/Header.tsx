@@ -29,7 +29,7 @@ export const Header = () => {
                 extraClassName='c-header-nav-link'
                 btnColor='ghost'
                 btnSize="lg"
-                href='/'
+                href='https://www.lavanet.xyz/rollup-developer'
                 text='Rollup Developers'
               />
 
@@ -44,7 +44,7 @@ export const Header = () => {
               btnColor="white"
               btnSize="lg"
               text="Read Docs"
-              href="/"
+              href="https://docs.lavanet.xyz/"
             />
 
           </>

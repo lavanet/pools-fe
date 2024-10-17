@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['lavapool-0b8e7z.s3.amazonaws.com'],
+  },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports

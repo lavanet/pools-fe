@@ -102,7 +102,7 @@ export const HomeSectionPoolsSlider = ({ pools }: HomeSectionPoolsSliderProps) =
             >
               <HomeSectionPoolsCard
                 {...pool}
-                icon={getChainInfo(pool.title, 'icon')}
+                icon={pool.icon}
               />
             </SwiperSlide>
           ))}
