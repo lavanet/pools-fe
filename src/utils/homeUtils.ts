@@ -51,6 +51,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
 
   const pools: IPool[] = data.chains
     .filter(chain => chain.total_rewards && chain.total_rewards > 0)
+    .sort((a, b) => (b.total_rewards_usd || 0) - (a.total_rewards_usd || 0))
     .map(chain => ({
       id: chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A',
       title: chain.clean_name || 'N/A',
