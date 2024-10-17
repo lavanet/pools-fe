@@ -20,6 +20,7 @@ type RawHomeData = {
     rewards_end?: string;
     rewards_days_remaining?: number;
     rpc_url: string;
+    logo: string;
   }>;
   total_requests?: number;
   total_rewards?: number;
@@ -61,7 +62,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
       monthly_rewards: Number(chain.current_rewards) || 0,
       future_rewards: Number(chain.future_rewards) || 0,
       past_rewards: Number(chain.past_rewards) || 0,
-      icon: getChainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon'),
+      icon: getChainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon', chain.logo),
       months_remaining: chain.months_remaining || 0,
       rewards_end: chain.rewards_end || 'TBD',
       rewards_days_remaining: chain.rewards_days_remaining,
