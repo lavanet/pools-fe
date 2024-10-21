@@ -15,7 +15,7 @@ import { fetchProcessedHomeData } from '@/utils/homeUtils';
 import { ProcessedHomeData } from '@/types';
 
 function LoadingFallback() {
-  return <div>Loading...</div>;
+  return <div className="c-loader" />;
 }
 
 function ErrorFallback({ error }: { error: Error }) {
@@ -63,9 +63,7 @@ export default function Home() {
   return (
     <section className={clsx(styles.cHome, "c-home")}>
       <div className="c-container">
-        <Suspense fallback={<div>Loading...</div>}>
-          <HomeContent />
-        </Suspense>
+        <HomeContent />
       </div>
     </section>
   );
