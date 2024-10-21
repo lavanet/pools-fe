@@ -251,11 +251,10 @@ const chainData: Record<string, { icon: string, fullName: string, abbreviatedNam
 
 type ReturnType = 'icon' | 'fullName' | 'abbreviatedName';
 
-
 export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = "fullName", logoUrl?: string): string | ReactNode {
   if (!chainIdentifier) {
     return returnType === 'icon'
-      ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} />
+      ? <Image src="/images/rounded-chains/icn-rounded-default-image.svg" alt="Unknown" width={32} height={32} priority />
       : 'N/A';
   }
 
@@ -265,7 +264,7 @@ export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = 
   switch (returnType) {
     case 'icon':
       const iconSrc = logoUrl || (chain?.icon ?? "/images/rounded-chains/icn-rounded-default-image.svg");
-      return <Image src={iconSrc} alt={chain?.fullName || chainIdentifier} width={32} height={32} />;
+      return <Image src={iconSrc} alt={chain?.fullName || chainIdentifier} width={32} height={32} priority />;
     case 'fullName':
       return chain?.fullName || chainIdentifier;
     case 'abbreviatedName':
