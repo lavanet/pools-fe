@@ -25,9 +25,14 @@ export const Footer = () => {
             <Logo />
 
             <p>
-              Lava is a modular protocol where providers can quickly add
-              support for any API and RPC. The multi-chain experience never
-              felt so easy.
+              Lava Network is the underlying protocol which makes dapps and
+              wallets faster and more reliable, on any blockchain.
+              Lava’s RPC services handle more than 77 billion data requests
+              across over 2.3 million monthly users, on 40+ blockchains.
+            </p>
+
+            <p>
+              Lava’s aim is to 10x the onchain experience for everyone.
             </p>
 
             <div>
