@@ -50,8 +50,12 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
     { title: 'Upcoming rewards, USD', value: data.total_future_rewards ? `$${formatNumber(data.total_future_rewards)}` : 'N/A' },
   ];
 
+  const hasActivity = (chain: RawHomeData['chains'][0]) =>
+    (chain.rpc_node_runners && chain.rpc_node_runners > 0) ||
+    (chain.total_requests && chain.total_requests > 0);
+
   const pools: IPool[] = data.chains
-    .filter(chain => chain.total_rewards && chain.total_rewards > 0)
+    .filter(chain => (chain.total_rewards && chain.total_rewards > 0) && hasActivity(chain))
     .sort((a, b) => {
       // If both have non-TBD rewards_end, sort by past_rewards descending
       if (a.rewards_end !== 'TBD' && b.rewards_end !== 'TBD') {
@@ -87,7 +91,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
     }));
 
   const chains: IChain[] = data.chains
-    .filter(chain => !chain.total_rewards || chain.total_rewards === 0)
+    .filter(chain => (!chain.total_rewards || chain.total_rewards === 0) && hasActivity(chain))
     .map(chain => ({
       name: chain.clean_name || 'N/A',
       requests: chain.total_requests || 0,
