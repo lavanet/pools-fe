@@ -35,9 +35,7 @@ export async function fetchHomeData(): Promise<RawHomeData> {
     throw new Error('API URL is not defined in environment variables');
   }
 
-  const res = await fetch(`${apiUrl}/home/`, {
-    cache: 'no-store'
-  });
+  const res = await fetch(`${apiUrl}/home/`, { next: { revalidate: 10 } });
   if (!res.ok) {
     throw new Error(`Failed to fetch home data: ${res.status} ${res.statusText}`);
   }
