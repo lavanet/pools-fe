@@ -42,6 +42,11 @@
           --btn-padding-x: var(--px24);
           --btn-font-size: 1em;
 
+          &:hover,
+          &:focus {
+            --btn-bg-color: transparent;
+          }
+
           &.is-open {
             --btn-color: var(--white);
             --btn-bg-color: var(--grey-500);

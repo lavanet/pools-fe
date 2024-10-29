@@ -34,7 +34,20 @@ export const Header = () => {
               />
 
               {navItems.map((item) => (
-                <HeaderDropdown key={item.title} {...item} />
+                <>
+                  {item.id === "incentive-pools"? (
+                    <ButtonLink
+                      extraClassName='c-header-nav-link'
+                      btnColor='ghost'
+                      btnSize="lg"
+                      key={item.title}
+                      href="/"
+                      text={item.title}
+                    />
+                  ):(
+                    <HeaderDropdown key={item.title} {...item} />
+                  )}
+                </>
               ))}
 
             </div>

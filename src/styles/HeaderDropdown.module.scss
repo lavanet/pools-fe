@@ -1,6 +1,6 @@
-.cHeaderCustomDropdown {
+.cHeaderDropdown {
   &:global {
-    &.c-header-custom-dropdown {
+    &.c-header-dropdown {
       width: 100vw;
       padding: 0 var(--px24);
       background-color: transparent;
@@ -19,9 +19,9 @@
         overflow: hidden;
       }
 
-      .c-header-custom-dropdown-grid {
+      .c-header-dropdown-grid {
         display: grid;
-        grid-template-columns: 1fr 335px;
+        grid-template-columns: 1fr 400px; //400px
         align-items: stretch;
         width: 100%;
         max-width: 100%;
@@ -44,14 +44,23 @@
                 align-items: flex-start;
                 gap: var(--px8);
                 padding: 1em var(--px24);
+                border-radius: var(--px12);
+                box-shadow: inset 0 0 0 1px transparent;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover,
+                &:focus {
+                  background-color: var(--lava-brand);
+                  box-shadow: inset 0 0 0 1px var(--orange-400);
+
+                  .text > small {
+                    color: var(--body-color);
+                  }
+                }
 
                 .icon {
-                  background-color: blue;
-
-                  i {
-                    width: var(--px20);
-                    height: var(--px20);
-                  }
+                  width: var(--px20);
+                  height: var(--px20);
                 }
 
                 .text {
@@ -69,11 +78,12 @@
 
                   small {
                     width: 100%;
-                    max-width: 316px;
+                    max-width: 22.571em; //316px @14px
                     color: var(--grey-200);
                     font-size: var(--px14);
                     font-weight: normal;
-                    line-height: 19.6px;
+                    line-height: 1.4em; //19.6px @14px
+                    transition: color 0.3s ease;
                   }
                 }
               }
@@ -83,8 +93,41 @@
           &.banner {
             background: url("../../public/images/lava-orange-bg-x2.webp") no-repeat center center/cover;
 
+            .text {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px8);
+
+              h2, p {
+                margin-bottom: 0;
+              }
+            }
+
+            .c-header-dropdown-grid-item-social-media {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px24);
+
+              > p {
+                font-size: var(--px18);
+                font-family: var(--font-family-retro);
+                letter-spacing: 0.08em;
+              }
+            }
+
             > .c-button-container {
               margin-top: auto;
+              padding-top: var(--px20);
+            }
+
+            &:has(.c-header-dropdown-grid-item-social-media) {
+              >.c-button-container {
+                margin-top: unset;
+              }
+
+              .c-header-dropdown-grid-item-social-media {
+                margin-top: auto;
+              }
             }
           }
         }
