@@ -35,7 +35,7 @@ export async function fetchHomeData(): Promise<RawHomeData> {
     throw new Error('API URL is not defined in environment variables');
   }
 
-  const res = await fetch(`${apiUrl}/home/`, { next: { revalidate: 10 } });
+  const res = await fetch(`${apiUrl}/home/`, { cache: 'no-store' });
   if (!res.ok) {
     throw new Error(`Failed to fetch home data: ${res.status} ${res.statusText}`);
   }
@@ -55,7 +55,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
     (chain.total_requests && chain.total_requests > 0);
 
   const pools: IPool[] = data.chains
-    .filter(chain => (chain.total_rewards && chain.total_rewards > 0) && hasActivity(chain))
+    .filter(chain => (chain.total_rewards && chain.total_rewards > 0))
     .sort((a, b) => {
       // If both have non-TBD rewards_end, sort by past_rewards descending
       if (a.rewards_end !== 'TBD' && b.rewards_end !== 'TBD') {
