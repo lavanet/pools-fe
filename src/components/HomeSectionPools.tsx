@@ -39,32 +39,31 @@ export const HomeSectionPools = ({ pools }: HomeSectionPoolsProps) => {
   return (
     <section className={clsx(styles.cHomeSectionPools, "c-home-section-pools")}>
 
-      <div className='c-home-section-pools-header'>
-        {/*
-        <Input
-          type="search"
-          name="home_pool_search"
-          labelText="Search chain name"
-          labelIsHidden
-          placeholder="Search chain name"
-          inputGroupText={<IcnSearch />}
-          inputGroupPlacement="left"
-          disabled
-        />
-        */}
+      {/*<div className='c-home-section-pools-header'>*/}
 
-        <InputSelect
-          name="home_pool_sort"
-          options={HomePoolSortOptions}
-          labelText="Sort"
-          labelIsHidden
-          inputStyle="filled"
-          inputGroupText="Sort by: "
-          defaultValue={[HomePoolSortOptions[0]]}
-          isDisabled
-        />
+      {/*  <Input*/}
+      {/*    type="search"*/}
+      {/*    name="home_pool_search"*/}
+      {/*    labelText="Search chain name"*/}
+      {/*    labelIsHidden*/}
+      {/*    placeholder="Search chain name"*/}
+      {/*    inputGroupText={<IcnSearch />}*/}
+      {/*    inputGroupPlacement="left"*/}
+      {/*    disabled*/}
+      {/*  />*/}
 
-      </div>
+      {/*  <InputSelect*/}
+      {/*    name="home_pool_sort"*/}
+      {/*    options={HomePoolSortOptions}*/}
+      {/*    labelText="Sort"*/}
+      {/*    labelIsHidden*/}
+      {/*    inputStyle="filled"*/}
+      {/*    inputGroupText="Sort by: "*/}
+      {/*    defaultValue={[HomePoolSortOptions[0]]}*/}
+      {/*    isDisabled*/}
+      {/*  />*/}
+
+      {/*</div>*/}
 
       <div className='c-home-section-pools-slider'>
         <HomeSectionPoolsSlider pools={pools}/>

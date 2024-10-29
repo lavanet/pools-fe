@@ -11,6 +11,7 @@ import Tippy from '@tippyjs/react';
 import { IheaderDropdownBanner, INavItemLink } from '@/types';
 
 import { ButtonLink } from '@/components';
+import { SocialNavItems } from '@/utils/variables';
 
 type HeaderDropdownProps = {
   id?: string,
@@ -105,7 +106,17 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
                   <p>Join our community</p>
 
                   <div className="c-header-dropdown-grid-item-social-media-list">
+                    {SocialNavItems.map((social, socialIdx) => (
 
+                      <ButtonLink
+                        key={socialIdx}
+                        href={social.link}
+                        btnVariant='icon'
+                        btnColor='white'
+                        title={social.title}
+                        icon={social.icon}
+                      />
+                    ))}
                   </div>
 
                 </div>
