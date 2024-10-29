@@ -74,13 +74,9 @@
         flex-wrap: wrap;
         margin-bottom: auto;
 
-        > * {
-          flex: 1;
-        }
-
         &-text {
           display: inline-flex;
-          align-items: center;
+          align-items: flex-start;
           gap: var(--px12);
 
           i {
@@ -90,9 +86,6 @@
 
           h2 {
             margin-bottom: 0;
-            font-size: var(--px24);
-            font-weight: 500;
-            line-height: 28px;
           }
 
           small {

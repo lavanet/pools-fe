@@ -55,17 +55,19 @@
             min-height: 698px;
           }
 
-          .swiper .swiper-wrapper {
-            align-items: stretch;
-            margin-bottom: var(--px2);
+          .swiper {
+            .swiper-wrapper {
+              align-items: stretch;
+              margin-bottom: var(--px2);
 
-            .swiper-slide {
-              display: flex;
-              flex-direction: column;
+              .swiper-slide {
+                display: flex;
+                flex-direction: column;
 
-              @media( min-width: 768px) {
-                height: 100%;
-                max-height: calc(50% - 6px);
+                @media(min-width: 768px) {
+                  //height: 100%;
+                  max-height: calc(50% - 6px);
+                }
               }
             }
           }

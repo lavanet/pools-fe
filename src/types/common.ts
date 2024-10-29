@@ -42,17 +42,28 @@ export interface IDataCard {
   message?: string;
 }
 
-export interface INavItem {
-  id?: string,
-  links: INavItemLink[],
+export interface IheaderDropdownBanner {
   title: string;
+  paragraph: string;
+  linkUrl: string;
+  linkTitle: string;
+  displaySocialMedia?: boolean;
+}
+
+export interface INavItem {
+  id?: string;
+  links: INavItemLink[];
+  title: string;
+  headerDropdownBanner?: IheaderDropdownBanner;
 }
 
 export interface INavItemLink {
   link: string,
   title: string;
-  description?: string,
+  description?: string;
   icon?: ReactNode;
+  footerDisplay?: boolean;
+  headerDisplay?: boolean;
 }
 
 export interface IPool {
@@ -66,7 +77,7 @@ export interface IPool {
   monthly_rewards?: number;
   future_rewards?: number;
   past_rewards?: number;
-  icon?: ReactNode,
+  icon?: ReactNode;
   rewards_end?: string;
   rewards_days_remaining?: number;
   rpc_url: string;

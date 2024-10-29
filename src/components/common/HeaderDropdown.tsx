@@ -8,7 +8,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 
-import { INavItemLink } from '@/types';
+import { IheaderDropdownBanner, INavItemLink } from '@/types';
 
 import { ButtonLink } from '@/components';
 
@@ -16,11 +16,13 @@ type HeaderDropdownProps = {
   id?: string,
   title: string;
   links?: INavItemLink[];
-  content?: ReactNode;
+  headerDropdownBanner?: IheaderDropdownBanner;
 };
 
-export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
+export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: HeaderDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const filteredLinks = links?.filter(link => link.headerDisplay === true);
 
   return (
     <Tippy
@@ -36,24 +38,22 @@ export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
       appendTo={() => document.body}
       animation="shift-away"
       placement="bottom"
-      className={clsx(styles.cHeaderCustomDropdown, "c-header-custom-dropdown", id)}
+      className={clsx(styles.cHeaderDropdown, "c-header-dropdown", id)}
       content={
-        <div className="c-header-custom-dropdown-grid">
+        <div className="c-header-dropdown-grid">
 
-          <div className='c-header-custom-dropdown-grid-item menu'>
+          <div className='c-header-dropdown-grid-item menu'>
 
-            {links && (
+            {filteredLinks && (
               <div>
-                {links.map((link, linkIdx) => (
+                {filteredLinks.map((link, linkIdx) => (
 
                   <Link
                     key={linkIdx}
                     href={link.link}
                   >
                     {link.icon && (
-                      <span className="icon">
-                        <i>{link.icon}</i>
-                      </span>
+                      <i className="icon">{link.icon}</i>
                     )}
 
                     <span className="text">
@@ -71,32 +71,48 @@ export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
 
           </div>
 
-          <aside className='c-header-custom-dropdown-grid-item banner'>
+          {headerDropdownBanner && (
+            <aside className='c-header-dropdown-grid-item banner'>
 
-            <div className="text">
+              <div className="text">
 
-              <h2 className='h3 sharp-medium'>
-                RPC Providers & Validators on Lava
-              </h2>
+                <h2 className='h3 sharp-medium'>
+                  {headerDropdownBanner.title}
+                </h2>
 
-              <p>
-                Lava offers many ways for node operators to participate in the ecosystem. Explore the opportunities below
-              </p>
-            </div>
+                <p>
+                  {headerDropdownBanner.paragraph}
+                </p>
 
-            <div className="c-button-container">
+              </div>
+
+              <div className="c-button-container">
 
                 <ButtonLink
-                  href="http://docs.lavanet.xyz/provider-setup"
+                  href={headerDropdownBanner.linkUrl}
                   btnColor="white-outline"
-                  text="Get started"
+                  text={headerDropdownBanner.linkTitle}
                   icon={<IcnArrowUp/>}
                   iconPlacement="right"
                 />
 
-            </div>
+              </div>
 
-          </aside>
+              {headerDropdownBanner.displaySocialMedia && (
+
+                <div className="c-header-dropdown-grid-item-social-media">
+
+                  <p>Join our community</p>
+
+                  <div className="c-header-dropdown-grid-item-social-media-list">
+
+                  </div>
+
+                </div>
+              )}
+
+            </aside>
+          )}
 
         </div>
       }
