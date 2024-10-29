@@ -109,15 +109,33 @@
               row-gap: var(--px24);
 
               > p {
+                margin-bottom: 0;
                 font-size: var(--px18);
                 font-family: var(--font-family-retro);
                 letter-spacing: 0.08em;
+              }
+
+              &-list {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                column-gap: var(--px24);
+
+                >.c-button {
+                  --btn-size: 48px;
+                  --btn-icon-size: 22px;
+                }
               }
             }
 
             > .c-button-container {
               margin-top: auto;
               padding-top: var(--px20);
+
+              > .c-button {
+                --btn-min-height: 44px;
+                --btn-border-radius: 40px;
+              }
             }
 
             &:has(.c-header-dropdown-grid-item-social-media) {
