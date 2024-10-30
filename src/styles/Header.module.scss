@@ -24,12 +24,20 @@
       }
 
       .c-header-nav {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1em;
         height: 100%;
         background-color: var(--grey-700);
+
+        > [data-tippy-root] {
+          top: 100% !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          transform: none !important;
+        }
       }
 
       .c-button-container {

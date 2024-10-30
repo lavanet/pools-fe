@@ -8,6 +8,7 @@ import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
 
 import { HeaderDropdown, MobileMenu, ButtonLink, Logo } from '@/components/common';
+import { Fragment } from 'react';
 
 export const Header = () => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -34,20 +35,21 @@ export const Header = () => {
               />
 
               {navItems.map((item) => (
-                <>
+                <Fragment key={item.title}>
+
                   {item.id === "incentive-pools"? (
                     <ButtonLink
+                      key={item.title}
                       extraClassName='c-header-nav-link'
                       btnColor='ghost'
                       btnSize="lg"
-                      key={item.title}
-                      href="/"
                       text={item.title}
+                      href="/"
                     />
                   ):(
-                    <HeaderDropdown key={item.title} {...item} />
+                    <HeaderDropdown {...item} />
                   )}
-                </>
+                </Fragment>
               ))}
 
             </div>
@@ -57,6 +59,7 @@ export const Header = () => {
               btnColor="white"
               btnSize="lg"
               text="Read Docs"
+              isExternal
               href="https://docs.lavanet.xyz/"
             />
 

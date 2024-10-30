@@ -124,7 +124,7 @@
 
   .c-select__menu-list {
     position: relative;
-    max-height: 180px;
+    max-height: 12.857em; //180px
     padding: var(--font-size-14-px8) var(--font-size-14-px10) 2em;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
