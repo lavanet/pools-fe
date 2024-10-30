@@ -52,6 +52,8 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
                   <Link
                     key={linkIdx}
                     href={link.link}
+                    target="_blank"
+                    rel="noreferrer noopener"
                   >
                     {link.icon && (
                       <i className="icon">{link.icon}</i>
@@ -91,6 +93,7 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
 
                 <ButtonLink
                   href={headerDropdownBanner.linkUrl}
+                  isExternal
                   btnColor="white-outline"
                   text={headerDropdownBanner.linkTitle}
                   icon={<IcnArrowUp/>}
@@ -111,6 +114,7 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
                       <ButtonLink
                         key={socialIdx}
                         href={social.link}
+                        isExternal
                         btnVariant='icon'
                         btnColor='white'
                         title={social.title}

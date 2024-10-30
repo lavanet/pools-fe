@@ -21,7 +21,7 @@
 
       .c-header-dropdown-grid {
         display: grid;
-        grid-template-columns: 1fr 400px; //400px
+        grid-template-columns: 1fr 25em; //400px
         align-items: stretch;
         width: 100%;
         max-width: 100%;
@@ -122,8 +122,8 @@
                 column-gap: var(--px24);
 
                 >.c-button {
-                  --btn-size: 48px;
-                  --btn-icon-size: 22px;
+                  --btn-size: var(--font-size-14-px48);
+                  --btn-icon-size: 1.571em; //22px @14px
                 }
               }
             }
@@ -133,8 +133,8 @@
               padding-top: var(--px20);
 
               > .c-button {
-                --btn-min-height: 44px;
-                --btn-border-radius: 40px;
+                --btn-min-height: var(--font-size-14-px44);
+                --btn-border-radius: var(--font-size-14-px40);
               }
             }
 

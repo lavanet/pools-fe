@@ -112,7 +112,7 @@ export const navItems: INavItem[] = [
       {
         link: 'http://lavafoundation.notion.site/',
         title: 'What is Lava?',
-        description: 'Discover the world of Lava',
+        description: 'Lava: A decentralized RPC network for blockchains',
         icon: <IcnCircleInfo/>,
         footerDisplay: true,
         headerDisplay: true,
@@ -120,7 +120,7 @@ export const navItems: INavItem[] = [
       {
         link: 'https://www.lavanet.xyz/blog',
         title: 'Blog',
-        description: 'Stay updated with our latest articles',
+        description: 'Learn more about Lava',
         icon: <IcnLavaDocs/>,
         footerDisplay: true,
         headerDisplay: true,
@@ -128,7 +128,7 @@ export const navItems: INavItem[] = [
       {
         link: 'https://www.lavanet.xyz/blog',
         title: 'Forum',
-        description: 'Stay updated with our latest articles',
+        description: 'Create topics and discuss any of them',
         icon: <IcnChat/>,
         footerDisplay: false,
         headerDisplay: true,
@@ -152,7 +152,7 @@ export const navItems: INavItem[] = [
       {
         link: 'https://www.lavanet.xyz/roadmap',
         title: 'Roadmap',
-        description: 'View our future plans and milestones',
+        description: 'Our mission is to power the open standard for blockchain RPC and APIs',
         icon: <IcnShow/>,
         footerDisplay: true,
         headerDisplay: true,
@@ -182,7 +182,7 @@ export const navItems: INavItem[] = [
         headerDisplay: false,
       },
       {
-        link: 'https://www.lavanet.xyz/specs',
+        link: 'https://lavanet.applytojob.com/apply',
         title: 'Join us',
         description: 'Become a part of our energized international team',
         icon: <IcnTeam/>,
@@ -219,7 +219,7 @@ export const navItems: INavItem[] = [
         headerDisplay: false,
       },
       {
-        link: 'https://lavanet.applytojob.com/apply',
+        link: 'https://www.lavanet.xyz/foundation',
         title: 'Vision',
         description: 'Our mission is to power the open standard for blockchain RPC and APIs',
         icon: <IcnShow/>,
@@ -237,7 +237,7 @@ export const navItems: INavItem[] = [
       {
         link: 'https://community.lavanet.xyz/',
         title: 'Forum',
-        description: 'Engage in discussions on our forum',
+        description: 'Create topics and discuss any of them',
         icon: <IcnChat/>,
         footerDisplay: true,
         headerDisplay: true,
