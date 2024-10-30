@@ -167,7 +167,6 @@ export const HomeSectionPoolsCard = (
 
           <ButtonLink
             href="https://www.lavanet.xyz/stakers"
-            isExternal
             btnColor="white"
             text="Earn Rewards"
           />

@@ -22,7 +22,6 @@ export const HomeSectionHeroCTA = () => (
 
     <ButtonLink
       href="http://www.lavanet.xyz/rollup-developer"
-      isExternal
       text="Learn more"
     />
 

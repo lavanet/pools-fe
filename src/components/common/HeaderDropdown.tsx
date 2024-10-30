@@ -67,8 +67,8 @@ export const HeaderDropdown = (
                   <Link
                     key={link.title}
                     href={link.link}
-                    target="_blank"
-                    rel="noreferrer noopener"
+                    target={link.isExternal? "_blank" : "_self"}
+                    rel={link.isExternal? "noreferrer noopener": undefined}
                   >
                     {link.icon && (
                       <span className="icon">
@@ -125,7 +125,6 @@ export const HeaderDropdown = (
                   icon={<IcnArrowUp/>}
                   iconPlacement="right"
                   href={headerDropdownBanner.linkUrl}
-                  isExternal
                 />
 
               </div>
