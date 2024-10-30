@@ -59,7 +59,6 @@ export const Header = () => {
               btnColor="white"
               btnSize="lg"
               text="Read Docs"
-              isExternal
               href="https://docs.lavanet.xyz/"
             />
 
