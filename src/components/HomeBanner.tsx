@@ -13,6 +13,7 @@ type BannerProps = {
   title: string;
   message: string;
   btnLink: string;
+  isExternal?: boolean;
   btnText: string;
   btnColor?: "white" | "white-outline" | "ghost";
   btnVariant?: "icon" | "link";
@@ -26,6 +27,7 @@ export const HomeBanner = (
     title,
     message,
     btnLink,
+    isExternal,
     btnText,
     btnColor,
     btnVariant,
@@ -54,6 +56,7 @@ export const HomeBanner = (
 
           <ButtonLink
             href={btnLink}
+            isExternal={isExternal}
             btnVariant={btnVariant && btnVariant}
             btnColor={btnColor && btnColor}
             text={btnText}
