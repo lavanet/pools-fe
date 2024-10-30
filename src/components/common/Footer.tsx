@@ -78,7 +78,6 @@ export const Footer = () => {
                     {navCategory.links.map((navLink, navLinkIdx) => (
 
                       <li key={navLinkIdx}>
-
                         <Link
                           href={navLink.link}
                           title={navLink.title}
