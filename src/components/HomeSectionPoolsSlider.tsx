@@ -1,23 +1,14 @@
 'use client'
 
-import {
-  IcnDiscord,
-  IcnGithub,
-  IcnLongArrowLeft, IcnLongArrowRight,
-  IcnTelegram,
-  IcnX,
-} from '@assets/icons';
+import { IcnLongArrowLeft, IcnLongArrowRight, } from '@assets/icons';
 
 import { useEffect, useState } from 'react';
-import clsx from 'clsx';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Grid } from 'swiper/modules';
 
 import { IPool } from '@/types';
-import { getChainInfo } from '@/utils/chainInfo';
 
 import { Button, HomeSectionPoolsCard } from '@/components';
-import { IcnAgoric } from '@assets/images/rounded-chains';
 import { useMediaQuerySafe } from '@/hooks';
 
 interface HomeSectionPoolsSliderProps {

@@ -8,6 +8,7 @@ import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
 
 import { HeaderDropdown, MobileMenu, ButtonLink, Logo } from '@/components/common';
+import { Fragment } from 'react';
 
 export const Header = () => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -34,7 +35,21 @@ export const Header = () => {
               />
 
               {navItems.map((item) => (
-                <HeaderDropdown key={item.title} {...item} />
+                <Fragment key={item.title}>
+
+                  {item.id === "incentive-pools"? (
+                    <ButtonLink
+                      key={item.title}
+                      extraClassName='c-header-nav-link'
+                      btnColor='ghost'
+                      btnSize="lg"
+                      text={item.title}
+                      href="/"
+                    />
+                  ):(
+                    <HeaderDropdown {...item} />
+                  )}
+                </Fragment>
               ))}
 
             </div>

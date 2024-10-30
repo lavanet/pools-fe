@@ -22,6 +22,7 @@ export const Footer = () => {
         <nav className='c-footer-nav'>
 
           <div className='c-footer-nav-item logo'>
+
             <Logo />
 
             <p>
@@ -41,6 +42,8 @@ export const Footer = () => {
                   key={linkIdx}
                   href={link.link}
                   title={link.title}
+                  target="_blank"
+                  rel="noreferrer noopener"
                 >
                   <i>{link.icon}</i>
                 </Link>
@@ -59,6 +62,7 @@ export const Footer = () => {
               <Link href="https://www.lavanet.xyz/rollup-developer" title="Rollup Developers">
                 Rollup Developers
               </Link>
+
             </div>
 
             {navItems.map((navCategory, navCategoryIdx) => {
@@ -75,10 +79,11 @@ export const Footer = () => {
                     {navCategory.links.map((navLink, navLinkIdx) => (
 
                       <li key={navLinkIdx}>
-
                         <Link
                           href={navLink.link}
                           title={navLink.title}
+                          target={navLink.isExternal? "_blank" : "_self"}
+                          rel={navLink.isExternal? "noreferrer noopener": undefined}
                         >
                           {navLink.title}
                         </Link>

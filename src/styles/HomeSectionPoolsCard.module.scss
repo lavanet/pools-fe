@@ -70,17 +70,13 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(160.5px, 1fr));
         align-items: flex-start;
-        gap: 1em;
+        gap: var(--px11) 1em;
         flex-wrap: wrap;
         margin-bottom: auto;
 
-        > * {
-          flex: 1;
-        }
-
         &-text {
           display: inline-flex;
-          align-items: center;
+          align-items: flex-start;
           gap: var(--px12);
 
           i {
@@ -90,9 +86,6 @@
 
           h2 {
             margin-bottom: 0;
-            font-size: var(--px24);
-            font-weight: 500;
-            line-height: 28px;
           }
 
           small {
@@ -105,7 +98,7 @@
           display: flex;
           flex-direction: column;
           row-gap: var(--px3);
-          margin: 0;
+          margin: var(--px5) 0 0;
           padding: 0;
           list-style: none;
 

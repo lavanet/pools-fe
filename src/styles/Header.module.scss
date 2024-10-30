@@ -24,12 +24,20 @@
       }
 
       .c-header-nav {
+        position: relative;
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 1em;
         height: 100%;
         background-color: var(--grey-700);
+
+        > [data-tippy-root] {
+          top: 100% !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          transform: none !important;
+        }
       }
 
       .c-button-container {
@@ -41,6 +49,11 @@
           --btn-padding-y: var(--px5);
           --btn-padding-x: var(--px24);
           --btn-font-size: 1em;
+
+          &:hover,
+          &:focus {
+            --btn-bg-color: transparent;
+          }
 
           &.is-open {
             --btn-color: var(--white);

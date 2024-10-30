@@ -1,66 +1,99 @@
 'use client';
 
 import styles from '@/styles/HeaderDropdown.module.scss'
-import { IcnChevronDown, IcnArrowUp } from '@assets/icons';
+import { IcnChevronDown, IcnArrowUp, IcnArrowRightRetro, IcnArrowUpRetro } from '@assets/icons';
 
-import { ReactNode, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 
-import { INavItemLink } from '@/types';
+import { IheaderDropdownBanner, INavItemLink } from '@/types';
 
 import { ButtonLink } from '@/components';
+import { SocialNavItems } from '@/utils/variables';
 
 type HeaderDropdownProps = {
   id?: string,
   title: string;
   links?: INavItemLink[];
-  content?: ReactNode;
+  headerDropdownBanner?: IheaderDropdownBanner;
 };
 
-export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
+export const HeaderDropdown = (
+  {
+    id,
+    title,
+    links,
+    headerDropdownBanner
+  }: HeaderDropdownProps) => {
+
   const [isOpen, setIsOpen] = useState(false)
+  const filteredLinks = links?.filter(link => link.headerDisplay === true);
+
+  const [navEl, setNavEl] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = document.querySelector('.c-header-nav');
+    if (el instanceof HTMLElement) {
+      setNavEl(el);
+    }
+  }, []);
 
   return (
     <Tippy
       interactive
       trigger="click"
+      hideOnClick
       onShow={() => setIsOpen(true)}
       onHide={() => setIsOpen(false)}
       offset={[0, 0]}
       delay={[0, 300]}
       arrow={false}
       zIndex={9997}
-      maxWidth='none'
-      appendTo={() => document.body}
+      maxWidth='100%'
+      appendTo={() => navEl || document.body}
+      // appendTo={() => document.body}
       animation="shift-away"
       placement="bottom"
-      className={clsx(styles.cHeaderCustomDropdown, "c-header-custom-dropdown", id)}
+      className={clsx(styles.cHeaderDropdown, "c-header-dropdown", id)}
       content={
-        <div className="c-header-custom-dropdown-grid">
+        <div className="c-header-dropdown-grid">
 
-          <div className='c-header-custom-dropdown-grid-item menu'>
+          <div className='c-header-dropdown-grid-item menu'>
 
-            {links && (
+            {filteredLinks && (
               <div>
-                {links.map((link, linkIdx) => (
+                {filteredLinks.map((link) => (
 
                   <Link
-                    key={linkIdx}
+                    key={link.title}
                     href={link.link}
+                    target={link.isExternal? "_blank" : "_self"}
+                    rel={link.isExternal? "noreferrer noopener": undefined}
                   >
                     {link.icon && (
                       <span className="icon">
-                        <i>{link.icon}</i>
+                        <span>
+                          <i>{link.icon}</i>
+                        </span>
                       </span>
                     )}
 
                     <span className="text">
-                      <span>{link.title}</span>
+
+                      <span>
+                        {link.title}
+                      </span>
+
                       {link.description && (
                         <small>{link.description}</small>
                       )}
+
+                    </span>
+
+                    <span className="low-icon">
+                      <i><IcnArrowUpRetro/></i>
                     </span>
 
                   </Link>
@@ -71,32 +104,59 @@ export const HeaderDropdown = ({ links, title, id }: HeaderDropdownProps) => {
 
           </div>
 
-          <aside className='c-header-custom-dropdown-grid-item banner'>
+          {headerDropdownBanner && (
+            <aside className='c-header-dropdown-grid-item banner'>
 
-            <div className="text">
+              <div className="text">
 
-              <h2 className='h3 sharp-medium'>
-                RPC Providers & Validators on Lava
-              </h2>
+                <h2 className='h3 sharp-medium'>
+                  {headerDropdownBanner.title}
+                </h2>
 
-              <p>
-                Lava offers many ways for node operators to participate in the ecosystem. Explore the opportunities below
-              </p>
-            </div>
+                <p>
+                  {headerDropdownBanner.paragraph}
+                </p>
 
-            <div className="c-button-container">
+              </div>
+
+              <div className="c-button-container">
 
                 <ButtonLink
-                  href="http://docs.lavanet.xyz/provider-setup"
                   btnColor="white-outline"
-                  text="Get started"
+                  text={headerDropdownBanner.linkTitle}
                   icon={<IcnArrowUp/>}
                   iconPlacement="right"
+                  href={headerDropdownBanner.linkUrl}
                 />
 
-            </div>
+              </div>
 
-          </aside>
+              {headerDropdownBanner.displaySocialMedia && (
+
+                <div className="c-header-dropdown-grid-item-social-media">
+
+                  <p>Join our community</p>
+
+                  <div className="c-header-dropdown-grid-item-social-media-list">
+                    {SocialNavItems.map((social) => (
+
+                      <ButtonLink
+                        key={social.title}
+                        btnVariant='icon'
+                        btnColor='white'
+                        title={social.title}
+                        icon={social.icon}
+                        href={social.link}
+                        isExternal
+                      />
+                    ))}
+                  </div>
+
+                </div>
+              )}
+
+            </aside>
+          )}
 
         </div>
       }

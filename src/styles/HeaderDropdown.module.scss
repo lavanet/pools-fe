@@ -1,8 +1,7 @@
-.cHeaderCustomDropdown {
+.cHeaderDropdown {
   &:global {
-    &.c-header-custom-dropdown {
-      width: 100vw;
-      padding: 0 var(--px24);
+    &.c-header-dropdown {
+      width: 100% !important;
       background-color: transparent;
       border-radius: 0;
       font-size: 1em;
@@ -11,17 +10,20 @@
         position: relative;
         z-index: 1;
         width: 100%;
-        max-width: var(--px1360);
-        margin: 0 auto;
-        padding: 22px 0 0;
+        max-width: 100%;
+        margin: 0;
+        padding: 0 0;
         background-color: var(--grey-600);
+        border-width: 0 var(--px1) var(--px1) var(--px1);
+        border-style: solid;
+        border-color: var(--grey-400);
         border-radius: 0 0 var(--px32) var(--px32);
         overflow: hidden;
       }
 
-      .c-header-custom-dropdown-grid {
+      .c-header-dropdown-grid {
         display: grid;
-        grid-template-columns: 1fr 335px;
+        grid-template-columns: 1fr 25em; //400px
         align-items: stretch;
         width: 100%;
         max-width: 100%;
@@ -40,17 +42,43 @@
               gap: var(--px20) var(--px24);
 
               a {
-                display: flex;
-                align-items: flex-start;
+                display: grid;
+                align-items: stretch;
+                grid-template-columns: auto 1fr auto;
                 gap: var(--px8);
-                padding: 1em var(--px24);
+                padding: var(--px12);
+                border-radius: var(--px12);
+                box-shadow: inset 0 0 0 1px transparent;
+                transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+                &:hover,
+                &:focus {
+                  //background-color: var(--lava-brand);
+                  //box-shadow: inset 0 0 0 1px var(--orange-400);
+
+                  .text > small {
+                    color: var(--body-color);
+                  }
+
+                  .low-icon {
+                    opacity: 1;
+                  }
+                }
 
                 .icon {
-                  background-color: blue;
+                  display: block;
 
-                  i {
-                    width: var(--px20);
-                    height: var(--px20);
+                  > span {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: var(--px24);
+                    height: var(--px24);
+
+                    i {
+                      width: var(--px20);
+                      height: var(--px20);
+                    }
                   }
                 }
 
@@ -69,11 +97,29 @@
 
                   small {
                     width: 100%;
-                    max-width: 316px;
+                    max-width: 22.571em; //316px @14px
                     color: var(--grey-200);
                     font-size: var(--px14);
                     font-weight: normal;
-                    line-height: 19.6px;
+                    line-height: 1.4em; //19.6px @14px
+                    transition: color 0.3s ease;
+                  }
+                }
+
+                .low-icon {
+                  display: flex;
+                  align-items: flex-end;
+                  opacity: 0;
+                  transition: opacity 0.3s ease;
+
+                  i {
+                    width: var(--px24);
+                    height: var(--px24);
+
+                    svg {
+                      max-width: var(--px12);
+                      max-height: var(--px12);
+                    }
                   }
                 }
               }
@@ -81,10 +127,62 @@
           }
 
           &.banner {
+            min-height: 23.05em; //368.8px
             background: url("../../public/images/lava-orange-bg-x2.webp") no-repeat center center/cover;
+
+            .text {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px8);
+
+              h2, p {
+                margin-bottom: 0;
+              }
+            }
+
+            .c-header-dropdown-grid-item-social-media {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px24);
+
+              > p {
+                margin-bottom: 0;
+                font-size: var(--px18);
+                font-family: var(--font-family-retro);
+                letter-spacing: 0.08em;
+              }
+
+              &-list {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                column-gap: var(--px24);
+
+                >.c-button {
+                  --btn-size: var(--font-size-14-px48);
+                  --btn-icon-size: 1.571em; //22px @14px
+                }
+              }
+            }
 
             > .c-button-container {
               margin-top: auto;
+              padding-top: var(--px20);
+
+              > .c-button {
+                --btn-min-height: var(--font-size-14-px44);
+                --btn-border-radius: var(--font-size-14-px40);
+              }
+            }
+
+            &:has(.c-header-dropdown-grid-item-social-media) {
+              >.c-button-container {
+                margin-top: unset;
+              }
+
+              .c-header-dropdown-grid-item-social-media {
+                margin-top: auto;
+              }
             }
           }
         }

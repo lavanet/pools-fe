@@ -83,7 +83,7 @@ export const HomeSectionPoolsCard = (
             </i>
 
             <div>
-              <h2 className="h3">{title}</h2>
+              <h2 className="h5">{title}</h2>
               <small>{service}</small>
             </div>
 
@@ -91,7 +91,7 @@ export const HomeSectionPoolsCard = (
 
           <ul>
             <li>
-              <em>RPC node runners:&nbsp;</em>
+              <em>RPC Providers:&nbsp;</em>
               <small>{node_runner}</small>
             </li>
 
@@ -167,9 +167,8 @@ export const HomeSectionPoolsCard = (
 
           <ButtonLink
             href="https://www.lavanet.xyz/stakers"
-            isExternal
             btnColor="white"
-            text="Restake to RPC provider"
+            text="Earn Rewards"
           />
 
         </div>
