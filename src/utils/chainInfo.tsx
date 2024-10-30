@@ -264,7 +264,7 @@ export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = 
   switch (returnType) {
     case 'icon':
       const iconSrc = logoUrl || (chain?.icon ?? "/images/rounded-chains/icn-rounded-default-image.svg");
-      return <Image src={iconSrc} alt={chain?.fullName || chainIdentifier} width={32} height={32} priority />;
+      return <Image src={iconSrc} alt={chain?.fullName || chainIdentifier} width={32} height={32} priority style={{ borderRadius: '50%' }} />;
     case 'fullName':
       return chain?.fullName || chainIdentifier;
     case 'abbreviatedName':
