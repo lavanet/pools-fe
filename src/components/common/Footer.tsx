@@ -22,6 +22,7 @@ export const Footer = () => {
         <nav className='c-footer-nav'>
 
           <div className='c-footer-nav-item logo'>
+
             <Logo />
 
             <p>
