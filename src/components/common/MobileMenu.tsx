@@ -10,6 +10,7 @@ import { useMediaQuerySafe } from '@/hooks';
 import { navItems } from '@/utils/variables';
 
 import { Button, Accordion } from '@/components/common';
+import Link from 'next/link';
 
 const NavItemsList = () => {
   return navItems.map(item => ({
@@ -18,9 +19,14 @@ const NavItemsList = () => {
       <ul>
         {item.links.map(link => (
           <li key={link.title}>
-            <a href={link.link} title={link.title}>
+            <Link
+              href={link.link}
+              title={link.title}
+              target={link.isExternal? "_blank" : "_self"}
+              rel={link.isExternal? "noreferrer noopener": undefined}
+            >
               {link.title}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -29,7 +35,7 @@ const NavItemsList = () => {
 };
 
 export const MobileMenu = () => {
-   const isMobile = useMediaQuerySafe('(max-width: 991px)');
+  const isMobile = useMediaQuerySafe('(max-width: 991px)');
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);

@@ -62,6 +62,7 @@ export interface INavItemLink {
   title: string;
   description?: string;
   icon?: ReactNode;
+  headerDisplay?: boolean;
   isExternal?: boolean;
 }
 

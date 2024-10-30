@@ -25,7 +25,6 @@ export const HomeSectionPreview = () => (
     <div className="c-home-section-preview-banner">
 
       <HomeBanner
-        isExternal
         btnLink="http://docs.lavanet.xyz/provider-setup"
         btnVariant="link"
         btnText="Become an RPC Provider"

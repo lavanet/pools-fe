@@ -29,6 +29,8 @@ export const HeaderDropdown = (
   }: HeaderDropdownProps) => {
 
   const [isOpen, setIsOpen] = useState(false)
+  const filteredLinks = links?.filter(link => link.headerDisplay === true);
+
   const [navEl, setNavEl] = useState<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -60,9 +62,9 @@ export const HeaderDropdown = (
 
           <div className='c-header-dropdown-grid-item menu'>
 
-            {links && (
+            {filteredLinks && (
               <div>
-                {links.map((link) => (
+                {filteredLinks.map((link) => (
 
                   <Link
                     key={link.title}

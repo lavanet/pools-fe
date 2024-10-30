@@ -127,6 +127,7 @@
           }
 
           &.banner {
+            min-height: 23.05em; //368.8px
             background: url("../../public/images/lava-orange-bg-x2.webp") no-repeat center center/cover;
 
             .text {

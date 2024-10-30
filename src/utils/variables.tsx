@@ -62,6 +62,7 @@ export const navItems: INavItem[] = [
         description: 'Get easy-to-use access to RPC and APIs across 15+ networks.',
         icon: <IcnLavaCube/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://docs.lavanet.xyz/access-sdk?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+gateway',
@@ -69,6 +70,7 @@ export const navItems: INavItem[] = [
         description: 'Try it now for free across 25+ networks.',
         icon: <IcnLavaCode/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://info.lavanet.xyz/?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+info',
@@ -76,6 +78,7 @@ export const navItems: INavItem[] = [
         description: 'View real-time Lava Network data, analytics, and performance.',
         icon: <IcnLavaChart/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://lava.explorers.guru/?utm_source=homepage&utm_medium=navbar&utm_campaign=website+to+bd',
@@ -83,6 +86,7 @@ export const navItems: INavItem[] = [
         description: 'Find and filter through transactions, proposals and metrics on the Lava blockchain.',
         icon: <IcnLavaDocs/>,
         isExternal: false,
+        headerDisplay: true,
       },
     ]
   },
@@ -103,6 +107,7 @@ export const navItems: INavItem[] = [
         description: 'Discover the world of Lava',
         icon: <IcnCircleInfo/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/blog',
@@ -110,6 +115,7 @@ export const navItems: INavItem[] = [
         description: 'Stay updated with our latest articles',
         icon: <IcnLavaDocs/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/news',
@@ -117,6 +123,7 @@ export const navItems: INavItem[] = [
         description: 'Catch up on recent news and interviews',
         icon: <IcnLavaDocs/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'http://docs.lavanet.xyz/token',
@@ -124,6 +131,7 @@ export const navItems: INavItem[] = [
         description: 'Understand our token economy',
         icon: <IcnLavaDocs/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/roadmap',
@@ -131,13 +139,15 @@ export const navItems: INavItem[] = [
         description: 'View our future plans and milestones',
         icon: <IcnShow/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'http://lavanet.xyz/whitepaper',
         title: 'Whitepaper',
         description: 'Read our comprehensive whitepaper',
         icon: <IcnFile/>,
-        isExternal: false,
+        isExternal: true,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/partnerships',
@@ -145,6 +155,7 @@ export const navItems: INavItem[] = [
         description: 'Explore our collaborations and partnerships',
         icon: <IcnTeam/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/specs',
@@ -152,6 +163,7 @@ export const navItems: INavItem[] = [
         description: 'View technical specifications',
         icon: <IcnLavaDocs/>,
         isExternal: false,
+        headerDisplay: true,
       }
     ]
   },
@@ -170,15 +182,17 @@ export const navItems: INavItem[] = [
         link: 'https://twitter.com/lavanetxyz',
         title: 'Twitter',
         description: 'Stay updated on Twitter',
-        icon: <IcnX/>,
+        icon: '',
         isExternal: true,
+        headerDisplay: false,
       },
       {
         link: 'https://discord.com/invite/Tbk5NxTCdA',
         title: 'Discord',
         description: 'Join our Discord community',
-        icon: <IcnDiscord/>,
+        icon: '',
         isExternal: true,
+        headerDisplay: false,
       },
       {
         link: 'https://community.lavanet.xyz/',
@@ -186,6 +200,7 @@ export const navItems: INavItem[] = [
         description: 'Engage in discussions on our forum',
         icon: <IcnChat/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/partnerships',
@@ -193,6 +208,7 @@ export const navItems: INavItem[] = [
         description: 'Become a node operator',
         icon: <IcnLavaCode/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/specs',
@@ -200,6 +216,7 @@ export const navItems: INavItem[] = [
         description: 'Access build specifications',
         icon: <IcnLavaGit/>,
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://lavanet.applytojob.com/apply',
@@ -207,6 +224,7 @@ export const navItems: INavItem[] = [
         description: 'Explore career opportunities',
         icon: <IcnTeam/>,
         isExternal: false,
+        headerDisplay: true,
       }
     ]
   },
@@ -220,6 +238,7 @@ export const navItems: INavItem[] = [
         description: 'View incentive pools across all supported chains',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/get-started/axelar',
@@ -227,6 +246,7 @@ export const navItems: INavItem[] = [
         description: 'Explore Axelar-specific incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/get-started/evmos',
@@ -234,6 +254,7 @@ export const navItems: INavItem[] = [
         description: 'Check out Evmos-related incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/get-started/starknet',
@@ -241,6 +262,7 @@ export const navItems: INavItem[] = [
         description: 'Discover Starknet-based incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://www.lavanet.xyz/get-started/near',
@@ -248,6 +270,7 @@ export const navItems: INavItem[] = [
         description: 'Learn about Near protocol incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
@@ -255,6 +278,7 @@ export const navItems: INavItem[] = [
         description: 'Explore Ethereum-based incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
@@ -262,6 +286,7 @@ export const navItems: INavItem[] = [
         description: 'Find Solana-specific incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
@@ -269,6 +294,7 @@ export const navItems: INavItem[] = [
         description: 'Understand Filecoin-related incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
@@ -276,6 +302,7 @@ export const navItems: INavItem[] = [
         description: 'Discover Osmosis-based incentives',
         icon: '',
         isExternal: false,
+        headerDisplay: true,
       },
       {
         link: 'https://docs.lavanet.xyz/gateway-access/?utm_source=website+&utm_medium=navbar+chains+&utm_content=see+more',
@@ -283,6 +310,7 @@ export const navItems: INavItem[] = [
         description: 'Explore Arbitrum Nova incentives',
         icon: "",
         isExternal: false,
+        headerDisplay: true,
       }
     ]
   },
