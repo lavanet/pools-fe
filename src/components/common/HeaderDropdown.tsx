@@ -1,9 +1,9 @@
 'use client';
 
 import styles from '@/styles/HeaderDropdown.module.scss'
-import { IcnChevronDown, IcnArrowUp } from '@assets/icons';
+import { IcnChevronDown, IcnArrowUp, IcnArrowRightRetro, IcnArrowUpRetro } from '@assets/icons';
 
-import { ReactNode, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
@@ -20,23 +20,38 @@ type HeaderDropdownProps = {
   headerDropdownBanner?: IheaderDropdownBanner;
 };
 
-export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: HeaderDropdownProps) => {
-  const [isOpen, setIsOpen] = useState(false)
+export const HeaderDropdown = (
+  {
+    id,
+    title,
+    links,
+    headerDropdownBanner
+  }: HeaderDropdownProps) => {
 
-  const filteredLinks = links?.filter(link => link.headerDisplay === true);
+  const [isOpen, setIsOpen] = useState(false)
+  const [navEl, setNavEl] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = document.querySelector('.c-header-nav');
+    if (el instanceof HTMLElement) {
+      setNavEl(el);
+    }
+  }, []);
 
   return (
     <Tippy
       interactive
       trigger="click"
+      hideOnClick
       onShow={() => setIsOpen(true)}
       onHide={() => setIsOpen(false)}
       offset={[0, 0]}
       delay={[0, 300]}
       arrow={false}
       zIndex={9997}
-      maxWidth='none'
-      appendTo={() => document.body}
+      maxWidth='100%'
+      appendTo={() => navEl || document.body}
+      // appendTo={() => document.body}
       animation="shift-away"
       placement="bottom"
       className={clsx(styles.cHeaderDropdown, "c-header-dropdown", id)}
@@ -45,25 +60,38 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
 
           <div className='c-header-dropdown-grid-item menu'>
 
-            {filteredLinks && (
+            {links && (
               <div>
-                {filteredLinks.map((link, linkIdx) => (
+                {links.map((link) => (
 
                   <Link
-                    key={linkIdx}
+                    key={link.title}
                     href={link.link}
                     target="_blank"
                     rel="noreferrer noopener"
                   >
                     {link.icon && (
-                      <i className="icon">{link.icon}</i>
+                      <span className="icon">
+                        <span>
+                          <i>{link.icon}</i>
+                        </span>
+                      </span>
                     )}
 
                     <span className="text">
-                      <span>{link.title}</span>
+
+                      <span>
+                        {link.title}
+                      </span>
+
                       {link.description && (
                         <small>{link.description}</small>
                       )}
+
+                    </span>
+
+                    <span className="low-icon">
+                      <i><IcnArrowUpRetro/></i>
                     </span>
 
                   </Link>
@@ -92,12 +120,12 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
               <div className="c-button-container">
 
                 <ButtonLink
-                  href={headerDropdownBanner.linkUrl}
-                  isExternal
                   btnColor="white-outline"
                   text={headerDropdownBanner.linkTitle}
                   icon={<IcnArrowUp/>}
                   iconPlacement="right"
+                  href={headerDropdownBanner.linkUrl}
+                  isExternal
                 />
 
               </div>
@@ -109,16 +137,16 @@ export const HeaderDropdown = ({id, title, links, headerDropdownBanner }: Header
                   <p>Join our community</p>
 
                   <div className="c-header-dropdown-grid-item-social-media-list">
-                    {SocialNavItems.map((social, socialIdx) => (
+                    {SocialNavItems.map((social) => (
 
                       <ButtonLink
-                        key={socialIdx}
-                        href={social.link}
-                        isExternal
+                        key={social.title}
                         btnVariant='icon'
                         btnColor='white'
                         title={social.title}
                         icon={social.icon}
+                        href={social.link}
+                        isExternal
                       />
                     ))}
                   </div>
