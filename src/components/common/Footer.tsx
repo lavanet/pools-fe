@@ -62,6 +62,7 @@ export const Footer = () => {
               <Link href="https://www.lavanet.xyz/rollup-developer" title="Rollup Developers">
                 Rollup Developers
               </Link>
+
             </div>
 
             {navItems.map((navCategory, navCategoryIdx) => {
