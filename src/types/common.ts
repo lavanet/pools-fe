@@ -62,8 +62,7 @@ export interface INavItemLink {
   title: string;
   description?: string;
   icon?: ReactNode;
-  footerDisplay?: boolean;
-  headerDisplay?: boolean;
+  isExternal?: boolean;
 }
 
 export interface IPool {

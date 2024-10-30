@@ -41,6 +41,8 @@ export const Footer = () => {
                   key={linkIdx}
                   href={link.link}
                   title={link.title}
+                  target="_blank"
+                  rel="noreferrer noopener"
                 >
                   <i>{link.icon}</i>
                 </Link>
@@ -79,6 +81,8 @@ export const Footer = () => {
                         <Link
                           href={navLink.link}
                           title={navLink.title}
+                          target={navLink.isExternal? "_blank" : "_self"}
+                          rel={navLink.isExternal? "noreferrer noopener": undefined}
                         >
                           {navLink.title}
                         </Link>
