@@ -8,7 +8,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import Tippy from '@tippyjs/react';
 
-import { IheaderDropdownBanner, INavItemLink } from '@/types';
+import { IHeaderDropdownBanner, IHeaderNavItemLink } from '@/types';
 
 import { ButtonLink } from '@/components';
 import { SocialNavItems } from '@/utils/variables';
@@ -16,8 +16,8 @@ import { SocialNavItems } from '@/utils/variables';
 type HeaderDropdownProps = {
   id?: string,
   title: string;
-  links?: INavItemLink[];
-  headerDropdownBanner?: IheaderDropdownBanner;
+  links?: IHeaderNavItemLink[];
+  headerDropdownBanner?: IHeaderDropdownBanner;
 };
 
 export const HeaderDropdown = (
@@ -29,7 +29,6 @@ export const HeaderDropdown = (
   }: HeaderDropdownProps) => {
 
   const [isOpen, setIsOpen] = useState(false)
-  const filteredLinks = links?.filter(link => link.headerDisplay === true);
 
   const [navEl, setNavEl] = useState<HTMLElement | null>(null);
 
@@ -62,11 +61,12 @@ export const HeaderDropdown = (
 
           <div className='c-header-dropdown-grid-item menu'>
 
-            {filteredLinks && (
+            {links && (
               <div>
-                {filteredLinks.map((link) => (
+                {links.map((link) => (
 
                   <Link
+                    className={link.id}
                     key={link.title}
                     href={link.link}
                     target={link.isExternal? "_blank" : "_self"}
@@ -123,10 +123,11 @@ export const HeaderDropdown = (
 
                 <ButtonLink
                   btnColor="white-outline"
-                  text={headerDropdownBanner.linkTitle}
                   icon={<IcnArrowUp/>}
                   iconPlacement="right"
+                  text={headerDropdownBanner.linkTitle}
                   href={headerDropdownBanner.linkUrl}
+                  isExternal={headerDropdownBanner.linkIsExternal}
                 />
 
               </div>
@@ -138,6 +139,7 @@ export const HeaderDropdown = (
                   <p>Join our community</p>
 
                   <div className="c-header-dropdown-grid-item-social-media-list">
+
                     {SocialNavItems.map((social) => (
 
                       <ButtonLink

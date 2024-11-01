@@ -42,28 +42,42 @@ export interface IDataCard {
   message?: string;
 }
 
-export interface IheaderDropdownBanner {
-  title: string;
-  paragraph: string;
-  linkUrl: string;
-  linkTitle: string;
-  displaySocialMedia?: boolean;
-}
-
-export interface INavItem {
-  id?: string;
-  links: INavItemLink[];
-  title: string;
-  headerDropdownBanner?: IheaderDropdownBanner;
-}
-
-export interface INavItemLink {
+export interface IHeaderNavItemLink {
+  id: string;
   link: string,
   title: string;
   description?: string;
   icon?: ReactNode;
-  headerDisplay?: boolean;
   isExternal?: boolean;
+}
+
+export interface IHeaderDropdownBanner {
+  title: string;
+  paragraph: string;
+  linkUrl: string;
+  linkTitle: string;
+  linkIsExternal?: boolean;
+  displaySocialMedia?: boolean;
+}
+
+export interface IHeaderNavItem {
+  id: string;
+  links: IHeaderNavItemLink[];
+  title: string;
+  headerDropdownBanner?: IHeaderDropdownBanner;
+}
+
+export interface IFooterNavItemLink {
+  link: string,
+  title: string;
+  icon?: ReactNode;
+  isExternal?: boolean;
+}
+
+export interface IFooterNavItem {
+  id: string;
+  links: IFooterNavItemLink[];
+  title: string;
 }
 
 export interface IPool {
