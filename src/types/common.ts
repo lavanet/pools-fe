@@ -56,6 +56,7 @@ export interface IHeaderDropdownBanner {
   paragraph: string;
   linkUrl: string;
   linkTitle: string;
+  linkIsExternal?: boolean;
   displaySocialMedia?: boolean;
 }
 

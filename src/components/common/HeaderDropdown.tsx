@@ -123,10 +123,11 @@ export const HeaderDropdown = (
 
                 <ButtonLink
                   btnColor="white-outline"
-                  text={headerDropdownBanner.linkTitle}
                   icon={<IcnArrowUp/>}
                   iconPlacement="right"
+                  text={headerDropdownBanner.linkTitle}
                   href={headerDropdownBanner.linkUrl}
+                  isExternal={headerDropdownBanner.linkIsExternal}
                 />
 
               </div>
@@ -138,6 +139,7 @@ export const HeaderDropdown = (
                   <p>Join our community</p>
 
                   <div className="c-header-dropdown-grid-item-social-media-list">
+
                     {SocialNavItems.map((social) => (
 
                       <ButtonLink

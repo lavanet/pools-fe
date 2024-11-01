@@ -38,8 +38,9 @@ export const headerNavItems: IHeaderNavItem[] = [
     headerDropdownBanner: {
       title: "Lava Docs",
       paragraph: "Get RPC endpoints for 40+ chains and learn how to become a node provider on Lava.",
-      linkUrl: "http://docs.lavanet.xyz/provider-setup",
       linkTitle: "Become a partner",
+      linkUrl: "https://www.lavanet.xyz/partnerships",
+      linkIsExternal: false,
       displaySocialMedia: false,
     },
     links: [
@@ -83,8 +84,9 @@ export const headerNavItems: IHeaderNavItem[] = [
     headerDropdownBanner: {
       title: "Lava Docs",
       paragraph: "Learn how decentralized public RPC works",
-      linkUrl: "http://docs.lavanet.xyz/provider-setup",
       linkTitle: "Learn more",
+      linkUrl: "/",
+      linkIsExternal: false,
       displaySocialMedia: true,
     },
     links: [
@@ -120,14 +122,14 @@ export const headerNavItems: IHeaderNavItem[] = [
         link: 'https://docs.lavanet.xyz/token/',
         isExternal: true,
       },
-      {
-        id: "roadmap",
-        title: 'Roadmap',
-        description: 'View our future plans and milestones',
-        icon: <IcnShow/>,
-        link: 'https://www.lavanet.xyz/roadmap',
-        isExternal: false,
-      },
+      // {
+      //   id: "roadmap",
+      //   title: 'Roadmap',
+      //   description: 'View our future plans and milestones',
+      //   icon: <IcnShow/>,
+      //   link: 'https://www.lavanet.xyz/roadmap',
+      //   isExternal: false,
+      // },
       {
         id: "whitepaper",
         title: 'Whitepaper',
@@ -160,8 +162,9 @@ export const headerNavItems: IHeaderNavItem[] = [
     headerDropdownBanner: {
       title: "Lava Docs",
       paragraph: "Get RPC endpoints for 40+ chains and learn how to become a node provider on Lava.",
-      linkUrl: "http://docs.lavanet.xyz/provider-setup",
       linkTitle: "Learn more",
+      linkUrl: "/",
+      linkIsExternal: false,
       displaySocialMedia: false,
     },
     links: [
@@ -200,14 +203,6 @@ export const headerNavItems: IHeaderNavItem[] = [
       {
         id: "build-specs",
         title: 'Build Specs',
-        description: 'Learn how to add more chains and services to Lava',
-        icon: <IcnPuzzle/>,
-        link: 'https://www.lavanet.xyz/specs',
-        isExternal: false,
-      },
-      {
-        id: "join",
-        title: 'Join Us',
         description: 'Learn how to add more chains and services to Lava',
         icon: <IcnPuzzle/>,
         link: 'https://www.lavanet.xyz/specs',
