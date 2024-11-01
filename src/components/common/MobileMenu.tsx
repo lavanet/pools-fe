@@ -7,18 +7,19 @@ import { useOnClickOutside } from 'usehooks-ts';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { navItems } from '@/utils/variables';
+import { headerNavItems } from '@/utils/variables';
 
 import { Button, Accordion } from '@/components/common';
 import Link from 'next/link';
 
 const NavItemsList = () => {
-  return navItems.map(item => ({
+  return headerNavItems.map(item => ({
+    id: item.id,
     title: item.title,
     content: (
       <ul>
         {item.links.map(link => (
-          <li key={link.title}>
+          <li key={link.id}>
             <Link
               href={link.link}
               title={link.title}

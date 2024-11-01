@@ -5,10 +5,9 @@ import styles from '@/styles/Header.module.scss';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { navItems } from '@/utils/variables';
+import { headerNavItems } from '@/utils/variables';
 
 import { HeaderDropdown, MobileMenu, ButtonLink, Logo } from '@/components/common';
-import { Fragment } from 'react';
 
 export const Header = () => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
@@ -34,23 +33,17 @@ export const Header = () => {
                 text='Rollup Developers'
               />
 
-              {navItems.map((item) => (
-                <Fragment key={item.title}>
-
-                  {item.id === "incentive-pools"? (
-                    <ButtonLink
-                      key={item.title}
-                      extraClassName='c-header-nav-link'
-                      btnColor='ghost'
-                      btnSize="lg"
-                      text={item.title}
-                      href="/"
-                    />
-                  ):(
-                    <HeaderDropdown {...item} />
-                  )}
-                </Fragment>
+              {headerNavItems.map((item) => (
+                <HeaderDropdown key={item.title} {...item} />
               ))}
+
+              <ButtonLink
+                extraClassName='c-header-nav-link'
+                btnColor='ghost'
+                btnSize="lg"
+                text="Incentive Pools"
+                href="/"
+              />
 
             </div>
 

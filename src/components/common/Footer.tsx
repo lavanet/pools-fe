@@ -7,7 +7,7 @@ import Image from 'next/image';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { LegalNavItems, navItems, SocialNavItems } from '@/utils/variables';
+import { FooterNavItems, LegalNavItems, SocialNavItems } from '@/utils/variables';
 
 import { Logo } from '@/components';
 
@@ -23,49 +23,42 @@ export const Footer = () => {
 
           <div className='c-footer-nav-item logo'>
 
-            <Logo />
+            <div className='c-footer-nav-item-wrapper'>
 
-            <p>
-              Lava Network is the underlying protocol which makes dapps and
-              wallets faster and more reliable, on any blockchain.
-              Lava’s RPC services handle more than 77 billion data requests
-              across over 2.3 million monthly users, on 40+ blockchains.
-            </p>
+              <Logo />
 
-            <p>
-              Lava’s aim is to 10x the onchain experience for everyone.
-            </p>
+              <p>
+                Lava Network is the underlying protocol which makes dapps and
+                wallets faster and more reliable, on any blockchain.
+                Lava’s RPC services handle more than 77 billion data requests
+                across over 2.3 million monthly users, on 40+ blockchains.
+              </p>
 
-            <div>
-              {SocialNavItems.map((link, linkIdx) => (
-                <Link
-                  key={linkIdx}
-                  href={link.link}
-                  title={link.title}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <i>{link.icon}</i>
-                </Link>
-              ))}
+              <p>
+                Lava’s aim is to 10x the onchain experience for everyone.
+              </p>
+
+              <div>
+                {SocialNavItems.map((link, linkIdx) => (
+                  <Link
+                    key={linkIdx}
+                    href={link.link}
+                    title={link.title}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
+                    <i>{link.icon}</i>
+                  </Link>
+                ))}
+              </div>
+
             </div>
 
           </div>
 
           <div className="c-footer-nav-item menu">
 
-            <div className="c-footer-nav-menu-item">
-              {!isMobileSm && (
-                <p className="c-tablet-sm"/>
-              )}
-
-              <Link href="https://www.lavanet.xyz/rollup-developer" title="Rollup Developers">
-                Rollup Developers
-              </Link>
-
-            </div>
-
-            {navItems.map((navCategory, navCategoryIdx) => {
+            {FooterNavItems.map((navCategory, navCategoryIdx) => {
               return (
                 <div
                   className="c-footer-nav-menu-item"
@@ -108,7 +101,12 @@ export const Footer = () => {
           <ul>
             {LegalNavItems.map((link, legalIdx) => (
               <li key={legalIdx}>
-                <Link href={link.link} title={link.title}>{link.title}</Link>
+                <Link
+                  href={link.link}
+                  title={link.title}
+                >
+                  {link.title}
+                </Link>
               </li>
             ))}
           </ul>

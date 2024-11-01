@@ -10,43 +10,50 @@
         gap: var(--px24);
 
         @media (min-width: 1200px) {
-          grid-template-columns: 14.5em 1fr; //232px
+          grid-template-columns: minmax(14.5em, 0.6fr) 1fr; //232px
           gap: var(--px32);
         }
 
         &-item {
           &.logo {
-            display: flex;
-            flex-direction: column;
-            row-gap: var(--px24);
+            .c-footer-nav-item-wrapper {
+              display: flex;
+              flex-direction: column;
+              row-gap: var(--px24);
 
-            p {
-              margin-bottom: 0;
-              color: var(--grey-200);
+              @media (min-width: 1200px) {
+                max-width: 324px; //548px
+              }
 
               @media (max-width: 1199px) {
                 max-width: 34.25em; //548px
               }
-            }
 
-            > div {
-              display: flex;
-              align-items: center;
-              column-gap: 1em;
+              p {
+                margin-bottom: 0;
+                color: var(--grey-200);
+                font-size: var(--px14);
+              }
 
-              > a {
-                flex-shrink: 0;
-                display: inline-flex;
+              > div {
+                display: flex;
                 align-items: center;
-                justify-content: center;
-                width: var(--px32);
-                height: var(--px32);
-                border-radius: 50%;
-                transition: color 0.3s ease;
+                column-gap: 1em;
 
-                &:hover,
-                &:focus {
-                  color: var(--lava-brand);
+                > a {
+                  flex-shrink: 0;
+                  display: inline-flex;
+                  align-items: center;
+                  justify-content: center;
+                  width: var(--px32);
+                  height: var(--px32);
+                  border-radius: 50%;
+                  transition: color 0.3s ease;
+
+                  &:hover,
+                  &:focus {
+                    color: var(--lava-brand);
+                  }
                 }
               }
             }
@@ -59,12 +66,8 @@
             gap: var(--px24);
 
             @media(min-width: 768px) {
-              grid-template-columns: repeat(3,1fr);
+              grid-template-columns: repeat(4,1fr);
               //grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            }
-
-            @media(min-width: 992px) {
-              grid-template-columns: repeat(5, 1fr);
             }
 
             .c-footer-nav-menu-item {

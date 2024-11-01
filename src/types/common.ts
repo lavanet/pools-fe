@@ -42,7 +42,16 @@ export interface IDataCard {
   message?: string;
 }
 
-export interface IheaderDropdownBanner {
+export interface IHeaderNavItemLink {
+  id: string;
+  link: string,
+  title: string;
+  description?: string;
+  icon?: ReactNode;
+  isExternal?: boolean;
+}
+
+export interface IHeaderDropdownBanner {
   title: string;
   paragraph: string;
   linkUrl: string;
@@ -50,20 +59,24 @@ export interface IheaderDropdownBanner {
   displaySocialMedia?: boolean;
 }
 
-export interface INavItem {
-  id?: string;
-  links: INavItemLink[];
+export interface IHeaderNavItem {
+  id: string;
+  links: IHeaderNavItemLink[];
   title: string;
-  headerDropdownBanner?: IheaderDropdownBanner;
+  headerDropdownBanner?: IHeaderDropdownBanner;
 }
 
-export interface INavItemLink {
+export interface IFooterNavItemLink {
   link: string,
   title: string;
-  description?: string;
   icon?: ReactNode;
-  headerDisplay?: boolean;
   isExternal?: boolean;
+}
+
+export interface IFooterNavItem {
+  id: string;
+  links: IFooterNavItemLink[];
+  title: string;
 }
 
 export interface IPool {
