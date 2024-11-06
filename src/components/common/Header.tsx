@@ -51,8 +51,8 @@ export const Header = () => {
               extraClassName="c-header-desktop-docs-btn c-desktop"
               btnColor="white"
               btnSize="lg"
-              text="Read Docs"
-              href="https://docs.lavanet.xyz/"
+              text="Delegate Lava"
+              href="https://www.lavanet.xyz/stakers"
             />
 
           </>

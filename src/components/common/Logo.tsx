@@ -9,7 +9,7 @@ import Link from 'next/link';
 export const Logo = () => {
   return (
     <Link
-      href="/"
+      href="https://www.lavanet.xyz/"
       title="Home"
       className={clsx(styles.cLogo, "c-logo")}
     >
