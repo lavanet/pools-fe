@@ -38,8 +38,8 @@ export const headerNavItems: IHeaderNavItem[] = [
     headerDropdownBanner: {
       title: "Lava Docs",
       paragraph: "Get RPC endpoints for 40+ chains and learn how to become a node provider on Lava.",
-      linkTitle: "Become a partner",
-      linkUrl: "https://www.lavanet.xyz/partnerships",
+      linkTitle: "Learn more",
+      linkUrl: "https://docs.lavanet.xyz/",
       linkIsExternal: false,
       displaySocialMedia: false,
     },
@@ -291,7 +291,7 @@ export const FooterNavItems: IFooterNavItem[] = [
       },
       {
         title: 'Get Endpoints',
-        link: 'https://discord.com/invite/Tbk5NxTCdA',
+        link: 'https://accounts.lavanet.xyz/register?utm_source=homepage&utm_medium=footer&utm_campaign=website_to_gateway&utm_content=get_endpoints',
         isExternal: true,
       },
       {
