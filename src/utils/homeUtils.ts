@@ -54,23 +54,22 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
     (chain.rpc_node_runners && chain.rpc_node_runners > 0) ||
     (chain.total_requests && chain.total_requests > 0);
 
+  const isUndefinedEnd = (rewards_end: string | null | undefined) =>
+  rewards_end === 'TBD' || rewards_end === null || rewards_end === undefined;
+
   const pools: IPool[] = data.chains
     .filter(chain => (chain.total_rewards && chain.total_rewards > 0))
     .sort((a, b) => {
-      // If both have non-TBD rewards_end, sort by past_rewards descending
-      if (a.rewards_end !== 'TBD' && b.rewards_end !== 'TBD') {
+      // If both have undefined rewards_end (TBD or null), sort by future_rewards_usd
+      if (isUndefinedEnd(a.rewards_end) && isUndefinedEnd(b.rewards_end)) {
         return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
       }
-      // If only a has TBD, it should come after b
-      if (a.rewards_end === 'TBD' && b.rewards_end !== 'TBD') {
-        return 1;
+      // If both have defined rewards_end dates, sort by future_rewards_usd
+      if (!isUndefinedEnd(a.rewards_end) && !isUndefinedEnd(b.rewards_end)) {
+        return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
       }
-      // If only b has TBD, it should come after a
-      if (a.rewards_end !== 'TBD' && b.rewards_end === 'TBD') {
-        return -1;
-      }
-      // If both have TBD, still sort by past_rewards descending
-      return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
+      // If only one has a defined end date, it should come first
+      return isUndefinedEnd(a.rewards_end) ? 1 : -1;
     })
     .map(chain => ({
       id: chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A',
