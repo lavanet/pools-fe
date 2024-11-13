@@ -1,45 +1,11 @@
-import { IChain, IDataCard, IPool, ProcessedHomeData } from '@/types';
-import { getChainInfo } from '@/utils/chainInfo';
-import { formatNumber } from '@/utils/formatters';
-
-type RawHomeData = {
-  chains: Array<{
-    chain_id?: string;
-    clean_name?: string;
-    service?: string;
-    rpc_node_runners?: number;
-    total_requests?: number;
-    total_rewards?: number;
-    total_rewards_usd?: number;
-    denom?: string;
-    rewards_per_month?: number;
-    future_rewards?: number;
-    future_rewards_usd: number;
-    past_rewards?: number;
-    months_remaining?: number;
-    current_rewards: number;
-    rewards_end?: string;
-    rewards_days_remaining?: number;
-    rpc_url: string;
-    logo: string;
-  }>;
-  total_requests?: number;
-  total_rewards?: number;
-  total_past_rewards?: number;
-  total_future_rewards?: number;
-};
+import { IDataCard } from '@/types';
+import { ProcessedHomeData, RawHomeData } from '@/types/home';
+import { fetchData } from './apiClient';
+import { processChains } from './chainUtils';
+import { formatNumber } from './formatters';
 
 export async function fetchHomeData(): Promise<RawHomeData> {
-  const apiUrl = process.env.NEXT_PUBLIC_LAVAPOOL_BE_URL;
-  if (!apiUrl) {
-    throw new Error('API URL is not defined in environment variables');
-  }
-
-  const res = await fetch(`${apiUrl}/home/`, { cache: 'no-store' });
-  if (!res.ok) {
-    throw new Error(`Failed to fetch home data: ${res.status} ${res.statusText}`);
-  }
-  return res.json();
+  return fetchData<RawHomeData>('/home/');
 }
 
 export function processHomeData(data: RawHomeData): ProcessedHomeData {
@@ -50,60 +16,7 @@ export function processHomeData(data: RawHomeData): ProcessedHomeData {
     { title: 'Upcoming rewards, USD', value: data.total_future_rewards ? `$${formatNumber(data.total_future_rewards)}` : 'N/A' },
   ];
 
-  const hasActivity = (chain: RawHomeData['chains'][0]) =>
-    (chain.rpc_node_runners && chain.rpc_node_runners > 0) ||
-    (chain.total_requests && chain.total_requests > 0);
+  const { pools, activeChains } = processChains(data.chains);
 
-  const isUndefinedEnd = (rewards_end: string | null | undefined) =>
-  rewards_end === 'TBD' || rewards_end === null || rewards_end === undefined;
-
-  const pools: IPool[] = data.chains
-    .filter(chain => (chain.total_rewards && chain.total_rewards > 0))
-    .sort((a, b) => {
-      // If both have undefined rewards_end (TBD or null), sort by future_rewards_usd
-      if (isUndefinedEnd(a.rewards_end) && isUndefinedEnd(b.rewards_end)) {
-        return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
-      }
-      // If both have defined rewards_end dates, sort by future_rewards_usd
-      if (!isUndefinedEnd(a.rewards_end) && !isUndefinedEnd(b.rewards_end)) {
-        return (b.future_rewards_usd || 0) - (a.future_rewards_usd || 0);
-      }
-      // If only one has a defined end date, it should come first
-      return isUndefinedEnd(a.rewards_end) ? 1 : -1;
-    })
-    .map(chain => ({
-      id: chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A',
-      title: chain.clean_name || 'N/A',
-      service: chain.service || 'N/A',
-      node_runner: chain.rpc_node_runners || 0,
-      requests: chain.total_requests || 0,
-      value: chain.total_rewards_usd ? `$${formatNumber(chain.total_rewards_usd, true)}` : 'N/A',
-      currency: chain.denom ? chain.denom.toUpperCase() : 'N/A',
-      monthly_rewards: Number(chain.current_rewards) || 0,
-      future_rewards: Number(chain.future_rewards) || 0,
-      past_rewards: Number(chain.past_rewards) || 0,
-      icon: getChainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon', chain.logo),
-      months_remaining: chain.months_remaining || 0,
-      rewards_end: chain.rewards_end || 'TBD',
-      rewards_days_remaining: chain.rewards_days_remaining,
-      rpc_url: chain.rpc_url,
-    }));
-
-  const chains: IChain[] = data.chains
-    .filter(chain => (!chain.total_rewards || chain.total_rewards === 0) && hasActivity(chain))
-    .map(chain => ({
-      name: chain.clean_name || 'N/A',
-      requests: chain.total_requests || 0,
-      rpcProviders: chain.rpc_node_runners || 0,
-      service: chain.service || 'N/A',
-      rpc_url: chain.rpc_url,
-      logo: chain.logo,
-    }));
-
-  return { dataCards, pools, chains };
-}
-
-export async function fetchProcessedHomeData(): Promise<ProcessedHomeData> {
-  const rawData = await fetchHomeData();
-  return processHomeData(rawData);
+  return { dataCards, pools, chains: activeChains };
 }

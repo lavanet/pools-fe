@@ -1,6 +1,4 @@
 import styles from '@/styles/Home.module.scss'
-
-import { Suspense } from 'react';
 import clsx from 'clsx';
 import {
   HomeSectionPreview,
@@ -11,60 +9,28 @@ import {
   HomeSectionHeroEmail,
   HomeSectionProducts,
 } from '@/components';
-import { fetchProcessedHomeData } from '@/utils/homeUtils';
-import { ProcessedHomeData } from '@/types';
+import { fetchHomeData } from '@/utils/homeUtils';
+import { processHomeData } from '@/utils/homeUtils';
 
-function LoadingFallback() {
-  return <div className="c-loader" />;
-}
-
-function ErrorFallback({ error }: { error: Error }) {
-  return <div>Error: {error.message}</div>;
-}
-
-async function HomeContent() {
+export default async function Home() {
   try {
-    let processedData: ProcessedHomeData | null = null;
-    let error: Error | null = null;
-
-    try {
-      processedData = await fetchProcessedHomeData();
-    } catch (e) {
-      error = e instanceof Error ? e : new Error('An unknown error occurred');
-      console.error('Error fetching processed home data:', error);
-    }
-
-    if (error) {
-      return <ErrorFallback error={error} />;
-    }
-
-    if (!processedData) {
-      return <LoadingFallback />;
-    }
+    const rawData = await fetchHomeData();
+    const data = processHomeData(rawData);
 
     return (
-      <>
-        <HomeSectionPreview />
-        <HomeSectionDataCards dataCards={processedData.dataCards} />
-        <HomeSectionPools pools={processedData.pools} />
-        <HomeSectionHeroCTA />
-        <HomeSectionChains chains={processedData.chains} />
-        <HomeSectionHeroEmail />
-        <HomeSectionProducts />
-      </>
+      <section className={clsx(styles.cHome, "c-home")}>
+        <div className="c-container">
+          <HomeSectionPreview />
+          <HomeSectionDataCards dataCards={data.dataCards} />
+          <HomeSectionPools pools={data.pools} />
+          <HomeSectionHeroCTA />
+          <HomeSectionChains chains={data.chains} />
+          <HomeSectionHeroEmail />
+          <HomeSectionProducts />
+        </div>
+      </section>
     );
   } catch (error) {
-    console.error('Error fetching home data:', error);
     return <div>Error loading data. Please try again later.</div>;
   }
-}
-
-export default function Home() {
-  return (
-    <section className={clsx(styles.cHome, "c-home")}>
-      <div className="c-container">
-        <HomeContent />
-      </div>
-    </section>
-  );
 }
