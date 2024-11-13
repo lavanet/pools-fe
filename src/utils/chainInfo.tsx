@@ -270,7 +270,6 @@ export function getChainInfo(chainIdentifier?: string, returnType: ReturnType = 
         width={32}
         height={32}
         priority
-        style={{ borderRadius: '50%', width: 'var(--px32)', height: 'var(--px32)' }}
       />;
     case 'fullName':
       return chain?.fullName || chainIdentifier;
