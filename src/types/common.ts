@@ -103,9 +103,3 @@ export interface IProduct {
   type: 'orange' | 'red';
   link: string;
 }
-
-export interface ProcessedHomeData {
-  dataCards: IDataCard[];
-  pools: IPool[];
-  chains: IChain[];
-}
