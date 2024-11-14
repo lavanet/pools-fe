@@ -4,7 +4,14 @@ import { IcnArrowLeftRetro, IcnArrowRightRetro } from '@assets/icons';
 
 import { ReactNode, useState } from 'react';
 import clsx from "clsx"
-import { useReactTable, getCoreRowModel, flexRender, getPaginationRowModel, PaginationState } from '@tanstack/react-table'
+import {
+  useReactTable,
+  getCoreRowModel,
+  flexRender,
+  getPaginationRowModel,
+  PaginationState,
+  getSortedRowModel, SortingState,
+} from '@tanstack/react-table';
 import type { ColumnDef } from '@tanstack/react-table';
 
 import { Button } from '@/components';
@@ -37,15 +44,19 @@ export const CustomTable = <T extends object> (
     pageIndex: 0,
     pageSize: pageSize,
   })
+  const [sorting, setSorting] = useState<SortingState>([])
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    getSortedRowModel: getSortedRowModel(),
     onPaginationChange: setPagination,
+    onSortingChange: setSorting,
     state: {
       pagination,
+      sorting,
     },
   })
 
