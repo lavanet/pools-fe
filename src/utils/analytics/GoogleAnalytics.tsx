@@ -15,7 +15,7 @@ declare global {
   }
 }
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID as string;
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
 
 function GoogleAnalyticsScript() {
   const pathname = usePathname();
@@ -27,6 +27,8 @@ function GoogleAnalyticsScript() {
       page_path: url,
     });
   }, [pathname, searchParams]);
+
+  if (!GA_MEASUREMENT_ID) return null;
 
   return (
     <>
