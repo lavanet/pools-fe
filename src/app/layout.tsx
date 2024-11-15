@@ -11,6 +11,7 @@ import "@/styles/index.scss";
 
 import { Footer } from '@/components/common/Footer';
 import { Header } from '@/components/common/Header';
+import { GoogleAnalytics } from '@/utils/analytics/GoogleAnalytics';
 
 export const metadata: Metadata = {
   title: 'LAVA Incentive Pools',
@@ -26,7 +27,9 @@ export default function RootLayout(
   return (
     <html lang="en">
       <body>
-      
+
+      <GoogleAnalytics />
+
       <Header />
 
       <main className="c-main">
