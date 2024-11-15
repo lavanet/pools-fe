@@ -3,9 +3,9 @@
 import styles from '@/styles/HomeSectionChainsTable.module.scss'
 import {IcnCaretDown, IcnCaretUp} from '@assets/icons';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import clsx from 'clsx';
-import { ColumnDef } from '@tanstack/react-table';
+import { Column, ColumnDef } from '@tanstack/react-table';
 
 import { useMediaQuerySafe } from '@/hooks';
 import { getChainInfo } from '@/utils/chainInfo';
@@ -21,42 +21,46 @@ type ChainsTableProps = {
   chains: IChain[];
 };
 
-type SortConfig = {
-  key: keyof IChain;
-  direction: 'asc' | 'desc';
-} | null;
-
 const generatedColumns = (
-  onSort: (field: keyof IChain, direction: 'asc' | 'desc') => void,
-  sortConfig: SortConfig,
   isMobile?: boolean
 ): ColumnDef<IChain>[] => {
-  const createSortButtons = (field: keyof IChain) => (
-    <div className="c-table-sort-btn-container">
-      <Button
-        extraClassName={clsx("c-table-sort-btn", { 'is-active': sortConfig?.key === field && sortConfig.direction === 'asc' })}
-        btnVariant="link"
-        title="ASC"
-        onClick={() => onSort(field, 'asc')}
-        icon={<IcnCaretUp/>}
-      />
-      <Button
-        extraClassName={clsx("c-table-sort-btn", { 'is-active': sortConfig?.key === field && sortConfig.direction === 'desc' })}
-        btnVariant="link"
-        title="DESC"
-        onClick={() => onSort(field, 'desc')}
-        icon={<IcnCaretDown/>}
-      />
-    </div>
-  );
+  const createSortButtons = (field: keyof IChain) => {
+    const SortButtons = (column: Column<IChain>) => (
+      <div className="c-table-sort-btn-container">
+        <Button
+          extraClassName={clsx("c-table-sort-btn", {
+            'is-active': column.getIsSorted() === 'asc'
+          })}
+          btnVariant="link"
+          title="ASC"
+          onClick={() => column.getIsSorted() === 'asc' ? column.clearSorting() : column.toggleSorting(false)}
+          icon={<IcnCaretUp/>}
+        />
+        <Button
+          extraClassName={clsx("c-table-sort-btn", {
+            'is-active': column.getIsSorted() === 'desc'
+          })}
+          btnVariant="link"
+          title="DESC"
+          onClick={() => column.getIsSorted() === 'desc' ? column.clearSorting() : column.toggleSorting(true)}
+          icon={<IcnCaretDown/>}
+        />
+      </div>
+    );
+
+    SortButtons.displayName = `SortButtons_${field}`;
+    return SortButtons;
+  };
 
   return [
     {
       id: "chain",
-      header: () => (
+      accessorKey: 'name',
+      enableSorting: true,
+      header: ({column}) => (
         <div className="c-table-sort-th">
           <span>Chain name</span>
-          {createSortButtons('name')}
+          {createSortButtons('name')(column)}
         </div>
       ),
       cell: ({row}) => {
@@ -79,10 +83,12 @@ const generatedColumns = (
     },
     {
       id: "rpc-providers",
-      header: () => (
+      accessorKey: 'rpcProviders',
+      enableSorting: true,
+      header: ({column}) => (
         <div className="c-table-sort-th">
           <span>Total RPC providers</span>
-          {createSortButtons('rpcProviders')}
+          {createSortButtons('rpcProviders')(column)}
         </div>
       ),
       cell: ({row}) => {
@@ -98,10 +104,12 @@ const generatedColumns = (
     },
     {
       id: "requests",
-      header: () => (
+      accessorKey: 'requests',
+      enableSorting: true,
+      header: ({column}) => (
         <div className="c-table-sort-th">
           <span>Total requests</span>
-          {createSortButtons('requests')}
+          {createSortButtons('requests')(column)}
         </div>
       ),
       cell: ({row}) => {
@@ -117,10 +125,12 @@ const generatedColumns = (
     },
     {
       id: "service",
-      header: () => (
+      accessorKey: 'service',
+      enableSorting: true,
+      header: ({column}) => (
         <div className="c-table-sort-th">
           <span>Service</span>
-          {createSortButtons('service')}
+          {createSortButtons('service')(column)}
         </div>
       ),
       cell: ({row}) => {
@@ -146,7 +156,7 @@ const generatedColumns = (
 
             <div className="c-button-container">
               <ButtonLink
-                href={row.original.rpc_url ?? 'http://docs.lavanet.xyz/provider-setup'}
+                href={row.original.rpc_url ?? 'https://docs.lavanet.xyz/provider-setup'}
                 btnSize="sm"
                 text="Run a node"
               />
@@ -168,50 +178,26 @@ const generatedColumns = (
 export const HomeSectionChainsTable = ({ chains, filter }: ChainsTableProps) => {
   const isMobile /* boolean | undefined */ = useMediaQuerySafe('(max-width: 991px)');
 
-  const [sortConfig, setSortConfig] = useState<SortConfig>(null);
-
-  const handleSort = (field: keyof IChain, direction: 'asc' | 'desc') => {
-    setSortConfig({ key: field, direction });
-  };
-
-  const columns = useMemo(() => generatedColumns(handleSort, sortConfig, isMobile), [isMobile, sortConfig]);
+  const columns = useMemo(() => generatedColumns(isMobile), [isMobile]);
 
   const filteredChains = useMemo(() =>
       chains.filter((chain) => chain.name.toLowerCase().includes(filter.toLowerCase())),
     [chains, filter]
   );
 
-  const sortedAndFilteredChains = useMemo(() => {
-    let result = [...filteredChains];
-
-    if (sortConfig) {
-      result.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
-          return sortConfig.direction === 'asc' ? -1 : 1;
-        }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
-          return sortConfig.direction === 'asc' ? 1 : -1;
-        }
-        return 0;
-      });
-    }
-
-    return result;
-  }, [filteredChains, sortConfig]);
-
   return (
     <section className={clsx(styles.cHomeSectionChainsTable, "c-home-section-chains-table")}>
       {isMobile? (
         <div className="c-home-section-chains-mobile-slider c-mobile">
           <HomeSectionChainsMobileSlider
-            data={sortedAndFilteredChains}
+            data={filteredChains}
           />
         </div>
       ):(
         <CustomTable
           extraClassName="is-responsive c-desktop"
           columns={columns}
-          data={sortedAndFilteredChains}
+          data={filteredChains}
           defaultEmptyTitle="No results found"
           defaultEmptyParagraph="No chains matching your search criteria were found"
         />
