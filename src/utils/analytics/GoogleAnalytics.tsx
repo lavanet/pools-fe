@@ -22,6 +22,8 @@ function GoogleAnalyticsScript() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    if (!GA_MEASUREMENT_ID) return;
+
     const url = pathname + searchParams.toString();
     window.gtag('config', GA_MEASUREMENT_ID, {
       page_path: url,
