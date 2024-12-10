@@ -1,6 +1,6 @@
-.cHomeSectionDataCards {
+.cCardDataSection {
   &:global {
-    &.c-home-section-data-cards {
+    &.c-card-data-section {
       display: grid;
       grid-template-columns: 1fr;
       gap: var(--px12);

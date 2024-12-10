@@ -4,7 +4,7 @@ import styles from '@/styles/HomeSectionHeroEmail.module.scss';
 
 import clsx from 'clsx';
 
-import { SocialNavItems } from '@/utils/variables';
+import { SocialNavItems } from '@/utils';
 
 import { ButtonLink, HomeSectionHeroEmailForm } from '@/components';
 

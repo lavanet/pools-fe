@@ -37,6 +37,7 @@ export interface IChain {
 }
 
 export interface IDataCard {
+  extraClassName?: string;
   title: string;
   value: string;
   message?: string;

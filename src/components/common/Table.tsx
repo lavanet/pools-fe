@@ -16,7 +16,7 @@ import type { ColumnDef } from '@tanstack/react-table';
 
 import { Button } from '@/components';
 
-interface CustomTableProps<T extends object> {
+interface TableProps<T extends object> {
   extraClassName?: string;
   data: T[];
   columns: ColumnDef<T>[];
@@ -28,7 +28,7 @@ interface CustomTableProps<T extends object> {
   pageSize?: number;
 }
 
-export const CustomTable = <T extends object> (
+export const Table = <T extends object> (
   {
     extraClassName,
     data,
@@ -39,7 +39,7 @@ export const CustomTable = <T extends object> (
     defaultEmptyParagraph,
     removePagination,
     pageSize = 20,
-  }: CustomTableProps<T>) => {
+  }: TableProps<T>) => {
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: pageSize,

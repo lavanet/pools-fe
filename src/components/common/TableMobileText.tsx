@@ -6,7 +6,7 @@ type CustomTableMobileTextProps = {
   title?: string;
   isHidden?: boolean;
 }
-export const CustomTableMobileText = (
+export const TableMobileText = (
   {
     title,
     isHidden,

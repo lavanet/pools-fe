@@ -8,7 +8,7 @@ import { NumericFormat } from 'react-number-format';
 import { IPool } from '@/types';
 
 import { ButtonLink } from '@/components';
-import { formatNumber } from '@/utils/formatters';
+import { formatNumber } from '@/functions';
 
 type PoolsCardProps = IPool;
 

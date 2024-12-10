@@ -7,7 +7,7 @@ import Image from 'next/image';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { FooterNavItems, LegalNavItems, SocialNavItems } from '@/utils/variables';
+import { FooterNavItems, LegalNavItems, SocialNavItems } from '@/utils';
 
 import { Logo } from '@/components';
 

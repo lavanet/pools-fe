@@ -8,13 +8,10 @@ import clsx from 'clsx';
 import { Column, ColumnDef } from '@tanstack/react-table';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { getChainInfo } from '@/utils/chainInfo';
+import { formatNumber, chainInfo } from '@/functions';
 import { IChain } from '@/types';
 
-import { ButtonLink } from '@/components';
-import { CustomTable, Button, CustomTableMobileText } from '@/components';
-import { HomeSectionChainsMobileSlider } from '@/components/HomeSectionChainsMobileSlider';
-import { formatNumber } from '@/utils/formatters';
+import { ButtonLink, Table, Button, TableMobileText, HomeSectionChainsMobileSlider } from '@/components';
 
 type ChainsTableProps = {
   filter: string;
@@ -65,15 +62,16 @@ const generatedColumns = (
       ),
       cell: ({row}) => {
         const chain = row.original.name
+
         return (
           <>
             {isMobile && (
-              <CustomTableMobileText title="Chain name" isHidden/>
+              <TableMobileText title="Chain name" isHidden/>
             )}
 
             <div className='c-flexbox'>
               <i>
-                {getChainInfo(chain ? chain.toLowerCase() : 'N/A', 'icon', row.original.logo)}
+                {chainInfo(chain ? chain.toLowerCase() : 'N/A', 'icon', row.original.logo)}
               </i>
               <span>{chain}</span>
             </div>
@@ -95,7 +93,7 @@ const generatedColumns = (
         return (
           <>
             {isMobile && (
-              <CustomTableMobileText title="Total RPC providers"/>
+              <TableMobileText title="Total RPC providers"/>
             )}
             <span>{row.original.rpcProviders}</span>
           </>
@@ -116,7 +114,7 @@ const generatedColumns = (
         return (
           <>
             {isMobile && (
-              <CustomTableMobileText title="Total requests"/>
+              <TableMobileText title="Total requests"/>
             )}
             <span>{formatNumber(row.original.requests, true)}</span>
           </>
@@ -137,7 +135,7 @@ const generatedColumns = (
         return (
           <>
             {isMobile && (
-              <CustomTableMobileText title="Service"/>
+              <TableMobileText title="Service"/>
             )}
             <span>{row.original.service}</span>
           </>
@@ -151,7 +149,7 @@ const generatedColumns = (
         return (
           <>
             {isMobile && (
-              <CustomTableMobileText title="Actions" isHidden/>
+              <TableMobileText title="Actions" isHidden/>
             )}
 
             <div className="c-button-container">
@@ -194,7 +192,7 @@ export const HomeSectionChainsTable = ({ chains, filter }: ChainsTableProps) => 
           />
         </div>
       ):(
-        <CustomTable
+        <Table
           extraClassName="is-responsive c-desktop"
           columns={columns}
           data={filteredChains}

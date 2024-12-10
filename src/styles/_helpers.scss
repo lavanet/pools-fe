@@ -1,3 +1,17 @@
+.responsive-text-56 {
+  font-size: clamp(var(--px32), 2.917vw, var(--px56));
+}
+
+.responsive-text-20 {
+  font-size: clamp(var(--px18), 1.042vw, var(--px20));
+  line-height: 1.4em; //28px @20px
+}
+
+.text-grey-100 {
+  color: var(--grey-100);
+}
+
+
 .c-button-container {
   display: flex;
   align-items: center;

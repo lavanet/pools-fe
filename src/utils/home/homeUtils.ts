@@ -1,8 +1,7 @@
 import { IDataCard } from '@/types';
 import { ProcessedHomeData, RawHomeData } from '@/types/home';
-import { fetchData } from './apiClient';
-import { processChains } from './chainUtils';
-import { formatNumber } from './formatters';
+import { fetchData } from '@/utils';
+import { processChains, formatNumber } from '@/functions';
 
 export async function fetchHomeData(): Promise<RawHomeData> {
   return fetchData<RawHomeData>('/home/');

@@ -1,7 +1,6 @@
 import { IChain, IPool } from '@/types';
 import { RawHomeData } from '@/types/home';
-import { getChainInfo } from '@/utils/chainInfo';
-import { formatNumber } from '@/utils/formatters';
+import { formatNumber, chainInfo } from '@/functions';
 
 export const isUndefinedEnd = (rewards_end: string | null | undefined) =>
   rewards_end === 'TBD' || rewards_end === null || rewards_end === undefined;
@@ -33,7 +32,7 @@ export function processChains(chains: RawHomeData['chains']): { pools: IPool[], 
       monthly_rewards: Number(chain.current_rewards) || 0,
       future_rewards: Number(chain.future_rewards) || 0,
       past_rewards: Number(chain.past_rewards) || 0,
-      icon: getChainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon', chain.logo),
+      icon: chainInfo(chain.chain_id ? chain.chain_id.toLowerCase() : 'N/A', 'icon', chain.logo),
       months_remaining: chain.months_remaining || 0,
       rewards_end: chain.rewards_end || 'TBD',
       rewards_days_remaining: chain.rewards_days_remaining,

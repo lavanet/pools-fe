@@ -2,15 +2,14 @@ import styles from '@/styles/Home.module.scss'
 import clsx from 'clsx';
 import {
   HomeSectionPreview,
-  HomeSectionDataCards,
+  CardDataSection,
   HomeSectionPools,
   HomeSectionHeroCTA,
   HomeSectionChains,
   HomeSectionHeroEmail,
   HomeSectionProducts,
 } from '@/components';
-import { fetchHomeData } from '@/utils/homeUtils';
-import { processHomeData } from '@/utils/homeUtils';
+import { fetchHomeData, processHomeData } from '@/utils';
 
 export default async function Home() {
   try {
@@ -21,7 +20,7 @@ export default async function Home() {
       <section className={clsx(styles.cHome, "c-home")}>
         <div className="c-container">
           <HomeSectionPreview />
-          <HomeSectionDataCards dataCards={data.dataCards} />
+          <CardDataSection dataCards={data.dataCards} />
           <HomeSectionPools pools={data.pools} />
           <HomeSectionHeroCTA />
           <HomeSectionChains chains={data.chains} />

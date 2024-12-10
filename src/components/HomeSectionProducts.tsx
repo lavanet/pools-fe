@@ -4,7 +4,7 @@ import styles from '@/styles/HomeSectionProducts.module.scss';
 
 import clsx from 'clsx';
 
-import { homeSectionProducts } from '@/utils/variables';
+import { homeSectionProducts } from '@/utils';
 
 import { HomeSectionProductsCard } from '@/components';
 

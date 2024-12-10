@@ -4,7 +4,7 @@ import styles from '@/styles/HomeSectionChainsMobileCard.module.scss';
 
 import clsx from 'clsx';
 
-import { getChainInfo } from '@/utils/chainInfo';
+import { chainInfo } from '@/functions';
 import { IChain } from '@/types';
 
 import { Button } from '@/components/common';
@@ -16,7 +16,7 @@ export const HomeSectionChainsMobileCard = ({ name, requests , rpcProviders, ser
     <div className="c-home-section-chains-mobile-card-header">
 
       <i>
-        {getChainInfo(name ? name.toLowerCase() : 'N/A', 'icon', logo)}
+        {chainInfo(name ? name.toLowerCase() : 'N/A', 'icon', logo)}
       </i>
 
       <h3 className="h6">

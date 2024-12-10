@@ -7,7 +7,7 @@ import { useOnClickOutside } from 'usehooks-ts';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { headerNavItems } from '@/utils/variables';
+import { headerNavItems } from '@/utils';
 
 import { Button, Accordion } from '@/components/common';
 import Link from 'next/link';

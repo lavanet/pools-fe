@@ -1,35 +1,6 @@
-import { IDataCard, IFooterNavItem, IFooterNavItemLink, IHeaderNavItem, IHeaderNavItemLink, IProduct } from '@/types';
+import { IFooterNavItem, IFooterNavItemLink, IHeaderNavItem } from '@/types';
 import { IcnDiscord, IcnX, IcnGithub, IcnLavaCube, IcnLavaCode, IcnLavaChart, IcnLavaDocs, IcnCircleInfo, IcnTeam, IcnShow, IcnFile, IcnChat, IcnPuzzle, IcnNode, IcnCirclePyramid,
 } from '@assets/icons';
-
-export const SocialNavItems: IFooterNavItemLink[] = [
-  {
-    link: "https://discord.gg/Tbk5NxTCdA",
-    title: "Discord",
-    icon: <IcnDiscord/>
-  },
-  {
-    link: "https://twitter.com/lavanetxyz",
-    title: "X",
-    icon: <IcnX/>
-  },
-  {
-    link: "https://github.com/lavanet",
-    title: "Github",
-    icon: <IcnGithub/>
-  },
-]
-
-export const LegalNavItems: IFooterNavItemLink[] = [
-  {
-    title: "Privacy Policy",
-    link: "https://www.lavanet.xyz/privacy-policy",
-  },
-  {
-    title: "Terms of Service",
-    link: "https://www.lavanet.xyz/terms-of-service",
-  },
-]
 
 export const headerNavItems: IHeaderNavItem[] = [
   {
@@ -344,43 +315,31 @@ export const FooterNavItems: IFooterNavItem[] = [
   },
 ]
 
-export const homeSectionDataCards: IDataCard[] = [
+export const SocialNavItems: IFooterNavItemLink[] = [
   {
-    title: 'Total requests',
-    value: '49.23M',
+    link: "https://discord.gg/Tbk5NxTCdA",
+    title: "Discord",
+    icon: <IcnDiscord/>
   },
   {
-    message: 'Updated in real-time',
-    title: 'Total rewards, USD',
-    value: '$490,230',
+    link: "https://twitter.com/lavanetxyz",
+    title: "X",
+    icon: <IcnX/>
   },
   {
-    title: 'Distributed rewards, USD',
-    value: '$1,889,289.22',
+    link: "https://github.com/lavanet",
+    title: "Github",
+    icon: <IcnGithub/>
   },
-  {
-    title: 'Upcoming rewards, USD',
-    value: '$2,500,000',
-  },
-];
+]
 
-export const homeSectionProducts: IProduct[] = [
+export const LegalNavItems: IFooterNavItemLink[] = [
   {
-    text: 'Smooth UI and analytics for your RPC endpoints',
-    title: 'Gateway',
-    type: 'red',
-    link: 'https://accounts.lavanet.xyz/register?utm_source=homepage&utm_medium=above_footer&utm_campaign=website_to_gateway&utm_content=try_gateway',
+    title: "Privacy Policy",
+    link: "https://www.lavanet.xyz/privacy-policy",
   },
   {
-    text: 'Get the low-down on the Lava blockchain with Lava Info',
-    title: 'Lava Info',
-    type: 'orange',
-    link: 'https://info.lavanet.xyz/?utm_source=above-footer&utm_medium=website&utm_campaign=website-to-lavainfo',
+    title: "Terms of Service",
+    link: "https://www.lavanet.xyz/terms-of-service",
   },
-  {
-    text: 'See how Providers perform with rich Analytics',
-    title: 'Provider analytics',
-    type: 'orange',
-    link: 'https://info.lavanet.xyz/?utm_source=above-footer&utm_medium=website&utm_campaign=website-to-provider-analytics',
-  },
-];
+]

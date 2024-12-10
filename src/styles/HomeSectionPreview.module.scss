@@ -15,15 +15,11 @@
         row-gap: var(--px8);
 
         h1 {
-          font-size: clamp(var(--px32), 2.917vw, var(--px56));
           letter-spacing: -0.001em;
         }
 
         p {
           margin-bottom: 0;
-          color: var(--grey-100);
-          font-size: clamp(var(--px18), 1.042vw, var(--px20));
-          line-height: 1.4em;
         }
       }
 

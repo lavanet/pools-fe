@@ -11,7 +11,7 @@ import Tippy from '@tippyjs/react';
 import { IHeaderDropdownBanner, IHeaderNavItemLink } from '@/types';
 
 import { ButtonLink } from '@/components';
-import { SocialNavItems } from '@/utils/variables';
+import { SocialNavItems } from '@/utils';
 
 type HeaderDropdownProps = {
   id?: string,

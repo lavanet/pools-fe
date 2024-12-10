@@ -12,11 +12,11 @@ export const HomeSectionPreview = () => (
 
     <div className="c-home-section-preview-text">
 
-      <h1 className="sharp-medium">
+      <h1 className="sharp-medium responsive-text-56">
         Lava Incentive Pools
       </h1>
 
-      <p>
+      <p className="responsive-text-20 text-grey-100">
         Boost infrastructure for your favourite chain, earn rewards.
       </p>
 

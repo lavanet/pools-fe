@@ -9,9 +9,8 @@ import 'swiper/css/scrollbar';
 
 import "@/styles/index.scss";
 
-import { Footer } from '@/components/common/Footer';
-import { Header } from '@/components/common/Header';
-import { GoogleAnalytics } from '@/utils/analytics/GoogleAnalytics';
+import { Footer, Header } from '@/components';
+import { GoogleAnalytics } from '@/utils';
 
 export const metadata: Metadata = {
   title: 'LAVA Incentive Pools',

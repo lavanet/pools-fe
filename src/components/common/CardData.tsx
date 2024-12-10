@@ -1,13 +1,13 @@
 'use client';
 
-import styles from '@/styles/HomeSectionDataCardsItem.module.scss';
+import styles from '@/styles/CardData.module.scss';
 
 import clsx from 'clsx';
 
 import { IDataCard } from '@/types';
 
-export const DataCardItem = ({ message, title, value }: IDataCard) => (
-  <article className={clsx(styles.cHomeSectionDataCardsItem, "c-home-section-data-cards-item")}>
+export const CardData = ({ extraClassName, title, message, value }: IDataCard) => (
+  <article className={clsx(styles.cCardData, "c-card-data", extraClassName && extraClassName)}>
 
     <div>
 

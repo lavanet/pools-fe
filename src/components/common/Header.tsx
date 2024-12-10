@@ -5,7 +5,7 @@ import styles from '@/styles/Header.module.scss';
 import clsx from 'clsx';
 
 import { useMediaQuerySafe } from '@/hooks';
-import { headerNavItems } from '@/utils/variables';
+import { headerNavItems } from '@/utils';
 
 import { HeaderDropdown, MobileMenu, ButtonLink, Logo } from '@/components/common';
 
