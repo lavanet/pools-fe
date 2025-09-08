@@ -31,7 +31,7 @@ export const HomeSectionChains = ({ chains }: HomeSectionChainsProps) => {
           </h2>
 
           <p className="h5">
-            Chains that do not yet have incentivized pools.
+            Chains that do not yet have pools.
           </p>
 
         </div>

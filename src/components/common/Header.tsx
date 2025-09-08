@@ -41,7 +41,7 @@ export const Header = () => {
                 extraClassName='c-header-nav-link'
                 btnColor='ghost'
                 btnSize="lg"
-                text="Incentive Pools"
+                text="Lava Pools"
                 href="/"
               />
 
@@ -51,7 +51,7 @@ export const Header = () => {
               extraClassName="c-header-desktop-docs-btn c-desktop"
               btnColor="white"
               btnSize="lg"
-              text="Delegate Lava"
+              text="Restake Lava"
               href="https://www.lavanet.xyz/stakers"
             />
 
