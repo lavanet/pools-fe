@@ -14,7 +14,7 @@ import { Header } from '@/components/common/Header';
 import { GoogleAnalytics } from '@/utils/analytics/GoogleAnalytics';
 
 export const metadata: Metadata = {
-  title: 'LAVA Incentive Pools',
+  title: 'Lava Pools',
   description: 'Boost infrastructure for your favourite chain, earn rewards.',
 };
 

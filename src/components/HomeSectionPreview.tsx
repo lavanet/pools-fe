@@ -13,7 +13,7 @@ export const HomeSectionPreview = () => (
     <div className="c-home-section-preview-text">
 
       <h1 className="sharp-medium">
-        Lava Incentive Pools
+        Lava Pools
       </h1>
 
       <p>

@@ -11,7 +11,7 @@ export const HomeSectionHeroCTA = () => (
 
     <div>
       <h2 className="sharp-medium">
-        Create an incentive pool
+        Create a Lava Pool
       </h2>
 
       <p className="h5">
@@ -21,8 +21,8 @@ export const HomeSectionHeroCTA = () => (
     </div>
 
     <ButtonLink
-      href="http://www.lavanet.xyz/rollup-developer"
-      text="Learn more"
+      href="https://www.lavanet.xyz/partnerships#Form"
+      text="Contact the Team"
     />
 
   </section>
